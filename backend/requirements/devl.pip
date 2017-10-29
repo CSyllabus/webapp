@@ -1,0 +1,3 @@
+-r ./common.pip
+django-autofixture==0.12.0
+flake8==2.5.4
