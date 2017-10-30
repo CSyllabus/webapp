@@ -15,7 +15,7 @@ class UserCoursePost(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        return super(Country, self).save(*args, **kwargs)
+        return super(UserCoursePost, self).save(*args, **kwargs)
 
 
     def __str__(self):
@@ -34,7 +34,7 @@ class UserFacultyPost(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        return super(Country, self).save(*args, **kwargs)
+        return super(UserFacultyPost, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
