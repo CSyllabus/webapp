@@ -3,7 +3,7 @@ from django.db import models
 from .faculty import Faculty
 
 class Program(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=500)
     study_level = models.CharField(max_length=255)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
