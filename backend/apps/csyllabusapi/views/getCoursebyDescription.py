@@ -15,6 +15,9 @@ except ImportError:
 @permission_classes((permissions.IsAuthenticated,))
 @parser_classes((JSONParser,))
 def getCourseByDescription(request):
+      #forget about that this is GET, doesn't matter now
+      #attribute var is what we are going to receive from frontend
+      #even with my IF works good haha, do better, use those functins
         attribute = "machine learning"
 
         courses = Course.objects.all()
@@ -24,6 +27,10 @@ def getCourseByDescription(request):
             one_course = {}
             one_course['name'] = course.name
             one_course['description'] = course.description
+            one_course['ects'] = course.ects
+            one_course['semester'] = course.semester
+            #Do your magic here, this is IF is mine lol
+            # magic
             if(attribute in course.description):
                 result.append(one_course)
 
