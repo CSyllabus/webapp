@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^api/', include('users.urls')),
     url(r'^app/', app, name='app'),
     url('^auth/login/$', login, name='login'),
-    url('^auth/logout/$', logout_then_login, name='logout'),
+    url(''
+        '^auth/logout/$', logout_then_login, name='logout'),
     url('^$', index, name='index'),
+    url(r'^csyllabusapi/', include('csyllabusapi.urls')),
 ]
