@@ -18,7 +18,17 @@ fixtures.append({
     }
   }
 )
-
+fixtures.append({
+    "model": "csyllabusapi.city",
+    "pk": 1,
+    "fields": {
+      "name": "Zagreb",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z",
+      "country": 1
+    }
+  }
+)
 fixtures.append(
   {
     "model": "csyllabusapi.university",
@@ -27,7 +37,8 @@ fixtures.append(
       "name": "University of Zagreb",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
-      "country": 1
+      "country": 1,
+      "city": 1
     }
   }
 )
@@ -38,10 +49,10 @@ fixtures.append(
     "pk": 1,
     "fields": {
       "name": "Faculty of electrical engineering and computing",
-      "city": "Zagreb",
       "created": "2017-10-30T15:05:45.387Z",
       "modified": "2017-10-30T15:05:52.444Z",
-      "university": 1
+      "university": 1,
+      "city": 1
     }
   }
 )
@@ -67,11 +78,22 @@ for course_sublist in fer_courses:
                     "name" : course,
                     "study_level": study_level,
                     "created": "2017-10-30T15:07:40.122Z",
-                    "modified": "2017-10-30T15:07:41.673Z",
-                    "faculty": 1
+                    "modified": "2017-10-30T15:07:41.673Z"
                 }
             }
             fixtures.append(program)
+
+            fixtures.append(
+                {
+                    "model": "csyllabusapi.programfaculty",
+                    "pk": program_id,
+                    "fields": {
+                        "faculty": 1,
+                        "program": program_id,
+                        "created": "2017-10-30T15:07:40.122Z"
+                    }
+                }
+            )
             programs_fixtures.append(program)
             program_id = program_id + 1
 
