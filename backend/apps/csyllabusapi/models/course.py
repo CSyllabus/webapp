@@ -11,7 +11,6 @@ class Course(models.Model):
     winsum = models.CharField(max_length=255, blank = True,null = True)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
-    program = models.ForeignKey(Program, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
@@ -23,3 +22,15 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+class CourseProgram(models.Model):
+    created = models.DateTimeField(editable=False)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created = timezone.now()
+
+        return super(CourseProgram, self).save(*args, **kwargs)

@@ -48,41 +48,58 @@ fixtures.append(
 
 #appending programs fixtures
 program_id = 1
-for course in fer_courses:
-    if course['profile'] not in programs:
-        programs.append(course['profile'])
-        study_level = ""
-        if course['studylevel'] == 3:
-            study_level = "undergraduate"
-        elif course['studylevel'] == 4:
-            study_level = "graduate"
-        elif course['studylevel'] == "3, 4":
-            study_level = "undergraduate and graduate"
-        program = {
-            "model": "csyllabusapi.program",
-            "pk": program_id,
-            "fields": {
-                "name" : course['profile'],
-                "study_level": study_level,
-                "created": "2017-10-30T15:07:40.122Z",
-                "modified": "2017-10-30T15:07:41.673Z",
-                "faculty": 1
+for course_sublist in fer_courses:
+    for course in course_sublist['profile'].split(','):
+        course = course.strip()
+        if course+"-"+str(course_sublist['studylevel']) not in programs:
+            programs.append(course+"-"+str(course_sublist['studylevel']))
+            study_level = ""
+            if course_sublist['studylevel'] == 3:
+                study_level = "undergraduate"
+            elif course_sublist['studylevel'] == 4:
+                study_level = "graduate"
+            elif course_sublist['studylevel'] == "3, 4":
+                study_level = "undergraduate and graduate"
+            program = {
+                "model": "csyllabusapi.program",
+                "pk": program_id,
+                "fields": {
+                    "name" : course,
+                    "study_level": study_level,
+                    "created": "2017-10-30T15:07:40.122Z",
+                    "modified": "2017-10-30T15:07:41.673Z",
+                    "faculty": 1
+                }
             }
-        }
-        fixtures.append(program)
-        programs_fixtures.append(program)
-        program_id = program_id + 1
-
+            fixtures.append(program)
+            programs_fixtures.append(program)
+            program_id = program_id + 1
 
 
 #appending courses fixtures
 course_id = 1
+course_program_id = 1
 for course in fer_courses:
-    program = -1
+    course_programs = course['profile'].split(',')
+    i = 0
+    for course_program in course_programs:
+        course_programs[i] = course_program.strip()
+        i = i +1
+
     for program in programs_fixtures:
-        if program["fields"]["name"] == course['profile']:
-            program = int(program["pk"])
-            break
+        if program["fields"]["name"] in course_programs:
+            fixtures.append(
+                {
+                    "model": "csyllabusapi.courseprogram",
+                    "pk": course_program_id,
+                    "fields": {
+                        "course": course_id,
+                        "program": int(program["pk"]),
+                        "created": "2017-10-30T15:07:40.122Z"
+                    }
+                }
+            )
+            course_program_id = course_program_id + 1
 
     fixtures.append(
         {
@@ -96,8 +113,7 @@ for course in fer_courses:
                 "semester": course['semester'],
                 "winsum": course['winsumm'],
                 "created": "2017-10-30T15:07:40.122Z",
-                "modified": "2017-10-30T15:07:41.673Z",
-                "program": program
+                "modified": "2017-10-30T15:07:41.673Z"
             }
         }
     )
