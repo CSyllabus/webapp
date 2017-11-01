@@ -7,6 +7,15 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 
 import { AppComponent } from './app.component';
 
+import { HttpModule } from '@angular/http';
+
+import { CountriesService } from './countries.service';
+import { CitiesService } from './cities.service';
+import { CoursesService } from './courses.service';
+import { FacultiesService } from './faculties.service';
+import { ProgramsService } from './programs.service';
+import { UniversitiesService } from './universities.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,8 +24,16 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    CountriesService,
+    CitiesService,
+    CoursesService,
+    FacultiesService,
+    ProgramsService,
+    UniversitiesService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

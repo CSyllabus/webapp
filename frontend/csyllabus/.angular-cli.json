@@ -25,7 +25,9 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "local-mockup": "environments/environment.local-mockup.ts",
+        "local-django": "environments/environment.local-django.ts"
       }
     }
   ],
