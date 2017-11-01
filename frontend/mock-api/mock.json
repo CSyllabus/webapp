@@ -1,0 +1,87 @@
+{
+	"countries":[
+	{
+		"id": 1,
+		"name": "Croatia",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"cities": [{"id": 1,"name": "Zagreb"}]
+	}
+	],
+ 	"cities":[
+	{
+		"id": 1,
+		"country_id": 1,
+		"name": "Zagreb",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"universities": [{"id": 1,"name": "University Of Zagreb"}]
+	}
+	],
+	"universities":[
+	{
+		"id": 1,
+		"country_id": 1,
+		"city_id": 1,
+		"name": "University Of Zagreb",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"faculties": [{"id": 1,"name": "Faculty Of Electrical Engineering And Computing"}],
+		"programs": []
+	}
+	],
+	"faculties":[
+	{
+		"id": 1,
+		"university_id": 1,
+		"city_id": 1,
+		"name": "Faculty Of Electrical Engineering And Computing",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"programs": [{"id": 1,"study_level": "undergraduate","name": "Test course 1"}
+		]
+	}
+	],
+	"programs":
+	[{
+		"id": 1,
+		"study_level": "undergraduate",
+		"name": "Test course 1",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"courses": [
+		{
+		"id": 1,
+		"name": "Test course 1"
+		},
+		{
+		"id": 2,
+		"name": "Test course 2"
+		}]
+	}
+	],
+	"courses":[
+	{
+		"id": 1,
+		"name": "Test course 1",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		"ects": 1,
+		"semester": 1,
+		"english_level": 1,
+		"winsum": 1,
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01"
+	},
+	{
+		"id": 2,
+		"name": "Test course 2",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		"ects": 1,
+		"semester": 1,
+		"english_level": 1,
+		"winsum": 1,
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01"
+	}
+]
+}
