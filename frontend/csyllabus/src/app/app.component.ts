@@ -1,3 +1,4 @@
+import { ExplorerComponent } from './angular-material/explorer/explorer.component';
 import { Component, OnInit } from '@angular/core';
 
 import { CountriesService } from './countries.service';
@@ -6,7 +7,6 @@ import { UniversitiesService } from './universities.service';
 import { FacultiesService } from './faculties.service';
 import { ProgramsService } from './programs.service';
 import { CoursesService } from './courses.service';
-
 import { Country } from './country';
 import { City } from './city';
 import { University } from './university';
@@ -22,7 +22,7 @@ import { Course } from './course';
 })
 
 export class AppComponent {
-  title = 'app';
+  title = 'Csyllabus';
   countries: Country[] = [];
   cities: City[] = [];
   universities: University[] = [];
