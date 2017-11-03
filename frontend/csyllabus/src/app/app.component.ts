@@ -22,7 +22,7 @@ import { Course } from './course';
 })
 
 export class AppComponent {
-  title = 'app';
+  title = 'CSyllabus';
   countries: Country[] = [];
   cities: City[] = [];
   universities: University[] = [];
