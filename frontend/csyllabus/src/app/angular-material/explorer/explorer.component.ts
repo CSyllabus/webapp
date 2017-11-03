@@ -4,13 +4,25 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/observable/fromEvent';
+
+/**
+* @title Explorer Web page
+*/
 @Component({
   selector: 'app-explorer',
   templateUrl: './explorer.component.html',
   styleUrls: ['./explorer.component.css']
 })
-export class ExplorerComponent implements OnInit {
 
+export class TableExplorer {
+    displayedColumns = ['Score', 'Country', 'University', 'Professor', 'Syllabus'];
+}
+
+export class ExplorerComponent implements OnInit {
+    s
   constructor() { }
 
   ngOnInit() {

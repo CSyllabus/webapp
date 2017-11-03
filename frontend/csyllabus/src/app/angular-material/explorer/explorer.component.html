@@ -1,45 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Explorer</title>
+  <base href="/">
 
-<div></div>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div align="center" class="containerexp">
-<p>
-  explorer works!
-</p>
-<mat-form-field class="input">
-  <input matInput placeholder="What do you want to study?">
-</mat-form-field>
-<br />
-<mat-form-field class="input">
-  <input matInput placeholder="Where do you want to study?">
-</mat-form-field>
-<br />
-<mat-radio-group>
-  <mat-radio-button class="check" value="Undergraduate">Undergraduate</mat-radio-button>
-  <mat-radio-button class="check" value="Graduate">Graduate</mat-radio-button>
-</mat-radio-group>
-<br/>
-<mat-form-field class="selector">
-  <mat-select placeholder="English Level">
-    <mat-option *ngFor="let level of levels" [value]="level.value">
-      {{level.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field class="selector">
-  <mat-select placeholder="Semester">
-    <mat-option *ngFor="let level of levels" [value]="level.value">
-      {{level.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field class="selector">
-  <mat-select placeholder="Year">
-    <mat-option *ngFor="let level of levels" [value]="level.value">
-      {{level.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<button mat-raised-button color="primary">Go</button>
-</div>
+  <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 
-<div></div>
+  <script type="text/javascript">
+    angular.module('Explorer', ['ngMaterial']);
+  </script>
+</head>
+<app-root></app-root>
+<body>
+  <div></div>
+
+  <div align="center" class="containerexp">
+    <p>
+      explorer works!
+    </p>
+    <mat-form-field class="input">
+      <input matInput placeholder="What do you want to study?">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input">
+      <input matInput placeholder="Where do you want to study?">
+    </mat-form-field>
+    <br />
+    <mat-radio-group>
+      <mat-radio-button class="check" value="Undergraduate">Undergraduate</mat-radio-button>
+      <mat-radio-button class="check" value="Graduate">Graduate</mat-radio-button>
+    </mat-radio-group>
+    <br />
+    <mat-form-field class="selector">
+      <mat-select placeholder="English Level">
+        <mat-option *ngFor="let level of levels" [value]="level.value">
+          {{level.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="selector">
+      <mat-select placeholder="Semester">
+        <mat-option *ngFor="let level of levels" [value]="level.value">
+          {{level.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="selector">
+      <mat-select placeholder="Year">
+        <mat-option *ngFor="let level of levels" [value]="level.value">
+          {{level.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Go</button>
+  </div>
+  <div></div>
+
+  <div class="explorer-table-container mat-elevation-z8">
+    <div class="explorer-table-header">
+      <mat-form-field floatPlaceholder="never">
+        <input matInput #filter placeholder="What do you want to study?">
+      </mat-form-field>
+    </div>
+    <mat-table #table [dataSource]="dataSource">
+      <!-- Score Column -->
+      <ng-container matColumnDef="score">
+        <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.score}}% </mat-cell>
+      </ng-container>
+      <!-- Country Column -->
+      <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.country}} </mat-cell>
+      </ng-container>
+      <!-- University Column -->
+      <ng-container matColumnDef="university">
+        <mat-header-cell *matHeaderCellDef> University </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.university}} </mat-cell>
+      </ng-container>
+      <!-- Professor Column -->
+      <ng-container matColumnDef="professor">
+        <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.professor}} </mat-cell>
+      </ng-container>
+      <!-- Syllabus Column -->
+      <ng-container matColumnDef="syllabus">
+        <mat-header-cell *matHeaderCellDef> Syllabus </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.syllabus}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</body>
+</html>
