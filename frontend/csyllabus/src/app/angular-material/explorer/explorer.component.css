@@ -13,14 +13,36 @@
     width: 70%;
 }
 
-/* Structure */
-.exeplorer-table-container {
+/* Layout definition*/
+.search-explorer-layout, .table-explorer-layout {
+  display: flex;
+  box-sizing: border-box;
+  min-width: 100%;
+}
+
+.search-explorer-layout {
+  max-height: 60%;
+  flex: 1 1 60%;
+}
+
+.table-explorer-layout {
+  max-height: 40%;
+  flex: 1 1 40%;
+}
+
+/* Table Result Definition */
+/* -*- coding: utf-8 -*-
+# @Author: Adrien Roques
+# @Date:   2017-11-03
+# @Last Modified by:   Adrien Roques
+# @Last Modified time: 2017-11-03 */
+.explorer-table-container {
   display: flex;
   flex-direction: column;
   min-width: 300px;
 }
 
-.exeplorer-table-header {
+.explorer-table-header {
   min-height: 64px;
   display: flex;
   align-items: baseline;
@@ -38,4 +60,8 @@
 .mat-table {
   overflow: auto;
   max-height: 500px;
+}
+
+div {
+  border: 1px solid darkblue;
 }

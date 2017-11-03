@@ -1,12 +1,12 @@
 import { AngularMaterialModule } from './../angular-material.module';
-import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk/collections';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
 
 /**
 * @title Explorer Web page
@@ -17,8 +17,17 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['./explorer.component.css']
 })
 
-export class TableExplorer {
+ /* -*- coding: utf - 8 -*-
+ # @Author: Adrien Roques
+ # @title: TableFilteringExplorer
+ # @Date: 2017 - 11 - 03
+ # @Last Modified by: Adrien Roques
+ # @Last Modified time: 2017 - 11 - 03
+ # @Description: Manage the table of search result and apply filter*/
+export class TableFiltering {
     displayedColumns = ['Score', 'Country', 'University', 'Professor', 'Syllabus'];
+
+    @ViewChild('filter') filter: ElementRef;
 }
 
 export class ExplorerComponent implements OnInit {
