@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ExplorerResult } from './explorer.result';
+import { ResultExplorer } from './explorer.result';
 
-describe('ExplorerResult', () => {
+describe('ResultExplorer', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [ExplorerResult]
+            providers: [ResultExplorer]
         });
     });
 
-    it('should be created', inject([ExplorerResult], (service: ExplorerResult) => {
+    it('should be created', inject([ResultExplorer], (service: ResultExplorer) => {
         expect(service).toBeTruthy();
     }));
 });

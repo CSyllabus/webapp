@@ -1,7 +1,8 @@
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Component, OnInit } from '@angular/core';
-import { Result } from './result';
-import 'rxjs/add/observable/fromEvent';
+import { Observable } from 'rxjs/Observable';
+import { Result } from './result'
 
 /* -*- coding: utf - 8 -*-
 # @Author: Adrien Roques
@@ -10,28 +11,43 @@ import 'rxjs/add/observable/fromEvent';
 # @Last Modified by: Adrien Roques
 # @Last Modified time: 2017 - 11 - 03
 # @Description: Manage graphics datas*/
-export class ExplorerResult {
 
+/** Constants used to fill up our data base. */
+const SCORE = ['10', '20', '60', '55', '40', '80'];
+const COUNTRY = ['FRANCE', 'US', 'ITALY', 'CROATIA', 'FRANCE', 'UK'];
+const UNIVERSITY = ['IUT', 'POLIMI', 'STANFORD', 'ZAGREB', 'PARIS1', 'OXFORD'];
+const PROFESSOR = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack'];
+const SYLLABUS = ['1', '2', '3', '4', '5', '6'];
+
+
+/** An example database that the data source uses to retrieve data for the table. */
+export class ResultExplorer {
     /** Stream that emits whenever the data has been modified. */
     dataChange: BehaviorSubject<Result[]> = new BehaviorSubject<Result[]>([]);
     get data(): Result[] { return this.dataChange.value; }
 
     constructor() {
- 
+        // Fill up the database with 100 users.
+        for (let i = 0; i < 5; i++) { this.addUser(); }
     }
 
-    /** Adds a new result to the database graphic. */
-    addResult() {
+    /** Adds a new user to the database. */
+    addUser() {
         const copiedData = this.data.slice();
-        copiedData.push(this.createNewResult());
+        copiedData.push(this.createNewUser());
         this.dataChange.next(copiedData);
     }
 
-    /** Builds and returns a new result. */
-    private createNewResult() {
+    /** Builds and returns a new User. */
+    private createNewUser() {
+
+        const score = SCORE[Math.round(Math.random() * (SCORE.length - 1))];
+        const country = COUNTRY[Math.round(Math.random() * (COUNTRY.length - 1))];
+        const university = UNIVERSITY[Math.round(Math.random() * (UNIVERSITY.length - 1))];
+        const professor = PROFESSOR[Math.round(Math.random() * (PROFESSOR.length - 1))];
+        const syllabus = SYLLABUS[Math.round(Math.random() * (SYLLABUS.length - 1))];
 
         return {
-            id: (this.data.length + 1).toString(),
             score: score,
             country: country,
             university: university,
@@ -40,3 +56,4 @@ export class ExplorerResult {
         };
     }
 }
+

@@ -25,7 +25,6 @@
     angular.module('Explorer', ['ngMaterial']);
   </script>
 </head>
-<app-root></app-root>
 <body>
   <div></div>
 
@@ -75,7 +74,7 @@
   <div class="explorer-table-container mat-elevation-z8">
     <div class="explorer-table-header">
       <mat-form-field floatPlaceholder="never">
-        <input matInput #filter placeholder="What do you want to study?">
+        <input matInput #filter placeholder="What do you search ?">
       </mat-form-field>
     </div>
     <mat-table #table [dataSource]="dataSource">
