@@ -21,7 +21,9 @@ import { Course } from './services/course';
 })
 
 export class AppComponent {
-  title = 'Csyllabus';
+
+  title = 'CSyllabus';
+
   countries: Country[] = [];
   cities: City[] = [];
   universities: University[] = [];
