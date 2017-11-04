@@ -3,15 +3,41 @@
 # @Date:   2017-11-03
 # @Last Modified by:   Adrien Roques
 # @Last Modified time: 2017-11-03 -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Explorer</title>
+  <base href="/">
 
-<body ng-app="myApp" ng-cloak layout="column">
-  <div layout="column" flex>
-    <div class="search-explorer-layout">
-    SearchExplorerLayout
-    </div>
-    <div class="table-explorer-layout">
-    TableExplorerLayout
-    </div>
-  </div>>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+  <script type="text/javascript">
+    angular.module('Explorer', ['ngMaterial']);
+  </script>
+</head>
+<body>
+
+  <body ng-app="myApp" ng-cloak layout="column">
+    <div layout="column" flex>
+      <div class="search-explorer-layout">
+        SearchExplorerLayout
+      </div>
+      <div class="table-explorer-layout">
+        TableExplorerLayout
+        <table-filtering-example>Loading Material Docs example...</table-filtering-example>
+      </div>
+    </div>>
+  </body>
+
 </body>
+</html>
 

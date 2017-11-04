@@ -9,8 +9,12 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/observable/fromEvent';
 
 
 /**
@@ -32,7 +36,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 export class TableFiltering {
     displayedColumns = ['score', 'country', 'university', 'professor', 'syllabus'];
     resultExplorer = new ResultExplorer();
-    dataSource: ExampleDataSource | null;
+    dataSource: FilterRows | null;
 
     @ViewChild('filter') filter: ElementRef;
 

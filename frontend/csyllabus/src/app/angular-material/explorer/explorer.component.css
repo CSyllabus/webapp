@@ -35,7 +35,7 @@
 # @Author: Adrien Roques
 # @Date:   2017-11-03
 # @Last Modified by:   Adrien Roques
-# @Last Modified time: 2017-11-03 */
+# @Last Modified time: 2017-11-04 */
 .explorer-table-container {
   display: flex;
   flex-direction: column;
@@ -43,12 +43,10 @@
 }
 
 .explorer-table-header {
-  min-height: 64px;
+  min-height: 34px;
   display: flex;
-  align-items: baseline;
-  padding: 8px 24px 0;
   font-size: 20px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .mat-form-field {
@@ -57,11 +55,27 @@
   margin-left: 32px;
 }
 
+.mat-header-row {
+  background: #00008B;
+}
+
 .mat-table {
   overflow: auto;
   max-height: 500px;
+  text-align: left;
 }
 
-div {
-  border: 1px solid darkblue;
+.mat-header-cell {
+  color: #F8F8FF;
+  font-size: 18px;
+  font-weight: bold;
 }
+
+.mat-cell {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; /* TODO MODIFY */
+}
+
+
+
