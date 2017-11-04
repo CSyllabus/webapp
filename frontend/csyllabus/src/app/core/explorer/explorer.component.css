@@ -1,0 +1,20 @@
+.input {
+    min-width: 150px;
+    max-width: 230px;
+    width: 100%;
+  }
+.check {
+    margin-top:10px;
+    margin-bottom: 10 px;
+  }
+.selector {
+    margin: 0px;
+}
+.columns{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count:2;
+}
+.form{
+    margin: 20px;
+}

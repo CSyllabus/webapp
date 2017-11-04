@@ -1,10 +1,6 @@
 
-<div></div>
-
-<div align="center" class="containerexp">
-<p>
-  explorer works!
-</p>
+<div class="form">
+<div class="columns">
 <mat-form-field class="input">
   <input matInput placeholder="What do you want to study?">
 </mat-form-field>
@@ -27,19 +23,18 @@
 </mat-form-field>
 <mat-form-field class="selector">
   <mat-select placeholder="Semester">
-    <mat-option *ngFor="let level of levels" [value]="level.value">
+    <mat-option *ngFor="let sem of semester" [value]="sem.value">
       {{level.viewValue}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 <mat-form-field class="selector">
   <mat-select placeholder="Year">
-    <mat-option *ngFor="let level of levels" [value]="level.value">
+    <mat-option *ngFor="let year of years" [value]="year.value">
       {{level.viewValue}}
     </mat-option>
   </mat-select>
 </mat-form-field>
-<button mat-raised-button color="primary">Go</button>
 </div>
-
-<div></div>
+<button mat-raised-button color="primary" margin=10px >Go</button>
+</div>

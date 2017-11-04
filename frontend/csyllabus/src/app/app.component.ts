@@ -1,6 +1,4 @@
-import { ExplorerComponent } from './angular-material/explorer/explorer.component';
 import { Component, OnInit } from '@angular/core';
-
 import { CountriesService } from './countries.service';
 import { CitiesService } from './cities.service';
 import { UniversitiesService } from './universities.service';

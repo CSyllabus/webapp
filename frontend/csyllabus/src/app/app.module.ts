@@ -1,5 +1,4 @@
-import { CoreComponent } from './angular-material/core/core.component';
-import { ExplorerComponent } from './angular-material/explorer/explorer.component';
+import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
@@ -20,14 +19,12 @@ import { ProgramsService } from './programs.service';
 import { UniversitiesService } from './universities.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,ExplorerComponent,CoreComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    HttpModule
+    HttpModule,
+    CoreModule
   ],
   providers: [
     CountriesService,
@@ -37,6 +34,8 @@ import { UniversitiesService } from './universities.service';
     ProgramsService,
     UniversitiesService
    ],
-  bootstrap: [AppComponent,ExplorerComponent,CoreComponent],
+  declarations: [
+    AppComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

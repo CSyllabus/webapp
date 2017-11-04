@@ -1,4 +1,4 @@
-import { AngularMaterialModule } from './../angular-material.module';
+import { AngularMaterialModule } from './../../angular-material/angular-material.module';
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
@@ -23,5 +23,9 @@ export class ExplorerComponent implements OnInit {
       {value: 'C1', viewValue: 'C1'},
       {value: 'C2', viewValue: 'C2'}
   ];
+  semesters = [
+    {value:1,viewValue:1},
+    {value:2,viewValue:2}
+  ]
 }
 

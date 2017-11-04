@@ -1,0 +1,30 @@
+.bgexplorer {
+    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-height: 35.5em;
+    height: 100vh !important;
+    max-height: 100%;
+    background-image: url(../../images/world.jpg);
+    background-size: cover;  
+}
+.logo {
+    margin: 15%;
+  }
+.container {
+    align-self: center;
+    margin: 20px;
+    background: white;
+    max-width: 80%;
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0%;
+    border-radius: 5px;
+}
+h2{
+    color: white;
+    font-size-adjust: 20%;
+}
