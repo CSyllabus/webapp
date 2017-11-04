@@ -1,25 +1,24 @@
-
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/catch';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
-import { University } from './university';
+import { City } from './city';
 
 
 @Injectable()
-export class UniversitiesService {
+export class CitiesService {
 
-  universitiesUrl = environment.apiUrl + "universities/";
+  citiesUrl = environment.apiUrl + "cities/";
 
   constructor(private http: Http) { }
 
-  getAllUniversities(): Observable<University[]> {
-   return this.http.get(this.universitiesUrl)
-     .map(res => res.json() as University[]).catch(this.handleError);
+  getAllCities(): Observable<City[]> {
+   return this.http.get(this.citiesUrl)
+     .map(res => res.json() as City[]).catch(this.handleError);
  }
 
 
@@ -32,5 +31,3 @@ export class UniversitiesService {
 
 
 }
-
-

@@ -5,7 +5,12 @@
   }
 .check {
     margin-top:10px;
-    margin-bottom: 10 px;
+    margin-bottom: 10px;
+    font-size: 80%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-block-end: 20px;
+    margin-block-start: 20px;
   }
 .selector {
     margin: 0px;

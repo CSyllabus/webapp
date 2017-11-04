@@ -11,12 +11,12 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 
 
-import { CountriesService } from './countries.service';
-import { CitiesService } from './cities.service';
-import { CoursesService } from './courses.service';
-import { FacultiesService } from './faculties.service';
-import { ProgramsService } from './programs.service';
-import { UniversitiesService } from './universities.service';
+import { CountriesService } from './services/countries.service';
+import { CitiesService } from './services/cities.service';
+import { CoursesService } from './services/courses.service';
+import { FacultiesService } from './services/faculties.service';
+import { ProgramsService } from './services//programs.service';
+import { UniversitiesService } from './services/universities.service';
 
 @NgModule({
   imports: [
@@ -38,4 +38,5 @@ import { UniversitiesService } from './universities.service';
     AppComponent],
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }

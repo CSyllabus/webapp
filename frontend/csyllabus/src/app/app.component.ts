@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CountriesService } from './countries.service';
-import { CitiesService } from './cities.service';
-import { UniversitiesService } from './universities.service';
-import { FacultiesService } from './faculties.service';
-import { ProgramsService } from './programs.service';
-import { CoursesService } from './courses.service';
-import { Country } from './country';
-import { City } from './city';
-import { University } from './university';
-import { Faculty } from './faculty';
-import { Program } from './program';
-import { Course } from './course';
+import { CountriesService } from './services/countries.service';
+
+import { CitiesService } from './services/cities.service';
+import { UniversitiesService } from './services/universities.service';
+import { FacultiesService } from './services/faculties.service';
+import { ProgramsService } from './services/programs.service';
+import { CoursesService } from './services/courses.service';
+import { Country } from './services/country';
+import { City } from './services/city';
+import { University } from './services/university';
+import { Faculty } from './services/faculty';
+import { Program } from './services/program';
+import { Course } from './services/course';
 
 
 @Component({
