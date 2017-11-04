@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
@@ -10,22 +11,20 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 
 
-import { CountriesService } from './countries.service';
-import { CitiesService } from './cities.service';
-import { CoursesService } from './courses.service';
-import { FacultiesService } from './faculties.service';
-import { ProgramsService } from './programs.service';
-import { UniversitiesService } from './universities.service';
+import { CountriesService } from './services/countries.service';
+import { CitiesService } from './services/cities.service';
+import { CoursesService } from './services/courses.service';
+import { FacultiesService } from './services/faculties.service';
+import { ProgramsService } from './services//programs.service';
+import { UniversitiesService } from './services/universities.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    HttpModule
+    HttpModule,
+    CoreModule
   ],
   providers: [
     CountriesService,
@@ -35,6 +34,9 @@ import { UniversitiesService } from './universities.service';
     ProgramsService,
     UniversitiesService
    ],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent],
+  bootstrap: [AppComponent],
 })
+
 export class AppModule { }

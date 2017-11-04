@@ -5,21 +5,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/catch';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
-import { Country } from './country';
+import { University } from './university';
 
 
 @Injectable()
-export class CountriesService {
+export class UniversitiesService {
 
-  countriesUrl = environment.apiUrl + "countries/";
+  universitiesUrl = environment.apiUrl + "universities/";
 
   constructor(private http: Http) { }
 
-  getAllCountries(): Observable<Country[]> {
-   return this.http.get(this.countriesUrl)
-     .map(res => res.json() as Country[]).catch(this.handleError);
+  getAllUniversities(): Observable<University[]> {
+   return this.http.get(this.universitiesUrl)
+     .map(res => res.json() as University[]).catch(this.handleError);
  }
 
 

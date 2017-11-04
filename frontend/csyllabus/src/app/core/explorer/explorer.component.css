@@ -1,0 +1,25 @@
+.input {
+    min-width: 150px;
+    max-width: 230px;
+    width: 100%;
+  }
+.check {
+    margin-top:10px;
+    margin-bottom: 10px;
+    font-size: 80%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-block-end: 20px;
+    margin-block-start: 20px;
+  }
+.selector {
+    margin: 0px;
+}
+.columns{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count:2;
+}
+.form{
+    margin: 20px;
+}
