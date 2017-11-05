@@ -6,13 +6,13 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import parser_classes
+from datetime import datetime
 
 try:
     from django.utils import simplejson as json
 except ImportError:
     import json
 
-#@permission_classes((permissions.IsAuthenticated,))
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CountryView(APIView):
@@ -37,4 +37,8 @@ class CountryView(APIView):
         Country.objects.filter(id=id).delete()
         return Response()
 
-
+    def put(selfself, request):
+        id = request.data['id']
+        name = request.data['name']
+        Country.objects.filter(id=id).update(name=name, modified=datetime.utcnow())
+        return Response()
