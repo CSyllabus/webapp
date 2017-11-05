@@ -15,10 +15,12 @@
 .selector {
     margin: 0px;
 }
-.columns{
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count:2;
+@media all and (min-width: 900px) {
+  .columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 }
 .form{
     margin: 20px;

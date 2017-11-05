@@ -1,6 +1,6 @@
 <div layout="column" >
   <div class="form">
-    <div class="columns">
+    <div class="columns" flex>
       <mat-form-field class="input">
         <input matInput placeholder="What do you want to study?">
       </mat-form-field>
@@ -21,6 +21,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <br />
       <mat-form-field class="selector">
         <mat-select placeholder="Semester">
           <mat-option *ngFor="let sem of semester" [value]="sem.value">
