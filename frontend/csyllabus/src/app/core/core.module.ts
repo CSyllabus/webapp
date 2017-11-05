@@ -1,4 +1,5 @@
 import { ExplorerModule } from './explorer/explorer.module';
+import { ResultModule } from './explorer/result/result.module'
 import { AngularMaterialModule } from './../angular-material/angular-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,8 @@ import { CoreComponent } from './core.component';
   imports: [
     CommonModule,
     AngularMaterialModule,
-    ExplorerModule
+    ExplorerModule,
+    ResultModule
   ],
   declarations: [
     CoreComponent
