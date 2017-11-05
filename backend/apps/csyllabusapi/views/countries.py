@@ -17,11 +17,8 @@ except ImportError:
 @parser_classes((JSONParser,))
 class CountryView(APIView):
 
-    #@api_view(['GET'])
     def get(self, request):
-
         countries = Country.objects.all()
-
         result = []
         for country in countries:
             one_country = {}
@@ -29,14 +26,15 @@ class CountryView(APIView):
             result.append(one_country)
 
         return Response(result)
-    #@api_view(['POST'])
+
     def post(self, request, format=json):
         name = request.data['name']
-        print(name)
         country = Country.objects.create(name=name)
-       #name = request.POST.get('name', '')
-    #   country_obj = Country
-   #    country = Country()
-      # country.name = "Sweden"
-      # Country.create(country)
-        return Response(200)
+        return Response()
+
+    def delete(selfself, request):
+        id = request.data['id']
+        Country.objects.filter(id=id).delete()
+        return Response()
+
+
