@@ -31,19 +31,20 @@
 # @Author: Adrien Roques
 # @Date:   2017-11-03
 # @Last Modified by:   Adrien Roques
-# @Last Modified time: 2017-11-04 */
+# @Last Modified time: 2017-11-05 */
 .explorer-table-container {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 500px;
+  position: relative;
 }
 
 
 .explorer-table-header {
-  min-height: 34px;
   display: flex;
   font-size: 20px;
   justify-content: center;
+  min-width: 500px;
 }
 
 .mat-form-field {
@@ -58,8 +59,8 @@
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
-  text-align: left;
+  text-align: left;  
+  height: 100%;
 }
 
 .mat-header-cell {
@@ -71,6 +72,5 @@
 .mat-cell {
   display: flex;
   justify-content: space-between;
-  margin: 20px; /* TODO MODIFY */
 }
 
