@@ -20,7 +20,7 @@ import { AngularMaterialModule } from './../../../angular-material/angular-mater
     ],
 
     bootstrap: [ResultComponent],
-    exports: [ResultComponent],
+    exports: [ResultComponent, AngularMaterialModule],
     providers: [],
     
 })
