@@ -1,0 +1,46 @@
+
+
+.bgexplorer {
+    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-height: 35.5em;
+    height: 100vh !important;
+    max-height: 100%;
+    background-image: url(../../images/world.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+h1{
+    font-family:  'Inconsolata';
+    color: white;
+    margin-bottom: 0%;
+    margin-top: 0%;
+    font-weight: bold;
+}
+h2{
+    font-family:  'Roboto Condensed', sans-serif;
+    margin-top: 0%;
+}
+.logo {
+    margin-bottom: 0%;
+    margin-top: 10%;    
+  }
+.container {
+    align-self: center;
+    margin: 20px;
+    background: white;
+    max-width: 60%;
+    max-height: 80%;
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0%;
+    border-radius: 5px;
+}
+h2{
+    color: white;
+    font-size-adjust: 20%;
+}

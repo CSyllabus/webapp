@@ -1,0 +1,77 @@
+
+<div class="form">
+<div class="columns" flex>
+<mat-form-field class="input">
+  <input matInput placeholder="What do you want to study?">
+</mat-form-field>
+<br />
+<mat-form-field class="input">
+  <input matInput placeholder="Where do you want to study?">
+</mat-form-field>
+<br />
+<mat-radio-group>
+  <mat-radio-button class="check" value="Undergraduate">Undergraduate</mat-radio-button>
+  <mat-radio-button class="check" value="Graduate">Graduate</mat-radio-button>
+</mat-radio-group>
+<br/>
+<mat-form-field class="selector">
+  <mat-select placeholder="English Level">
+    <mat-option *ngFor="let level of levels" [value]="level.value">
+      {{level.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br/>
+<mat-form-field class="selector">
+  <mat-select placeholder="Semester">
+    <mat-option *ngFor="let sem of semester" [value]="sem.value">
+      {{level.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<button mat-raised-button color="primary" margin=10px >Go</button>
+</div>
+
+<div layout="column">
+  <!-- Explorer Table Result -->
+  <div class="explorer-table-container mat-elevation-z8">
+    <div class="explorer-table-header">
+      <mat-form-field floatPlaceholder="never">
+        <input matInput #filter placeholder="What do you search ?">
+      </mat-form-field>
+    </div>
+    <div class="explorer-table-container">
+      <mat-table #table [dataSource]="dataSource">
+        <!-- Score Column -->
+        <ng-container matColumnDef="score">
+          <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.score}}% </mat-cell>
+        </ng-container>
+        <!-- Country Column -->
+        <ng-container matColumnDef="country">
+          <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.country}} </mat-cell>
+        </ng-container>
+        <!-- University Column -->
+        <ng-container matColumnDef="university">
+          <mat-header-cell *matHeaderCellDef> University </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.university}} </mat-cell>
+        </ng-container>
+        <!-- Professor Column -->
+        <ng-container matColumnDef="professor">
+          <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.professor}} </mat-cell>
+        </ng-container>
+        <!-- Syllabus Column -->
+        <ng-container matColumnDef="syllabus">
+          <mat-header-cell *matHeaderCellDef> Syllabus </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.syllabus}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row color="white" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
