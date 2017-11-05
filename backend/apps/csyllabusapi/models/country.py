@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
-
+from datetime import datetime
 class Country(models.Model):
     name = models.CharField(max_length=255)
     created = models.DateTimeField(editable=False)
@@ -9,8 +9,8 @@ class Country(models.Model):
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         if not self.id:
-            self.created = timezone.now()
-        self.modified = timezone.now()
+            self.created = datetime.utcnow()
+        self.modified = datetime.now()
         return super(Country, self).save(*args, **kwargs)
 
 

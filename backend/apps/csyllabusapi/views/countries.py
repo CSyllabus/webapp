@@ -1,4 +1,4 @@
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 
 from ..models import Country
@@ -12,11 +12,12 @@ try:
 except ImportError:
     import json
 
-@permission_classes((permissions.IsAuthenticated,))
+#@permission_classes((permissions.IsAuthenticated,))
+@permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CountryView(APIView):
 
- #   @api_view(['GET'])
+    #@api_view(['GET'])
     def get(self, request):
 
         countries = Country.objects.all()
@@ -28,3 +29,14 @@ class CountryView(APIView):
             result.append(one_country)
 
         return Response(result)
+    #@api_view(['POST'])
+    def post(self, request, format=json):
+        name = request.data['name']
+        print(name)
+        country = Country.objects.create(name=name)
+       #name = request.POST.get('name', '')
+    #   country_obj = Country
+   #    country = Country()
+      # country.name = "Sweden"
+      # Country.create(country)
+        return Response(200)
