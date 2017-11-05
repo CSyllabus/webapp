@@ -69,7 +69,6 @@ import {
     MatToolbarModule,
     MatTooltipModule,
   ],
-  declarations: []
-
+  declarations: [],
 })
 export class AngularMaterialModule { }
