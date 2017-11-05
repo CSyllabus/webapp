@@ -1,8 +1,6 @@
 import { ExplorerComponent } from './explorer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatSortModule, MatTableModule} from '@angular/material';
 import { AngularMaterialModule } from './../../angular-material/angular-material.module';
 
 @NgModule({
@@ -14,14 +12,9 @@ import { AngularMaterialModule } from './../../angular-material/angular-material
     imports: [
         CommonModule,
         AngularMaterialModule,
-        MatTableModule,
-        MatSortModule,
-        BrowserModule,
     ],
 
-    bootstrap: [ExplorerComponent],
     exports: [ExplorerComponent],
-    providers: [],
     
 })
 export class ExplorerModule { }

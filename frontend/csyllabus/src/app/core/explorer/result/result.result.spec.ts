@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ResultExplorer } from './explorer.result';
+import { ResultExplorer } from './result.result';
 
 describe('ResultExplorer', () => {
     beforeEach(() => {
