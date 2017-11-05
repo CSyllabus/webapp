@@ -1,4 +1,4 @@
-import { AngularMaterialModule } from './../../angular-material/angular-material.module';
+import { AngularMaterialModule } from './../../../angular-material/angular-material.module';
 import { Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
