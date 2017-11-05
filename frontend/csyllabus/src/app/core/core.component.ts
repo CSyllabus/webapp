@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularMaterialModule } from './../angular-material.module';
+import { AngularMaterialModule } from './../angular-material/angular-material.module';
 @Component({
   selector: 'app-core',
   templateUrl: './core.component.html',

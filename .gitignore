@@ -110,3 +110,5 @@ settings.py
 
 ;;directories to ignore
 .idea/
+/.vs/webapp/v15/.suo
+/.vs/slnx.sqlite

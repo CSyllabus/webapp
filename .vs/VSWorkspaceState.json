@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\frontend",
+    "\\frontend\\csyllabus",
+    "\\frontend\\csyllabus\\src",
+    "\\frontend\\csyllabus\\src\\app",
+    "\\frontend\\csyllabus\\src\\app\\angular-material",
+    "\\frontend\\csyllabus\\src\\app\\core",
+    "\\frontend\\csyllabus\\src\\app\\core\\explorer",
+    "\\frontend\\mock-api"
+  ],
+  "SelectedNode": "\\frontend\\csyllabus\\src\\app\\core",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,2 +1,2 @@
-from .getCountries import *
+from .countries import *
 from .getCoursebyDescription import  *
