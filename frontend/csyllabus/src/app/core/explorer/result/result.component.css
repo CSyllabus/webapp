@@ -3,7 +3,7 @@
 # @Author: Adrien Roques
 # @Date:   2017-11-03
 # @Last Modified by:   Adrien Roques
-# @Last Modified time: 2017-11-05 */
+# @Last Modified time: 2017-11-07 */
 .explorer-table-container {
   display: flex;
   flex-direction: column;
@@ -14,7 +14,6 @@
 .explorer-table-header {
   display: flex;
   font-size: 20px;
-  justify-content: center;
 }
 
 .mat-form-field {
@@ -32,7 +31,6 @@
 .mat-table {
   overflow: auto;
   text-align: left;
-
 }
 
 .mat-header-cell {
@@ -43,8 +41,6 @@
 }
 
 .mat-cell {
-  display: flex;
-  justify-content: space-between;
   font-weight: bold;
 }
 
@@ -52,8 +48,11 @@
   min-width: 100%;
 }
 
+
 .mat-column-score {
   flex: 0 0 5%;
   font-size: 20px;
   justify-content: center;
 }
+
+
