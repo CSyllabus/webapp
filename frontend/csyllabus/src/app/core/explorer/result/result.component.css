@@ -7,7 +7,6 @@
 .explorer-table-container {
   display: flex;
   flex-direction: column;
-  min-width: 500px;
   position: relative;
 }
 
@@ -16,7 +15,6 @@
   display: flex;
   font-size: 20px;
   justify-content: center;
-  min-width: 500px;
 }
 
 .mat-form-field {
@@ -27,19 +25,21 @@
 
 .mat-header-row {
   background: #3F51B5;
+  font-size: 14px;
   
 }
 
 .mat-table {
   overflow: auto;
   text-align: left;
-  height: 100%;
+
 }
 
 .mat-header-cell {
   color: #F8F8FF;
   font-size: 18px;
   font-weight: bold;
+  
 }
 
 .mat-cell {
@@ -48,3 +48,12 @@
   font-weight: bold;
 }
 
+.mat-card {
+  min-width: 100%;
+}
+
+.mat-column-score {
+  flex: 0 0 5%;
+  font-size: 20px;
+  justify-content: center;
+}

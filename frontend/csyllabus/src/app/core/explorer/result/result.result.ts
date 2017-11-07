@@ -9,7 +9,7 @@ const SCORE = ['10', '20', '60', '55', '40', '80'];
 const COUNTRY = ['FRANCE', 'US', 'ITALY', 'CROATIA', 'FRANCE', 'UK'];
 const UNIVERSITY = ['IUT', 'POLIMI', 'STANFORD', 'ZAGREB', 'PARIS1', 'OXFORD'];
 const PROFESSOR = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack'];
-const SYLLABUS = ['1', '2', '3', '4', '5', '6'];
+const SYLLABUS = ['Machine Learning', 'Computer Science', 'Embbeded System', 'Software Control', ' Computer Performance ', 'DataBase'];
 
 /* -*- coding: utf - 8 -*-
 # @Author: Adrien Roques

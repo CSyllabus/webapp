@@ -32,7 +32,7 @@ export class ResultComponent implements OnInit {
 
     constructor() { }
 
-    displayedColumns = ['score', 'country', 'university', 'professor', 'syllabus'];
+    displayedColumns = ['score','result'];
     resultExplorer = new ResultExplorer();
     dataSource: FilterRows | null;
 

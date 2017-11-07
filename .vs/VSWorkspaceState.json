@@ -7,9 +7,10 @@
     "\\frontend\\csyllabus\\src\\app",
     "\\frontend\\csyllabus\\src\\app\\angular-material",
     "\\frontend\\csyllabus\\src\\app\\core",
+    "\\frontend\\csyllabus\\src\\app\\core\\comparator",
     "\\frontend\\csyllabus\\src\\app\\core\\explorer",
-    "\\frontend\\mock-api"
+    "\\frontend\\csyllabus\\src\\app\\core\\explorer\\result"
   ],
-  "SelectedNode": "\\frontend\\csyllabus\\src\\app\\core",
+  "SelectedNode": "\\frontend\\csyllabus\\src\\app\\core\\explorer\\result\\result.component.spec.ts",
   "PreviewInSolutionExplorer": false
 }
