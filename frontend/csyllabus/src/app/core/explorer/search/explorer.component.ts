@@ -35,8 +35,8 @@ export class ExplorerComponent implements OnInit {
   ];
 
   semesters = [
-    {value: 1, viewValue: 1},
-    {value: 2, viewValue: 2}
+    {value: "1", viewValue: "1"},
+    {value: "2", viewValue: "2"}
   ];
 
   constructor(private coursesService: CoursesService, ) {
@@ -45,11 +45,6 @@ export class ExplorerComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-
-
-  //Array = ["hola", "adios"]
-    //console.log(this.coursesAvailable);
-    //console.log(this.Array);
     this.coursesService.getAllCourses().subscribe(courses => this.coursesAvailable = courses);
   }
 
