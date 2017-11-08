@@ -1,7 +1,9 @@
 import { CoursesService } from './../../../services/courses.service';
 import { AngularMaterialModule } from './../../../angular-material/angular-material.module';
 import { Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FormControl,Validators} from '@angular/forms';
+import {FormControlDirective} from '@angular/forms';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
@@ -22,12 +24,17 @@ import 'rxjs/add/operator/startWith';
 export class ExplorerComponent implements OnInit {
 
     constructor(
-        private coursesService:CoursesService
-    ) { }
+        private coursesService:CoursesService,
+        
+    ) { 
+        
+    }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        
+    }
 
-    myControl: FormControl = new FormControl();
+    myControl: FormControl = new FormControl()
     
     levels = [
         { value: 'A1', viewValue: 'A1' },
@@ -40,6 +47,8 @@ export class ExplorerComponent implements OnInit {
     semesters = [
         { value: 1, viewValue: 1 },
         { value: 2, viewValue: 2 }
-    ]
-    coursesavailable = this.coursesService.getAllCourses();    
+    ];
+    coursesavailable = this.coursesService.getAllCourses().subscribe(c=>this.coursesavailable=c);
+    countriesavailable = this.coursesService.getAllCourses().subscribe(c=>this.coursesavailable=c); 
+    citiesavailable = this.coursesService.getAllCourses().subscribe(c=>this.coursesavailable=c);  
 }
