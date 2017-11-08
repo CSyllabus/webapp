@@ -1,3 +1,4 @@
+import { CoursesService } from './../../../services/courses.service';
 import { AngularMaterialModule } from './../../../angular-material/angular-material.module';
 import { Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
@@ -20,10 +21,14 @@ import 'rxjs/add/operator/startWith';
 # @Description: */
 export class ExplorerComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        private coursesService:CoursesService
+    ) { }
 
     ngOnInit() { }
 
+    myControl: FormControl = new FormControl();
+    
     levels = [
         { value: 'A1', viewValue: 'A1' },
         { value: 'A2', viewValue: 'A2' },
@@ -36,4 +41,5 @@ export class ExplorerComponent implements OnInit {
         { value: 1, viewValue: 1 },
         { value: 2, viewValue: 2 }
     ]
+    coursesavailable = this.coursesService.getAllCourses();    
 }

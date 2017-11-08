@@ -1,13 +1,20 @@
 
 <div class="form">
 <div class="columns" flex>
+<form>
 <mat-form-field class="input">
-  <input matInput placeholder="What do you want to study?">
+  <input placeholder="What do you want to study?" matInput [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let course of coursesavailable | async" [value]="course">
+      {{ course }}
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>
 <br />
 <mat-form-field class="input">
   <input matInput placeholder="Where do you want to study?">
 </mat-form-field>
+</form>
 <br />
 <mat-radio-group>
   <mat-radio-button class="check" value="Undergraduate">Undergraduate</mat-radio-button>
