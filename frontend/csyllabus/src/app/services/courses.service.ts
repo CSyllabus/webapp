@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/catch';
 import { environment } from '../../environments/environment';
 
-import { Course } from './course';
+import { Course } from '../classes/course';
 
 
 @Injectable()
