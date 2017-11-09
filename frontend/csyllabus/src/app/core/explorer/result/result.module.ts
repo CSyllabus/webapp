@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSortModule, MatTableModule} from '@angular/material';
 import { AngularMaterialModule } from './../../../angular-material/angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
 
@@ -13,6 +14,7 @@ import { AngularMaterialModule } from './../../../angular-material/angular-mater
 
     imports: [
         CommonModule,
+        FlexLayoutModule,
         AngularMaterialModule,
         MatTableModule,
         MatSortModule,

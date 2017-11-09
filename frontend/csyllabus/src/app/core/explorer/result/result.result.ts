@@ -66,5 +66,6 @@ export class ResultExplorer {
             blazon: blazon
         };
     }
+
 }
 

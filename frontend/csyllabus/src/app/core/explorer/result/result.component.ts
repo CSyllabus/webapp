@@ -1,12 +1,16 @@
 import { AngularMaterialModule } from './../../../angular-material/angular-material.module';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
+import { FormControl } from '@angular/forms';
+import { MatMenuTrigger } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ResultExplorer } from './result.result';
 import { Result } from './result';
+// flex-layout
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ObservableMedia } from '@angular/flex-layout';
 
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
@@ -16,26 +20,33 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 
 @Component({
-  selector: 'app-explorer-result',
-  templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+    selector: 'app-explorer-result',
+    templateUrl: './result.component.html',
+    styleUrls: ['./result.component.css']
 })
+
 
 /* -*- coding: utf - 8 -*-
 # @Author: Adrien Roques 
 # @title: TableFilteringExplorer
 # @Date: 2017 - 11 - 03
 # @Last Modified by: Adrien Roques
-# @Last Modified time: 2017 - 11 - 04
+# @Last Modified time: 2017 - 11 - 09
 # @Description: Manage the table of search result and apply filter*/
 export class ResultComponent implements OnInit {
 
-    constructor() { }
+    /**
+     * The number of colums in the md-grid-list directive.
+    */
+    public cols: Observable<number>;
 
-    displayedColumns = ['score','result'];
+    constructor(private observableMedia: ObservableMedia) { }
+
+    displayedColumns = ['result'];
     resultExplorer = new ResultExplorer();
     dataSource: FilterRows | null;
 
+    // apply filter
     @ViewChild('filter') filter: ElementRef;
 
     ngOnInit() {
@@ -47,7 +58,17 @@ export class ResultComponent implements OnInit {
                 if (!this.dataSource) { return; }
                 this.dataSource.filter = this.filter.nativeElement.value;
             });
+
+        
     }
+
+    //menu button
+    @ViewChild(MatMenuTrigger) notificationMenuBtn: MatMenuTrigger;
+
+    menuMethod() {
+        this.notificationMenuBtn.openMenu();
+    }
+   
 }
 
 /* -*- coding: utf - 8 -*-
@@ -55,7 +76,7 @@ export class ResultComponent implements OnInit {
 # @title: Filter
 # @Date: 2017 - 11 - 04
 # @Last Modified by: Adrien Roques
-# @Last Modified time: 2017 - 11 - 04
+# @Last Modified time: 2017 - 11 - 9
 # @Description: Apply filter*/
 export class FilterRows extends DataSource<any> {
     _filterChange = new BehaviorSubject('');

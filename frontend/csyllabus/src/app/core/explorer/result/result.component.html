@@ -1,5 +1,4 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <div layout="column">
   <!-- Explorer Table Result -->
   <div class="explorer-table-container mat-elevation-z8">
@@ -11,53 +10,46 @@
     <div class="explorer-table-container">
       <mat-table #table [dataSource]="dataSource">
 
-        <!-- Score Column -->
-        <ng-container matColumnDef="score">
-          <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.score}} </mat-cell>
-        </ng-container>
-
         <!-- Result Column -->
         <ng-container matColumnDef="result">
           <mat-header-cell *matHeaderCellDef> Result </mat-header-cell>
           <mat-cell *matCellDef="let row">
             <mat-card>
-              <mat-grid-list cols="4">
-                <mat-grid-tile [style.border-right]="'1px dashed #ddd'">
-                  <md-card-title-group>
-                    <mat-card-title>{{row.university}} </mat-card-title>
-                    <mat-card-subtitle>{{row.country}}</mat-card-subtitle>
-                    <mat-card-subtitle>{{row.syllabus}}</mat-card-subtitle>
-                    <mat-card-subtitle>{{row.professor}}</mat-card-subtitle>
-                  </md-card-title-group>
-                </mat-grid-tile>
-                <mat-grid-tile [style.border-right]="'1px dashed #ddd'">
-                  <mat-card-content>
-                    {{row.description}}
-                  </mat-card-content>
-                </mat-grid-tile>
-                <mat-grid-tile [style.border-right]="'1px dashed #ddd'">
-                  <mat-card-content>
-                    <mat-card-actions>
-                      <mat-list>
-                        <mat-list-item>
-                          <button mat-button color="primary">RATING</button>
-                        </mat-list-item>
-                        <mat-list-item>
-                          <button mat-button color="primary">SOCIAL</button>
-                        </mat-list-item>
-                        <mat-list-item>
-                          <button mat-button color="primary">MORE</button>
-                        </mat-list-item>
-                      </mat-list>
-                    </mat-card-actions>
-                  </mat-card-content>
-                </mat-grid-tile>
-                <mat-grid-tile [style.border-right]="'1px dashed #ddd'">
-                  <img mat-card-avatar src={{row.blazon}} />
-                </mat-grid-tile>
-              </mat-grid-list>
-            </mat-card>
+              <div fxLayout="row" fxLayoutAlign="center center">            
+                <md-card-title-group>
+                  <mat-card-title>{{row.university}} </mat-card-title>
+                  <mat-card-subtitle>{{row.country}}</mat-card-subtitle>
+                  <mat-card-subtitle>{{row.syllabus}}</mat-card-subtitle>
+                  <mat-card-subtitle class="sub-sub-title"> {{row.professor}}</mat-card-subtitle>
+                 </md-card-title-group>
+                <span fxFlex="3"></span>
+                <mat-card-content class="description-syllabus">
+                  <p>{{row.description}}</p>
+                </mat-card-content>
+                <span fxFlex="10"></span>               
+                  <mat-card-content>                                     
+                      <mat-card-actions fxLayout="column" fxLayoutAlign="center end">
+                        <img mat-card-avatar src={{row.blazon}} />
+                        <p>  </p>
+                        <div fxLayout="row">                       
+                          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+                            <mat-icon>menu</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item>Opt 1</button>
+                            <button mat-menu-item>Opt 2</button>
+                          </mat-menu>                       
+                          <button mat-mini-fab color="primary">
+                            <mat-icon>star</mat-icon>
+                          </button>
+                          <button mat-mini-fab color="primary">
+                            <mat-icon>comment</mat-icon>
+                          </button>
+                        </div>
+                    </mat-card-actions>                   
+                </mat-card-content>
+              </div> 
+            </mat-card>                      
           </mat-cell>
         </ng-container>
 
