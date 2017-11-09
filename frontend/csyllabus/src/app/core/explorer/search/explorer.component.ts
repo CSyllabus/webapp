@@ -85,10 +85,7 @@ export class ExplorerComponent implements OnInit {
 
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
-  keyword = [
-    { name: 'ARM' },
-    { name: 'embedded engineering' },
-  ];
+  keyword = [];
   showKeywords = false;
 
   add(event: MatChipInputEvent): void {
