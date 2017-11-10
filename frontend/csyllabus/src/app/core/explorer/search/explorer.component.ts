@@ -35,8 +35,8 @@ const COMMA = 188;
  # @Author: Sebastian
  # @title: TableFilteringExplorer
  # @Date: 2017 - 11 - 03
- # @Last Modified by: Adrien Roques
- # @Last Modified time: 2017 - 11 - 05
+ # @Last Modified by: Seabastian
+ # @Last Modified time: 2017 - 11 - 10
  # @Description: */
 export class ExplorerComponent implements OnInit {
   countries: Country[];

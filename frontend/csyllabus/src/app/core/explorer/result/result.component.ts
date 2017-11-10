@@ -31,7 +31,7 @@ import 'rxjs/add/observable/fromEvent';
 # @title: TableFilteringExplorer
 # @Date: 2017 - 11 - 03
 # @Last Modified by: Adrien Roques
-# @Last Modified time: 2017 - 11 - 09
+# @Last Modified time: 2017 - 11 - 10
 # @Description: Manage the table of search result and apply filter*/
 export class ResultComponent implements OnInit {
 
@@ -58,8 +58,6 @@ export class ResultComponent implements OnInit {
                 if (!this.dataSource) { return; }
                 this.dataSource.filter = this.filter.nativeElement.value;
             });
-
-        
     }
 
     //menu button
@@ -68,7 +66,7 @@ export class ResultComponent implements OnInit {
     menuMethod() {
         this.notificationMenuBtn.openMenu();
     }
-   
+
 }
 
 /* -*- coding: utf - 8 -*-
@@ -76,7 +74,7 @@ export class ResultComponent implements OnInit {
 # @title: Filter
 # @Date: 2017 - 11 - 04
 # @Last Modified by: Adrien Roques
-# @Last Modified time: 2017 - 11 - 9
+# @Last Modified time: 2017 - 11 - 10
 # @Description: Apply filter*/
 export class FilterRows extends DataSource<any> {
     _filterChange = new BehaviorSubject('');
@@ -100,6 +98,7 @@ export class FilterRows extends DataSource<any> {
                 return searchStr.indexOf(this.filter.toLowerCase()) != -1;
             });
         });
+
     }
 
     disconnect() { }
