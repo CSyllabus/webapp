@@ -78,6 +78,9 @@ export class ExplorerComponent implements OnInit {
     {value: 2, viewValue: 'Spring/Summer'}
   ];
 
+  // result table visible
+  public showTable = false;
+
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
@@ -112,6 +115,18 @@ export class ExplorerComponent implements OnInit {
   constructor(private coursesService: CoursesService, private countriesService: CountriesService,
   private citiesService: CitiesService, private universitiesService: UniversitiesService
   , private facultiesService: FacultiesService  , private programsService: ProgramsService) {
+  }
+
+  /**
+   * Hide or not result component
+   * @param showTable
+   */
+  show(showTable) {
+      this.showTable = false;
+
+      if (showTable == 'showTable') {
+          this.showTable = true;
+      }
   }
 
   // filteredOptions: Observable<string[]>;

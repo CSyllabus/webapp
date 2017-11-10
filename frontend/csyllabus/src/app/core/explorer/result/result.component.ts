@@ -60,13 +60,14 @@ export class ResultComponent implements OnInit {
             });
     }
 
+    size: string = '4';
+
     //menu button
     @ViewChild(MatMenuTrigger) notificationMenuBtn: MatMenuTrigger;
 
     menuMethod() {
         this.notificationMenuBtn.openMenu();
     }
-
 }
 
 /* -*- coding: utf - 8 -*-
@@ -78,6 +79,9 @@ export class ResultComponent implements OnInit {
 # @Description: Apply filter*/
 export class FilterRows extends DataSource<any> {
     _filterChange = new BehaviorSubject('');
+    /** size displaying*/
+    size: string = '';
+
     get filter(): string { return this._filterChange.value; }
     set filter(filter: string) { this._filterChange.next(filter); }
 
@@ -92,6 +96,8 @@ export class FilterRows extends DataSource<any> {
             this._filterChange,
         ];
 
+        this.size = this._resultExplorer.data.filter.length.toString();
+
         return Observable.merge(...displayDataChanges).map(() => {
             return this._resultExplorer.data.slice().filter((item: Result) => {
                 let searchStr = (item.score + item.university + item.country + item.professor + item.syllabus).toLowerCase();
@@ -100,6 +106,7 @@ export class FilterRows extends DataSource<any> {
         });
 
     }
+
 
     disconnect() { }
 }

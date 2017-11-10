@@ -4,78 +4,81 @@
 # @Date:   2017-11-03
 # @Last Modified by:   Adrien Roques
 # @Last Modified time: 2017-11-07 */
-.explorer-table-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
- }
 
-.explorer-table-header {
-  display: flex;
-  font-size: 20px;
+@media all and (min-width: 900px) {
+
+  .explorer-table-container {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: block;
+  }
 }
 
-.mat-form-field {
-  font-size: 14px;
-  flex-grow: 1;
-  margin-left: 32px;
-}
+  .explorer-table-header {
+    display: flex;
+    font-size: 20px;
+  }
 
-.mat-header-row {
-  background: #3F51B5;
-  font-size: 14px;
+  .mat-form-field {
   
-}
+    font-size: 14px;
+    flex-grow: 1;
+    margin-left: 5%;
+    margin-right: 5%
+  }
 
-.mat-table {
-  overflow: auto;
-  text-align: left;
-  justify-content: center;
-}
+  .mat-header-row {
+    background: #3F51B5;
+    font-size: 14px;
+  }
 
-.mat-header-cell {
-  color: #F8F8FF;
-  font-size: 18px;
-  font-weight: bold;
-  
-}
+  .mat-table {
+    overflow: auto;
+    text-align: left;
+    justify-content: center;
+  }
 
-.mat-column-score {
-  flex: 0 0 5%;
-  font-size: 20px;
-  justify-content: center;
-  font-weight: bold;
-  margin-right: 10px;
-}
+  .mat-header-cell {
+    color: #F8F8FF;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-.mat-column-result {
-  font-size: 20px;
-  justify-content: center;
-  font-weight: bold;
-}
+  .mat-column-score {
+    flex: 0 0 5%;
+    font-size: 20px;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+  }
 
+  .mat-column-result {
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+  }
 
-.mat-cell {
-  padding-top: 1em;
-  margin-left: 10px;
-}
+  .mat-cell {
+    padding-top: 1em;
+    margin-left: 10px;
+  }
 
-.mat-mini-fab {
-  margin-left: 5px;
-}
+  .mat-mini-fab {
+    margin-left: 5px;
+  }
 
-.mat-card-subtitle {
-  color: #000000;
-  font-weight: bold;
-}
+  .mat-card-subtitle {
+    color: #000000;
+    font-weight: bold;
+  }
 
-.sub-sub-title {
-  color: #A9A9A9;
-}
+  .sub-sub-title {
+    color: #A9A9A9;
+  }
 
-.description-syllabus {
-  color: #696969;
-}
+  .description-syllabus {
+    color: #696969;
+  }
 
 
 

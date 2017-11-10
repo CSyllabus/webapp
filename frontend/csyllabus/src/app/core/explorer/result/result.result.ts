@@ -4,6 +4,11 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Result } from './result'
 
+/**
+ *  Nb Max of displaying rows
+ */
+const MAX_ROWS = 20;
+
 /** Constants used to fill up our data base. */ //TEST DATA 
 const SCORE = ['10', '20', '60', '55', '40', '80'];
 const BLAZON = ['https://source.unsplash.com/user/erondu/200x200',
@@ -32,16 +37,32 @@ export class ResultExplorer {
     dataChange: BehaviorSubject<Result[]> = new BehaviorSubject<Result[]>([]);
     get data(): Result[] { return this.dataChange.value; }
 
+    
     constructor() {
         // Fill up the database with 5 rows test function, not connencted yet
         for (let i = 0; i < 5; i++) { this.addRow(); }
     }
 
+    /**
+     * add new row given result
+     * @param r
+     */
+    add(r: Result): void {
+
+        if (this.data.length < 2) {
+            const copiedData = this.data.slice();
+            copiedData.push(r);
+            this.dataChange.next(copiedData);
+        }
+    }
+
     /** Adds a new row to the database. */
     addRow() {
-        const copiedData = this.data.slice();
-        copiedData.push(this.createNewRow());
-        this.dataChange.next(copiedData);
+        if (this.data.length < MAX_ROWS) {
+            const copiedData = this.data.slice();
+            copiedData.push(this.createNewRow());
+            this.dataChange.next(copiedData);
+        }
     }
 
     /** Builds and returns a new row. */
