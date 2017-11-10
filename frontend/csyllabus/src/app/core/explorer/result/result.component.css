@@ -13,14 +13,12 @@
 .explorer-table-header {
   display: flex;
   font-size: 20px;
-
 }
 
 .mat-form-field {
   font-size: 14px;
   flex-grow: 1;
   margin-left: 32px;
-  margin-top: 150px;
 }
 
 .mat-header-row {
