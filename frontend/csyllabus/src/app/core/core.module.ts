@@ -1,4 +1,4 @@
-import { ExplorerModule } from './explorer/explorer.module';
+import { ExplorerModule } from './explorer/search/explorer.module';
 import { ResultModule } from './explorer/result/result.module'
 import { AngularMaterialModule } from './../angular-material/angular-material.module';
 import { NgModule } from '@angular/core';

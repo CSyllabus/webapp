@@ -1,0 +1,33 @@
+.form {
+    margin: 20px;
+  }
+.input {
+    width: 100%;
+    max-width: 80%;
+  }
+.check {
+    margin-top:10px;
+    margin-bottom: 10px;
+    font-size: 80%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+.selector {
+    margin:5px;
+}
+@media all and (min-width: 900px) {
+.column{
+    float: left;
+    width: 50%;
+}
+.fixeds{
+    width: 100%;
+    column-count: 1;
+}
+.button{
+    float: right;
+     width:100%;
+     margin: 10px;
+ }
+}
+

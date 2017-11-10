@@ -112,4 +112,4 @@ settings.py
 .idea/
 /.vs/webapp/v15/.suo
 /.vs/slnx.sqlite
-/.vs/
+.vs/

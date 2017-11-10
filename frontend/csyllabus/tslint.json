@@ -105,7 +105,13 @@
     ],
     "typeof-compare": true,
     "unified-signatures": true,
-    "variable-name": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-camel-case"
+    ],
     "whitespace": [
       true,
       "check-branch",

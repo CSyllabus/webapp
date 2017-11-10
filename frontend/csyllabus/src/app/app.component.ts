@@ -6,12 +6,12 @@ import { UniversitiesService } from './services/universities.service';
 import { FacultiesService } from './services/faculties.service';
 import { ProgramsService } from './services/programs.service';
 import { CoursesService } from './services/courses.service';
-import { Country } from './services/country';
-import { City } from './services/city';
-import { University } from './services/university';
-import { Faculty } from './services/faculty';
-import { Program } from './services/program';
-import { Course } from './services/course';
+import { Country } from './classes/country';
+import { City } from './classes/city';
+import { University } from './classes/university';
+import { Faculty } from './classes/faculty';
+import { Program } from './classes/program';
+import { Course } from './classes/course';
 
 
 @Component({
