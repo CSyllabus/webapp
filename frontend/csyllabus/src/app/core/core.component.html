@@ -1,5 +1,6 @@
 <div class="bgexplorer">
   <img src="https://image.ibb.co/fQCOXb/logo.png" height="140" width="140">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <h1>CSYLLABUS v1.0</h1>
   <h2>Global Computer Science Repository</h2>
   <div class="container" align="center">
@@ -8,8 +9,10 @@
       <mat-tab label="Comparator">Content 2</mat-tab>
     </mat-tab-group>
   </div>
-  <div><app-explorer-result></app-explorer-result></div>
+  <span (show)="show('showTable')" class="app-explorer"></span>
+  <div *ngIf="true"><app-explorer-result></app-explorer-result></div>
 </div>
+
 
 
 

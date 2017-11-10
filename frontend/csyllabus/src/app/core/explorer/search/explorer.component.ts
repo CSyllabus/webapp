@@ -35,8 +35,8 @@ const COMMA = 188;
  # @Author: Sebastian
  # @title: TableFilteringExplorer
  # @Date: 2017 - 11 - 03
- # @Last Modified by: Adrien Roques
- # @Last Modified time: 2017 - 11 - 05
+ # @Last Modified by: Seabastian
+ # @Last Modified time: 2017 - 11 - 10
  # @Description: */
 export class ExplorerComponent implements OnInit {
   countries: Country[];
@@ -78,6 +78,9 @@ export class ExplorerComponent implements OnInit {
     {value: 2, viewValue: 'Spring/Summer'}
   ];
 
+  // result table visible
+  public showTable = false;
+
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
@@ -112,6 +115,18 @@ export class ExplorerComponent implements OnInit {
   constructor(private coursesService: CoursesService, private countriesService: CountriesService,
   private citiesService: CitiesService, private universitiesService: UniversitiesService
   , private facultiesService: FacultiesService  , private programsService: ProgramsService) {
+  }
+
+  /**
+   * Hide or not result component
+   * @param showTable
+   */
+  show(showTable) {
+      this.showTable = false;
+
+      if (showTable == 'showTable') {
+          this.showTable = true;
+      }
   }
 
   // filteredOptions: Observable<string[]>;
