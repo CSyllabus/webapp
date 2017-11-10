@@ -3,20 +3,16 @@
 # @Author: Adrien Roques
 # @Date:   2017-11-03
 # @Last Modified by:   Adrien Roques
-# @Last Modified time: 2017-11-05 */
+# @Last Modified time: 2017-11-07 */
 .explorer-table-container {
   display: flex;
   flex-direction: column;
-  min-width: 500px;
   position: relative;
-}
-
+ }
 
 .explorer-table-header {
   display: flex;
   font-size: 20px;
-  justify-content: center;
-  min-width: 500px;
 }
 
 .mat-form-field {
@@ -26,23 +22,73 @@
 }
 
 .mat-header-row {
-  background: #00008B;
+  background: #3F51B5;
+  font-size: 14px;
+  
 }
 
 .mat-table {
   overflow: auto;
-  text-align: left;  
-  height: 100%;
+  text-align: left;
+  justify-content: center;
 }
 
 .mat-header-cell {
   color: #F8F8FF;
   font-size: 18px;
   font-weight: bold;
+  
 }
 
-.mat-cell {
-  display: flex;
-  justify-content: space-between;
+.mat-column-score {
+  flex: 0 0 5%;
+  font-size: 20px;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 10px;
 }
+
+.mat-column-result {
+  font-size: 20px;
+  justify-content: center;
+  font-weight: bold;
+}
+
+
+.mat-cell {
+  padding-top: 1em;
+  margin-left: 10px;
+}
+
+.mat-mini-fab {
+  margin-left: 5px;
+}
+
+.mat-card-subtitle {
+  color: #000000;
+  font-weight: bold;
+}
+
+.sub-sub-title {
+  color: #A9A9A9;
+}
+
+.description-syllabus {
+  color: #696969;
+}
+
+.score-shape {
+
+  display: block;
+  text-align: center;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: #000;
+  background: #A9A9A9;
+  width: 100%;
+  height: 0;
+}
+
+
 

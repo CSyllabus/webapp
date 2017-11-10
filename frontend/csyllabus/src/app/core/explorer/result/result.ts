@@ -4,4 +4,6 @@ export interface Result {
     university: string;
     professor: string;
     syllabus: string;
+    description: string;
+    blazon: string;
 }

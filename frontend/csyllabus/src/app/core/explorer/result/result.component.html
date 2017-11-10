@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div layout="column">
   <!-- Explorer Table Result -->
   <div class="explorer-table-container mat-elevation-z8">
@@ -8,35 +9,55 @@
     </div>
     <div class="explorer-table-container">
       <mat-table #table [dataSource]="dataSource">
-        <!-- Score Column -->
-        <ng-container matColumnDef="score">
-          <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.score}}% </mat-cell>
-        </ng-container>
-        <!-- Country Column -->
-        <ng-container matColumnDef="country">
-          <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.country}} </mat-cell>
-        </ng-container>
-        <!-- University Column -->
-        <ng-container matColumnDef="university">
-          <mat-header-cell *matHeaderCellDef> University </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.university}} </mat-cell>
-        </ng-container>
-        <!-- Professor Column -->
-        <ng-container matColumnDef="professor">
-          <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.professor}} </mat-cell>
-        </ng-container>
-        <!-- Syllabus Column -->
-        <ng-container matColumnDef="syllabus">
-          <mat-header-cell *matHeaderCellDef> Syllabus </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.syllabus}} </mat-cell>
+
+        <!-- Result Column -->
+        <ng-container matColumnDef="result">
+          <mat-header-cell *matHeaderCellDef> Result </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-card>
+              <div fxLayout="row" fxLayoutAlign="center center">            
+                <md-card-title-group>
+                  <mat-card-title>{{row.university}} </mat-card-title>
+                  <mat-card-subtitle>{{row.country}}</mat-card-subtitle>
+                  <mat-card-subtitle>{{row.syllabus}}</mat-card-subtitle>
+                  <mat-card-subtitle class="sub-sub-title"> {{row.professor}}</mat-card-subtitle>
+                 </md-card-title-group>
+                <span fxFlex="3"></span>
+                <mat-card-content class="description-syllabus">
+                  <p>{{row.description}}</p>
+                </mat-card-content>
+                <span fxFlex="10"></span>               
+                  <mat-card-content>                                     
+                      <mat-card-actions fxLayout="column" fxLayoutAlign="center end">
+                        <img mat-card-avatar src={{row.blazon}} />
+                        <p>  </p>
+                        <div fxLayout="row">                       
+                          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+                            <mat-icon>menu</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item>Opt 1</button>
+                            <button mat-menu-item>Opt 2</button>
+                          </mat-menu>                       
+                          <button mat-mini-fab color="primary">
+                            <mat-icon>star</mat-icon>
+                          </button>
+                          <button mat-mini-fab color="primary">
+                            <mat-icon>comment</mat-icon>
+                          </button>
+                        </div>
+                    </mat-card-actions>                   
+                </mat-card-content>
+              </div> 
+            </mat-card>                      
+          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row color="white" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row color="primary" *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
   </div>
 </div>
+
+
