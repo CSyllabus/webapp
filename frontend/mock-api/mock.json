@@ -5,7 +5,34 @@
 		"name": "Croatia",
 		"created": "2017-10-30 16:20:51.049+01",
 		"modified": "2017-10-30 16:20:51.049+01",
-		"cities": [{"id": 1,"name": "Zagreb"}]
+		"cities": [{"id": 1,"name": "Zagreb",
+			"universities": [{"id": 1,"name": "University Of Zagreb", "programs": [
+			{"id": 1,"study_level": "undergraduate","name": "Computer science"},
+			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
+		]}]}]
+	},
+	{
+		"id": 2,
+		"name": "Italy",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"cities": [{"id": 2,"name": "Milano",
+			"universities": [{"id": 2,"name": "Politecnico di Milano","programs": [
+			{"id": 3,"study_level": "undergraduate","name": "Software engineering"},
+			{"id": 4,"study_level": "graduate","name": "Automation"}
+		]}]}]
+	},
+	{
+		"id": 3,
+		"name": "Sweden",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"cities": [{"id": 3,"name": "Mälardalen",
+			"universities": [{"id": 3,"name": "Mälardalen University",
+				"programs": [
+			{"id": 5,"study_level": "undergraduate","name": "Electrical engineering"},
+			{"id": 6,"study_level": "graduate","name": "Telecomunications"}
+		]}]}]
 	}
 	],
  	"cities":[
@@ -16,6 +43,22 @@
 		"created": "2017-10-30 16:20:51.049+01",
 		"modified": "2017-10-30 16:20:51.049+01",
 		"universities": [{"id": 1,"name": "University Of Zagreb"}]
+	},
+	{
+		"id": 2,
+		"country_id": 2,
+		"name": "Milano",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"universities": [{"id": 2,"name": "Politecnico di Milano"}]
+	},
+	{
+		"id": 3,
+		"country_id": 3,
+		"name": "Mälardalen",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"universities": [{"id": 3,"name": "Mälardalen University"}]
 	}
 	],
 	"universities":[
@@ -27,7 +70,10 @@
 		"created": "2017-10-30 16:20:51.049+01",
 		"modified": "2017-10-30 16:20:51.049+01",
 		"faculties": [{"id": 1,"name": "Faculty Of Electrical Engineering And Computing"}],
-		"programs": []
+		"programs": [
+			{"id": 1,"study_level": "undergraduate","name": "Computer engineering"},
+			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
+		]
 	}
 	],
 	"faculties":[
@@ -38,7 +84,8 @@
 		"name": "Faculty Of Electrical Engineering And Computing",
 		"created": "2017-10-30 16:20:51.049+01",
 		"modified": "2017-10-30 16:20:51.049+01",
-		"programs": [{"id": 1,"study_level": "undergraduate","name": "Test course 1"}
+		"programs": [{"id": 1,"study_level": "undergraduate","name": "Computer engineering"},
+			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
 		]
 	}
 	],
@@ -46,7 +93,23 @@
 	[{
 		"id": 1,
 		"study_level": "undergraduate",
-		"name": "Test course 1",
+		"name": "Computer engineering",
+		"created": "2017-10-30 16:20:51.049+01",
+		"modified": "2017-10-30 16:20:51.049+01",
+		"courses": [
+		{
+		"id": 1,
+		"name": "Test course 1"
+		},
+		{
+		"id": 2,
+		"name": "Test course 2"
+		}]
+	},
+		{
+		"id": 2,
+		"study_level": "graduate",
+		"name": "Computer engineering",
 		"created": "2017-10-30 16:20:51.049+01",
 		"modified": "2017-10-30 16:20:51.049+01",
 		"courses": [

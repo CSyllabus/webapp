@@ -1,6 +1,6 @@
 export class Country {
   id: Number;
-  name: String;
+  name: string;
 	created: String;
 	modified: String;
 	cities: Array<Object>;
