@@ -24,20 +24,19 @@ class CountryView(APIView):
 
         for country in countries:
             cities = City.objects.filter(country=country)
-            cityList = []
+            citiy_list = []
             for city in cities:
                 one_city = {}
                 one_city['name'] = city.name
                 one_city['id'] = city.id
-                cityList.append(one_city)
+                citiy_list.append(one_city)
             one_country = {}
             one_country['id'] = country.id
             one_country['name'] = country.name
             one_country['modified'] = country.modified
             one_country['created'] = country.created
-            one_country['cities'] = cityList
+            one_country['cities'] = citiy_list
             result.append(one_country)
-
 
         return Response(result)
 
