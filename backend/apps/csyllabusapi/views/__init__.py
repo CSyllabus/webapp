@@ -1,3 +1,5 @@
 from .countries import *
 from .cities import *
-from .getCoursebyDescription import  *
+from .universities import *
+from .faculties import *
+from .explorer import  *

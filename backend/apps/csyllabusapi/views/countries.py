@@ -1,6 +1,7 @@
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 
+from ..models import City
 from ..models import Country
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -20,9 +21,21 @@ class CountryView(APIView):
     def get(self, request):
         countries = Country.objects.all()
         result = []
+
         for country in countries:
+            cities = City.objects.filter(country=country)
+            citiy_list = []
+            for city in cities:
+                one_city = {}
+                one_city['name'] = city.name
+                one_city['id'] = city.id
+                citiy_list.append(one_city)
             one_country = {}
+            one_country['id'] = country.id
             one_country['name'] = country.name
+            one_country['modified'] = country.modified
+            one_country['created'] = country.created
+            one_country['cities'] = citiy_list
             result.append(one_country)
 
         return Response(result)
