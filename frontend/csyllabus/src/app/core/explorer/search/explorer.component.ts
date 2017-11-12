@@ -7,13 +7,13 @@ import {CoursesService} from './../../../services/courses.service';
 
 import {Course} from './../../../classes/course';
 import {Country} from './../../../classes/country';
-import { City } from './../../../classes/city';
+import {City} from './../../../classes/city';
 import {University} from './../../../classes/university';
 import {Faculty} from './../../../classes/faculty';
 import {Program} from './../../../classes/program';
 
 import {AngularMaterialModule} from './../../../angular-material/angular-material.module';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormControl} from '@angular/forms';
 import {FormControlDirective} from '@angular/forms';
@@ -39,6 +39,8 @@ const COMMA = 188;
  # @Last Modified time: 2017 - 11 - 05
  # @Description: */
 export class ExplorerComponent implements OnInit {
+  @Output() backgroundImage = new EventEmitter<any>();
+
   countries: Country[];
   cities: City[];
   universities: University[];
@@ -93,7 +95,7 @@ export class ExplorerComponent implements OnInit {
     let value = event.value;
 
     if ((value || '').trim()) {
-      this.keyword.push({ name: value.trim() });
+      this.keyword.push({name: value.trim()});
     }
 
     if (input) {
@@ -109,9 +111,10 @@ export class ExplorerComponent implements OnInit {
     }
   }
 
+
   constructor(private coursesService: CoursesService, private countriesService: CountriesService,
-  private citiesService: CitiesService, private universitiesService: UniversitiesService
-  , private facultiesService: FacultiesService  , private programsService: ProgramsService) {
+              private citiesService: CitiesService, private universitiesService: UniversitiesService
+    , private facultiesService: FacultiesService, private programsService: ProgramsService) {
   }
 
   // filteredOptions: Observable<string[]>;
@@ -133,23 +136,29 @@ export class ExplorerComponent implements OnInit {
     this.queryCity = undefined;
     this.queryUniversity = undefined;
     this.queryProgram = undefined;
+
+    this.backgroundImage.emit(this.queryCountry.img);
   }
 
   filterUniversitiesByCity() {
     this.filteredUniversities = <University[]> this.queryCity.universities;
     this.queryUniversity = undefined;
     this.queryProgram = undefined;
+
+    // this.backgroundImage.emit('city image');
   }
 
   filterProgramsByUniversity() {
     this.filteredPrograms = <Program[]> this.queryUniversity.programs;
     this.queryProgram = undefined;
+
+    // this.backgroundImage.emit('uni image');
   }
 
   filterProgramsByLevel() {
     this.filterProgramsByUniversity();
     this.filteredPrograms = this.filteredPrograms.filter(program => {
-     return program.study_level.toLowerCase() === this.queryLevel.toLowerCase();
+      return program.study_level.toLowerCase() === this.queryLevel.toLowerCase();
     });
   }
 
