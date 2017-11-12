@@ -4,6 +4,7 @@ import { AngularMaterialModule } from './../angular-material/angular-material.mo
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreComponent } from './core.component';
+import {ExplorerComponent} from './explorer/search/explorer.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -12,7 +13,7 @@ import { CoreComponent } from './core.component';
     ResultModule
   ],
   declarations: [
-    CoreComponent
+    CoreComponent,
   ],
   exports: [CoreComponent]
 })
