@@ -1,0 +1,167 @@
+[
+{
+    "model": "csyllabusapi.country",
+    "pk": 2,
+    "fields": {
+      "name": "Italy",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z"
+    }
+  },
+  {
+    "model": "csyllabusapi.country",
+    "pk": 3,
+    "fields": {
+      "name": "Sweden",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z"
+    }
+  },
+  {
+    "model": "csyllabusapi.city",
+    "pk": 2,
+    "fields": {
+      "name": "Split",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z",
+      "country": 1
+    }
+  },
+  {
+    "model": "csyllabusapi.city",
+    "pk": 3,
+    "fields": {
+      "name": "Milano",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z",
+      "country": 2
+    }
+  },
+  {
+    "model": "csyllabusapi.city",
+    "pk": 4,
+    "fields": {
+      "name": "Rome",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z",
+      "country": 2
+    }
+  },
+  {
+    "model": "csyllabusapi.city",
+    "pk": 5,
+    "fields": {
+      "name": "Mälardalen",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z",
+      "country": 3
+    }
+  },
+  {
+    "model": "csyllabusapi.city",
+    "pk": 6,
+    "fields": {
+      "name": "Stockholm",
+      "created": "2017-10-30T15:20:51.049Z",
+      "modified": "2017-10-30T15:20:52.235Z",
+      "country": 3
+    }
+  },
+  {
+    "model": "csyllabusapi.university",
+    "pk": 2,
+    "fields": {
+      "name": "Polytechnic University of Milano",
+      "created": "2017-10-30T15:05:19.541Z",
+      "modified": "2017-10-30T15:05:20.945Z",
+      "country": 2,
+      "city": 3
+    }
+  },
+  {
+    "model": "csyllabusapi.university",
+    "pk": 3,
+    "fields": {
+      "name": "Mälardalen University",
+      "created": "2017-10-30T15:05:19.541Z",
+      "modified": "2017-10-30T15:05:20.945Z",
+      "country": 3,
+      "city": 5
+    }
+  },
+  {
+  "model": "csyllabusapi.program",
+  "pk": 31,
+  "fields": {
+      "name" : "Computer science",
+      "study_level": "undergraduate",
+      "created": "2017-10-30T15:07:40.122Z",
+      "modified": "2017-10-30T15:07:41.673Z"
+  }
+  },
+  {
+      "model": "csyllabusapi.programuniversity",
+      "pk": 31,
+      "fields": {
+          "university": 2,
+          "program": 31,
+          "created": "2017-10-30T15:07:40.122Z"
+      }
+  },
+  {
+      "model": "csyllabusapi.programcity",
+      "pk": 31,
+      "fields": {
+          "city": 3,
+          "program": 31,
+          "created": "2017-10-30T15:07:40.122Z"
+      }
+  },
+  {
+      "model": "csyllabusapi.programcountry",
+      "pk": 31,
+      "fields": {
+          "country": 2,
+          "program": 31,
+          "created": "2017-10-30T15:07:40.122Z"
+      }
+  },
+  {
+  "model": "csyllabusapi.program",
+  "pk": 32,
+  "fields": {
+      "name" : "Computer science",
+      "study_level": "undergraduate",
+      "created": "2017-10-30T15:07:40.122Z",
+      "modified": "2017-10-30T15:07:41.673Z"
+  }
+  },
+  {
+      "model": "csyllabusapi.programuniversity",
+      "pk": 32,
+      "fields": {
+          "university": 3,
+          "program": 32,
+          "created": "2017-10-30T15:07:40.122Z"
+      }
+  },
+  {
+      "model": "csyllabusapi.programcity",
+      "pk": 32,
+      "fields": {
+          "city": 5,
+          "program": 32,
+          "created": "2017-10-30T15:07:40.122Z"
+      }
+  },
+  {
+      "model": "csyllabusapi.programcountry",
+      "pk": 32,
+      "fields": {
+          "country": 3,
+          "program": 32,
+          "created": "2017-10-30T15:07:40.122Z"
+      }
+  }
+
+]
