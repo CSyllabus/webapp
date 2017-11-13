@@ -1,7 +1,6 @@
 from rest_framework.parsers import JSONParser
 from ..models import Course
 from ..models import ProgramFaculty
-from ..models import Program
 from ..models import Faculty
 from ..models import CourseProgram
 from ..models import ProgramCity
@@ -25,6 +24,7 @@ except ImportError:
 @parser_classes((JSONParser,))
 def explorer(request):
     keywords = request.query_params['keywords']
+    #keywords = keywords.replace(",", " ")
     try:
         country_id = request.query_params['country_id']
     except:
@@ -41,7 +41,7 @@ def explorer(request):
         university_id = request.query_params['university_id']
     except:
         university_id = None
-    semester = request.query_params['semester']
+   # semester = request.query_params['semester']
 
 
     vector = SearchVector('description')
@@ -49,19 +49,19 @@ def explorer(request):
     program_ids = []
     courses_ids = []
     if(faculty_id is not None):
-        faculty = Faculty.objects.filter(id=faculty_id)
-        program_ids = ProgramFaculty.objects.filter(faculty=faculty)
+        program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
     elif (university_id is not None):
-        program_ids = ProgramUniversity.objects.filter(university_id=university_id)
+        program_ids = ProgramUniversity.objects.filter(university_id=university_id).values_list('program_id', flat=True)
     elif (city_id is not None):
-        program_ids = ProgramCity.objects.filter(city_id=city_id)
+        program_ids = ProgramCity.objects.filter(city_id=city_id).values_list('program_id', flat=True)
     elif(country_id is not None):
-        program_ids = ProgramCountry.objects.filter(country_id=country_id)
+        program_ids = ProgramCountry.objects.filter(country_id=country_id).values_list('program_id', flat=True)
 
     courses_ids = CourseProgram.objects.filter(program_id__in=program_ids)
     courses = Course.objects.filter(id__in=courses_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
     result = []
     for course in courses:
+
         single_course = {}
         single_course['id'] = course.id
         single_course['name'] = course.name
