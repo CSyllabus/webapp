@@ -123,37 +123,55 @@ export class ExplorerComponent implements OnInit {
     // Array = ["hola", "adios"]
     // console.log(this.coursesAvailable);
     // console.log(this.Array);
-    this.coursesService.getAllCourses().subscribe(courses => this.coursesAvailable = courses);
+    // this.coursesService.getAllCourses().subscribe(courses => this.coursesAvailable = courses);
     this.countriesService.getAllCountries().subscribe(countries => this.countries = countries);
-    this.citiesService.getAllCities().subscribe(cities => this.cities = this.filteredCities = cities);
-    this.universitiesService.getAllUniversities().subscribe(universities => this.universities = this.filteredUniversities = universities);
-    this.facultiesService.getAllFaculties().subscribe(faculties => this.faculties = this.filteredFaculties = faculties);
-    this.programsService.getAllPrograms().subscribe(programs => this.programs = this.filteredPrograms = programs);
+    // this.citiesService.getAllCities().subscribe(cities => this.cities = this.filteredCities = cities);
+    // this.universitiesService.getAllUniversities().subscribe(universities => this.universities = this.filteredUniversities = universities);
+    // this.facultiesService.getAllFaculties().subscribe(faculties => this.faculties = this.filteredFaculties = faculties);
+    // this.programsService.getAllPrograms().subscribe(programs => this.programs = this.filteredPrograms = programs);
   }
 
   filterCitiesByCountry() {
-    this.filteredCities = <City[]> this.queryCountry.cities;
-    this.queryCity = undefined;
-    this.queryUniversity = undefined;
-    this.queryProgram = undefined;
-
-    this.backgroundImage.emit(this.queryCountry.img);
+   if (this.queryCountry && this.queryCountry.id) {
+      this.citiesService.getCitiesByCountry(this.queryCountry.id).subscribe(cities =>
+      this.filteredCities = cities,
+      this.queryCity = undefined,
+      this.queryUniversity = undefined,
+      this.queryProgram = undefined,
+      this.backgroundImage.emit(this.queryCountry.img)
+       );
+    }
   }
 
   filterUniversitiesByCity() {
-    this.filteredUniversities = <University[]> this.queryCity.universities;
-    this.queryUniversity = undefined;
-    this.queryProgram = undefined;
+  this.universitiesService.getUniversitiesByCity(this.queryCity.id).subscribe(universities =>
+    this.filteredUniversities = universities,
+    this.queryUniversity = undefined,
+    this.queryProgram = undefined
+    );
+  }
+
+  //filterUniversitiesByCity() {
+    //this.filteredUniversities = <University[]> this.queryCity.universities;
+    //this.queryUniversity = undefined;
+    //this.queryProgram = undefined;
 
     // this.backgroundImage.emit('city image');
-  }
+  //}
 
   filterFacultiesByUniversity() {
-    this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
-    this.queryFaculty = undefined;
+  this.facultiesService.getFacultiesByUniversity(this.queryUniversity.id).subscribe(faculties =>
+    this.filteredFaculties = faculties,
+    this.queryFaculty = undefined
+    );
+  }
+
+//  filterFacultiesByUniversity() {
+  //  this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
+    //this.queryFaculty = undefined;
 
     // this.backgroundImage.emit('uni image');
-  }
+  //}
 
   /*filterProgramsByLevel() {
     this.filterProgramsByUniversity();

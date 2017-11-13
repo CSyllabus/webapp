@@ -19,7 +19,7 @@ export class CountriesService {
 
   getAllCountries(): Observable<Country[]> {
     return this.http.get(this.countriesUrl)
-      .map(res => res.json() as Country[]).catch(this.handleError);
+      .map(res => res.json().data.items as Country[]).catch(this.handleError);
   }
 
 
