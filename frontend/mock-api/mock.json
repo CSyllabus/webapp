@@ -9,7 +9,8 @@
 			"universities": [{"id": 1,"name": "University Of Zagreb", "programs": [
 			{"id": 1,"study_level": "undergraduate","name": "Computer science"},
 			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
-		]}]}]
+		]}]}],
+		"img": "https://static.pexels.com/photos/210536/pexels-photo-210536.jpeg"
 	},
 	{
 		"id": 2,
@@ -20,7 +21,8 @@
 			"universities": [{"id": 2,"name": "Politecnico di Milano","programs": [
 			{"id": 3,"study_level": "undergraduate","name": "Software engineering"},
 			{"id": 4,"study_level": "graduate","name": "Automation"}
-		]}]}]
+		]}]}],
+		"img": "https://static.pexels.com/photos/373575/pexels-photo-373575.jpeg"
 	},
 	{
 		"id": 3,
@@ -32,7 +34,8 @@
 				"programs": [
 			{"id": 5,"study_level": "undergraduate","name": "Electrical engineering"},
 			{"id": 6,"study_level": "graduate","name": "Telecomunications"}
-		]}]}]
+		]}]}],
+		"img": "https://static.pexels.com/photos/421759/pexels-photo-421759.jpeg"
 	}
 	],
  	"cities":[

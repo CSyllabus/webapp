@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoreComponent } from './core.component';
+import {ExplorerComponent} from './explorer/search/explorer.component';
+import {AngularMaterialModule} from '../angular-material/angular-material.module';
+import {ResultExplorer} from './explorer/result/result.result';
 
 describe('CoreComponent', () => {
   let component: CoreComponent;
@@ -8,7 +11,8 @@ describe('CoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoreComponent ]
+      declarations: [ CoreComponent, ExplorerComponent, ResultExplorer  ],
+      imports: [ AngularMaterialModule ]
     })
     .compileComponents();
   }));

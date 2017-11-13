@@ -4,4 +4,5 @@ export class Country {
 	created: String;
 	modified: String;
 	cities: Array<Object>;
+	img: String
 }

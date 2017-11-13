@@ -42,6 +42,7 @@ h2{
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    background-color: rgba(255,255,255,0.92);
 }
 h2{
     color: white;
@@ -50,4 +51,13 @@ h2{
 
 .keywords-chip-list {
   width: auto !important;
+}
+
+.variable-background {
+  position: fixed; top: 0; left: 0; z-index: 0; height: 100vh; width: 100%; object-fit: cover;
+}
+
+.bgexplorer h1, .bgexplorer h2, .bgexplorer .logo-img {
+  z-index: 1;
+  position: relative;
 }
