@@ -20,7 +20,7 @@ except ImportError:
 class CityView(APIView):
 # /country/:id/cities
     def get(self, request, country_id):
-        cities = City.objects.filter(id=country_id)
+        cities = City.objects.filter(country_id=country_id)
         result = {}
         cityList = []
         data = {}
