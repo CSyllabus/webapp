@@ -19,7 +19,7 @@ export class CoursesService {
 
   getAllCourses(): Observable<Course[]> {
     return this.http.get(this.coursesUrl)
-      .map(res => res.json() as Course[]).catch(this.handleError);
+      .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
 

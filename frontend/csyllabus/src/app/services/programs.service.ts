@@ -19,7 +19,7 @@ export class ProgramsService {
 
   getAllPrograms(): Observable<Program[]> {
     return this.http.get(this.programsUrl)
-      .map(res => res.json() as Program[]).catch(this.handleError);
+      .map(res => res.json().data.items as Program[]).catch(this.handleError);
   }
 
 
