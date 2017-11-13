@@ -2,7 +2,10 @@ from rest_framework.parsers import JSONParser
 from ..models import Course
 from ..models import ProgramFaculty
 from ..models import Program
+from ..models import Faculty
 from ..models import CourseProgram
+from ..models import ProgramCity
+from ..models import ProgramCountry
 from ..models import ProgramUniversity
 
 from rest_framework.decorators import api_view, permission_classes
@@ -22,10 +25,22 @@ except ImportError:
 @parser_classes((JSONParser,))
 def explorer(request):
     keywords = request.query_params['keywords']
-    country_id = request.query_params['country']
-    city_id = request.query_params['city']
-    faculty_id = request.query_params['faculty_id']
-    university_id = request.query_params['university']
+    try:
+        country_id = request.query_params['country_id']
+    except:
+        country_id = None
+    try:
+        city_id = request.query_params['city_id']
+    except:
+        city_id = None
+    try:
+     faculty_id = request.query_params['faculty_id']
+    except:
+        faculty_id = None
+    try:
+        university_id = request.query_params['university_id']
+    except:
+        university_id = None
     semester = request.query_params['semester']
 
 
@@ -33,17 +48,18 @@ def explorer(request):
     query = SearchQuery(keywords)
     program_ids = []
     courses_ids = []
-    if(faculty_id):
-        program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id)
-    elif (university_id):
-        program_ids = ProgramUniversity.objects.filter(faculty_id=faculty_id)
-    elif (city_id):
-        program_ids = ProgramCity.objects.filter(faculty_id=faculty_id)
-    elif(country_id):
-        program_ids = ProgramCountry.objects.filter(faculty_id=faculty_id)
+    if(faculty_id is not None):
+        faculty = Faculty.objects.filter(id=faculty_id)
+        program_ids = ProgramFaculty.objects.filter(faculty=faculty)
+    elif (university_id is not None):
+        program_ids = ProgramUniversity.objects.filter(university_id=university_id)
+    elif (city_id is not None):
+        program_ids = ProgramCity.objects.filter(city_id=city_id)
+    elif(country_id is not None):
+        program_ids = ProgramCountry.objects.filter(country_id=country_id)
 
     courses_ids = CourseProgram.objects.filter(program_id__in=program_ids)
-    courses = Course.objects.filter(id__in=program_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
+    courses = Course.objects.filter(id__in=courses_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
     result = []
     for course in courses:
         single_course = {}

@@ -8,4 +8,6 @@ from .faculty import Faculty
 from .program import Program
 from .program import ProgramFaculty
 from .program import ProgramUniversity
+from .program import ProgramCity
+from .program import ProgramCountry
 from .university import University
