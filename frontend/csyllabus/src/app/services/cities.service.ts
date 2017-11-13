@@ -23,8 +23,8 @@ export class CitiesService {
       .map(res => res.json() as City[]).catch(this.handleError);
   }
 
-  getCitiesByCountry(country_id): Observable<City[]> {
-    return this.http.get(this.countriesUrl+country_id+'/cities')
+  getCitiesByCountry(countryId: Number): Observable<City[]> {
+    return this.http.get(this.countriesUrl + countryId + '/cities')
       .map(res => res.json() as City[]).catch(this.handleError);
   }
 

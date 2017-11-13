@@ -123,22 +123,24 @@ export class ExplorerComponent implements OnInit {
     // Array = ["hola", "adios"]
     // console.log(this.coursesAvailable);
     // console.log(this.Array);
-    this.coursesService.getAllCourses().subscribe(courses => this.coursesAvailable = courses);
+    // this.coursesService.getAllCourses().subscribe(courses => this.coursesAvailable = courses);
     this.countriesService.getAllCountries().subscribe(countries => this.countries = countries);
-    this.citiesService.getAllCities().subscribe(cities => this.cities = this.filteredCities = cities);
-    this.universitiesService.getAllUniversities().subscribe(universities => this.universities = this.filteredUniversities = universities);
-    this.facultiesService.getAllFaculties().subscribe(faculties => this.faculties = this.filteredFaculties = faculties);
-    this.programsService.getAllPrograms().subscribe(programs => this.programs = this.filteredPrograms = programs);
+    // this.citiesService.getAllCities().subscribe(cities => this.cities = this.filteredCities = cities);
+    // this.universitiesService.getAllUniversities().subscribe(universities => this.universities = this.filteredUniversities = universities);
+    // this.facultiesService.getAllFaculties().subscribe(faculties => this.faculties = this.filteredFaculties = faculties);
+    // this.programsService.getAllPrograms().subscribe(programs => this.programs = this.filteredPrograms = programs);
   }
 
   filterCitiesByCountry() {
-  this.citiesService.getCitiesByCountry(this.queryCountry.id).subscribe(cities =>
-    this.filteredCities = cities,
-    this.queryCity = undefined,
-    this.queryUniversity = undefined,
-    this.queryProgram = undefined,
-    this.backgroundImage.emit(this.queryCountry.img)
-     );
+   if (this.queryCountry && this.queryCountry.id) {
+      this.citiesService.getCitiesByCountry(this.queryCountry.id).subscribe(cities =>
+      this.filteredCities = cities,
+      this.queryCity = undefined,
+      this.queryUniversity = undefined,
+      this.queryProgram = undefined,
+      this.backgroundImage.emit(this.queryCountry.img)
+       );
+    }
   }
 
   filterUniversitiesByCity() {
