@@ -22,33 +22,25 @@ except ImportError:
 @parser_classes((JSONParser,))
 class FacultyView(APIView):
 
-    def get(self, request):
-        faculties = Faculty.objects.all()
-        result = []
+    def get(self, request, university_id):
+        faculties = Faculty.objects.filter(university_id=university_id)
+        result = {}
+        data = {}
+        facultyList = []
         for faculty in faculties:
-            programs_list = []
-            single_faculty = {}
-            faculty_programs = ProgramFaculty.objects.filter(faculty=faculty)
-            programs_id = []
-            for faculty_program in faculty_programs:
-                programs_id.append(faculty_program.id)
-            programs = Program.objects.filter(id__in=programs_id)
 
-            for program in programs:
-                single_program = {}
-                single_program['id'] = program.id
-                single_program['name'] = program.name
-                single_program['study_level'] = program.study_level
-                programs_list.append(single_program)
+            single_faculty = {}
             single_faculty['name'] = faculty.name
             single_faculty['id'] = faculty.id
             single_faculty['created'] = faculty.created
             single_faculty['modified'] = faculty.modified
             single_faculty['university_id'] = faculty.university_id
             single_faculty['city_id'] = faculty.city_id
-            single_faculty['programs'] = programs_list
-            result.append(single_faculty)
-        print (result)
+            facultyList.append(single_faculty)
+
+        data['items'] = facultyList
+        data['currentItemCount'] = faculties.count()
+        result['data'] = data
         return Response(result)
 
 
