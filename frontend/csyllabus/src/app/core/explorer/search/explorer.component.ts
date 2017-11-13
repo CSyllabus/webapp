@@ -132,28 +132,44 @@ export class ExplorerComponent implements OnInit {
   }
 
   filterCitiesByCountry() {
-    this.filteredCities = <City[]> this.queryCountry.cities;
-    this.queryCity = undefined;
-    this.queryUniversity = undefined;
-    this.queryProgram = undefined;
-
-    this.backgroundImage.emit(this.queryCountry.img);
+  this.citiesService.getCitiesByCountry(this.queryCountry.id).subscribe(cities =>
+    this.filteredCities = cities,
+    this.queryCity = undefined,
+    this.queryUniversity = undefined,
+    this.queryProgram = undefined,
+    this.backgroundImage.emit(this.queryCountry.img)
+     );
   }
 
   filterUniversitiesByCity() {
-    this.filteredUniversities = <University[]> this.queryCity.universities;
-    this.queryUniversity = undefined;
-    this.queryProgram = undefined;
+  this.universitiesService.getUniversitiesByCity(this.queryCity.id).subscribe(universities =>
+    this.filteredUniversities = universities,
+    this.queryUniversity = undefined,
+    this.queryProgram = undefined
+    );
+  }
+
+  //filterUniversitiesByCity() {
+    //this.filteredUniversities = <University[]> this.queryCity.universities;
+    //this.queryUniversity = undefined;
+    //this.queryProgram = undefined;
 
     // this.backgroundImage.emit('city image');
-  }
+  //}
 
   filterFacultiesByUniversity() {
-    this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
-    this.queryFaculty = undefined;
+  this.facultiesService.getFacultiesByUniversity(this.queryUniversity.id).subscribe(faculties =>
+    this.filteredFaculties = faculties,
+    this.queryFaculty = undefined
+    );
+  }
+
+//  filterFacultiesByUniversity() {
+  //  this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
+    //this.queryFaculty = undefined;
 
     // this.backgroundImage.emit('uni image');
-  }
+  //}
 
   /*filterProgramsByLevel() {
     this.filterProgramsByUniversity();
