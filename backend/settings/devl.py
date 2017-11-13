@@ -21,7 +21,8 @@ INTERNAL_IPS = ['192.168.56.1']
 
 INSTALLED_APPS += (
     'autofixture',
-    'csyllabusapi'
+    'csyllabusapi',
+    'django.contrib.postgres'
 )
 
 STATICFILES_DIRS.append(

@@ -21,57 +21,43 @@ except ImportError:
 @parser_classes((JSONParser,))
 class UniversityView(APIView):
 
-    def get(self, request):
-        universities = University.objects.all()
-        result = []
+    def get(self, request, city_id):
+        universities = University.objects.filter(city_id=city_id)
+        result = {}
+        university_list = []
         for university in universities:
             single_univeristy = {}
-            faculties = Faculty.objects.filter(university=university)
-         #   programs = Program.objects.filter(university=university)
-            # talk with emanuel about faculty and university programs
-            faculty_list = []
-            programs_list = []
-            for faculty in faculties:
-                single_faculty = {}
-                single_faculty['id'] = faculty.id
-                single_faculty['name'] = faculty.name
-                faculty_list.append(single_faculty)
-           # for program in programs:
-           #     single_program = {}
-           #     single_program['id'] = program.id
-           #     single_program['name'] = program.name
-           #     single_program['study_level'] = program.study_level
             single_univeristy['name'] = university.name
             single_univeristy['id'] = university.id
             single_univeristy['created'] = university.created
             single_univeristy['modified'] = university.modified
             single_univeristy['country_id'] = university.country_id
             single_univeristy['city_id'] = university.city_id
-            single_univeristy['faculties'] = faculty_list
-            result.append(single_univeristy)
+            university_list.append(single_univeristy)
 
+        result['data'] = university_list
+        result['totalEntityCount'] = universities.count()
         return Response(result)
 
 
-    def post(self, request):
-        name = request.data['name']
-        country = Country.objects.get(id=request.data['country_id'])
-        city = City.objects.get(id=request.data['city_id'])
-        University.objects.create(name=name, country=country, city=city)
-        return Response()
+    #def post(self, request):
+     #   name = request.data['name']
+      #  country = Country.objects.get(id=request.data['country_id'])
+       # city = City.objects.get(id=request.data['city_id'])
+        #University.objects.create(name=name, country=country, city=city)
+        #return Response()
 
 
-    def delete(selfself, request):
-        id = request.data['id']
-        University.objects.filter(id=id).delete()
-        return Response()
+  #  def delete(selfself, request):
+ #       id = request.data['id']
+   #     University.objects.filter(id=id).delete()
+#        return Response()
 
 
-    def put(selfself, request):
-        id = request.data['id']
-        name = request.data['name']
-        country = Country.objects.get(id=request.data['country_id'])
-        city = City.objects.get(id=request.data['city_id'])
-        University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
-
-        return Response()
+    #def put(selfself, request):
+    #    id = request.data['id']
+    #    name = request.data['name']
+    #    country = Country.objects.get(id=request.data['country_id'])
+    #    city = City.objects.get(id=request.data['city_id'])
+    #    University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
+    #    return Response()

@@ -20,24 +20,19 @@ class CountryView(APIView):
 
     def get(self, request):
         countries = Country.objects.all()
-        result = []
-
+        data = {}
+        result = {}
+        countriesList = []
         for country in countries:
-            cities = City.objects.filter(country=country)
-            citiy_list = []
-            for city in cities:
-                one_city = {}
-                one_city['name'] = city.name
-                one_city['id'] = city.id
-                citiy_list.append(one_city)
             one_country = {}
             one_country['id'] = country.id
             one_country['name'] = country.name
             one_country['modified'] = country.modified
             one_country['created'] = country.created
-            one_country['cities'] = citiy_list
-            result.append(one_country)
-
+            countriesList.append(one_country)
+        data['currentItemCount'] = countries.count()
+        data['items'] = countriesList
+        result['data'] = data
         return Response(result)
 
     def post(self, request, format=json):
