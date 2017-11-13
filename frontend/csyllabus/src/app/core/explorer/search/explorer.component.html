@@ -60,7 +60,7 @@
         <input placeholder="How about university?" matInput [formControl]="universitiesControl"
                [matAutocomplete]="universities_auto" [(ngModel)]="queryUniversity">
         <mat-autocomplete #universities_auto="matAutocomplete" [displayWith]="displayUniversitySelect"
-                          (optionSelected)="filterProgramsByUniversity()">
+                          (optionSelected)="filterFacultiesByUniversity()">
           <mat-option *ngFor="let university of filteredUniversities" [value]="university">
             {{ university.name }}
           </mat-option>
