@@ -11,19 +11,18 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-         'PASSWORD': 'Password1!',
-        'NAME': 'csyllabusfer',
-	#'NAME': 'csyllabusfer',
+        'USER': '',
+       # 'NAME': '{{ project_name }}',
+	    'NAME': 'csfer',
     }
 }
-
 
 INTERNAL_IPS = ['192.168.56.1']
 
 INSTALLED_APPS += (
     'autofixture',
-    'csyllabusapi'
+    'csyllabusapi',
+    'django.contrib.postgres'
 )
 
 STATICFILES_DIRS.append(

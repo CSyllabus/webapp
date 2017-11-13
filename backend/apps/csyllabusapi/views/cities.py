@@ -18,43 +18,42 @@ except ImportError:
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CityView(APIView):
-
-    def get(self, request):
-        cities = City.objects.all()
-        result = []
+# /country/:id/cities
+    def get(self, request, country_id):
+        cities = City.objects.filter(id=country_id)
+        result = {}
+        cityList = []
+        data = {}
         for city in cities:
             single_city = {}
-            universities = University.objects.filter(city=city)
-            university_list = []
-            for university in universities:
-                single_uni = {}
-                single_uni['id'] = university.id
-                single_uni['name'] = university.name
-                university_list.append(single_uni)
             single_city['name'] = city.name
             single_city['id'] = city.id
             single_city['created'] = city.created
             single_city['modified'] = city.modified
             single_city['country_id'] = city.country_id
-            single_city['universities'] = university_list
-            result.append(single_city)
+            cityList.append(single_city)
+            data['items'] = cityList
+            data['currentItemCount'] = cities.count()
+            result['data'] = data
 
         return Response(result)
 
-    def post(self, request):
-        name = request.data['name']
-        country = Country.objects.get(id=request.data['country_id'])
-        City.objects.create(name=name, country=country)
-        return Response()
+# /country/:id/cities
+  #  def post(self, request, id):
+  #      name = request.data['name']
+  #      country = Country.objects.get(id=id)
+  #      City.objects.create(name=name, country=country)
+  #      return Response()
 
-    def delete(selfself, request):
-        id = request.data['id']
-        City.objects.filter(id=id).delete()
-        return Response()
+# /country/:id/cities
+  #  def delete(selfself, request):
+  #      id = request.data['id']
+  #      City.objects.filter(id=id).delete()
+  #      return Response()
 
-    def put(selfself, request):
-        id = request.data['id']
-        name = request.data['name']
-        country = Country.objects.get(id=request.data['country_id'])
-        City.objects.filter(id=id).update(name=name, country=country, modified=datetime.utcnow())
-        return Response()
+   # def put(selfself, request):
+   #     id = request.data['id']
+   #     name = request.data['name']
+   #     country = Country.objects.get(id=request.data['country_id'])
+   #     City.objects.filter(id=id).update(name=name, country=country, modified=datetime.utcnow())
+    #    return Response()
