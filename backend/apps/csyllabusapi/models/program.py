@@ -43,3 +43,4 @@ class ProgramUniversity(models.Model):
             self.created = timezone.now()
 
         return super(ProgramUniversity, self).save(*args, **kwargs)
+

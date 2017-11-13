@@ -1,5 +1,10 @@
 from rest_framework.parsers import JSONParser
 from ..models import Course
+from ..models import ProgramFaculty
+from ..models import Program
+from ..models import CourseProgram
+from ..models import ProgramUniversity
+
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
@@ -16,17 +21,29 @@ except ImportError:
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 def explorer(request):
-    #keywords = request.data['keywords']
-    #country = request.data['country']
-    #city = request.data['university']
-    #faculty = request.data['faculty']
-    #english_lvl = request.data['english_lvl']
-    #semester = request.data['semester']
+    keywords = request.query_params['keywords']
+    country_id = request.query_params['country']
+    city_id = request.query_params['city']
+    faculty_id = request.query_params['faculty_id']
+    university_id = request.query_params['university']
+    semester = request.query_params['semester']
 
-    keywords = "html web"
+
     vector = SearchVector('description')
     query = SearchQuery(keywords)
-    courses = Course.objects.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
+    program_ids = []
+    courses_ids = []
+    if(faculty_id):
+        program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id)
+    elif (university_id):
+        program_ids = ProgramUniversity.objects.filter(faculty_id=faculty_id)
+    elif (city_id):
+        program_ids = ProgramCity.objects.filter(faculty_id=faculty_id)
+    elif(country_id):
+        program_ids = ProgramCountry.objects.filter(faculty_id=faculty_id)
+
+    courses_ids = CourseProgram.objects.filter(program_id__in=program_ids)
+    courses = Course.objects.filter(id__in=program_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
     result = []
     for course in courses:
         single_course = {}
