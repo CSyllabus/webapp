@@ -13,19 +13,19 @@ import {City} from '../classes/city';
 export class CitiesService {
 
   citiesUrl = environment.apiUrl + 'cities/';
-  countriesUrl = environment.apiUrl + 'countries/';
+  countriesUrl = environment.apiUrl + 'country/';
 
   constructor(private http: Http) {
   }
 
   getAllCities(): Observable<City[]> {
     return this.http.get(this.citiesUrl)
-      .map(res => res.json() as City[]).catch(this.handleError);
+      .map(res => res.json().data.items as City[]).catch(this.handleError);
   }
 
-  getCitiesByCountry(countryId: Number): Observable<City[]> {
+  getCitiesByCountry(countryId): Observable<City[]> {
     return this.http.get(this.countriesUrl + countryId + '/cities')
-      .map(res => res.json() as City[]).catch(this.handleError);
+      .map(res => res.json().data.items as City[]).catch(this.handleError);
   }
 
 
