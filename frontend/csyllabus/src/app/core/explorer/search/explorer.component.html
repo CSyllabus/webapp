@@ -31,7 +31,7 @@
             </mat-select>
           </mat-form-field>
           <br/>
-          <mat-radio-group [(ngModel)]="queryLevel" (change)="filterProgramsByLevel()">
+          <mat-radio-group [(ngModel)]="queryLevel">
             <mat-radio-button class="check" value="undergraduate" [checked]="true">Undergraduate</mat-radio-button>
             <mat-radio-button class="check" value="graduate">Graduate</mat-radio-button>
           </mat-radio-group>
@@ -40,8 +40,7 @@
      <mat-form-field class="input">
         <input placeholder="Where do you want to study?" matInput [formControl]="coursesControl"
                [matAutocomplete]="countries_auto" [(ngModel)]="queryCountry" (ngModelChange)="filterCitiesByCountry()">
-        <mat-autocomplete #countries_auto="matAutocomplete" [displayWith]="displayCountrySelect"
-                          (optionSelected)="filterCitiesByCountry()">
+        <mat-autocomplete #countries_auto="matAutocomplete" [displayWith]="displayCountrySelect">
           <mat-option *ngFor="let country of countries" [value]="country">
             {{ country.name }}
           </mat-option>
@@ -68,11 +67,11 @@
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field class="input" *ngIf="queryUniversity">
-        <input placeholder="Any specific program?" matInput [formControl]="programsControl"
-               [matAutocomplete]="programs_auto" [(ngModel)]="queryProgram">
-        <mat-autocomplete #programs_auto="matAutocomplete" [displayWith]="displayProgramSelect">
-          <mat-option *ngFor="let program of filteredPrograms" [value]="program">
-            {{ program.name }}
+        <input placeholder="Any specific faculty?" matInput [formControl]="facultiesControl"
+               [matAutocomplete]="faculties_auto" [(ngModel)]="queryProgram">
+        <mat-autocomplete #faculties_auto="matAutocomplete" [displayWith]="displayFacultiesSelect">
+          <mat-option *ngFor="let faculty of filteredFaculties" [value]="faculty">
+            {{ faculty.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

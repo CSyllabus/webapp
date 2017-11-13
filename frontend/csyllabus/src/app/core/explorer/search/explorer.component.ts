@@ -148,19 +148,19 @@ export class ExplorerComponent implements OnInit {
     // this.backgroundImage.emit('city image');
   }
 
-  filterProgramsByUniversity() {
-    this.filteredPrograms = <Program[]> this.queryUniversity.programs;
-    this.queryProgram = undefined;
+  filterFacultiesByUniversity() {
+    this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
+    this.queryFaculty = undefined;
 
     // this.backgroundImage.emit('uni image');
   }
 
-  filterProgramsByLevel() {
+  /*filterProgramsByLevel() {
     this.filterProgramsByUniversity();
     this.filteredPrograms = this.filteredPrograms.filter(program => {
       return program.study_level.toLowerCase() === this.queryLevel.toLowerCase();
     });
-  }
+  }*/
 
   displayCountrySelect(country: Country): string {
     return country ? country.name : '';
@@ -174,7 +174,7 @@ export class ExplorerComponent implements OnInit {
     return university ? university.name : '';
   }
 
-  displayProgramSelect(program: Program): string {
-    return program ? program.name : '';
+  displayFacultiesSelect(faculty: Faculty): string {
+    return faculty ? faculty.name : '';
   }
 }
