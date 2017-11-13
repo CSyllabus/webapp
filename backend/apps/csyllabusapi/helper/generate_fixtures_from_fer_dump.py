@@ -94,6 +94,41 @@ for course_sublist in fer_courses:
                     }
                 }
             )
+
+            fixtures.append(
+                {
+                    "model": "csyllabusapi.programuniversity",
+                    "pk": program_id,
+                    "fields": {
+                        "university": 1,
+                        "program": program_id,
+                        "created": "2017-10-30T15:07:40.122Z"
+                    }
+                }
+            )
+
+            fixtures.append(
+                {
+                    "model": "csyllabusapi.programcity",
+                    "pk": program_id,
+                    "fields": {
+                        "city": 1,
+                        "program": program_id,
+                        "created": "2017-10-30T15:07:40.122Z"
+                    }
+                }
+            )
+            fixtures.append(
+                {
+                    "model": "csyllabusapi.programcountry",
+                    "pk": program_id,
+                    "fields": {
+                        "country": 1,
+                        "program": program_id,
+                        "created": "2017-10-30T15:07:40.122Z"
+                    }
+                }
+            )
             programs_fixtures.append(program)
             program_id = program_id + 1
 
