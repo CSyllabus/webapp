@@ -24,6 +24,7 @@ class UniversityView(APIView):
     def get(self, request, city_id):
         universities = University.objects.filter(city_id=city_id)
         result = {}
+        data = {}
         university_list = []
         for university in universities:
             single_univeristy = {}
@@ -35,8 +36,9 @@ class UniversityView(APIView):
             single_univeristy['city_id'] = university.city_id
             university_list.append(single_univeristy)
 
-        result['data'] = university_list
-        result['totalEntityCount'] = universities.count()
+        data['items'] = university_list
+        data['currentItemCount'] = universities.count()
+        result['data'] = data
         return Response(result)
 
 
