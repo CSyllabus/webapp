@@ -13,12 +13,18 @@ import {University} from '../classes/university';
 export class UniversitiesService {
 
   universitiesUrl = environment.apiUrl + 'universities/';
+  citiesUrl = environment.apiUrl + 'cities/';
 
   constructor(private http: Http) {
   }
 
   getAllUniversities(): Observable<University[]> {
     return this.http.get(this.universitiesUrl)
+      .map(res => res.json() as University[]).catch(this.handleError);
+  }
+
+  getUniversitiesByCity(city_id): Observable<University[]> {
+    return this.http.get(this.citiesUrl+city_id+'/universities')
       .map(res => res.json() as University[]).catch(this.handleError);
   }
 
