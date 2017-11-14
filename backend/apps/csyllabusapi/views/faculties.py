@@ -31,6 +31,7 @@ class FacultyView(APIView):
 
             single_faculty = {}
             single_faculty['name'] = faculty.name
+            single_faculty['img'] = faculty.img
             single_faculty['id'] = faculty.id
             single_faculty['created'] = faculty.created
             single_faculty['modified'] = faculty.modified

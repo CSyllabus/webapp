@@ -29,6 +29,7 @@ class UniversityView(APIView):
         for university in universities:
             single_univeristy = {}
             single_univeristy['name'] = university.name
+            single_univeristy['img'] = university.img
             single_univeristy['id'] = university.id
             single_univeristy['created'] = university.created
             single_univeristy['modified'] = university.modified

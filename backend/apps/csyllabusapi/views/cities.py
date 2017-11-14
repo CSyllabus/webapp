@@ -27,6 +27,7 @@ class CityView(APIView):
         for city in cities:
             single_city = {}
             single_city['name'] = city.name
+            single_city['img'] = city.img
             single_city['id'] = city.id
             single_city['created'] = city.created
             single_city['modified'] = city.modified

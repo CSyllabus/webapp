@@ -16,6 +16,7 @@ createdb $project_name
 python manage.py migrate
 python manage.py loadtestdata users.EmailUser:100
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup_fixtures_json.json
 python manage.py createsuperuser
 python manage.py runserver
 ```

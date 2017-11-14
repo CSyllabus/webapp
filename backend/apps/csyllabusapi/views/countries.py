@@ -27,6 +27,7 @@ class CountryView(APIView):
             one_country = {}
             one_country['id'] = country.id
             one_country['name'] = country.name
+            one_country['img'] = country.img
             one_country['modified'] = country.modified
             one_country['created'] = country.created
             countriesList.append(one_country)

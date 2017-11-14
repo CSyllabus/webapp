@@ -70,7 +70,8 @@
 <mat-form-field class="input" *ngIf="queryUniversity">
   <input placeholder="Any specific faculty?" matInput [formControl]="facultiesControl"
          [matAutocomplete]="faculties_auto" [(ngModel)]="queryFaculty">
-  <mat-autocomplete #faculties_auto="matAutocomplete" [displayWith]="displayFacultiesSelect">
+  <mat-autocomplete #faculties_auto="matAutocomplete" [displayWith]="displayFacultiesSelect"
+  (optionSelected)="filterFacultiesChange()">
     <mat-option *ngFor="let faculty of filteredFaculties" [value]="faculty">
       {{ faculty.name }}
     </mat-option>

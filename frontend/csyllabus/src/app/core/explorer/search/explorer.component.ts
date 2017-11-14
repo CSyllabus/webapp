@@ -135,13 +135,17 @@ export class ExplorerComponent implements OnInit {
   }
 
   filterCitiesByCountry() {
+    this.queryCity = undefined;
+        this.queryUniversity = undefined;
+        this.queryFaculty = undefined;
+        this.backgroundImage.emit(null);
     if (this.queryCountry && this.queryCountry.id) {
       this.citiesService.getCitiesByCountry(this.queryCountry.id).subscribe(cities => {
         this.filteredCities = cities;
-        this.queryCity = undefined;
-        this.queryUniversity = undefined;
-        this.queryProgram = undefined;
-        this.backgroundImage.emit(this.queryCountry.img);
+        if (this.queryCountry.img) {
+          this.backgroundImage.emit(this.queryCountry.img);
+        }
+
       });
     }
 
@@ -152,10 +156,14 @@ export class ExplorerComponent implements OnInit {
   }
 
   filterUniversitiesByCity() {
+    this.queryUniversity = undefined;
+      this.queryFaculty = undefined;
     this.universitiesService.getUniversitiesByCity(this.queryCity.id).subscribe(universities => {
       this.filteredUniversities = universities;
-      this.queryUniversity = undefined;
-      this.queryProgram = undefined;
+      if (this.queryCity.img) {
+        this.backgroundImage.emit(this.queryCity.img);
+      }
+
     });
   }
 
@@ -168,11 +176,22 @@ export class ExplorerComponent implements OnInit {
   //}
 
   filterFacultiesByUniversity() {
+    this.queryFaculty = undefined;
     this.facultiesService.getFacultiesByUniversity(this.queryUniversity.id).subscribe(faculties => {
       this.filteredFaculties = faculties;
-      this.queryFaculty = undefined;
+
+      if (this.queryUniversity.img) {
+        this.backgroundImage.emit(this.queryUniversity.img);
+      }
     });
   }
+
+  filterFacultiesChange() {
+    if (this.queryFaculty.img) {
+        this.backgroundImage.emit(this.queryFaculty.img);
+      }
+  }
+
 
 //  filterFacultiesByUniversity() {
   //  this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
