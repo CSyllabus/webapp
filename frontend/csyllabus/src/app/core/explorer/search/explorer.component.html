@@ -1,5 +1,4 @@
 <div class="form">
-    <div class="column">
         <mat-form-field class="input">
             <input matInput placeholder="Search for keywords"
             [matChipInputFor]="chipList"
@@ -15,7 +14,7 @@
           </mat-chip-list>
         </mat-form-field>
         <br/>
-        <mat-form-field class="selector">
+   <!--     <mat-form-field class="selector">
             <mat-select placeholder="English Level">
               <mat-option *ngFor="let level of levels" [value]="level.value">
                 {{level.viewValue}}
@@ -24,7 +23,7 @@
           </mat-form-field>
           <br/>
           <mat-form-field class="selector">
-            <mat-select placeholder="Semester">
+            <mat-select placeholder="Semester" hidden>
               <mat-option *ngFor="let sem of semesters" [value]="sem.value">
                 {{sem.viewValue}}
               </mat-option>
@@ -34,9 +33,9 @@
           <mat-radio-group [(ngModel)]="queryLevel">
             <mat-radio-button class="check" value="undergraduate" [checked]="true">Undergraduate</mat-radio-button>
             <mat-radio-button class="check" value="graduate">Graduate</mat-radio-button>
-          </mat-radio-group>
+          </mat-radio-group>-->
       </div>
-  <div class="column">
+
      <mat-form-field class="input">
         <input placeholder="Where do you want to study?" matInput [formControl]="coursesControl"
                [matAutocomplete]="countries_auto" [(ngModel)]="queryCountry" (ngModelChange)="filterCitiesByCountry()">
@@ -68,7 +67,7 @@
       </mat-form-field>
       <mat-form-field class="input" *ngIf="queryUniversity">
         <input placeholder="Any specific faculty?" matInput [formControl]="facultiesControl"
-               [matAutocomplete]="faculties_auto" [(ngModel)]="queryProgram">
+               [matAutocomplete]="faculties_auto" [(ngModel)]="queryFaculty">
         <mat-autocomplete #faculties_auto="matAutocomplete" [displayWith]="displayFacultiesSelect">
           <mat-option *ngFor="let faculty of filteredFaculties" [value]="faculty">
             {{ faculty.name }}
@@ -76,11 +75,11 @@
         </mat-autocomplete>
       </mat-form-field>
       <br/>
-    </div>
-</div>
+
 <div class="button">
-  <button mat-raised-button color="primary" margin=10px>Go</button>
+  <button mat-raised-button color="primary" (click)="exploreCourses()" margin=10px>Explore</button>
 </div>
+
 
 
 

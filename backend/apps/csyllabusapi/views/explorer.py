@@ -59,7 +59,9 @@ def explorer(request):
 
     courses_ids = CourseProgram.objects.filter(program_id__in=program_ids)
     courses = Course.objects.filter(id__in=courses_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
-    result = []
+    data = {}
+    result = {}
+    courseList = []
     for course in courses:
 
         single_course = {}
@@ -69,5 +71,9 @@ def explorer(request):
         single_course['ects'] = course.ects
         single_course['english_level'] = course.english_level
         single_course['semester'] = course.semester
-        result.append(single_course)
-    return Response(result)
+        courseList.append(single_course)
+    result['items'] = courseList
+    result['currentItemCount'] = courses.count()
+    data['data'] = result
+
+    return Response(data)

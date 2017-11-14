@@ -7,7 +7,7 @@ import { AngularMaterialModule } from './../angular-material/angular-material.mo
   styleUrls: ['./core.component.css']
 })
 export class CoreComponent implements OnInit {
-
+  explorerResult: any;
   backgroundImage: String;
   constructor() { }
 
@@ -16,5 +16,8 @@ export class CoreComponent implements OnInit {
 
   changeBackgroundImage($event) {
     this.backgroundImage = $event;
+  }
+  fetchExplorerResult($event) {
+    this.explorerResult = $event;
   }
 }

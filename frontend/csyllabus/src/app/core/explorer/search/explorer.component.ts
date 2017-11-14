@@ -40,6 +40,7 @@ const COMMA = 188;
  # @Description: */
 export class ExplorerComponent implements OnInit {
   @Output() backgroundImage = new EventEmitter<any>();
+  @Output() explorerResult = new EventEmitter<any>();
 
   countries: Country[];
   cities: City[];
@@ -179,6 +180,36 @@ export class ExplorerComponent implements OnInit {
       return program.study_level.toLowerCase() === this.queryLevel.toLowerCase();
     });
   }*/
+   keywords:any;
+   exploredCourses: any;
+   element:{name:string}
+
+  exploreCourses() {
+    console.log(this.keyword);
+    this.keywords = "";
+ for(let i = 0; i < this.keyword.length; i++)
+   {
+   this.keywords += " " + this.keyword[i].name;
+}
+    if(this.queryFaculty)
+    {
+      this.coursesService.exploreByFaculty(this.keywords, this.queryFaculty.id).subscribe(courses => {
+        this.exploredCourses = courses;
+                this.explorerResult.emit(courses);
+
+      })
+    }
+    else if(this.queryUniversity){
+
+    }
+    else if(this.queryCity){
+
+    }
+    else if(this.queryCountry)
+    {
+
+    }
+  }
 
   displayCountrySelect(country: Country): string {
     return country ? country.name : '';

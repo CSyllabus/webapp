@@ -13,7 +13,7 @@ import {Course} from '../classes/course';
 export class CoursesService {
 
   coursesUrl = environment.apiUrl + 'courses/';
-
+  explorerUrl = environment.apiUrl + 'explorer';
   constructor(private http: Http) {
   }
 
@@ -22,6 +22,10 @@ export class CoursesService {
       .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
+  exploreByFaculty(keywords, faculty_id): Observable<Course[]> {
+    return this.http.get(this.explorerUrl + "?keywords=" + keywords + "&faculty_id=" + faculty_id)
+      .map(res => res.json().data.items as Course[]).catch(this.handleError);
+  }
 
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :
