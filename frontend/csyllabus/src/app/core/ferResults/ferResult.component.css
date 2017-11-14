@@ -1,0 +1,10 @@
+.courseCard{
+  width:29.3%;
+  padding:2%;
+  float:left;
+}
+.courseDescription {
+      text-overflow: ellipsis;
+    max-height: 200px;
+    overflow: hidden;
+}

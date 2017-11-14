@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreComponent } from './core.component';
 import {ExplorerComponent} from './explorer/search/explorer.component';
+import {FerResultsComponent} from "./ferResults/ferResults.component";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +16,8 @@ import {ExplorerComponent} from './explorer/search/explorer.component';
   ],
   declarations: [
     CoreComponent,
-  ],
+      FerResultsComponent
+],
   exports: [CoreComponent]
 })
 export class CoreModule { }
