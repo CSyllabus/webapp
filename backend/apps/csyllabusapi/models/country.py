@@ -3,6 +3,7 @@ from django.db import models
 from datetime import datetime
 class Country(models.Model):
     name = models.CharField(max_length=255)
+    img = models.CharField(max_length=255, blank = True,null = True)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
 

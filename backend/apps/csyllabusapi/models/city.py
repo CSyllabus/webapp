@@ -5,6 +5,7 @@ from datetime import datetime
 
 class City(models.Model):
     name = models.CharField(max_length=255)
+    img = models.CharField(max_length=255, blank = True,null = True)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
     country = models.ForeignKey(Country, on_delete=models.CASCADE)

@@ -4,6 +4,7 @@
     "pk": 2,
     "fields": {
       "name": "Italy",
+      "img": "https://csyllabus.com/images/italy.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
     }
@@ -13,6 +14,7 @@
     "pk": 3,
     "fields": {
       "name": "Sweden",
+      "img": "https://csyllabus.com/images/sweden.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
     }
@@ -22,6 +24,7 @@
     "pk": 2,
     "fields": {
       "name": "Split",
+      "img": "https://csyllabus.com/images/split.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": 1
@@ -32,6 +35,7 @@
     "pk": 3,
     "fields": {
       "name": "Milano",
+      "img": "https://csyllabus.com/images/milano.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": 2
@@ -42,6 +46,7 @@
     "pk": 4,
     "fields": {
       "name": "Rome",
+      "img": "https://csyllabus.com/images/rome.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": 2
@@ -62,6 +67,7 @@
     "pk": 6,
     "fields": {
       "name": "Stockholm",
+      "img": "https://csyllabus.com/images/stockholm.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": 3

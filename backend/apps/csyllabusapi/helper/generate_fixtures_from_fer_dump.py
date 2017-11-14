@@ -13,6 +13,7 @@ fixtures.append({
     "pk": 1,
     "fields": {
       "name": "Croatia",
+      "img": "https://csyllabus.com/images/croatia.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
     }
@@ -23,6 +24,7 @@ fixtures.append({
     "pk": 1,
     "fields": {
       "name": "Zagreb",
+       "img": "https://csyllabus.com/images/zagreb.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": 1
@@ -49,6 +51,7 @@ fixtures.append(
     "pk": 1,
     "fields": {
       "name": "Faculty of electrical engineering and computing",
+      "img": "https://csyllabus.com/images/fer.jpg",
       "created": "2017-10-30T15:05:45.387Z",
       "modified": "2017-10-30T15:05:52.444Z",
       "university": 1,
