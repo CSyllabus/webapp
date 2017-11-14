@@ -4,7 +4,7 @@ import {UniversitiesService} from './../../../services/universities.service';
 import {FacultiesService} from './../../../services/faculties.service';
 import {ProgramsService} from './../../../services/programs.service';
 import {CoursesService} from './../../../services/courses.service';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {Course} from './../../../classes/course';
 import {Country} from './../../../classes/country';
 import {City} from './../../../classes/city';
@@ -13,7 +13,7 @@ import {Faculty} from './../../../classes/faculty';
 import {Program} from './../../../classes/program';
 
 import {AngularMaterialModule} from './../../../angular-material/angular-material.module';
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Inject} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormControl} from '@angular/forms';
 import {FormControlDirective} from '@angular/forms';
@@ -22,6 +22,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
 import {MatChipInputEvent} from '@angular/material';
 import {ENTER} from '@angular/cdk/keycodes';
+import {SearchDialogComponent} from './search-dialog/search-dialog';
 
 const COMMA = 188;
 
@@ -42,6 +43,7 @@ export class ExplorerComponent implements OnInit {
   @Output() backgroundImage = new EventEmitter<any>();
   @Output() explorerResult = new EventEmitter<any>();
 
+  explorerStarted: Boolean;
   countries: Country[];
   cities: City[];
   universities: University[];
@@ -115,7 +117,7 @@ export class ExplorerComponent implements OnInit {
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService,
               private citiesService: CitiesService, private universitiesService: UniversitiesService
-    , private facultiesService: FacultiesService, private programsService: ProgramsService) {
+    , private facultiesService: FacultiesService, private programsService: ProgramsService, private dialog: MatDialog) {
   }
 
   // filteredOptions: Observable<string[]>;
@@ -133,7 +135,7 @@ export class ExplorerComponent implements OnInit {
   }
 
   filterCitiesByCountry() {
-   if (this.queryCountry && this.queryCountry.id) {
+    if (this.queryCountry && this.queryCountry.id) {
       this.citiesService.getCitiesByCountry(this.queryCountry.id).subscribe(cities => {
         this.filteredCities = cities;
         this.queryCity = undefined;
@@ -142,73 +144,94 @@ export class ExplorerComponent implements OnInit {
         this.backgroundImage.emit(this.queryCountry.img);
       });
     }
+
+
+    for (let i = 0; i < this.keyword.length; i++) {
+      console.log(this.keyword[i].name);
+    }
   }
 
   filterUniversitiesByCity() {
-  this.universitiesService.getUniversitiesByCity(this.queryCity.id).subscribe(universities => {
-    this.filteredUniversities = universities;
+    this.universitiesService.getUniversitiesByCity(this.queryCity.id).subscribe(universities => {
+      this.filteredUniversities = universities;
       this.queryUniversity = undefined;
       this.queryProgram = undefined;
-  });
+    });
   }
 
   //filterUniversitiesByCity() {
-    //this.filteredUniversities = <University[]> this.queryCity.universities;
-    //this.queryUniversity = undefined;
-    //this.queryProgram = undefined;
+  //this.filteredUniversities = <University[]> this.queryCity.universities;
+  //this.queryUniversity = undefined;
+  //this.queryProgram = undefined;
 
-    // this.backgroundImage.emit('city image');
+  // this.backgroundImage.emit('city image');
   //}
 
   filterFacultiesByUniversity() {
-  this.facultiesService.getFacultiesByUniversity(this.queryUniversity.id).subscribe(faculties => {
-    this.filteredFaculties = faculties;
-    this.queryFaculty = undefined;
+    this.facultiesService.getFacultiesByUniversity(this.queryUniversity.id).subscribe(faculties => {
+      this.filteredFaculties = faculties;
+      this.queryFaculty = undefined;
     });
   }
 
 //  filterFacultiesByUniversity() {
   //  this.filteredFaculties = <Faculty[]> this.queryUniversity.faculties;
-    //this.queryFaculty = undefined;
+  //this.queryFaculty = undefined;
 
-    // this.backgroundImage.emit('uni image');
+  // this.backgroundImage.emit('uni image');
   //}
 
   /*filterProgramsByLevel() {
-    this.filterProgramsByUniversity();
-    this.filteredPrograms = this.filteredPrograms.filter(program => {
-      return program.study_level.toLowerCase() === this.queryLevel.toLowerCase();
-    });
-  }*/
-   keywords:any;
-   exploredCourses: any;
-   element:{name:string}
+   this.filterProgramsByUniversity();
+   this.filteredPrograms = this.filteredPrograms.filter(program => {
+   return program.study_level.toLowerCase() === this.queryLevel.toLowerCase();
+   });
+   }*/
+  keywords: any;
+  exploredCourses: any;
+  element: { name: string };
 
   exploreCourses() {
-    console.log(this.keyword);
-    this.keywords = "";
- for(let i = 0; i < this.keyword.length; i++)
-   {
-   this.keywords += " " + this.keyword[i].name;
-}
-    if(this.queryFaculty)
-    {
-      this.coursesService.exploreByFaculty(this.keywords, this.queryFaculty.id).subscribe(courses => {
-        this.exploredCourses = courses;
-                this.explorerResult.emit(courses);
+    if ((this.keyword.length === 0) || (!this.queryCountry)) {
+      this.dialog.open(SearchDialogComponent, {
+        width: '250px',
+        data: {}
+      });
+    } else {
+      this.keywords = '';
+      this.explorerStarted = true;
+      for (let i = 0; i < this.keyword.length; i++) {
+        this.keywords += ' ' + this.keyword[i].name;
+      }
+      if (this.queryFaculty) {
+        this.coursesService.exploreByFaculty(this.keywords, this.queryFaculty.id).subscribe(courses => {
+          this.exploredCourses = courses;
+          this.explorerResult.emit(courses);
+          this.explorerStarted = false;
+        });
+      } else if (this.queryUniversity) {
+        this.coursesService.exploreByUniversity(this.keywords, this.queryUniversity.id).subscribe(courses => {
+          this.exploredCourses = courses;
+          this.explorerResult.emit(courses);
+          this.explorerStarted = false;
+        });
+      } else if (this.queryCity) {
+        this.coursesService.exploreByCity(this.keywords, this.queryCity.id).subscribe(courses => {
+          this.exploredCourses = courses;
+          this.explorerResult.emit(courses);
+          this.explorerStarted = false;
+        });
+      } else if (this.queryCountry) {
+        this.coursesService.exploreByCountry(this.keywords, this.queryCountry.id).subscribe(courses => {
+          this.exploredCourses = courses;
+          this.explorerResult.emit(courses);
+          this.explorerStarted = false;
+        });
+      }
 
-      })
     }
-    else if(this.queryUniversity){
 
-    }
-    else if(this.queryCity){
 
-    }
-    else if(this.queryCountry)
-    {
-
-    }
   }
 
   displayCountrySelect(country: Country): string {

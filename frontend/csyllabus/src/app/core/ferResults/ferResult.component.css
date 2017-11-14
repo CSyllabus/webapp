@@ -1,10 +1,48 @@
-.courseCard{
-  width:29.3%;
-  padding:2%;
-  float:left;
+.courseCard {
+  padding: 2%;
+  float: left;
+  text-align: left;
+  height: 400px;
+  max-height: 400px;
+  overflow: hidden;
 }
+
+@media only screen and (max-width: 768px) {
+  .courseCard {
+    height: auto;
+    max-height: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+}
+
 .courseDescription {
-      text-overflow: ellipsis;
-    max-height: 200px;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 200px;
+  overflow: hidden;
 }
+
+.cours-result-card-title {
+  height: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    -webkit-transform: scale(1.0, 1.0);
+    opacity: 1.0;
+  }
+}
+

@@ -14,6 +14,7 @@ export class CoursesService {
 
   coursesUrl = environment.apiUrl + 'courses/';
   explorerUrl = environment.apiUrl + 'explorer';
+
   constructor(private http: Http) {
   }
 
@@ -22,9 +23,24 @@ export class CoursesService {
       .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
-  exploreByFaculty(keywords, faculty_id): Observable<Course[]> {
-    return this.http.get(this.explorerUrl + "?keywords=" + keywords + "&faculty_id=" + faculty_id)
-      .map(res => res.json().data.items as Course[]).catch(this.handleError);
+  exploreByFaculty(keywords, facultyId): Observable<any[]> {
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&faculty_id=' + facultyId)
+      .map(res => res.json().data.items).catch(this.handleError);
+  }
+
+  exploreByUniversity(keywords, universityId): Observable<any[]> {
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&university_id=' + universityId)
+      .map(res => res.json().data.items).catch(this.handleError);
+  }
+
+  exploreByCity(keywords, cityId): Observable<any[]> {
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&city_id=' + cityId)
+      .map(res => res.json().data.items).catch(this.handleError);
+  }
+
+  exploreByCountry(keywords, countryId): Observable<any[]> {
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&country_id=' + countryId)
+      .map(res => res.json().data.items).catch(this.handleError);
   }
 
   private handleError(error: any) {

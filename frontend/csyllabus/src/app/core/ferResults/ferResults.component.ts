@@ -7,7 +7,8 @@ import { AngularMaterialModule } from '../../angular-material/angular-material.m
   styleUrls: ['./ferResult.component.css']
 })
 export class FerResultsComponent implements OnInit {
- @Input() courses: any;
+
+ @Input() courses: any = [];
 
   constructor() { }
 

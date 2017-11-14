@@ -3,11 +3,13 @@ import {ExplorerComponent} from './explorer.component';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AngularMaterialModule} from './../../../angular-material/angular-material.module';
+import {SearchDialogComponent} from './search-dialog/search-dialog';
 
 @NgModule({
 
   declarations: [
     ExplorerComponent,
+    SearchDialogComponent,
   ],
 
   imports: [
@@ -16,7 +18,7 @@ import {AngularMaterialModule} from './../../../angular-material/angular-materia
     ReactiveFormsModule,
     FormsModule
   ],
-
+  entryComponents: [SearchDialogComponent],
   exports: [ExplorerComponent],
 
 })
