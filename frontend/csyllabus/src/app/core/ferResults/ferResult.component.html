@@ -8,7 +8,17 @@
   <div *ngFor="let course of courses" class="courseCard col-md-4">
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+        <div mat-card-avatar class="example-header-image"
+        style="    height: 50px;
+    width: 50px;
+    padding-top: 15px;
+    background-color: rgba(63,94,251,0.49);
+    text-align: center;
+    color: white;">
+          <span style="display: inline-block;
+  vertical-align: middle;
+  line-height: normal;">{{course.rank * 100  | number : '1.2-2'}}
+          </span></div>
         <mat-card-title>
           <p class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
         <mat-card-subtitle>

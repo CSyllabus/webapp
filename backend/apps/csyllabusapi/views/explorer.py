@@ -47,7 +47,7 @@ def explorer(request):
    # semester = request.query_params['semester']
 
 
-    vector = SearchVector('description')
+    vector = SearchVector(*['description','name'])
     query = SearchQuery(keywords)
     program_ids = []
     courses_ids = []
@@ -67,6 +67,7 @@ def explorer(request):
     courseList = []
     for course in courses:
         single_course = {}
+        single_course['rank'] = course.rank
         single_course['id'] = course.id
         single_course['name'] = course.name
         single_course['description'] = course.description
