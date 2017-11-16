@@ -1,97 +1,91 @@
 {
-	"countries":[
+	"countries":
+{
+    "data": {
+        "items": [
+            {
+                "modified": "2017-10-30T15:20:52.235000Z",
+                "created": "2017-10-30T15:20:51.049000Z",
+                "id": 1,
+                "img": "https://csyllabus.com/images/croatia.jpg",
+                "name": "Croatia"
+            },
+            {
+                "modified": "2017-10-30T15:20:52.235000Z",
+                "created": "2017-10-30T15:20:51.049000Z",
+                "id": 2,
+                "img": "https://csyllabus.com/images/italy.jpg",
+                "name": "Italy"
+            },
+            {
+                "modified": "2017-10-30T15:20:52.235000Z",
+                "created": "2017-10-30T15:20:51.049000Z",
+                "id": 3,
+                "img": "https://csyllabus.com/images/sweden.jpg",
+                "name": "Sweden"
+            }
+        ],
+        "currentItemCount": 3
+    }
+},
+ 	"cities":
+{
+    "data": {
+        "items": [
+            {
+                "name": "Split",
+                "img": "https://csyllabus.com/images/split.jpg",
+                "created": "2017-10-30T15:20:51.049000Z",
+                "country_id": 1,
+                "modified": "2017-10-30T15:20:52.235000Z",
+                "id": 2
+            },
+            {
+                "name": "Zagreb",
+                "img": "https://csyllabus.com/images/zagreb.jpg",
+                "created": "2017-10-30T15:20:51.049000Z",
+                "country_id": 1,
+                "modified": "2017-10-30T15:20:52.235000Z",
+                "id": 1
+            }
+        ],
+        "currentItemCount": 2
+    }
+},
+	"universities":
 	{
-		"id": 1,
-		"name": "Croatia",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"cities": [{"id": 1,"name": "Zagreb",
-			"universities": [{"id": 1,"name": "University Of Zagreb", "programs": [
-			{"id": 1,"study_level": "undergraduate","name": "Computer science"},
-			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
-		]}]}],
-		"img": "https://static.pexels.com/photos/210536/pexels-photo-210536.jpeg"
-	},
-	{
-		"id": 2,
-		"name": "Italy",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"cities": [{"id": 2,"name": "Milano",
-			"universities": [{"id": 2,"name": "Politecnico di Milano","programs": [
-			{"id": 3,"study_level": "undergraduate","name": "Software engineering"},
-			{"id": 4,"study_level": "graduate","name": "Automation"}
-		]}]}],
-		"img": "https://static.pexels.com/photos/373575/pexels-photo-373575.jpeg"
-	},
-	{
-		"id": 3,
-		"name": "Sweden",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"cities": [{"id": 3,"name": "Mälardalen",
-			"universities": [{"id": 3,"name": "Mälardalen University",
-				"programs": [
-			{"id": 5,"study_level": "undergraduate","name": "Electrical engineering"},
-			{"id": 6,"study_level": "graduate","name": "Telecomunications"}
-		]}]}],
-		"img": "https://static.pexels.com/photos/421759/pexels-photo-421759.jpeg"
-	}
-	],
- 	"cities":[
-	{
-		"id": 1,
-		"country_id": 1,
-		"name": "Zagreb",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"universities": [{"id": 1,"name": "University Of Zagreb"}]
-	},
-	{
-		"id": 2,
-		"country_id": 2,
-		"name": "Milano",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"universities": [{"id": 2,"name": "Politecnico di Milano"}]
-	},
-	{
-		"id": 3,
-		"country_id": 3,
-		"name": "Mälardalen",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"universities": [{"id": 3,"name": "Mälardalen University"}]
-	}
-	],
-	"universities":[
-	{
-		"id": 1,
-		"country_id": 1,
-		"city_id": 1,
-		"name": "University Of Zagreb",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"faculties": [{"id": 1,"name": "Faculty Of Electrical Engineering And Computing"}],
-		"programs": [
-			{"id": 1,"study_level": "undergraduate","name": "Computer engineering"},
-			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
-		]
-	}
-	],
-	"faculties":[
-	{
-		"id": 1,
-		"university_id": 1,
-		"city_id": 1,
-		"name": "Faculty Of Electrical Engineering And Computing",
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01",
-		"programs": [{"id": 1,"study_level": "undergraduate","name": "Computer engineering"},
-			{"id": 2,"study_level": "graduate","name": "Computer engineering"}
-		]
-	}
-	],
+    "data": {
+        "items": [
+            {
+                "name": "University of Zagreb",
+                "img": null,
+                "created": "2017-10-30T15:05:19.541000Z",
+                "city_id": 1,
+                "country_id": 1,
+                "modified": "2017-10-30T15:05:20.945000Z",
+                "id": 1
+            }
+        ],
+        "currentItemCount": 1
+    }
+},
+	"faculties":
+{
+    "data": {
+        "items": [
+            {
+                "name": "Faculty of electrical engineering and computing",
+                "img": "https://csyllabus.com/images/fer.jpg",
+                "created": "2017-10-30T15:05:45.387000Z",
+                "city_id": 1,
+                "modified": "2017-10-30T15:05:52.444000Z",
+                "university_id": 1,
+                "id": 1
+            }
+        ],
+        "currentItemCount": 1
+    }
+},
 	"programs":
 	[{
 		"id": 1,
@@ -126,28 +120,278 @@
 		}]
 	}
 	],
-	"courses":[
-	{
-		"id": 1,
-		"name": "Test course 1",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		"ects": 1,
-		"semester": 1,
-		"english_level": 1,
-		"winsum": 1,
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01"
-	},
-	{
-		"id": 2,
-		"name": "Test course 2",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		"ects": 1,
-		"semester": 1,
-		"english_level": 1,
-		"winsum": 1,
-		"created": "2017-10-30 16:20:51.049+01",
-		"modified": "2017-10-30 16:20:51.049+01"
-	}
-]
+	"courses":
+		{
+    "data": {
+        "items": [
+            {
+                "city": "Zagreb",
+                "description": "Introduction to service-oriented distributed computing. Service-oriented programming and engineering. Enterprise and business applications. Human and programmable web. Web standards, architectures, technologies, and protocols. Principles of design and implementation of high-performance, scalable, and secure web services. HTTP, Ajax, and Websocket protocol. REST architectural style. Design and implementation of RESTful web services and REST API. Semantic web services.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0889769,
+                "semester": "1, 3",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Introduction to service-oriented distributed computing. Service-oriented programming and engineering. Enterprise and business applications. Human and programmable web. Web standards, architectures, te...",
+                "english_level": "1",
+                "id": 323,
+                "name": "Service-Oriented Computing"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Java as a programming language. Java as a processor independent platform. Classes and objects - inheritance, polymorphism, encapsulation, hiding. Java collection framework - sets, lists, trees, stacks, queues, maps. Java Generics. Multithreading and multithreaded applications. Synchronization problems and synchronization techniques (mutexes, semaphores, barriers). Design and development of applications with graphical user interface: AWT and Swing; usage of existing and development of custom components. MVC paradigm. Test Driven Development (TDD). Working with files and file systems. Data streams. Distributed applications (java.net packet). Usage of UDP and TCP protocol. HTTP protocol. Design of Web applications. Java Servlets and Java Server Pages (JSP). Web forms. Apache Tomcat. Security in Web applications. Advanced technologies: ANT, Hibernate, MySQL. Working with relational databases. Mapping and storage of objects into relational databases (O/R mapping).",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0827456,
+                "semester": "2, 4, 6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Java as a programming language. Java as a processor independent platform. Classes and objects - inheritance, polymorphism, encapsulation, hiding. Java collection framework - sets, lists, trees, stacks...",
+                "english_level": "0",
+                "id": 200,
+                "name": "Introduction to Java Programming Language"
+            },
+            {
+                "city": "Zagreb",
+                "description": "The course is designed to offer students an opportunity to acquire a techno-economic knowledge needed to develop applications for popular mobile platforms and web. Through presenting students the entire life cycle of an application development, the goal of the course is to develop student creativity, sense for innovations and entrepreneurship, as well as ability to work in a team.  The educational component of the course consists of workshops on technical issues and lectures on economic themes related to launching business projects based on mobile and web technologies. The practical component of the course is organized as a competition between teams, where teams of students develop their original business ideas, implement them as mobile and/or web applications and compare in a competitive manner with the solutions of their fellow students.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0827456,
+                "semester": "2, 4, 6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "The course is designed to offer students an opportunity to acquire a techno-economic knowledge needed to develop applications for popular mobile platforms and web. Through presenting students the enti...",
+                "english_level": "1",
+                "id": 385,
+                "name": "App Start Contest"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Organization and data processing in telecommunication networks. Object-oriented and object-relational data model. Database modelling. Dimensional data model. Semi-structured data. Storing and querying XML documents. Characteristics and architecture of Database Management Systems. Distributed databases. Object-relational and object-oriented databases. Spatio-temporal data processing. Database querying and query optimization. Web technologies and databases. Distributed data processing in Web environment. Data integration. Data warehousing. Data warehouse design. Data quality. Data extraction, transformation and loading process. Business intelligence. OLAP analysis and use of data mining. Data management. Study examples.",
+                "ects": "5",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0759909,
+                "semester": "2",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Organization and data processing in telecommunication networks. Object-oriented and object-relational data model. Database modelling. Dimensional data model. Semi-structured data. Storing and querying...",
+                "english_level": "0",
+                "id": 110,
+                "name": "Data Management"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Concept of web application. Structure of HTML document. Usage of tables and forms in HTML. PHP basics. Dynamic HTML generation using PHP. Usage of relational databases from PHP (illustrated on MySql). Usage of phpMyAdmin web frontend. Dynamic HTML generation using data from database. Modularization of PHP applications. Usage of templates for GUI generation. Additional technologies. Ajax.",
+                "ects": "3",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0759909,
+                "semester": "2, 4, 6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Concept of web application. Structure of HTML document. Usage of tables and forms in HTML. PHP basics. Dynamic HTML generation using PHP. Usage of relational databases from PHP (illustrated on MySql)....",
+                "english_level": "0",
+                "id": 253,
+                "name": "PHP Application Development Basics"
+            },
+            {
+                "city": "Zagreb",
+                "description": "The course is designed to offer students an opportunity to acquire knowledge needed to develop Android applications, and also server side services which will be used by these applications. web projects.  Topics and themes covered include: foundations of the Java programming language, object-oriented design in Java, Android platform architecture, graphical user interface, using specific hardware, data access for Android, accessing different services on Internet, developing RESTful web services and accessing them from Android.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0759909,
+                "semester": "2, 4, 6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "The course is designed to offer students an opportunity to acquire knowledge needed to develop Android applications, and also server side services which will be used by these applications. web project...",
+                "english_level": "0",
+                "id": 357,
+                "name": "Service and Application Development for Operating System Android"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Definition of term Open Computing, with emphasis on portability, flexibility, accessibility and interoperability. Comparison of the relationships among the open hardware, software and users. Analysis of standards, their roles and standardization process, with emphasis on Internet-related standards and openness. Explanation of the tagging and example of the presentation of content using HTML language. Presentation of structured data using XML language. Representation of rules in the XML language, visualization, transformation and filtering data, as well as real-world examples of XML language usage. Analysis of distributed computing concepts (ubiquitous, wireless, mobile, pervasive) based on open standards and products. Design principles in open, distributed, dynamic, interactive information services and systems, mostly based on the Web and associated concepts, technologies, and protocols (REST, Web 2.0, RIA, SOA, HTTP, URI, MIME, sessions), client (DHTML , Flash) and server technologies (servlets, ASP, JSP), concepts (MVC, DHTML, AJAX) and languages   (PHP, JavaScript, Java). Basics of security of open systems and the Internet, as well as terms of \"free of costs\", freedom of usage and licensing in computer science.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0759909,
+                "semester": "6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Definition of term Open Computing, with emphasis on portability, flexibility, accessibility and interoperability. Comparison of the relationships among the open hardware, software and users. Analysis ...",
+                "english_level": "0",
+                "id": 28,
+                "name": "Open Computing"
+            },
+            {
+                "city": "Zagreb",
+                "description": "TCP/IP security problems. Operating system security and vulnerability. Distributed systems security. Web traffic and Web server security. Computer and network protection: common threats and attacks, layers of defense. Denial-of-service attacks. Network discovery/vulnerability scanning: techniques and tools. Intrusion detection systems. Security protocols. Virtual private networks. Data protection. Firewalls: traffic filtering and network address translation (NAT). Risk analysis and security policy. Public Key Infrastructure. Security standards.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0759909,
+                "semester": "1, 3",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "TCP/IP security problems. Operating system security and vulnerability. Distributed systems security. Web traffic and Web server security. Computer and network protection: common threats and attacks, l...",
+                "english_level": "1",
+                "id": 396,
+                "name": "Internet Security"
+            },
+            {
+                "city": "Zagreb",
+                "description": "The goal of this course is to introduce students to the world of modern software development using C# programming language. Students will be familiarized with the world of applications starting form application types and core programming fundamentals. The first part will focus on storage and fetching of data with the emphasis on the specifics of Microsoft technologies. The second part is devoted for development of backend part of the application through web services and complementing technologies (AJAX, SignalR, Web API etc.). The third part of the course will be focused on implementation of client part of the application (frontend) working with various client technologies (HTML, JavaScript and XAML).  The last part is reserved for hosting of server part of the application and new cloud computing paradigm.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0759909,
+                "semester": "3, 5",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "The goal of this course is to introduce students to the world of modern software development using C# programming language. Students will be familiarized with the world of applications starting form a...",
+                "english_level": "0",
+                "id": 419,
+                "name": "Application development using C# programming language"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Introduction to mining of massive data sets. The MapReduce programming model. Finding similar items. Mining data streams. Link analysis. Finding frequent itemsets. Clustering of massive data sets. Recommendation systems. Mining social-networks graphs. Advertising on the Web. Dimensionality reduction. Large-scale machine learning.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "2",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Introduction to mining of massive data sets. The MapReduce programming model. Finding similar items. Mining data streams. Link analysis. Finding frequent itemsets. Clustering of massive data sets. Rec...",
+                "english_level": "2",
+                "id": 426,
+                "name": "Analysis of massive data sets"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Historical development of GIS. Spatial awareness and cartographic foundation of GIS. Coordinate systems, cartographic projections, geodetic datum. Raster and vector type of data. Data sources and data capturing. Models of geospatial information. Basic database concepts for GIS. Object-relational and object data models. GIS project. GIS analyses. Distributed GIS. Web mapping and WebGIS. Concept of mobile GIS. GIS integration in enterprise information system. Case studies.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "3",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Historical development of GIS. Spatial awareness and cartographic foundation of GIS. Coordinate systems, cartographic projections, geodetic datum. Raster and vector type of data. Data sources and data...",
+                "english_level": "0",
+                "id": 394,
+                "name": "Geoinformation Systems"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Introduction to relationships between concepts: information, logic and artificial languages in telecommunication domain. Observartion, communication, learning, thinking and domain knowledge. Information as a difference between domain knowledge states. Information theory and semantic contents of information, symbols as elements of semantic representations (semantic web). Lexical and syntax structure, context and semantics. Logic and logical rules, structure of formal languages. Language space as a function of system development and problems solving. Functional specification, modelling. Verification and validation testing. Methods based on some languages: UML, DSL, Java, XML and TTCN. Industrial approach for development and application of formal models and methods in telecommunication systems design.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Introduction to relationships between concepts: information, logic and artificial languages in telecommunication domain. Observartion, communication, learning, thinking and domain knowledge. Informati...",
+                "english_level": "1",
+                "id": 30,
+                "name": "Information, Logic and Languages"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Introduction to multimedia services, concepts and terminology. Fundamental service architectures and communication requirements. Media spatial and temporal relations, synchronization. Multimedia content formats and standards. Auditory and visual multimedia content. Syntetic content. Metadata and searching. World Wide Web, architecture, communication protocols, applications and technologies. Multimedia streaming. Internet telephony. Multimedia conferencing. Multimedia services in mobile networks. Multiuser games and virtual environments.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Introduction to multimedia services, concepts and terminology. Fundamental service architectures and communication requirements. Media spatial and temporal relations, synchronization. Multimedia conte...",
+                "english_level": "1",
+                "id": 31,
+                "name": "Multimedia Services"
+            },
+            {
+                "city": "Zagreb",
+                "description": "The term human factors (or ergonomics) in computing is defined and relevant norms are elaborated. Possible health hazards introduced by using computing equipment are explained and preventive measures are suggested. Ergonomics of computerised working environment is elaborated analysing the impact of visual displays, input and output devices, interior arrangements, microclimate, noise and illumination on workplace design. Appropriate practical solutions are presented. Regarding the software ergonomics, fundamental principles of human-computer interaction are explained, with emphasis on user interface design for desktop, web and mobile applications.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "6",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "The term human factors (or ergonomics) in computing is defined and relevant norms are elaborated. Possible health hazards introduced by using computing equipment are explained and preventive measures ...",
+                "english_level": "1",
+                "id": 47,
+                "name": "Human Factors in Computing"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Remote control system structure - control levels, local and remote control, control centers. Data acquisition and data distribution systems. Coding and data protection. Communication protocols. Computer based On-line monitoring. User interface for data presentation - local panels, monitors and video walls. SCADA systems. Remote meter reading. Telemetry. Demand side control. Communication media in power system. Field busses. Serial data transfer. Fiber cables. Power line carrier. Wireless communications and mobile telephony. OPC servers. WEB servers.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "2",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Remote control system structure - control levels, local and remote control, control centers. Data acquisition and data distribution systems. Coding and data protection. Communication protocols. Comput...",
+                "english_level": "1",
+                "id": 92,
+                "name": "Power System Supervision and Remote Control"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Fundamental network and service management concepts and principles. Manager-agent paradigm. Hierarchical management model. Languages for management information and policies specification. Management protocols. Management scope and functional areas. Management system architectures and technologies: Internet SNMP management, OSI/TMN, CORBA/TMN, Web-based management, mobile code and tasks delegation, Java-based management (JMX), policy-based management. Management platforms and OSS systems. Self-management, management knowledge and introduction to decision techniques. Review of actual management standards.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "2",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Fundamental network and service management concepts and principles. Manager-agent paradigm. Hierarchical management model. Languages for management information and policies specification. Management p...",
+                "english_level": "1",
+                "id": 119,
+                "name": "Network and Service Management"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Software development processes and methods. Object, component and service software models. Risk management. Process visibility. Software project documentation. Team software development. Distributed software development. Methods and tools for support of team and distributed software development. Distributed system architectures. Middleware. Design and development of enterprise-class systems (messaging, Enterprise JavaBeans, web services). Work on the distributed projects in multicultural environment: requirements specification, project planning, design, task distribution, online communication and collaboration, implementation and verification, presentation, project management and surveillance, work analysis in distributed project.",
+                "ects": "8",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "3",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Software development processes and methods. Object, component and service software models. Risk management. Process visibility. Software project documentation. Team software development. Distributed s...",
+                "english_level": "3",
+                "id": 325,
+                "name": "Distributed Software Development"
+            },
+            {
+                "city": "Zagreb",
+                "description": "The course considers the interaction of a human and a computer from both sides of the interface. Human factors in the interaction are elaborated as well as the respective models and interaction styles with the corresponding interface elements. The process of interactive system development is introduced with a focus on user-centered design and respective interface evaluation. Task analysis along with predictive modeling and evaluation is elaborated. Students will get acquainted with basic interactive system fast prototyping procedures, application of usability and usability engineering and especially with Web interface design and evaluation. They will also be provided with an overview of mobile interfaces.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "2",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "The course considers the interaction of a human and a computer from both sides of the interface. Human factors in the interaction are elaborated as well as the respective models and interaction styles...",
+                "english_level": "1",
+                "id": 402,
+                "name": "Human-Computer Interaction"
+            },
+            {
+                "city": "Zagreb",
+                "description": "Basic concepts of e-business: definition and categories. Historical review of e-business origins and the rise of first e-business standards. Standard EDI. ebXML standard: ideas and basic concepts. The role of Internet in modern electronic business. Business model ontology. Business process: modelling and automatization. Informatization of business documents and business collaborations. The role of standardized business registries. Open technologies (Java, XML, SOAP, Web Services) and their use in modern e-business. E-business security. Business intelligence and its use in e-business. Case study of real-world e-business applications.",
+                "ects": "4",
+                "country": "Croatia",
+                "university": "University of Zagreb",
+                "rank": 0.0607927,
+                "semester": "3",
+                "faculty": "Faculty of electrical engineering and computing",
+                "short_description": "Basic concepts of e-business: definition and categories. Historical review of e-business origins and the rise of first e-business standards. Standard EDI. ebXML standard: ideas and basic concepts. The...",
+                "english_level": "0",
+                "id": 413,
+                "name": "E-Business Technologies"
+            }
+        ],
+        "currentItemCount": 19
+    }
+}
 }

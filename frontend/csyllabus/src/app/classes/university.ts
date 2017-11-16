@@ -1,13 +1,13 @@
 export class University {
   id: Number;
-  country_id: Number;
-  city_id: Number;
+  countryId: Number;
+  cityId: Number;
   name: string;
   img: string;
-	created: String;
-	modified: String;
-	faculties: Array<Object>;
-	programs: Array<Object>;
+  created: String;
+  modified: String;
+  faculties: Array<Object>;
+  programs: Array<Object>;
 }
 
 

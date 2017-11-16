@@ -1,11 +1,11 @@
 export class Faculty {
   id: Number;
-  university_id: Number;
-  city_id: Number;
+  universityId: Number;
+  cityId: Number;
   name: string;
   img: string;
-	created: String;
-	modified: String;
-	programs: Array<Object>;
+  created: String;
+  modified: String;
+  programs: Array<Object>;
 }
 

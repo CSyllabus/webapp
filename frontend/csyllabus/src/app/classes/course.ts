@@ -4,8 +4,11 @@ export class Course {
   description: String;
   ects: Number;
   semester: Number;
-  english_level: Number;
+  englishLevel: Number;
   winsum: Number;
-	created: String;
-	modified: String;
+  city: String;
+  university: String;
+  faculty: String;
+  created: String;
+  modified: String;
 }

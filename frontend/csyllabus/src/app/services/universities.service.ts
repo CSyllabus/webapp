@@ -13,7 +13,7 @@ import {University} from '../classes/university';
 export class UniversitiesService {
 
   universitiesUrl = environment.apiUrl + 'universities/';
-  citiesUrl = environment.apiUrl + 'city/';
+  citiesUrl = environment.apiUrl + 'cities/';
 
   constructor(private http: Http) {
   }

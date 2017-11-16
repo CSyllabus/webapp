@@ -13,7 +13,7 @@ import {City} from '../classes/city';
 export class CitiesService {
 
   citiesUrl = environment.apiUrl + 'cities/';
-  countriesUrl = environment.apiUrl + 'country/';
+  countriesUrl = environment.apiUrl + 'countries/';
 
   constructor(private http: Http) {
   }

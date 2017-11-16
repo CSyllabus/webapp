@@ -1,0 +1,7 @@
+{
+  "/countries/:country_id/cities" : "/cities",
+  "/cities/:city_id/universities" : "/universities",
+  "/universities/:university_id/faculties" : "/faculties",
+  "/explorer?keywords=%20web&faculty_id=1": "/courses"
+
+}

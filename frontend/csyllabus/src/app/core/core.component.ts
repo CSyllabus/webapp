@@ -8,7 +8,7 @@ import {AngularMaterialModule} from './../angular-material/angular-material.modu
 })
 export class CoreComponent implements OnInit {
   explorerResult: any;
-  backgroundImage: String;
+  backgroundImage: String = null;
 
   constructor() {
   }

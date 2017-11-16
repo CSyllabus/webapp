@@ -23,6 +23,11 @@ export class CoursesService {
       .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
+  getCourseById(id): Observable<Course> {
+    return this.http.get(this.coursesUrl + id)
+      .map(res => res.json().data.items[0] as Course).catch(this.handleError);
+  }
+
   exploreByFaculty(keywords, facultyId): Observable<any[]> {
     return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&faculty_id=' + facultyId)
       .map(res => res.json().data.items).catch(this.handleError);
