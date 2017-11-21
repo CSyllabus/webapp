@@ -36,3 +36,4 @@ class CountriesView(APIView):
         result['data'] = data
         return Response(result)
 
+

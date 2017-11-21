@@ -114,4 +114,4 @@ settings.py
 /.vs/slnx.sqlite
 .vs/
 
-backend/settings/db.py
+/backend/settings/db.py
