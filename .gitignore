@@ -113,3 +113,5 @@ settings.py
 /.vs/webapp/v15/.suo
 /.vs/slnx.sqlite
 .vs/
+
+backend/settings/db.py
