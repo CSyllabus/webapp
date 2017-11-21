@@ -6,7 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 
 import {Http, HttpModule} from '@angular/http';
-
+import {AngularMaterialModule} from '../../angular-material/angular-material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 describe('CourseComponent', () => {
   let component: CourseComponent;
   let fixture: ComponentFixture<CourseComponent>;
@@ -16,7 +17,9 @@ describe('CourseComponent', () => {
       declarations: [CourseComponent],
       imports: [
         RouterTestingModule.withRoutes([]),
-        HttpModule
+        HttpModule,
+        AngularMaterialModule,
+        BrowserAnimationsModule,
       ],
       providers: [CoursesService,
 
