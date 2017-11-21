@@ -16,7 +16,7 @@ except ImportError:
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-class CountryView(APIView):
+class CountriesView(APIView):
 
     def get(self, request):
         countries = Country.objects.all()
@@ -36,18 +36,3 @@ class CountryView(APIView):
         result['data'] = data
         return Response(result)
 
-    def post(self, request, format=json):
-        name = request.data['name']
-        country = Country.objects.create(name=name)
-        return Response()
-
-    def delete(selfself, request):
-        id = request.data['id']
-        Country.objects.filter(id=id).delete()
-        return Response()
-
-    def put(selfself, request):
-        id = request.data['id']
-        name = request.data['name']
-        Country.objects.filter(id=id).update(name=name, modified=datetime.utcnow())
-        return Response()
