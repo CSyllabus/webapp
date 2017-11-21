@@ -19,7 +19,7 @@ except ImportError:
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-class UniversityView(APIView):
+class UniversitiesView(APIView):
 
     def get(self, request, city_id):
         universities = University.objects.filter(city_id=city_id)

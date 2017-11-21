@@ -17,8 +17,9 @@ except ImportError:
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-class CityView(APIView):
+class CitiesView(APIView):
 # /country/:id/cities
+# gets list of cities for certain country
     def get(self, request, country_id):
         cities = City.objects.filter(country_id=country_id)
         result = {}
@@ -38,23 +39,3 @@ class CityView(APIView):
             result['data'] = data
 
         return Response(result)
-
-# /country/:id/cities
-  #  def post(self, request, id):
-  #      name = request.data['name']
-  #      country = Country.objects.get(id=id)
-  #      City.objects.create(name=name, country=country)
-  #      return Response()
-
-# /country/:id/cities
-  #  def delete(selfself, request):
-  #      id = request.data['id']
-  #      City.objects.filter(id=id).delete()
-  #      return Response()
-
-   # def put(selfself, request):
-   #     id = request.data['id']
-   #     name = request.data['name']
-   #     country = Country.objects.get(id=request.data['country_id'])
-   #     City.objects.filter(id=id).update(name=name, country=country, modified=datetime.utcnow())
-    #    return Response()
