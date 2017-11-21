@@ -158,7 +158,7 @@ export class ExplorerComponent implements OnInit {
     } else {
       this.explorerStarted = true;
       for (let i = 0; i < this.keyword.length; i++) {
-        keywords += ';' + this.keyword[i].name;
+        keywords += ' ;' + this.keyword[i].name;
       }
       if (this.queryFaculty) {
         this.coursesService.exploreByFaculty(keywords, this.queryFaculty.id).subscribe(courses => {
