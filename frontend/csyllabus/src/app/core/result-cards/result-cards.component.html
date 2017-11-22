@@ -6,9 +6,9 @@
   </div>
 
   <div *ngFor="let course of courses" class="courseCard col-md-4">
-    <mat-card class="example-card">
+    <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"
+        <!--<div mat-card-avatar class="example-header-image"
         style="    height: 50px;
     width: 50px;
     padding-top: 15px;
@@ -18,9 +18,9 @@
           <span style="display: inline-block;
   vertical-align: middle;
   line-height: normal;">{{course.rank * 100  | number : '1.2-2'}}
-          </span></div>
+          </span></div>-->
         <mat-card-title>
-          <p class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
+          <p   class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
         <mat-card-subtitle>
           <p class="cours-result-card-subtitle">
             <span *ngIf="course.faculty">{{course.faculty}}, </span>
@@ -31,7 +31,7 @@
       <mat-card-content>
         <p class="courseDescription">
           {{ course.short_description}}
-          <a routerLink="/course/{{course.id}}">See more..</a>
+
         </p>
       </mat-card-content>
       <mat-card-actions>

@@ -65,11 +65,13 @@ table {
     clear: both;
 }
 .logoU {
-    /* margin-top: -50px; */
-    position: absolute;
-    right: 20px;
+    margin-top: -50px;
+
+    margin-left: 75%;
+    /*position: absolute;*/
     background-color: white;
-    /* border-radius: 80px; */
-    top: 75px;
+    /*border-radius: 80px;*/
+    /*top: 0px;*/
+    border: 1px solid lightgrey;
     border: 1px solid lightgrey;
 }
