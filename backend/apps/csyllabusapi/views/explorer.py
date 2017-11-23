@@ -37,7 +37,7 @@ def explorer(request):
     except:
         city_id = None
     try:
-     faculty_id = request.query_params['faculty_id']
+        faculty_id = request.query_params['faculty_id']
     except:
         faculty_id = None
     try:
@@ -50,7 +50,12 @@ def explorer(request):
     vector = SearchVector(*['description','name'])
     query = SearchQuery(keywords)
     program_ids = []
+    courses_obj = []
     courses_ids = []
+
+    #print university_id
+
+
     if(faculty_id is not None):
         program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
     elif (university_id is not None):
@@ -60,8 +65,16 @@ def explorer(request):
     elif(country_id is not None):
         program_ids = ProgramCountry.objects.filter(country_id=country_id).values_list('program_id', flat=True)
 
-    courses_ids = CourseProgram.objects.filter(program_id__in=program_ids)
+    #for i in reversed(program_ids):
+      #  print (i)
+
+    courses_obj = CourseProgram.objects.filter(program_id__in=program_ids)
+
+    for i in courses_obj:
+        courses_ids.append(i.course_id)
+
     courses = Course.objects.filter(id__in=courses_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
+
     data = {}
     result = {}
     courseList = []
@@ -70,19 +83,30 @@ def explorer(request):
         single_course['rank'] = course.rank
         single_course['id'] = course.id
         single_course['name'] = course.name
+
         single_course['description'] = course.description
         if len(course.description) <= 203:
             single_course['short_description'] = course.description
         else:
             single_course['short_description'] = course.description[0:200]+'...'
         single_course['ects'] = course.ects
-        single_course['english_level'] = course.english_level
+        try:
+            single_course['english_level'] = course.english_level
+        except:
+            single_course['english_level'] = 1
+
         single_course['semester'] = course.semester
 
         course_program = CourseProgram.objects.filter(course_id=course.id)[0]
 
+
         if course_program is not None:
-            program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+
+            try:
+                program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+            except:
+                program_faculty = None
+            #program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
             program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
             program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
             program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
@@ -96,12 +120,16 @@ def explorer(request):
             if program_city is not None:
                 city = City.objects.filter(id = program_city.city.id)[0]
                 single_course['city'] = city.name
+
             if program_country is not None:
                 country = Country.objects.filter(id = program_country.country.id)[0]
                 single_course['country'] = country.name
         courseList.append(single_course)
+
+
     result['items'] = courseList
     result['currentItemCount'] = courses.count()
     data['data'] = result
+
 
     return Response(data)

@@ -10,11 +10,15 @@
         <app-explorer (explorerResult)="fetchExplorerResult($event)"
                       (backgroundImage)="changeBackgroundImage($event)"></app-explorer>
       </mat-tab>
-      <mat-tab label="Comparator">Content 2</mat-tab>
+      <mat-tab label="Comparator">
+        <app-comparator></app-comparator>
+      </mat-tab>
     </mat-tab-group>
   </div>
   <div id="explorer-result-component">
     <br>
     <app-result-cards [courses]="explorerResult"></app-result-cards>
+    <app-result-cards [courses]="comparatorResult"></app-result-cards>
+
   </div>
 </div>

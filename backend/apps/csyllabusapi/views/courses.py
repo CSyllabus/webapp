@@ -1,6 +1,7 @@
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 from ..models import Course
+from ..models import Program
 from ..models import ProgramFaculty
 from ..models import Faculty
 from ..models import University
@@ -47,8 +48,22 @@ class CourseView(APIView):
 
             course_program = CourseProgram.objects.filter(course_id=course.id)[0]
 
+            program_id=course_program.program_id
+
+
+
+            study_lvl = Program.objects.filter(id=program_id)[0]
+
+            one_course['study_lvl']=study_lvl.study_level
+
             if course_program is not None:
-                program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                #program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+
+                try:
+                    program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                except:
+                    program_faculty = None
+
                 program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
                 program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
                 program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
