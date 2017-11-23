@@ -29,22 +29,22 @@ export class CoursesService {
   }
 
   exploreByFaculty(keywords, facultyId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&faculty_id=' + facultyId)
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&faculty_id=' + facultyId  + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   exploreByUniversity(keywords, universityId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&university_id=' + universityId)
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&university_id=' + universityId  + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   exploreByCity(keywords, cityId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&city_id=' + cityId)
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&city_id=' + cityId  + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   exploreByCountry(keywords, countryId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&country_id=' + countryId)
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&country_id=' + countryId  + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 

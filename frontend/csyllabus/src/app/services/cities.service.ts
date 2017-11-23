@@ -24,7 +24,7 @@ export class CitiesService {
   }
 
   getCitiesByCountry(countryId): Observable<City[]> {
-    return this.http.get(this.countriesUrl + countryId + '/cities')
+    return this.http.get(this.countriesUrl + countryId + '/cities/')
       .map(res => res.json().data.items as City[]).catch(this.handleError);
   }
 
