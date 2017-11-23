@@ -24,7 +24,7 @@ export class FacultiesService {
   }
 
   getFacultiesByUniversity(universityId): Observable<Faculty[]> {
-    return this.http.get(this.universitiesUrl + universityId + '/faculties')
+    return this.http.get(this.universitiesUrl + universityId + '/faculties/')
       .map(res => res.json().data.items as Faculty[]).catch(this.handleError);
   }
 

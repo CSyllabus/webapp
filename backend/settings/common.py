@@ -9,7 +9,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 path.append(join(BASE_DIR, 'apps'))
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['localhost', 'api.csyllabus.com']
 
 DJANGO_APPS = [
     "django.contrib.admin",
@@ -48,7 +49,13 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     '127.0.0.1:4200',
     'localhost:4200',
+    'https://csyllabus.com',
+    'localhost:80',
+    'localhost:443'
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 ROOT_URLCONF = "backend.urls"
 
