@@ -3,6 +3,7 @@ import {AngularMaterialModule} from './../angular-material/angular-material.modu
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CoreComponent} from './core.component';
+import {CourseDialogComponent} from './result-cards/course-dialog/course-dialog.component';
 import {ResultCardsComponent} from './result-cards/result-cards.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ROUTES} from '.././app.routes';
@@ -15,9 +16,11 @@ import {ROUTES} from '.././app.routes';
   ],
   declarations: [
     CoreComponent,
-    ResultCardsComponent
+    ResultCardsComponent,
+    CourseDialogComponent
   ],
-  exports: [CoreComponent]
+  exports: [CoreComponent],
+  entryComponents: [CourseDialogComponent],
 })
 export class CoreModule {
 }

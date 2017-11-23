@@ -14,6 +14,14 @@
     padding-top: 2px;
     padding-bottom: 2px;
   }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .hideImg {
+    display:none;
+  }
 }
 
 .courseDescription {
@@ -23,7 +31,8 @@
 }
 
 .cours-result-card-title {
-  height: 75px;
+  /*height: 75px;*/
+  padding-bottom:15px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 18px;
@@ -44,3 +53,9 @@
   }
 }
 
+
+
+
+
+.example-card { transition: all .2s ease-in-out; }
+.example-card:hover { transform: scale(1.1); }
