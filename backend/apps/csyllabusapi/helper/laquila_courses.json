@@ -1,0 +1,520 @@
+[
+      {
+         "code": "F0081",
+         "name": "Advanced Computer Networks",
+         "description": "Reti di calcolatori Evolute: Architetture:The module presents the architectures, protocols and services of the current and future telecommunication networks. After introducing the requirements (bandwidth, real time, etc.) of voice, data and video and a brief description of the legacy PSTN (TDM) infrastructures ( originally designed only for phone services),  the main features of an integrated multiservice IP-based backbone are described. Such IP based architecture is a essential  element  for the growing digital services and applications (i.e. web 2.0, cloud computing, big data, etc.)  Among the various access networks the fixed access (i.e. ADSL, NGAN-fiber based, etc.) and mobile and wireless access are covered. Regarding the mobile technologies, the course presents the evolution from GSM/GPRS/EDGE to 3G systems (UMTS/HSPA) up to 4G-LTE architectures, services and applications. For the local environments wired (LAN) and wireless (WiFi) standards are described including the upcoming wifi-mobile integration.",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "DT0041",
+         "name": "Advanced Computer Networks: Architectures",
+         "description": "The module presents the architectures, protocols and services of the current and future telecommunication networks. After introducing the requirements (bandwidth, real time, etc.) of voice, data and video and a brief description of the legacy PSTN (TDM) infrastructures ( originally designed only for phone services),  the main features of an integrated multiservice IP-based backbone are described. Such IP based architecture is a essential  element  for the growing digital services and applications (i.e. web 2.0, cloud computing, big data, etc.)  Among the various access networks the fixed access (i.e. ADSL, NGAN-fiber based, etc.) and mobile and wireless access are covered. Regarding the mobile technologies, the course presents the evolution from GSM/GPRS/EDGE to 3G systems (UMTS/HSPA) up to 4G-LTE architectures, services and applications. For the local environments wired (LAN) and wireless (WiFi) standards are described including the upcoming wifi-mobile integration. Finally Voice over IP and audio/video streaming architectures and protocols are described.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0042",
+         "name": "Advanced Computer Networks: Internetworking",
+         "description": "This module invites students to explore the networking, routing, transport and application protocols that are used in the Internet. \nThe module encourages students to understand the key architectural issues in the design, development and implementation of Internet protocols \nusing lectures, seminars and tutorials. \nProtocol specifications and standards such as IPv6 as necessary evolution of IPv4, IntServ and DiffServ to manage the quality of service (QoS), IPsec\nto ensure security, etc. will be examined and the use of techniques such as MPLS to improve the performance of forwarding, and protocols such as \nMobile IP to manage mobility, and RTP/RSTP for Video transmission will also be investigated. \nFinally, in the light of the knowledge gained on internetworking protocols, we present some IP-based applications, such as VoIP and 6LoWPAN.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0230",
+         "name": "Advanced Models for Software Engineering",
+         "description": "Advanced Verification and Validation:This course aims to study advanced concepts in the area of software performance and reliability analysis, such as the ones related to the interpretation of analysis results. The main objective is to achieve a deep knowledge of some of the most recent techniques to address advanced problems in this area.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0289",
+         "name": "Advanced Service-Oriented Software Engineering",
+         "description": "The students will acquire the knowledge of the main service composition techniques, e.g., orchestration and choreography, and of the development environment available for them. Furthermore, they will learn the main background notions about the development of service transactions.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0319",
+         "name": "Advanced Verification and Validation",
+         "description": "This course aims to study advanced concepts in the area of software performance and reliability analysis, such as the ones related to the interpretation of analysis results. The main objective is to achieve a deep knowledge of some of the most recent techniques to address advanced problems in this area.",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "DT0209",
+         "name": "Advanced Web Development",
+         "description": "The course aims to provide advanced knowledge of some relevant arguments in the development of web applications.",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "F0131",
+         "name": "Algorithms and Data Structures",
+         "description": "To provide the students with competences about main data structures and algorithms, and to make them learn how to analyze the computational complexity of algorithms and problems. Finally, to develop an intuition about how to solve efficiently a computational problem.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F0130",
+         "name": "Algorithms And Data Structures With Laboratory",
+         "description": "Algoritmi e Strutture Dati:To provide the students with competences about main data structures and algorithms, and to make them learn how to analyze the computational complexity of algorithms and problems. Finally, to develop an intuition about how to solve efficiently a computational problem.\nLaboratorio di Algoritmi e Strutture Dati:This module invites students to study and implement the most important algorithms and data structures for information processing. The module focuses on techniques for the design and analysis of efficient algorithms, emphasizing methods useful in practice. Topics include lists, stacks, queues, trees, heaps and priority queues, binary search trees (including red-black), union-find for disjoint sets and graphs (including both array-based and linked representations) and evaluation of classic algorithms that use these structures for tasks such as sorting and searching. The module encourages students to develop implementations using the Java language, understand their performance char",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "F0175",
+         "name": "Analysis and Testing of Component-based Systems",
+         "description": "KNOWLEDGE: \nThis course introduces advanced concepts on Software Architecture. The first part of this course will provide advanced basic and advanced knowledge on software architecture, together with examples, and with a specific focus on architecture description language, and multi-view modeling. The second part will focus on architectural design decisions, architectural patterns, and architecture for adaptive systems. \nAn objective is also to gain familiarity with software languages and tools which make easier the specification of component-based systems and architectures\n\nABILITY (ability to do): \nFrom the perspective of the \"ability students will gain\", the main objective of this course is to acquire a good knowledge on both theory and practice of Software Architecture and their usage in practice. At the end of this course, students will be able to correctly model a Software Architecture by using the appropriate tools.Through projects, students will practice the theoretical concepts previously described. \n\nBEHAVIOR (ability to be): \nat the end of the learning process, the students will be conscious of how architectural choices impact on the quality of the developed software system.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0171",
+         "name": "Artificial Intelligence",
+         "description": "The course aims at providing knowledge on basic concepts of Artificial Intelligence and heuristic programming.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0173",
+         "name": "Autonomous Networks",
+         "description": "Non-cooperative networks:The course is focused on the algorithmic aspects of non-cooperative networks, where selfish agents own network components and influence through their rational but self-interested behaviour the quality of implemented solution. The set of topics analyzed ranges from the study of the equilibria space of classic network games, up to algorithmic mechanism design for classic network optimization problems.\nSocial Networks:The course investigates how the social, technological, and natural worlds are connected, and how the study of graphs and networks sheds light on these connections. Particular topics include: how opinions, fads, and political movements spread through society, the theory behind strong and weak ties in relationships, and the small-world phenomenon. Students will learn to use models and theory to explain and exploit the structure of information and social networks.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0226",
+         "name": "Autonomous Software & Service Engineering",
+         "description": "Software Engineering For Autonomous Systems:Systems that can change their behaviour in response to unanticipated events during operation are called “autonomous”.  Unlike more traditional systems that\nhave predefined purposes, autonomous systems are able to tailor their behaviour and operations in accordance with the circumstances they find. Engineering autonomous systems is a challenging task involving several theoretical foundations and application fields (e.g., self-adaptiveness, machine learning, sensor networks, control engineering, and artificial intelligence). \nThis course aims at introducing the fundamental concepts related to the development of autonomous systems from a software engineering perspective. Various methods and techniques currently applied in the design of autonomous systems are shown. Self-* attributes of autonomous systems, architectures, models, and languages are presented in order to show the technical viability of systems that can dynamically adapt their behaviour to varying operati",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "DS9001",
+         "name": "Bioinformatics",
+         "description": "The course introduces the bioinformatics by identifying the principal problems and solutions the algorithms can deal with and provide, respectively.\nMoreover, it provides an overview of the main on-line Data bases on biology data and presents their structures and the services they provide to end users.\nFinally, an introduction to system biology is given, focusing on computer science formal tools (such as, petri nets) that can be used to model biology phenomena or systems.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "F0141",
+         "name": "Combinatorial Optimization",
+         "description": "Learn algorithmic techniques for some combinatorial optimization problems. Being able to formulate and solve combinatorial optimization problems using integer linear programming. Understand the complexity of the problems studied.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0275",
+         "name": "Compiler Laboratory",
+         "description": "The course presents the tools for the automatic generation of the lexical and syntactic analysis parts of the compiling process",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "F0151",
+         "name": "Compilers",
+         "description": "The course is an introduction in compiler design and presents the main principles and techniques used during the compilation process, focusing on the analysis phases of a compiler",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0170",
+         "name": "Computational Intelligence",
+         "description": "Artificial Intelligence:The course aims at providing knowledge on basic concepts of Artificial Intelligence and heuristic programming.\nIntelligent Autonomous Agents:The huge pervasive success of Artificial Intelligence (AI) is evident to everybody. Autonomous Intelligent Agents, that can operate either on behalf of a user or according to their own objectives, are crucial in the construction of AI systems. Agents interact autonomously with users or among themselves, are able to perform complex reasoning tasks and to exploit and control machine learning activities. Agents drive cars, control medical appliances and procedures, and constitute the \"brain\" of intelligent Robots. All in all, the life of everybody will soon very widely depend upon Intelligent Agents. So, this is a crucial technology for every kind of perspective innovative applications, that a Computer Scientist should know and should be able to develop. Following this Course, a student will learn the main topics related to Intelligent Autonomous Sof",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "F1I005",
+         "name": "Computer Architectures",
+         "description": "Knowledge of the computer architecture. Ability to analyze and devise combinatorial and sequential modules. Ability to individuate and dimension the fundamental  computer components. Knowledge of the basic set of machine instructions and their execution modalities.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F1I010",
+         "name": "Computer Architectures Lab",
+         "description": "This Course provides the students with the intermediate knowledge of imperative programming, of memory management techniques, of assembly language programming and related technologies, and of machine languages. At the end of the course the students will understand non-elementary programs written with an imperative programming language, will be able to realize constructs of a high level programming language with machine language instructions, and to understand and use the technology underlying a programming language. The students are expected to develop capacities for being attentive to details in algorithms implementation, to program portability, to the respect of programming languages standards and rules, as well as for looking for efficient implementations of algorithms.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0199",
+         "name": "Computer Forensics",
+         "description": "Transfer the techniques and knowledge for manage the Computer Forensics scenario",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "F0144",
+         "name": "Computer Networks",
+         "description": "The course is designed to teach students fundamentals of analysis and design of computer networks. \nIntroduction to the basic concepts of computer and communication networks, like flow control, congestion control, end-to-end reliability, routing, framing, error-recovery, multiple access and statistical multiplexing. In-depth presentation of the different networking layers, with emphasis on the Internet reference model. Protocols and architectures such as the TCP, IP, Ethernet, wireless networks etc. are described in order to illustrate important networking concepts.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0178",
+         "name": "Data Analytics",
+         "description": "Learn fundamental techniques to examine raw data with the purpose of drawing data-driven decisions.",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "DT0177",
+         "name": "Data Analytics and Data Driven Decision",
+         "description": "Data Analytics:Learn fundamental techniques to examine raw data with the purpose of drawing data-driven decisions.\nData Driven Decision:The module deals with the main methods for supervised and non-supervised learning. Particular attention will be given to the statistical foundations of learning. The most established techniques to extract information from data to orient decisions will be treated both in their theoretical motivations and in their practical details. Open source tools will support the course step by step, providing continuous verification of the material.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "F0136",
+         "name": "Data Bases with Lab",
+         "description": "Integrated Course, composed of two modules: Databases and Lab. The Course objective is to provide knowledge and competences, both theoretical and practical, about databases and their applications, with attention to future developments (advanced databases). \nLaboratorio di Basi di Dati:Following this course, the students will integrate and complete their knowledge of the formal models used in the database design process (entity-relationship, relational, etc), viewing them applied to real case studies. They will learn how to interact with the most common DBMS systems through the SQL language and the interfaces supplied by the programming languages. Finally, the students will be involved in the entire development  process of a complete database, starting from the stakeholder's specifications and going through the conceptual and logical design phases to the implementation of the requested functionalities and of the user interface.\nBasi di Dati:Following this course, the students will:\nunderstand what is a database, from the conceptual, mathematical and practical points of view; become able to develop the conceptual and logical design of a relational database,\nincluding both the structure and the operations; understand the basic functionalities of a DBMS (Data Base",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0179",
+         "name": "Data Driven Decision",
+         "description": "The module deals with the main methods for supervised and non-supervised learning. Particular attention will be given to the statistical foundations of learning. The most established techniques to extract information from data to orient decisions will be treated both in their theoretical motivations and in their practical details. Open source tools will support the course step by step, providing continuous verification of the material.",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "F0137",
+         "name": "Databases",
+         "description": "Following this course, the students will:\nunderstand what is a database, from the conceptual, mathematical and practical points of view; become able to develop the conceptual and logical design of a relational database,\nincluding both the structure and the operations; understand the basic functionalities of a DBMS (Data Base Management System); acquire notions about advanced aspects and future directions of the filed.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0210",
+         "name": "Description Logics and Web Ontologies",
+         "description": "The Semantic Web is a huge successful effort to enhance the current web so that computers can process the information presented on the web, interpret and connect it; this in order to allow applications, on behalf of humans users, to identify and obtain the required knowledge. In the same way as the web is a huge distributed hypertext system, Semantic Web is intended to form a huge distributed knowledge based system. Ontology languages allow to define such knowledge bases, called \"Ontologies\", that are used for sharing knowledge between different systems, and between human users and computers. Ontologies are nowadays the most important way of expressing data, and are employed not only for the Semantic Web, but for every kind of application, including those in Advanced Databases, Bioinformatics, Artificial Intelligence and Robotics. Objective of this Course is to make students able to understand the Semantic Web, to know and use in practice the main Semantic Web languages and to understand their semantics (which is based on Description Logics).",
+         "term": "1",
+         "credits": "3"
+      },
+      {
+         "code": "F0123",
+         "name": "Discrete Mathematics",
+         "description": "Matematica Discreta I:The goal of this course is to expose the main concrete techniques in linear algebra (matrices, systems, determinants, vector spaces and linear maps) and to show the first strategies in abstract algebra.\nMatematica Discreta II:LOGIC: The goal of this Module is to provide  the motivations, definitions and techniques in support of the usefulness of logic in the effective and efficient modeling of data and knowledge. \nThis Module is an introduction to mathematical logic and covers elementary discrete mathematics for computer science. \nOn successful completion of this module, the student should understand the fundamental concepts of mathematical logic and should be aware of potential applications in computing, including the limitations of algorithms.\nGEOMETRY: The goals of this Module are to introduce students to the terminology and theorems of plane and solid geometry, and to apply algebraic, spatial, and logical reasoning to solve geometry problems.\nThis Module covers the fundamental co",
+         "term": "2",
+         "credits": "12"
+      },
+      {
+         "code": "FN",
+         "name": "Discrete Mathematics I",
+         "description": "The goal of this course is to expose the main concrete techniques in linear algebra (matrices, systems, determinants, vector spaces and linear maps) and to show the first strategies in abstract algebra.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "FN",
+         "name": "Discrete Mathematics II",
+         "description": "LOGIC: The goal of this Module is to provide  the motivations, definitions and techniques in support of the usefulness of logic in the effective and efficient modeling of data and knowledge. \nThis Module is an introduction to mathematical logic and covers elementary discrete mathematics for computer science. \nOn successful completion of this module, the student should understand the fundamental concepts of mathematical logic and should be aware of potential applications in computing, including the limitations of algorithms.\nGEOMETRY: The goals of this Module are to introduce students to the terminology and theorems of plane and solid geometry, and to apply algebraic, spatial, and logical reasoning to solve geometry problems.\nThis Module covers the fundamental concepts of Linear Algebra and its role in describing geometric settings.\nOn successful completion of this module, the student will develop spatial sense, visualize and represent geometric figures , explore transformations of geometric figures, understand and apply geometric properties and relationships, synthesize geometric concepts into algebraic, functional, and problem-solving activities.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0168",
+         "name": "Distributed Systems",
+         "description": "The course provides the foundations for designing and analyzing (distributed) algorithms for reliable, faulty, concurrent, and adversarial distributed systems.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0166",
+         "name": "Distributed Systems and Web Algorithms",
+         "description": "Web Algorithms:Knowledge of advanced algorithmic techniques; ability to individuate, formalize and solve optimization problems; concept of approximation; knowledge of the web search and sponsored web search strategies in search engines; ability to collaborate for the realization of applicative projects in group.\nDistributed Systems:The course provides the foundations for designing and analyzing (distributed) algorithms for reliable, faulty, concurrent, and adversarial distributed systems.",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "F0633",
+         "name": "English Language Level B1",
+         "description": "Besides presenting the grammar structures at a B1 level, students will be introduced to the IT specific language.",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "DT0323",
+         "name": "Financial Data Analytics and Investment Data Driven Decisions",
+         "description": "Financial Data Analytics and Investment Data Driven Decisions I:The students quantitative and programming capabilities are applied to asset pricing and positive (economics) portfolio selection corporate finance modelling. \nFinancial Data Analytics and Investment Data Driven Decisions II:The students quantitative and programming capabilities are applied to normative asset pricing and positive portfolio selection modelling.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0321",
+         "name": "Financial Data Analytics and Investment Data Driven Decisions I",
+         "description": "The students quantitative and programming capabilities are applied to asset pricing and positive (economics) portfolio selection corporate finance modelling.",
+         "term": "NULL",
+         "credits": "3"
+      },
+      {
+         "code": "DT0322",
+         "name": "Financial Data Analytics and Investment Data Driven Decisions II",
+         "description": "The students quantitative and programming capabilities are applied to normative asset pricing and positive portfolio selection modelling.",
+         "term": "2",
+         "credits": "3"
+      },
+      {
+         "code": "F0196",
+         "name": "Foundations of Computer Science II",
+         "description": "The course offers students an in-depth overview of automata and formal language theory, and an introduction to non linear languages",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F0050",
+         "name": "Foundations Of Programming And Laboratory",
+         "description": "Laboratorio di Programmazione I:The goal of this course is to introduce the basic notions of imperative and object-oriented programming. On successful completion of this module, the student should be able to solve simple problems, implement the related algorithms in a structured programming language, and use a computer to run simple programs.\nFondamenti di Programmazione:This course introduces essentials of programming languages. Students, applying rules of  Syntax and Semantics, develop the skills in program design, implementation and debugging to solve computational problems in programming languages. The course focuses in particular on the Operational Semantics of a subset of the Java Programming Language.",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "F1I057",
+         "name": "Foundations of Programming Languages",
+         "description": "This course introduces essentials of programming languages. Students, applying rules of  Syntax and Semantics, develop the skills in program design, implementation and debugging to solve computational problems in programming languages. The course focuses in particular on the Operational Semantics of a subset of the Java Programming Language.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DS9003",
+         "name": "Information Systems and Network Security",
+         "description": "It has become nearly impossible to live in today's society and to be not dependent on information systems of one type or another. This course provides an introduction to Information Systems and Network Security.\nThe main objective is to provide students with an overall understanding of the main concepts of information systems and network security, to highlight their increasing importance in modern organizations and societies and to emphasize the ethical, social and security implications.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F0158",
+         "name": "Information Theory",
+         "description": "Knowledge of the fondamental concepts of Information Theory and ability to manipulate them\n formally. \nDeep understanding of common-sense concepts like \"information\", \"representation\", \n\"learning\", \"model\". Ability to translate intuitive solutions constructed with such concepts into \nconcrete applications in different technological areas",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0172",
+         "name": "Intelligent Autonomous Agents",
+         "description": "The huge pervasive success of Artificial Intelligence (AI) is evident to everybody. Autonomous Intelligent Agents, that can operate either on behalf of a user or according to their own objectives, are crucial in the construction of AI systems. Agents interact autonomously with users or among themselves, are able to perform complex reasoning tasks and to exploit and control machine learning activities. Agents drive cars, control medical appliances and procedures, and constitute the \"brain\" of intelligent Robots. All in all, the life of everybody will soon very widely depend upon Intelligent Agents. So, this is a crucial technology for every kind of perspective innovative applications, that a Computer Scientist should know and should be able to develop. Following this Course, a student will learn the main topics related to Intelligent Autonomous Software, Robotic Agents and Multi-Agent Systems (MAS). The student will be able to understand Agent-related: Architectures; Formalisms; Languages; Implementations; Knowledge Representation Issues. The student will also learn (hands-on) how to design and implement Intelligent Agents and MAS based on Computational Logic, and will experiment in practice how to build significant applications. The necessary software platforms will be distributed for free to all students attending the Course. Group-work is strongly encouraged in the practical part of the Course.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0201",
+         "name": "Intelligent Systems And Robotics Laboratory",
+         "description": "The future master graduate on ICT will have a hands-on experience with a project involving most of the technologies of the sector, with particular focus on cognitive robotics.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F0150",
+         "name": "Introduction to Computability and Complexity",
+         "description": "The course aims to provide motivation , definitions and basic techniques of the Theory of Computability \nand of the Complexity Theory . At the end of the course, after passing the exam, the student must \nbe able to know the notion of algorithm and several of its equivalent formulations. The student must also \nknow the boundaries of this notion. The student must know the main classes of languages and their main properties \nboth in theory of  Computability and in Complexity Theory. The student must also know the main \ntechniques used in these theories, such as the techniques of diagonalization, the notion of reduction and \nof polynomial reduction.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "F1I056",
+         "name": "Introduction to Programming",
+         "description": "The goal of this course is to introduce the basic notions of imperative and object-oriented programming. On successful completion of this module, the student should be able to solve simple problems, implement the related algorithms in a structured programming language, and use a computer to run simple programs.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F0132",
+         "name": "Lab. Of Algorithms And Data Structures",
+         "description": "This module invites students to study and implement the most important algorithms and data structures for information processing. The module focuses on techniques for the design and analysis of efficient algorithms, emphasizing methods useful in practice. Topics include lists, stacks, queues, trees, heaps and priority queues, binary search trees (including red-black), union-find for disjoint sets and graphs (including both array-based and linked representations) and evaluation of classic algorithms that use these structures for tasks such as sorting and searching. The module encourages students to develop implementations using the Java language, understand their performance characteristics, and estimate their potential effectiveness in applications using lectures and exercises.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F1I016",
+         "name": "Lab. of Databases",
+         "description": "Following this course, the students will integrate and complete their knowledge of the formal models used in the database design process (entity-relationship, relational, etc), viewing them applied to real case studies. They will learn how to interact with the most common DBMS systems through the SQL language and the interfaces supplied by the programming languages. Finally, the students will be involved in the entire development  process of a complete database, starting from the stakeholder's specifications and going through the conceptual and logical design phases to the implementation of the requested functionalities and of the user interface.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0176",
+         "name": "Machine Learning",
+         "description": "Knowledge of main machine learning techniques and their applications to problems of supervised and unsupervised learning.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0002",
+         "name": "Mathematical Analysis",
+         "description": "To give students a rigorous understanding of the theory of real- and vector-valued functions. Students will acquire an understanding of basic properties of the field of real numbers, concepts of infinity, limits of functions and methods for calculating them, continuity, differentiation, integration and Taylor series.",
+         "term": "1",
+         "credits": "9"
+      },
+      {
+         "code": "F1081",
+         "name": "Mobile applications development",
+         "description": "The focus of Mobile Applications Development is on understanding the mobile applications development problem space, how to effectively design a business-ready mobile app, and how to correctly implement it.\n\nThe focus of Mobile Applications Development is on understanding the mobile applications development problem space, how to effectively design a business-ready mobile app, and how to correctly implement it.\n\nThe course is intended to cover the following topics:\n\n- Understanding of the mobile ecosystem, platforms and strategies\n- Mobile information architecture and UI Design\n- Mobile app distribution and monetization\n- Web technologies for mobile app development (HTML5, CSS3, JQuery, and other frameworks)\n- Data management (local data storage, REST APIs, server-side data storage)\n- Geolocalization and mapping\n- Accessing the device capabilities (camera, accelerometer, contacts, messaging, etc.)\n- Security and user authentication\n- Mobile app Debugging",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0225",
+         "name": "Model-Driven Engineering and Formal Methods",
+         "description": "Formal Methods:The goal of this course is to introduce symbolic techniques for the specification and verification of systems properties based on equational reasoning and theorem proving. On successful completion of this course, the student should understand the basic notions of first-order rewriting and logic, and be able to reason on properties of terms by means of symbolic manipulation modulo an equational theory or the deduction rules of a given logic.",
+         "term": "2",
+         "credits": "12"
+      },
+      {
+         "code": "DT0320",
+         "name": "Models and Algorithms for Financial Management",
+         "description": "The students quantitative and programming capabilities are applied to corporate finance modelling. To be specific, the course will focus on capital budgeting models, i.e. the choice of industrial investment projects, in both a deterministic and a stochastic framework.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F0062",
+         "name": "Network Design",
+         "description": "Network Optimization:Ability to recognize and model network optimization problems as Integer Linear Programming problems.\nKnowledge of fundamental algorithmic techniques for solving large scale Integer Linear Programming problems.\nKnowledge of commercial and open source  Integer Linear Programming solvers.\nProgetto e Ottimizzazione di Reti:Ability to recognize and formulate network flow problems\nKnowledge of basic and advanced network flow algorithms \nAbility to design resolution approaches to solve non standard network flow problems",
+         "term": "2",
+         "credits": "12"
+      },
+      {
+         "code": "DT0058",
+         "name": "Network design",
+         "description": "Network Optimization:Ability to recognize and model network optimization problems as Integer Linear Programming problems.\nKnowledge of fundamental algorithmic techniques for solving large scale Integer Linear Programming problems.\nKnowledge of commercial and open source  Integer Linear Programming solvers.\nNetwork Flows:Ability to recognize and formulate network flow problems\nKnowledge of basic and advanced network flow algorithms \nAbility to design resolution approaches to solve non standard network flow problems",
+         "term": "2",
+         "credits": "12"
+      },
+      {
+         "code": "DT0060",
+         "name": "Network Optimization",
+         "description": "Ability to recognize and model network optimization problems as Integer Linear Programming problems.\nKnowledge of fundamental algorithmic techniques for solving large scale Integer Linear Programming problems.\nKnowledge of commercial and open source  Integer Linear Programming solvers.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0174",
+         "name": "Non-cooperative networks",
+         "description": "The course is focused on the algorithmic aspects of non-cooperative networks, where selfish agents own network components and influence through their rational but self-interested behaviour the quality of implemented solution. The set of topics analyzed ranges from the study of the equilibria space of classic network games, up to algorithmic mechanism design for classic network optimization problems.",
+         "term": "1",
+         "credits": "3"
+      },
+      {
+         "code": "F1I020",
+         "name": "Operating Systems",
+         "description": "KNOWLEDGE: basic concepts common to all the operating systems, mechanisms and policies of operating systems, system overhead vs solution efficiency tradeoff SKILLS : ability to relate different topics, ability to solve problems never faced in classroom, but solvable through logic deductions and reasoning (i.e., ability to analyze and synthesize concepts), ability to work during the course time and do not delaying the refinement of the knowledge, improved ability to pose questions in the classroome to originate discussion EXPECTED BEHAVIORS : interest for an integrated knowledge of different aspects of computer science, awareness of relationships among computer subsystems, hence awareness of the fact that a satisfactory behavior of a computer may derive from the combination of very different (sometimes unexpected) factors.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "F1I021",
+         "name": "Operating Systems Laboratory",
+         "description": "The objective of this course is to provide a complete introduction to Unix-like systems. Contents are organized as follow:\n\nPART I - UNIX System Architecture\n\nPART II - Command Line (Bash shell)\n\nPART III - Bash Scripting\n\nPART IV - Programming in UNIX-like Environment\n\nThe course offers a basic, yet complete, knowledge of the following practical aspects: Unix-like systems architecture, command line interaction, shell scripting, files and directories, system calls, system-programming, process management, and concurrent programming.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0009",
+         "name": "Operating Systems wth Lab",
+         "description": "Sistemi Operativi:KNOWLEDGE: basic concepts common to all the operating systems, mechanisms and policies of operating systems, system overhead vs solution efficiency tradeoff SKILLS : ability to relate different topics, ability to solve problems never faced in classroom, but solvable through logic deductions and reasoning (i.e., ability to analyze and synthesize concepts), ability to work during the course time and do not delaying the refinement of the knowledge, improved ability to pose questions in the classroome to originate discussion EXPECTED BEHAVIORS : interest for an integrated knowledge of different aspects of computer science, awareness of relationships among computer subsystems, hence awareness of the fact that a satisfactory behavior of a computer may derive from the combination of very different (sometimes unexpected) factors.\nLaboratorio di Sistemi Operativi:The objective of this course is to provide a complete introduction to Unix-like systems. Contents are organized as follow:\n\nPART I - UNIX",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "F0139",
+         "name": "Operation Research And Optimization",
+         "description": "Ricerca Operativa:Introduce the student to the formulation of basic Optimization problems, particularly Linear Optimization problems, and train him/her to the related solution algorithms.\n\nOttimizzazione Combinatoria:Learn algorithmic techniques for some combinatorial optimization problems. Being able to formulate and solve combinatorial optimization problems using integer linear programming. Understand the complexity of the problems studied.",
+         "term": "2",
+         "credits": "12"
+      },
+      {
+         "code": "F0140",
+         "name": "Operations Research",
+         "description": "Introduce the student to the formulation of basic Optimization problems, particularly Linear Optimization problems, and train him/her to the related solution algorithms.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "F0143",
+         "name": "Physics",
+         "description": "The goal of the course is to provide the students with knowledge of basic principles of the mechanics with particular regard to the concepts of force, energy and wave propagation; and with the  ability (through classroom excercises and homeworks) to schematize  a natural phenomenon, to apply the proper physical laws, and to critically evaluate the results.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0003",
+         "name": "Probability And Mathematical Statistics",
+         "description": "An introduction to the theory of probability up to the weak law of large numbers",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0206",
+         "name": "Research Methodologies",
+         "description": "Upon completing the course, the students will be aware of the various kinds of research methods. They will be able to create a research plan, design and conduct experimental studies for computer science with particular focus on Software Engineering, write in academic style, and give presentations of scientific works. Furthermore, upon completing the course, the students will be developed a practical experience in carrying on research and development activities in the domain of Automated Software Composition and Service-based Systems Development.\nIntroduction to research:At the end of the course the student will have a basic knowledge about the process of doing research in the context of Computer Science, and in particular in the domain of Software Engineering.\nResearch Project:Goal of this course is to instruct the students on empirical research topics, and to some methods such as systematic literature reviews, scientific questionnaires, and research article comprehension and analysis",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0175",
+         "name": "Social Networks",
+         "description": "The course investigates how the social, technological, and natural worlds are connected, and how the study of graphs and networks sheds light on these connections. Particular topics include: how opinions, fads, and political movements spread through society, the theory behind strong and weak ties in relationships, and the small-world phenomenon. Students will learn to use models and theory to explain and exploit the structure of information and social networks.",
+         "term": "1",
+         "credits": "3"
+      },
+      {
+         "code": "DT0222",
+         "name": "Software Architectures & Quality Engineering",
+         "description": "Software Quality Engineering:This course aims to more deeply explore some of the concepts covered during the course of Software Engineering Basics and to introduce new concepts. In particular, this course deals with: non-functional properties of software architecture (such as reliability and performance), with a particular emphasis on their quantitative assessment. It intends to let the student acquiring not only software modeling and analysis skills, through the use of tools that support these activities, but it also aims at developing the student ability to adapt to different tools and to interpret the results that these tools can offer.",
+         "term": "1",
+         "credits": "12"
+      },
+      {
+         "code": "F1I018",
+         "name": "Software Engineering",
+         "description": "This Module provides the students with an excellent education incorporating industry-relevant, applied laboratory-based instruction in both the theory and application of software engineering. The deep theoretical knowledge and the  practical experience in the Lab sessions aim to prepare the students for productive careers in industry and government and to enable them to meet current and future industrial challenges and emerging software trends",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0227",
+         "name": "Software Engineering for Autonomous Systems",
+         "description": "Systems that can change their behaviour in response to unanticipated events during operation are called “autonomous”.  Unlike more traditional systems that\nhave predefined purposes, autonomous systems are able to tailor their behaviour and operations in accordance with the circumstances they find. Engineering autonomous systems is a challenging task involving several theoretical foundations and application fields (e.g., self-adaptiveness, machine learning, sensor networks, control engineering, and artificial intelligence). \nThis course aims at introducing the fundamental concepts related to the development of autonomous systems from a software engineering perspective. Various methods and techniques currently applied in the design of autonomous systems are shown. Self-* attributes of autonomous systems, architectures, models, and languages are presented in order to show the technical viability of systems that can dynamically adapt their behaviour to varying operating conditions, delivering the appropriate application level response under these different conditions. Concrete examples of autonomous systems in the domains of Internet of Things, Cyber-Physical Systems, and unmanned vehicles are given.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0204",
+         "name": "Software Quality Engineering",
+         "description": "This course aims to more deeply explore some of the concepts covered during the course of Software Engineering Basics and to introduce new concepts. In particular, this course deals with: non-functional properties of software architecture (such as reliability and performance), with a particular emphasis on their quantitative assessment. It intends to let the student acquiring not only software modeling and analysis skills, through the use of tools that support these activities, but it also aims at developing the student ability to adapt to different tools and to interpret the results that these tools can offer.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0269",
+         "name": "Theory of Languages",
+         "description": "The course offers students an in-depth overview of formal language theory",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "DT0167",
+         "name": "Web Algorithms",
+         "description": "Knowledge of advanced algorithmic techniques; ability to individuate, formalize and solve optimization problems; concept of approximation; knowledge of the web search and sponsored web search strategies in search engines; ability to collaborate for the realization of applicative projects in group.",
+         "term": "1",
+         "credits": "6"
+      },
+      {
+         "code": "DT0180",
+         "name": "Web Engineering",
+         "description": "The course aims to provide basic knowledge about all the kinds of web application and the technologies used to implement them. After an in-depth study of base technologies such as XML, markup languages (HTML 4 and HTML 5) and style sheets, the course will focus on server-side and client-side programming languages, in particular Java and JavaScript. Finally, we will discuss accessibility and validation issues for web applications.",
+         "term": "2",
+         "credits": "6"
+      },
+      {
+         "code": "F0149",
+         "name": "Web Technologies",
+         "description": "The main objectives is to provide the students with the insights of the Internet programming and how to design and implement \ncomplete realistic-scale distributed applications on the web. At the end of the course, the students will be familiar with \ndesign-methodologies necessary for managing the problem complexity, client-side programming, server-side programming, \ndatabase connectivity. Moreover, they will be proficient in using the following languages, systems, and techniques: HTML/CSS, \nDOM, JavaScript, jQuery, PHP, MySQL, Templating, beContent, etc",
+         "term": "1",
+         "credits": "6"
+      }
+]
