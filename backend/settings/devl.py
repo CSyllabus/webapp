@@ -13,12 +13,12 @@ DEBUG = True
 INTERNAL_IPS = ['192.168.56.1']
 
 INSTALLED_APPS += (
-    'autofixture',
-    'csyllabusapi',
-    'django.contrib.postgres',
-    'corsheaders'
+   'autofixture',
+   'csyllabusapi',
+   'django.contrib.postgres',
+   'corsheaders'
 )
 
 STATICFILES_DIRS.append(
-    os.path.join(BASE_DIR, os.pardir, 'frontend', 'build'),
+   os.path.join(BASE_DIR, os.pardir, 'frontend', 'build'),
 )
