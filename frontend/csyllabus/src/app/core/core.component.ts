@@ -9,11 +9,17 @@ import {AngularMaterialModule} from './../angular-material/angular-material.modu
 export class CoreComponent implements OnInit {
   explorerResult: any;
   backgroundImage: String = null;
+  explorerTab: boolean;
+  comparatorTab: boolean;
+
+
 
   constructor() {
   }
 
   ngOnInit() {
+    this.explorerTab=true;
+    this.comparatorTab=false;
   }
 
   changeBackgroundImage($event) {
@@ -31,6 +37,17 @@ export class CoreComponent implements OnInit {
       });
     }, 100);
 
+  }
+
+  changeResultCard ($event: any){
+    if($event.index==1){
+      this.explorerTab=false;
+      this.comparatorTab=true;
+    }
+    else {
+      this.explorerTab=true;
+      this.comparatorTab=false;
+    }
 
   }
 }

@@ -19,8 +19,31 @@ except ImportError:
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-class UniversitiesView(APIView):
 
+class UniversitiesViewAll(APIView):
+    def get(self, request):
+        universities = University.objects.all()
+        data = {}
+        result = {}
+        universitiesList = []
+        for university in universities:
+            one_university = {}
+            one_university['id'] = university.id
+            one_university['name'] = university.name
+            # one_university['img'] = university.img
+            one_university['modified'] = university.modified
+            one_university['created'] = university.created
+            universitiesList.append(one_university)
+        data['currentItemCount'] = universities.count()
+        data['items'] = universitiesList
+        result['data'] = data
+        return Response(result)
+
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+
+class UniversitiesView(APIView):
     def get(self, request, city_id):
         universities = University.objects.filter(city_id=city_id)
         result = {}
@@ -41,6 +64,10 @@ class UniversitiesView(APIView):
         data['currentItemCount'] = universities.count()
         result['data'] = data
         return Response(result)
+
+
+
+
 
 
     #def post(self, request):

@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {CoreComponent} from './core.component';
 import {CourseDialogComponent} from './result-cards/course-dialog/course-dialog.component';
 import {ResultCardsComponent} from './result-cards/result-cards.component';
+import {ResultCardsComparatorComponent} from './result-cards-comparator/result-cards-comparator.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ROUTES} from '.././app.routes';
 @NgModule({
@@ -19,6 +20,7 @@ import {ROUTES} from '.././app.routes';
   declarations: [
     CoreComponent,
     ResultCardsComponent,
+    ResultCardsComparatorComponent,
     CourseDialogComponent
   ],
   exports: [CoreComponent],

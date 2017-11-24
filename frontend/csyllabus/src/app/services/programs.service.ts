@@ -13,6 +13,7 @@ import {Program} from '../classes/program';
 export class ProgramsService {
 
   programsUrl = environment.apiUrl + 'programs/';
+  programsFaculties = environment.apiUrl + 'faculties/';
 
   constructor(private http: Http) {
   }
@@ -21,6 +22,12 @@ export class ProgramsService {
     return this.http.get(this.programsUrl)
       .map(res => res.json().data.items as Program[]).catch(this.handleError);
   }
+
+  getProgramsByFaculty(facultyId): Observable<Program[]> {
+    return this.http.get(this.programsFaculties + facultyId + /programs/)
+      .map(res => res.json().data.items as Program[]).catch(this.handleError);
+  }
+
 
 
   private handleError(error: any) {

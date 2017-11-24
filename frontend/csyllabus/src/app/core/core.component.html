@@ -5,7 +5,7 @@
     <h2>Global Computer Science Repository</h2>
   </div>
   <div class="container" align="center">
-    <mat-tab-group>
+    <mat-tab-group (selectedTabChange)="changeResultCard($event)">
       <mat-tab label="Explorer">
         <app-explorer (explorerResult)="fetchExplorerResult($event)"
                       (backgroundImage)="changeBackgroundImage($event)"></app-explorer>
@@ -17,8 +17,8 @@
   </div>
   <div id="explorer-result-component">
     <br>
-    <app-result-cards [courses]="explorerResult"></app-result-cards>
-    <app-result-cards [courses]="comparatorResult"></app-result-cards>
+    <app-result-cards *ngIf="explorerTab" [courses]="explorerResult"></app-result-cards>
+    <app-result-cards-comparator *ngIf="comparatorTab" [courses]="comparatorResult"></app-result-cards-comparator>
 
   </div>
 </div>
