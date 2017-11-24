@@ -8,3 +8,4 @@ from .faculties import *
 from .explorer import *
 from .courses import *
 from .programs import *
+from .comparator import *
