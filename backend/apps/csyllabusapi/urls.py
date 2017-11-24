@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^cities/(?P<city_id>[^/]+)/universities', views.UniversitiesView.as_view(), name='universities'),
     url(r'^universities/(?P<university_id>[^/]+)/faculties', views.FacultyView.as_view(), name='faculties'),
     url(r'^explorer', views.explorer, name='explorer'),
+    url(r'^comparator', views.comparator, name='comparator'),
 
 ]

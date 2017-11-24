@@ -7,3 +7,4 @@ from .university import *
 from .faculties import *
 from .explorer import *
 from .courses import *
+from .comparator import *
