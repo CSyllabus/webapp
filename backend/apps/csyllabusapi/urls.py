@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^faculties/(?P<faculty_id>[^/]+)/programs', views.ProgramView.as_view(), name='programs'),
     url(r'^universities/(?P<university_id>[^/]+)/programs', views.ProgramUnivView.as_view(), name='programs'),
     url(r'^explorer', views.explorer, name='explorer'),
+    url(r'^comparator', views.comparator, name='comparator'),
 
 
 ]
