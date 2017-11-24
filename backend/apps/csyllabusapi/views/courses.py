@@ -135,6 +135,7 @@ class CourseByProgramView(APIView):
 
 
             coursesList.append(one_course)
+        coursesList.sort(key=lambda x: x['name'], reverse=False)
         data['currentItemCount'] = len(course_ids)
         data['items'] = coursesList
         result['data'] = data

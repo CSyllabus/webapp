@@ -58,7 +58,8 @@ h2 {
   top: 0;
   left: 0;
   z-index: 0;
-  height: calc(100vh + 50px);
+  min-height: calc(100vh);
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -74,8 +75,8 @@ h2 {
   position: absolute;
   top: 0;
   right: 0;
-  min-height: 45.5em;
-  height: 100vh !important;
+  /*min-height: 45.5em;*/
+  height: 100vh;
   max-height: 100%;
    /*Background Gradient for Monochromatic Colors*/
   background: #FC466B ;  /* fallback for old browsers */
@@ -87,3 +88,14 @@ h2 {
   background-position: center;
   /*height: 100vh;*/
 }
+
+.mat-tab-labels {
+  display: block !important;
+  text-align: center;
+}
+
+.bgexplorer {
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+

@@ -22,6 +22,7 @@
         <mat-card-title>
           <p   class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
         <mat-card-subtitle>
+          <b> Rank: {{course.rank * 100  | number : '1.2-2'}} </b>
           <p class="cours-result-card-subtitle">
             <span *ngIf="course.faculty">{{course.faculty}}, </span>
             <span *ngIf="course.university">{{course.university}}, </span>

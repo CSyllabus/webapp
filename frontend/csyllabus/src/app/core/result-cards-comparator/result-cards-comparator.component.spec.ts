@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ResultCardsComponent } from './result-cards.component';
+import { ResultCardsComparatorComponent } from './result-cards-comparator.component';
 
 import {CoreComponent} from '../core.component';
 import {AngularMaterialModule} from '../../angular-material/angular-material.module';
@@ -11,12 +11,12 @@ import {Http, HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 describe('ExplorerComponent', () => {
-  let component: ResultCardsComponent;
-  let fixture: ComponentFixture<ResultCardsComponent>;
+  let component: ResultCardsComparatorComponent;
+  let fixture: ComponentFixture<ResultCardsComparatorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResultCardsComponent ],
+      declarations: [ ResultCardsComparatorComponent ],
       imports: [
 
         RouterTestingModule.withRoutes([]),
@@ -31,7 +31,7 @@ describe('ExplorerComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResultCardsComponent);
+    fixture = TestBed.createComponent(ResultCardsComparatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -75,3 +75,7 @@ table {
     border: 1px solid lightgrey;
     border: 1px solid lightgrey;
 }
+
+.mat-dialog-container {
+  padding: 0 !important;
+}

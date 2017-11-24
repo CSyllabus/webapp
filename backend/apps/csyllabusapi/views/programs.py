@@ -38,12 +38,13 @@ class ProgramView(APIView):
             program = Program.objects.filter(id=program_id)[0]
             single_program = {}
             single_program['id'] = program.id
-            single_program['name'] = program.name
+            single_program['name'] = program.name + ' - ' + program.study_level
             single_program['created'] = program.created
             single_program['modified'] = program.modified
             single_program['study_level'] = program.study_level
             programList.append(single_program)
 
+        programList.sort(key=lambda x: x['name'], reverse=False)
         data['items'] = programList
         data['currentItemCount'] = programs.count()
         result['data'] = data
@@ -71,12 +72,13 @@ class ProgramUnivView(APIView):
             program = Program.objects.filter(id=program_id)[0]
             single_program = {}
             single_program['id'] = program.id
-            single_program['name'] = program.name
+            single_program['name'] = program.name + ' - ' + program.study_level
             single_program['created'] = program.created
             single_program['modified'] = program.modified
             single_program['study_level'] = program.study_level
             programList.append(single_program)
 
+        programList.sort(key=lambda x: x['name'], reverse=False)
         data['items'] = programList
         data['currentItemCount'] = programs.count()
         result['data'] = data

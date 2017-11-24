@@ -48,7 +48,7 @@ class Command(BaseCommand):
 
         j = 0
         for course in courses:
-            print "working on" + str(j) + " of " + str(course_count)
+            print "Working on course " + str(j + 1) + " of " + str(course_count)
             doc = course.description
             vec_bow = dictionary.doc2bow(doc.lower().split())
 
