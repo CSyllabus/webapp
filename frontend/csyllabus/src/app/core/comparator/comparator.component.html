@@ -98,3 +98,6 @@
 <div class="button" style="margin-top: 25px;">
   <button mat-raised-button color="primary" (click)="compareCourses()" margin=10px>Compare</button>
 </div>
+<div id="search-component-spinner" *ngIf="comparatorStarted">
+  <mat-spinner></mat-spinner>
+</div>
