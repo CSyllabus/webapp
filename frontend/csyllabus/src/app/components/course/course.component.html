@@ -3,27 +3,27 @@
   <div *ngIf="course">
     <div class="container">
       <div class="title">
-        <div style="padding:30px">{{course.name}}</div>
+        <div style="padding:15px">{{course.name}}</div>
       </div>
       <div class="where">
-        <h1  style="font-size:200%" >{{course.faculty}}</h1>
-        <h1  style="font-size:170%;    font-weight: bold">{{course.university}}</h1>
-        <img class="logoU" src="http://www.best-masters.com/assets/img/logo_ecole/153.jpg" height="120" width="120">
+        <h1  style="font-size:120%" >{{course.faculty}}</h1>
+        <h1  style="font-size:120%;    font-weight: bold">{{course.university}}</h1>
+        <img class="logoU" src="http://www.best-masters.com/assets/img/logo_ecole/153.jpg" height="80" width="80">
         <a href="http://www.university.com"></a>
-        <h1 style="font-size:150%">{{course.city}}, {{course.country}} </h1>
+        <h1 style="font-size:120%">{{course.city}}, {{course.country}} </h1>
       </div>
       <div class="columns">
         <div class="details">
           <div class="subtitle">Details</div>
           <div style="margin:20px">
-              <h3 style="margin:10px"><img matIcon style="margin-right:10px" src="https://png.icons8.com/debt/color/50/000000" height="50" width="50"> &nbsp; ECTS: &nbsp;  {{course.ects}}</h3>
-              <h3 style="margin:10px"><img matIcon style="margin-right:10px" src="https://png.icons8.com/voice-recognition/color/50/000000" height="50" width="50"> &nbsp; English Level:  &nbsp;   {{course.englishLevel}}</h3> 
-              <h3 style="margin:10px"><img matIcon  style="margin-right:10px" src="https://png.icons8.com/read-online/color/50/000000" height="50" width="50"> &nbsp; Semester: &nbsp;   {{course.semester}}</h3> 
+              <h4 style="margin:5px"><img matIcon style="margin-right:10px" src="https://png.icons8.com/debt/color/50/000000" height="40" width="40"> &nbsp; ECTS: &nbsp;  {{course.ects}}</h4>
+              <h4 style="margin:5px"><img matIcon style="margin-right:10px" src="https://png.icons8.com/voice-recognition/color/50/000000" height="40" width="40"> &nbsp; English Level:  &nbsp;   {{course.englishLevel}}</h4> 
+              <h4 style="margin:5px"><img matIcon  style="margin-right:10px" src="https://png.icons8.com/read-online/color/50/000000" height="40" width="40"> &nbsp; Semester: &nbsp;   {{course.semester}}</h4> 
           </div>
         </div>
         <div class="description">
           <div class="subtitle">Description</div>
-          <p style="margin:20px">{{course.description}}</p>
+          <p style="margin:10px">{{course.description}}</p>
         </div>
         <p><b>Modified: </b>{{course.modified}}&nbsp;&nbsp;&nbsp;<b>Created:  </b>{{course.created}}</p>
     <!--
