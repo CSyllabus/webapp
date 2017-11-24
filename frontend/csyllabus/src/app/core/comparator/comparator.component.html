@@ -12,7 +12,7 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field class="input" *ngIf="queryHomeUniversity">
+    <mat-form-field class="input" *ngIf="queryHomeUniversity && filteredHomeFaculties.length > 0">
       <input placeholder="Home faculty?" matInput [formControl]="homeFacultiesControl"
              [matAutocomplete]="home_faculties_auto" [(ngModel)]="queryHomeFaculty" (ngModelChange)="filterProgramsByHomeFaculty()"
       required>
@@ -23,7 +23,7 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field class="input" *ngIf="queryHomeFaculty">
+    <mat-form-field class="input" *ngIf="queryHomeUniversity">
       <input placeholder="Program?" matInput [formControl]="homeProgramsControl"
              [matAutocomplete]="home_programs_auto" [(ngModel)]="queryHomeProgram" (ngModelChange)="filterCoursesByHomeProgram()"
       required>

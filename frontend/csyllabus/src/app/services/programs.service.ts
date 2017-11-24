@@ -14,6 +14,7 @@ export class ProgramsService {
 
   programsUrl = environment.apiUrl + 'programs/';
   programsFaculties = environment.apiUrl + 'faculties/';
+  programsUniversities = environment.apiUrl + 'universities/';
 
   constructor(private http: Http) {
   }
@@ -28,6 +29,10 @@ export class ProgramsService {
       .map(res => res.json().data.items as Program[]).catch(this.handleError);
   }
 
+  getProgramsByUniversity(universityId): Observable<Program[]> {
+    return this.http.get(this.programsUniversities + universityId + /programs/)
+      .map(res => res.json().data.items as Program[]).catch(this.handleError);
+  }
 
 
   private handleError(error: any) {

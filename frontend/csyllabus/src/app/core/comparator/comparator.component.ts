@@ -104,7 +104,8 @@ export class ComparatorComponent implements OnInit {
   }
 
   filterFacultiesByHomeUniversity() {
-    this.queryHomeFaculty = undefined;
+    this.queryHomeFaculty = this.queryHomeProgram = this.queryHomeCourse = undefined;
+    this.filteredHomeFaculties = [];
     this.facultiesService.getFacultiesByUniversity(this.queryHomeUniversity.id).subscribe(faculties => {
       this.filteredHomeFaculties = faculties;
       console.log(this.queryHomeUniversity);
@@ -112,10 +113,16 @@ export class ComparatorComponent implements OnInit {
         this.backgroundImage.emit(this.queryHomeUniversity.img);
       }
     });
+
+    this.programsService.getProgramsByUniversity(this.queryHomeUniversity.id).subscribe(programs => {
+      this.filteredHomePrograms = programs;
+      console.log(programs);
+
+    });
   }
 
   filterProgramsByHomeFaculty() {
-    this.queryProgram = undefined;
+    this.queryHomeProgram = this.queryHomeCourse = undefined;
     this.programsService.getProgramsByFaculty(this.queryHomeFaculty.id).subscribe(programs => {
       this.filteredHomePrograms = programs;
       console.log(programs);
@@ -124,7 +131,7 @@ export class ComparatorComponent implements OnInit {
   }
 
   filterCoursesByHomeProgram() {
-    console.log(this.queryHomeProgram);
+    this.queryHomeCourse = undefined;
     this.coursesService.getCoursesByProgram(this.queryHomeProgram.id).subscribe(courses => {
       this.filteredHomeCourses = courses;
       console.log(courses);
@@ -143,39 +150,38 @@ export class ComparatorComponent implements OnInit {
   }
 
 
-
   filterFacultiesChange() {
     if (this.queryFaculty.img) {
       this.backgroundImage.emit(this.queryFaculty.img);
     }
   }
 
-compareCourses() {
+  compareCourses() {
 
     this.comparatorStarted = true;
 
 
-      if (this.queryFaculty) {
-        this.coursesService.compareByFaculty(this.queryHomeCourse.id, this.queryFaculty.id).subscribe(courses => {
-          this.comparatorResult.emit(courses);
-          this.comparatorStarted = false;
-        });
-      } else if (this.queryUniversity) {
-        this.coursesService.compareByUniversity(this.queryHomeCourse.id, this.queryUniversity.id).subscribe(courses => {
-          this.comparatorResult.emit(courses);
-          this.comparatorStarted = false;
-        });
-      } else if (this.queryCity) {
-        this.coursesService.compareByCity(this.queryHomeCourse.id, this.queryCity.id).subscribe(courses => {
-          this.comparatorResult.emit(courses);
-          this.comparatorStarted = false;
-        });
-      } else if (this.queryCountry) {
-        this.coursesService.compareByCountry(this.queryHomeCourse.id, this.queryCountry.id).subscribe(courses => {
-          this.comparatorResult.emit(courses);
-          this.comparatorStarted = false;
-        });
-      }
+    if (this.queryFaculty) {
+      this.coursesService.compareByFaculty(this.queryHomeCourse.id, this.queryFaculty.id).subscribe(courses => {
+        this.comparatorResult.emit(courses);
+        this.comparatorStarted = false;
+      });
+    } else if (this.queryUniversity) {
+      this.coursesService.compareByUniversity(this.queryHomeCourse.id, this.queryUniversity.id).subscribe(courses => {
+        this.comparatorResult.emit(courses);
+        this.comparatorStarted = false;
+      });
+    } else if (this.queryCity) {
+      this.coursesService.compareByCity(this.queryHomeCourse.id, this.queryCity.id).subscribe(courses => {
+        this.comparatorResult.emit(courses);
+        this.comparatorStarted = false;
+      });
+    } else if (this.queryCountry) {
+      this.coursesService.compareByCountry(this.queryHomeCourse.id, this.queryCountry.id).subscribe(courses => {
+        this.comparatorResult.emit(courses);
+        this.comparatorStarted = false;
+      });
+    }
 
   }
 
