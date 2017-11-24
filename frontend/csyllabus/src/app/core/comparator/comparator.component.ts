@@ -8,6 +8,7 @@ const COMMA = 188;
 
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
 
+
 import {CountriesService} from '../../services/countries.service';
 import {CitiesService} from '../../services/cities.service';
 import {UniversitiesService} from '../../services/universities.service';
@@ -15,6 +16,7 @@ import {FacultiesService} from '../../services/faculties.service';
 import {CoursesService} from '../../services/courses.service';
 import {ProgramsService} from '../../services/programs.service';
 
+import {Course} from '../../classes/course';
 import {Country} from '../../classes/country';
 import {City} from '../../classes/city';
 import {University} from '../../classes/university';
@@ -31,10 +33,12 @@ export class ComparatorComponent implements OnInit {
 
 
   @Output() backgroundImage = new EventEmitter<any>();
-  @Output() explorerResult = new EventEmitter<any>();
+  @Output() comparatorResult = new EventEmitter<any>();
+
 
   comparatorStarted: Boolean;
   countries: Country[];
+  courses: Course[];
   cities: City[];
   universities: University[];
   faculties: Faculty[];
@@ -45,6 +49,7 @@ export class ComparatorComponent implements OnInit {
   filteredFaculties: Faculty[];
   filteredHomeFaculties: Faculty[];
   filteredHomePrograms: Program[];
+  filteredHomeCourses: Course[];
 
   coursesControl: FormControl = new FormControl();
   citiesControl: FormControl = new FormControl();
@@ -53,6 +58,7 @@ export class ComparatorComponent implements OnInit {
   homeUnivControl: FormControl = new FormControl();
   homeFacultiesControl: FormControl = new FormControl();
   homeProgramsControl: FormControl = new FormControl();
+  homeCoursesControl: FormControl = new FormControl();
 
   queryCountry: Country;
   queryCity: City;
@@ -63,6 +69,7 @@ export class ComparatorComponent implements OnInit {
   queryProgram: Program;
   queryHomeProgram: Program;
   queryLevel: string;
+  queryHomeCourse: Course;
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
               private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private programsService: ProgramsService, private dialog: MatDialog) {
@@ -116,6 +123,15 @@ export class ComparatorComponent implements OnInit {
     });
   }
 
+  filterCoursesByHomeProgram() {
+    console.log(this.queryHomeProgram);
+    this.coursesService.getCoursesByProgram(this.queryHomeProgram.id).subscribe(courses => {
+      this.filteredHomeCourses = courses;
+      console.log(courses);
+
+    });
+  }
+
   filterFacultiesByUniversity() {
     this.queryFaculty = undefined;
     this.facultiesService.getFacultiesByUniversity(this.queryUniversity.id).subscribe(faculties => {
@@ -126,10 +142,41 @@ export class ComparatorComponent implements OnInit {
     });
   }
 
+
+
   filterFacultiesChange() {
     if (this.queryFaculty.img) {
       this.backgroundImage.emit(this.queryFaculty.img);
     }
+  }
+
+compareCourses() {
+
+    this.comparatorStarted = true;
+
+
+      if (this.queryFaculty) {
+        this.coursesService.compareByFaculty(this.queryHomeCourse.id, this.queryFaculty.id).subscribe(courses => {
+          this.comparatorResult.emit(courses);
+          this.comparatorStarted = false;
+        });
+      } else if (this.queryUniversity) {
+        this.coursesService.compareByUniversity(this.queryHomeCourse.id, this.queryUniversity.id).subscribe(courses => {
+          this.comparatorResult.emit(courses);
+          this.comparatorStarted = false;
+        });
+      } else if (this.queryCity) {
+        this.coursesService.compareByCity(this.queryHomeCourse.id, this.queryCity.id).subscribe(courses => {
+          this.comparatorResult.emit(courses);
+          this.comparatorStarted = false;
+        });
+      } else if (this.queryCountry) {
+        this.coursesService.compareByCountry(this.queryHomeCourse.id, this.queryCountry.id).subscribe(courses => {
+          this.comparatorResult.emit(courses);
+          this.comparatorStarted = false;
+        });
+      }
+
   }
 
   displaySelect(element: any): string {

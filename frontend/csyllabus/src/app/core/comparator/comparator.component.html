@@ -24,7 +24,7 @@
 
     <mat-form-field class="input" *ngIf="queryHomeFaculty">
       <input placeholder="Program?" matInput [formControl]="homeProgramsControl"
-             [matAutocomplete]="home_programs_auto" [(ngModel)]="queryHomeProgram">
+             [matAutocomplete]="home_programs_auto" [(ngModel)]="queryHomeProgram" (ngModelChange)="filterCoursesByHomeProgram()">
       <mat-autocomplete #home_programs_auto="matAutocomplete" [displayWith]="displaySelect">
         <mat-option *ngFor="let program of filteredHomePrograms" [value]="program">
           {{ program.name }}
@@ -38,8 +38,14 @@
       <mat-radio-button style="padding-left:20px" value="A" default>Any</mat-radio-button>
     </mat-radio-group>-->
 
-    <mat-form-field style="padding-left:70px" class="input">
-      <input  matInput placeholder="Course">
+    <mat-form-field class="input" *ngIf="queryHomeProgram">
+      <input placeholder="Course?" matInput [formControl]="homeCoursesControl"
+             [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse">
+      <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displaySelect">
+        <mat-option *ngFor="let course of filteredHomeCourses" [value]="course">
+          {{ course.name }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
 
@@ -90,5 +96,5 @@
 </div>
 
 <div class="button" style="margin-top: 25px;">
-  <button mat-raised-button color="primary" (click)="exploreCourses()" margin=10px>Compare</button>
+  <button mat-raised-button color="primary" (click)="compareCourses()" margin=10px>Compare</button>
 </div>
