@@ -115,3 +115,4 @@ settings.py
 .vs/
 
 /backend/settings/db.py
+backend/settings/db.py
