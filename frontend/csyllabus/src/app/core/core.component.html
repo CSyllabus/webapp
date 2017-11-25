@@ -4,7 +4,7 @@
     <img class="logo-img" src="https://image.ibb.co/fQCOXb/logo.png" height="140" width="140">
     <h2>Global Computer Science Repository</h2>
   </div>
-  <div class="container custom-scrollbar" align="center" style="max-height: 70vh !important; overflow-y: auto  !important;">
+  <div class="container custom-scrollbar" align="center">
     <mat-tab-group (selectedTabChange)="changeResultCard($event)" mat-stretch-tabs >
       <mat-tab label="Explorer">
         <app-explorer (explorerResult)="fetchExplorerResult($event)"
