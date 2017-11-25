@@ -1,6 +1,7 @@
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 from ..models import Course
+from ..models import Program
 from ..models import ProgramFaculty
 from ..models import Faculty
 from ..models import University
@@ -47,8 +48,22 @@ class CourseView(APIView):
 
             course_program = CourseProgram.objects.filter(course_id=course.id)[0]
 
+            program_id=course_program.program_id
+
+
+
+            study_lvl = Program.objects.filter(id=program_id)[0]
+
+            one_course['study_lvl']=study_lvl.study_level
+
             if course_program is not None:
-                program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                #program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+
+                try:
+                    program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                except:
+                    program_faculty = None
+
                 program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
                 program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
                 program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
@@ -87,3 +102,41 @@ class CourseView(APIView):
         name = request.data['name']
         Course.objects.filter(id=id).update(name=name, modified=datetime.utcnow())
         return Response()
+
+
+
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class CourseByProgramView(APIView):
+    def get(self, request, program_id):
+
+        course_programs = CourseProgram.objects.filter(program_id=program_id)
+
+        course_ids = []
+        for i in course_programs:
+            course_ids.append(i.course_id)
+
+        data = {}
+        result = {}
+        coursesList = []
+        for course_id in course_ids:
+            course = Course.objects.filter(id=course_id)[0]
+            one_course = {}
+            one_course['id'] = course.id
+            one_course['name'] = course.name
+            one_course['description'] = course.description
+            one_course['ects'] = course.ects
+            one_course['english_level'] = course.english_level
+            one_course['semester'] = course.semester
+            one_course['modified'] = course.modified
+            one_course['created'] = course.created
+
+
+
+            coursesList.append(one_course)
+        coursesList.sort(key=lambda x: x['name'], reverse=False)
+        data['currentItemCount'] = len(course_ids)
+        data['items'] = coursesList
+        result['data'] = data
+        return Response(result)

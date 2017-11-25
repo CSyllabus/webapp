@@ -1,5 +1,6 @@
 from rest_framework.parsers import JSONParser
 from ..models import Course
+from ..models import CourseResult
 from ..models import ProgramFaculty
 from ..models import Faculty
 from ..models import University
@@ -25,9 +26,8 @@ except ImportError:
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-def explorer(request):
-    keywords = request.query_params['keywords']
-    #keywords = keywords.replace(",", " ")
+def comparator(request):
+
     try:
         country_id = request.query_params['country_id']
     except:
@@ -47,14 +47,9 @@ def explorer(request):
    # semester = request.query_params['semester']
 
 
-    vector = SearchVector(*['description','name'])
-    query = SearchQuery(keywords)
     program_ids = []
     courses_obj = []
     courses_ids = []
-
-    #print university_id
-
 
     if(faculty_id is not None):
         program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
@@ -65,22 +60,40 @@ def explorer(request):
     elif(country_id is not None):
         program_ids = ProgramCountry.objects.filter(country_id=country_id).values_list('program_id', flat=True)
 
-    #for i in reversed(program_ids):
-      #  print (i)
-
     courses_obj = CourseProgram.objects.filter(program_id__in=program_ids)
-
     for i in courses_obj:
         courses_ids.append(i.course_id)
-
-    courses = Course.objects.filter(id__in=courses_ids).annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.05).order_by('-rank')
+    courses_to_compare_with = Course.objects.filter(id__in=courses_ids)
 
     data = {}
     result = {}
     courseList = []
-    for course in courses:
+
+    courses_to_return = [];
+
+    for course in courses_to_compare_with:
+
+        course_to_compare = CourseResult.objects.filter(first_course_id=request.query_params['course'],
+                                                        second_course_id=course.id)
+        if len(course_to_compare) > 0:
+            course_to_compare = course_to_compare[0]
+            courses_to_return.append(course_to_compare)
+
+    courses_to_return.sort(key=lambda x: x.result, reverse=True)
+
+    if len(courses_to_return) < 12:
+        ret_len = len(courses_to_return)
+    else:
+        ret_len = 12
+
+    for course_to_compare in courses_to_return[0:ret_len]:
+
+        course_to_compare = course_to_compare
+
         single_course = {}
-        single_course['rank'] = course.rank
+        single_course['result'] = course_to_compare.result
+
+        course = Course.objects.filter(id=course_to_compare.second_course_id)[0]
         single_course['id'] = course.id
         single_course['name'] = course.name
 
@@ -88,7 +101,7 @@ def explorer(request):
         if len(course.description) <= 203:
             single_course['short_description'] = course.description
         else:
-            single_course['short_description'] = course.description[0:200]+'...'
+            single_course['short_description'] = course.description[0:200] + '...'
         single_course['ects'] = course.ects
         try:
             single_course['english_level'] = course.english_level
@@ -97,16 +110,15 @@ def explorer(request):
 
         single_course['semester'] = course.semester
 
-        course_program = CourseProgram.objects.filter(course_id=course.id)[0]
-
+        course_program = CourseProgram.objects.filter(course_id=course.id)
 
         if course_program is not None:
-
+            course_program = course_program[0]
             try:
                 program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
             except:
                 program_faculty = None
-            #program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+            # program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
             program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
             program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
             program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
@@ -115,21 +127,19 @@ def explorer(request):
                 faculty = Faculty.objects.filter(id=program_faculty.faculty.id)[0]
                 single_course['faculty'] = faculty.name
             if program_university is not None:
-                university = University.objects.filter(id = program_university.university.id)[0]
+                university = University.objects.filter(id=program_university.university.id)[0]
                 single_course['university'] = university.name
             if program_city is not None:
-                city = City.objects.filter(id = program_city.city.id)[0]
+                city = City.objects.filter(id=program_city.city.id)[0]
                 single_course['city'] = city.name
 
             if program_country is not None:
-                country = Country.objects.filter(id = program_country.country.id)[0]
+                country = Country.objects.filter(id=program_country.country.id)[0]
                 single_course['country'] = country.name
         courseList.append(single_course)
 
-
     result['items'] = courseList
-    result['currentItemCount'] = courses.count()
+    result['currentItemCount'] = len(courseList)
     data['data'] = result
-
 
     return Response(data)

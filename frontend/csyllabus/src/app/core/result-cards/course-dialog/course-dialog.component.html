@@ -1,0 +1,79 @@
+<div class="custom-scrollbar" style="width: 100%; overflow-x: hidden; overflow-y: auto; max-height: 90vh;">
+
+  <p *ngIf="!course" loading>course:</p>
+  <div *ngIf="course">
+    <div>
+      <div
+        style="text-align:left; background-color:#448AFF; padding: 80px 0 10px 0; width: calc(100% + 48px); margin-left: -24px;"
+        class="col-md-12">
+
+        <div style="width: 70%;display:inline-block; padding-top:10px;padding-left:50px; vertical-align:top">
+          <p style="display:inline; font-size:25px; font-weight:bold; color: white;">{{course.name}}</p>
+        </div>
+
+      </div>
+
+      <img class="logoU" src="http://www.clker.com/cliparts/7/4/b/6/13373556381963102819fer.logo_.png" height="80">
+      <div class="col-md-12">
+
+        <div style="vertical-align:top; text-align:left; line-height: 1.5;" class="col-md-8">
+          {{course.description}}
+          <br><br>
+          <form class="example-form" style="width: 90%;">
+            <mat-form-field class="example-full-width" style="width: 80%;">
+              <input matInput placeholder="Full page url:" disabled value="https://csyllabus.com/demo/course/{{course.id}}">
+            </mat-form-field>
+            <a  mat-icon-button target="_blank" href="https://csyllabus.com/demo/course/{{course.id}}">
+             <mat-icon>link</mat-icon>  </a>
+          </form>
+        </div>
+
+        <div style="text-align:right; font-size:16px; padding-top:40px; padding-left:40px" class="col-md-4">
+
+          <table style="border:0px" align=center>
+            <tr>
+              <td>{{course.university}}</td>
+            </tr>
+            <tr>
+              <td style="height:10px"></td>
+            </tr>
+            <tr>
+              <td>{{course.faculty}}</td>
+            </tr>
+            <tr>
+              <td style="height:10px"></td>
+            </tr>
+            <tr>
+              <td>Study: {{course.study_lvl}}</td>
+            </tr>
+            <tr>
+              <td style="height:10px"></td>
+            </tr>
+            <tr>
+              <td>Semesters: {{course.semester}}</td>
+            </tr>
+            <tr>
+              <td style="height:10px"></td>
+            </tr>
+            <tr>
+              <td>ECTS: {{course.ects}}</td>
+            </tr>
+            <tr>
+              <td style="height:10px"></td>
+            </tr>
+            <tr>
+              <td>Eng Level: {{course.english_level}}</td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+

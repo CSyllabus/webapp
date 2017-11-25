@@ -4,17 +4,22 @@
     <img class="logo-img" src="https://image.ibb.co/fQCOXb/logo.png" height="140" width="140">
     <h2>Global Computer Science Repository</h2>
   </div>
-  <div class="container" align="center">
-    <mat-tab-group>
+  <div class="container custom-scrollbar" align="center">
+    <mat-tab-group (selectedTabChange)="changeResultCard($event)" mat-stretch-tabs >
       <mat-tab label="Explorer">
         <app-explorer (explorerResult)="fetchExplorerResult($event)"
                       (backgroundImage)="changeBackgroundImage($event)"></app-explorer>
       </mat-tab>
-      <mat-tab label="Comparator">Content 2</mat-tab>
+      <mat-tab label="Comparator" >
+        <app-comparator (comparatorResult)="fetchComparatorResult($event)"
+                      (backgroundImage)="changeBackgroundImage($event)"></app-comparator>
+      </mat-tab>
     </mat-tab-group>
   </div>
   <div id="explorer-result-component">
     <br>
-    <app-result-cards [courses]="explorerResult"></app-result-cards>
+    <app-result-cards *ngIf="explorerTab" [courses]="explorerResult"></app-result-cards>
+    <app-result-cards-comparator *ngIf="comparatorTab" [courses]="comparatorResult"></app-result-cards-comparator>
+
   </div>
 </div>

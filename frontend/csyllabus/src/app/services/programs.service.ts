@@ -13,12 +13,24 @@ import {Program} from '../classes/program';
 export class ProgramsService {
 
   programsUrl = environment.apiUrl + 'programs/';
+  programsFaculties = environment.apiUrl + 'faculties/';
+  programsUniversities = environment.apiUrl + 'universities/';
 
   constructor(private http: Http) {
   }
 
   getAllPrograms(): Observable<Program[]> {
     return this.http.get(this.programsUrl)
+      .map(res => res.json().data.items as Program[]).catch(this.handleError);
+  }
+
+  getProgramsByFaculty(facultyId): Observable<Program[]> {
+    return this.http.get(this.programsFaculties + facultyId + /programs/)
+      .map(res => res.json().data.items as Program[]).catch(this.handleError);
+  }
+
+  getProgramsByUniversity(universityId): Observable<Program[]> {
+    return this.http.get(this.programsUniversities + universityId + /programs/)
       .map(res => res.json().data.items as Program[]).catch(this.handleError);
   }
 
