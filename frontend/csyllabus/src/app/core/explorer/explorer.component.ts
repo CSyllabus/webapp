@@ -90,6 +90,7 @@ export class ExplorerComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+
   }
 
   remove(keyword: any): void {
