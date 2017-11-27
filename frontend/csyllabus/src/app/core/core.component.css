@@ -32,8 +32,8 @@ h2 {
 }
 
 .bgexplorer .container {
+  margin-top: 100px; 
   align-self: center;
-
   background: white;
   max-width: 80%;
   margin-bottom: 200px;
@@ -54,11 +54,11 @@ h2 {
 }
 
 .variable-background {
-  position: absolute;
+  position:absolute;
   top: 0;
   left: 0;
   z-index: 0;
-  min-height: calc(100vh);
+  min-height: calc(80vh);
   height: 100%;
   width: 100%;
   object-fit: cover;
