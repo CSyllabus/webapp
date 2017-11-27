@@ -1,3 +1,5 @@
+import { NavbarComponent } from './../components/navbar/navbar.component';
+
 import {ExplorerModule} from './explorer/explorer.module';
 import {ComparatorModule} from './comparator/comparator.module';
 import {AngularMaterialModule} from './../angular-material/angular-material.module';
@@ -21,7 +23,8 @@ import {ROUTES} from '.././app.routes';
     CoreComponent,
     ResultCardsComponent,
     ResultCardsComparatorComponent,
-    CourseDialogComponent
+    CourseDialogComponent,
+    NavbarComponent
   ],
   exports: [CoreComponent],
   entryComponents: [CourseDialogComponent],
