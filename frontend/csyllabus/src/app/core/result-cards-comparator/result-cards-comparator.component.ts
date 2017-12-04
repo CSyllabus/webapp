@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {ComparatorComponent} from '../comparator/comparator.component';
+import {Course} from '../../classes/course';
 
 import {CourseDialogComponent} from '../result-cards/course-dialog/course-dialog.component';
 @Component({
@@ -12,6 +14,8 @@ export class ResultCardsComparatorComponent implements OnInit {
 
  @Input() courses: any = [];
 
+ mainCourse: Course;
+
   constructor(private dialog: MatDialog) { }
 
 openDialog(course_id){
@@ -19,8 +23,13 @@ openDialog(course_id){
         width: '', data: {'course_id': course_id}
       });
   }
+
+
   ngOnInit() {
+
   }
+
+
 
 
 

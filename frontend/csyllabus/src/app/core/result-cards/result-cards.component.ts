@@ -21,6 +21,7 @@ export class ResultCardsComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 
