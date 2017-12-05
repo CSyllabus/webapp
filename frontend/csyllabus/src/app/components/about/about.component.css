@@ -1,0 +1,20 @@
+.header{
+    top:0;
+    left: 0;
+    position: relative;
+}
+
+@media only screen and (min-width: 800px) {
+.person{
+    width: 30%;
+    float: left;
+    margin-bottom:10px;
+    height: 500px; 
+    text-align: center;
+}
+.ourteam{
+    width: 92%;
+    margin-left: 8%!important;
+    margin-right: 8%!important;
+}
+}
