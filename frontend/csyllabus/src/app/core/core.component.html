@@ -4,7 +4,7 @@
   <div class="core-header">
       <app-navbar style="position:absolute;width:100%;right:0;top:0;"></app-navbar>
   </div>
-  <div class="container custom-scrollbar" align="center">
+  <div class="container" align="center">
     <mat-tab-group (selectedTabChange)="changeResultCard($event)" mat-stretch-tabs >
       <mat-tab label="Explorer">
         <app-explorer (explorerResult)="fetchExplorerResult($event)"
@@ -21,4 +21,5 @@
     <app-result-cards *ngIf="explorerTab" [courses]="explorerResult"></app-result-cards>
     <app-result-cards-comparator *ngIf="comparatorTab" [courses]="comparatorResult"></app-result-cards-comparator>
   </div>
+  <app-footer ></app-footer>
 </div>
