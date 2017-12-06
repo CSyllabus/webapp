@@ -3,7 +3,7 @@ from ..models import *
 
 
 class CityTestCase(TestCase):
-    def test_initcities(self):
+    def test_initcity(self):
         country1 = Country.objects.create(name="Italy")
         country2 = Country.objects.create(name="Croatia")
 
@@ -20,7 +20,7 @@ class CityTestCase(TestCase):
 
         self.assertEqual(arrCities, ["Milano", "L'Aquila", "Zagreb"])
 
-    def test_citiesbycountry(self):
+    def test_citybycountry(self):
         country1 = Country.objects.create(name="Italy")
         country2 = Country.objects.create(name="Croatia")
 
@@ -45,7 +45,7 @@ class CityTestCase(TestCase):
 
 
 class CountryTestCase(TestCase):
-    def test_initcountries(self):
+    def test_initcountry(self):
         Country.objects.create(name="Italy")
         Country.objects.create(name="Ireland")
         Country.objects.create(name="Croatia")
@@ -60,7 +60,7 @@ class CountryTestCase(TestCase):
 
 
 class CourseTestCase(TestCase):
-    def test_initcourses(self):
+    def test_initcourse(self):
         Course.objects.create(name='Data bases 2')
         Course.objects.create(name='Recommender systems')
         Course.objects.create(name='Advanced data mining')
@@ -73,7 +73,7 @@ class CourseTestCase(TestCase):
 
         self.assertEqual(arrCourses, ["Data bases 2", "Advanced data mining"])
 
-    def test_coursesbyprogram(self):
+    def test_coursebyprogram(self):
         course1 = Course.objects.create(name='Data bases 2')
         course2 = Course.objects.create(name='Recommender systems')
         course3 = Course.objects.create(name='TCP/IP')
@@ -101,7 +101,7 @@ class CourseTestCase(TestCase):
         self.assertEquals(arrCSCourses, ['Data bases 2', 'Recommender systems'])
         self.assertEqual(arrTelecCourses, ['TCP/IP', 'Network supervision'])
 
-    def test_courseresults(self):
+    def test_courseresult(self):
         course1 = Course.objects.create(name='Data bases 2')
         course2 = Course.objects.create(name='Recommender systems')
         course3 = Course.objects.create(name='Advanced data mining')
@@ -121,7 +121,7 @@ class CourseTestCase(TestCase):
         self.assertEqual(arrCourses, ['Data bases 2', 'Advanced data mining'])
 
 class FacultyTestCase(TestCase):
-    def test_initfaculties(self):
+    def test_initfaculty(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
@@ -149,7 +149,7 @@ class FacultyTestCase(TestCase):
 
 
 class ProgramTestCase(TestCase):
-    def test_initprograms(self):
+    def test_initprogram(self):
         Program.objects.create(name='Electrical engineering')
         Program.objects.create(name='Computing infrastructures')
         Program.objects.create(name='Computer science and engineering')
@@ -164,7 +164,7 @@ class ProgramTestCase(TestCase):
         self.assertEqual(arrPrograms, ["Electrical engineering", "Computer science and engineering",
                                        "Telecommunications engineering"])
 
-    def test_programsbyfaculty(self):
+    def test_programbyfaculty(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
@@ -202,7 +202,7 @@ class ProgramTestCase(TestCase):
         self.assertEqual(arrFerPg, ['Electrical engineering', 'Computing infrastructures'])
         self.assertEqual(arrFctPg, ['Computer science and engineering', 'Telecommunications engineering'])
 
-    def test_programsbyuniversity(self):
+    def test_programbyuniversity(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
@@ -235,7 +235,7 @@ class ProgramTestCase(TestCase):
         self.assertEqual(arrZagrebPg, ['Electrical engineering', 'Computing infrastructures'])
         self.assertEqual(arrPolimiPg, ['Computer science and engineering', 'Telecommunications engineering'])
 
-    def test_programsbycity(self):
+    def test_programbycity(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
@@ -265,7 +265,7 @@ class ProgramTestCase(TestCase):
         self.assertEqual(arrZagrebPg, ['Electrical engineering', 'Computing infrastructures'])
         self.assertEqual(arrMilanoPg, ['Computer science and engineering', 'Telecommunications engineering'])
 
-    def test_programsbycountry(self):
+    def test_programbycountry(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
@@ -294,7 +294,7 @@ class ProgramTestCase(TestCase):
 
 
 class UniversityTestCase(TestCase):
-    def test_inituniversities(self):
+    def test_inituniversity(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
@@ -316,7 +316,7 @@ class UniversityTestCase(TestCase):
 
 
 class UserTestCase(TestCase):
-    def test_initusers(self):
+    def test_inituser(self):
         User.objects.create(username="guber", password="none", firstname="Emanuel", lastname="Guberovic")
         User.objects.create(username="tbenetti", password="none", firstname="Thomas", lastname="Benetti")
         User.objects.create(username="filipt", password="none", firstname="Filip", lastname="Turcinovic")
@@ -396,7 +396,7 @@ class UserTestCase(TestCase):
 
 
 class UserCoursePostTestCase(TestCase):
-    def test_contentsbycourse(self):
+    def test_contentbycourse(self):
         course1 = Course.objects.create(name="Distributed software development")
         course2 = Course.objects.create(name="Data bases 2")
 
@@ -418,8 +418,9 @@ class UserCoursePostTestCase(TestCase):
         self.assertEqual(arrDSD, ["Great teachers", "Very nice course"])
         self.assertEqual(arrDB2, ["Good explanations", "Impossible to understand"])
 
+
 class UserFacultyPostTestCase(TestCase):
-    def test_usersbyfaculty(self):
+    def test_userbyfaculty(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
 
