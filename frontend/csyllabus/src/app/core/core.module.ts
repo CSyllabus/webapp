@@ -1,3 +1,5 @@
+import { AlwayspresentModule } from './../components/alwayspresent.module';
+import { CourseDialogComponent } from './result-cards-comparator/course-dialog/course-dialog.component';
 import { NavbarComponent } from './../components/navbar/navbar.component';
 
 import {ExplorerModule} from './explorer/explorer.module';
@@ -6,7 +8,6 @@ import {AngularMaterialModule} from './../angular-material/angular-material.modu
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CoreComponent} from './core.component';
-import {CourseDialogComponent} from './result-cards/course-dialog/course-dialog.component';
 import {ResultCardsComponent} from './result-cards/result-cards.component';
 import {ResultCardsComparatorComponent} from './result-cards-comparator/result-cards-comparator.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -18,13 +19,14 @@ import {ROUTES} from '.././app.routes';
     ExplorerModule,
     ComparatorModule,
     RouterModule.forRoot(ROUTES),
+    AlwayspresentModule
   ],
   declarations: [
     CoreComponent,
     ResultCardsComponent,
     ResultCardsComparatorComponent,
-    CourseDialogComponent,
-    NavbarComponent
+    CourseDialogComponent
+
   ],
   exports: [CoreComponent],
   entryComponents: [CourseDialogComponent],
