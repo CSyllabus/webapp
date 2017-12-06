@@ -18,8 +18,17 @@ h2{
     font-family: 'Roboto', sans-serif;
 }
 .content{
-    margin-left:10px;
-    margin-right:10px;
+    margin-left:10%;
+    margin-right:10%;
+    text-align: justify;
+}
+.general{
+    margin-left:10%;
+    margin-right:10%;
+    text-align: justify;
+    float: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 80px;
 }
 .logo{
     margin-left:15%;
@@ -27,23 +36,53 @@ h2{
     text-align:justify;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.person{
+.row1{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-    border: 2px;
-    border-color: black;
-}
+}    
+.row2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}    
+.row3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}    
 @media only screen and (min-width: 900px) {
-    .person{
+    .row1{
         width: 30%;
         float: left;
-        min-height: 600px; 
+        height: 500px;
+        min-height: 560px !important; 
+    }
+    .row2{
+        width: 30%;
+        float: left;
+        height: 460px;
+        min-height: 460px!important; 
+    }
+    .row3{
+        width: 30%;
+        float: left;
+        height: 450px;
+        min-height: 500px !important; 
     }
     .ourteam{
         width: 90%;
-        margin-left: 8%!important;
-        margin-right: 8%!important;
+        margin-left:8%;
+        margin-right:8%;
+    }
+    .ourteam::after{
+        float:none;
+    }
+    .content{
+        margin-left:10px;
+        margin-right:10px;
     }
 } 
