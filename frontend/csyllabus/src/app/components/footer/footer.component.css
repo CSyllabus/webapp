@@ -16,7 +16,11 @@
 	font-size: 14px;
 	margin: 0;
 }
-
+.logos{
+	float:right;
+	margin-left: 10px;
+	margin-right: 10px;
+}
 /* Footer links */
 
 .footer-distributed p.footer-links{
@@ -57,11 +61,15 @@
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
 	.footer-distributed .footer-left,
 	.footer-distributed .footer-right{
 		text-align: center;
+	}
+	.logos{
+		text-align: center;
+		float:none;
 	}
 
 	.footer-distributed .footer-right{
