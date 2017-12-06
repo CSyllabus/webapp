@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
+from django.utils import timezone
 from django.db import models
-from datetime import datetime
+
 class Country(models.Model):
     name = models.CharField(max_length=255)
     img = models.CharField(max_length=255, blank = True,null = True)
@@ -10,8 +11,9 @@ class Country(models.Model):
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         if not self.id:
-            self.created = datetime.utcnow()
-        self.modified = datetime.now()
+            self.created = timezone.now()
+
+        self.modified = timezone.now()
         return super(Country, self).save(*args, **kwargs)
 
 
