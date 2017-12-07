@@ -12,7 +12,8 @@ export class CoreComponent implements OnInit {
   backgroundImage: String = null;
   explorerTab: boolean;
   comparatorTab: boolean;
-
+  chooserSelectedExplorer: Boolean;
+  chooserSelectedComparator: Boolean;
 
   constructor() {
   }
@@ -61,6 +62,25 @@ export class CoreComponent implements OnInit {
       this.explorerTab = true;
       this.comparatorTab = false;
     }
+
+  }
+
+  chooserSelect(action: string){
+  if (action === 'explorer') {
+    this.chooserSelectedExplorer=true;
+    this.chooserSelectedComparator=false;
+  } else if (action === 'comparator') {
+    this.chooserSelectedExplorer=false;
+    this.chooserSelectedComparator=true;
+  }
+
+  setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('filters-container')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
 
   }
 }

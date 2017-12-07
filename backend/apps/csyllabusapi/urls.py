@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^countries/(?P<country_id>[^/]+)/universities', views.UniversitiesViewCountry.as_view(), name='universities'),
     url(r'^countries/(?P<country_id>[^/]+)/cities', views.CitiesView.as_view(), name='cities'),
     url(r'^countries', views.CountriesView.as_view(), name='countries'),
     url(r'^universitiesall', views.UniversitiesViewAll.as_view(), name='universities'),

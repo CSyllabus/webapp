@@ -5,6 +5,8 @@ import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 import { CoreModule } from './core/core.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
@@ -34,7 +36,8 @@ import { ContactComponent } from './components/contact/contact.component';
     CoreModule,
     RouterModule.forRoot(ROUTES),
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [
     CountriesService,
@@ -50,6 +53,7 @@ import { ContactComponent } from './components/contact/contact.component';
     NotFoundComponent,
     AboutComponent,
     ContactComponent,
+    NavbarComponent
   ],
   bootstrap: [AppComponent],
 })

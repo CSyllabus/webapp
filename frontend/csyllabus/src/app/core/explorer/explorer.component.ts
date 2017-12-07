@@ -45,6 +45,8 @@ export class ExplorerComponent implements OnInit {
   citiesControl: FormControl = new FormControl();
   universitiesControl: FormControl = new FormControl();
   facultiesControl: FormControl = new FormControl();
+  pokemonControl: FormControl = new FormControl();
+
 
   queryCountry: Country;
   queryCity: City;
@@ -107,7 +109,26 @@ export class ExplorerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countriesService.getAllCountries().subscribe(countries => this.countries = countries);
+    this.countriesService.getAllCountries().subscribe(countries => {
+    this.countries = countries;
+
+    this.universitiesService.getAllUniversities().subscribe(universities => {
+    console.log(universities);
+      for (let country of this.countries) {
+      country['universities']  = [];
+        for (let university of universities) {
+          if (university.countryId === country.id) {
+            country.universities.push(university);
+            console.log("here");
+          } else {
+          console.log(university);
+          }
+        };
+      };
+    });
+
+
+    });
   }
 
   filterCitiesByCountry() {

@@ -31,17 +31,19 @@ h2 {
   margin-top: 10%;
 }
 
-.bgexplorer .container {
-  margin-top: 100px;
+.bgexplorer .bg-container {
   align-self: center;
   background: white;
-  max-width: 80%;
-  margin-bottom: 200px;
+  max-width: 100%;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   background-color: rgba(255, 255, 255, 0.85);
   position: relative;
+  width: 100%;
+  /*position: relative;
+  top: 50%;
+  transform: translateY(-50%);*/
 }
 
 h2 {
@@ -53,16 +55,7 @@ h2 {
   width: auto !important;
 }
 
-.variable-background {
-  position:absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  min-height: calc(80vh);
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
+
 
 .bgexplorer h1, .bgexplorer h2, .bgexplorer .logo-img {
   z-index: 1;
@@ -83,7 +76,7 @@ h2 {
   background: -webkit-linear-gradient(to right, #3F5EFB , #FC466B );  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #3F5EFB , #FC466B ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  background-image: url(../../images/world.jpg);
+    background-image: url(../../images/board.jpg);
   background-size: cover;
   background-position: center;
   /*height: 100vh;*/
@@ -95,7 +88,102 @@ h2 {
 }
 
 .bgexplorer {
-  max-height: 100vh;
-  overflow-y: scroll;
+  /*max-height: 100vh;
+  overflow-y: scroll;*/
 }
 
+.chooser {
+height: 100%; padding-top: 100px;
+}
+#chooser-explorer-card, #chooser-comparator-card {
+cursor: pointer;
+height: 250px;
+width: 300px;
+text-align: left;
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#chooser-explorer-card{
+background-image: url(../../images/explorer.jpg);
+}
+
+#chooser-comparator-card{
+background-image: url(../../images/comparator.jpg);
+}
+
+
+
+#chooser-explorer-card, #chooser-comparator-card, .chooser-card-text { transition: all .2s ease-in-out; }
+#chooser-explorer-card:hover, #chooser-comparator-card:hover, .chooser-card-active { transform: scale(1.2); }
+
+#chooser-explorer-card:hover .chooser-card-text,
+#chooser-comparator-card:hover .chooser-card-text,
+.chooser-card-active .chooser-card-text {
+
+background-color: #263b6ee6;
+
+ }
+
+
+
+
+
+.chooser-card-title {
+font-size: 50px; -webkit-transform: scale(1,1.15);
+-ms-transform: scale(1,1.15);
+-o-transform: scale(1,1.15);
+transform: scale(1,1.15); margin-bottom: 0px;
+color: white;
+line-height: 50px;
+margin-top: 5px;
+}
+
+
+
+.chooser-card-subtitle {
+font-size: 17.5px; margin-top: 0px;margin-bottom: 0px; color: white;
+}
+
+.chooser-card-text {
+    position: absolute;
+    bottom: 0;
+    background-color: #0009;
+    width: 100%;
+}
+
+#filters-container {
+ min-height: 100vh;
+   background-image: url(../../images/world.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+
+.variable-background {
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.chooser-heading {
+font-size: 36px;
+text-align: center;
+color: white;
+background: linear-gradient(to right, rgb(46, 87, 168), rgb(218, 218, 218));
+padding-top: 10px;
+padding-bottom: 10px;
+margin-left: -18px;
+max-width: 500px;
+margin-top: 0;
+font-weight: bold;
+}
