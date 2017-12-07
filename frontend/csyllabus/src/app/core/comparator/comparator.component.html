@@ -1,5 +1,12 @@
+
+
 <form (keyup.enter)="exploreCourses()">
-  <div class="col-md-12">
+  <div style="margin-top: 40px;">
+  <p class="custom-card-title">Comparator</p>
+  <div class="col-md-12" style="background-color: #fffc;
+            position: relative;
+            padding: 20px; margin-top: 120px;">
+
     <div class="col-md-6">
       <mat-form-field style="padding-top:30px" class="input">
         <input placeholder="Home University" matInput [formControl]="homeUnivControl"
@@ -114,12 +121,18 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </div>
-  </div>
 
-  <div class="button" style="margin-top: 25px;">
+
+    </div>
+
+    <div class="button" style="margin-top: 25px;">
     <button mat-raised-button color="primary" (click)="compareCourses()" margin=10px>Compare</button>
   </div>
+
+  </div>
+  </div>
+
+
   <div id="search-component-spinner" *ngIf="comparatorStarted">
     <mat-spinner></mat-spinner>
   </div>

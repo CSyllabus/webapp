@@ -93,6 +93,8 @@ export class ComparatorComponent implements OnInit {
 
 
 
+
+
   }
 
   filterCitiesByCountry() {
