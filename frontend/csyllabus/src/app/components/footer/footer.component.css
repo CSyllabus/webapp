@@ -1,0 +1,97 @@
+.footer-distributed{
+	background: -webkit-linear-gradient(bottom, rgb(83, 110, 163) ,rgb(47, 75, 131)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom,rgb(83, 110, 163),rgb(47, 75, 131)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom,rgb(83, 110, 163),rgb(47, 75, 131)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, rgb(83, 110, 163), rgb(47, 75, 131)); /* Standard syntax */
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+    font: normal 16px sans-serif;
+    float: right;
+    position: relative;
+	padding: 35px 40px;
+}
+
+.footer-distributed .footer-left p{
+	color:  #ffffff;
+	font-size: 14px;
+	margin: 0;
+}
+.logos{
+	float:right;
+	margin-left: 5px;
+	margin-right: 5px;
+	max-width: 100%;
+	text-align: right;
+}
+.logo{
+	background:white;
+	max-width:30%;
+	margin-left:1px;
+	margin-right:1px;
+	float: none;
+}
+/* Footer links */
+
+.footer-distributed p.footer-links{
+	font-size:18px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+.footer-distributed p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-right{
+	float: right;
+	margin-top: 6px;
+	max-width: 180px;
+}
+
+.footer-distributed .footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #ffffff;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 800px) {
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-right{
+		text-align: center;
+	}
+	.logo{
+		float: none;
+	}
+	.logos{
+		text-align: center;
+		float:none;
+	}
+
+	.footer-distributed .footer-right{
+		float: none;
+		margin: 0 auto 20px;
+	}
+
+	.footer-distributed .footer-left p.footer-links{
+		line-height: 1.8;
+	}
+}
