@@ -24,15 +24,10 @@ class CityViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(cityName, "Torino")
 
-    def test_delete(self):
-        country1 = Country.objects.create(name="Italy")
-        city1 = City.objects.create(name="Milano", country=country1)
-
-        c = Client()
-        response = c.delete('/csyllabusapi/city/' + str(city1.id))
-
-        self.assertEqual(response.status_code, 200)
+    def delete(self):
+        # TODO complete function body
+        City.objects.create()  # stub
 
     def put(self):
-        c = Client()
-        response = c.put()
+        # TODO complete function body
+        City.objects.create()  # stub

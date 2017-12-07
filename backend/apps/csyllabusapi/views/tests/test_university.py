@@ -32,4 +32,4 @@ class UniversityViewTestCase(TestCase):
 
     def put(self):
         # TODO complete function body
-        University.objects.create()
+        University.objects.create()       # stub
