@@ -16,6 +16,9 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import parser_classes
 from datetime import datetime
+from jwt_auth import utils
+from jwt_auth.compat import json, User, smart_text
+
 
 try:
     from django.utils import simplejson as json
@@ -46,15 +49,15 @@ class CourseView(APIView):
             one_course['modified'] = course.modified
             one_course['created'] = course.created
 
-            course_program = CourseProgram.objects.filter(course_id=course.id)[0]
+            try:
+                course_program = CourseProgram.objects.filter(course_id=course.id)[0]
 
-            program_id=course_program.program_id
+                program_id = course_program.program_id
+                study_lvl = Program.objects.filter(id=program_id)[0]
+                one_course['study_lvl'] = study_lvl.study_level
+            except:
+                course_program = None
 
-
-
-            study_lvl = Program.objects.filter(id=program_id)[0]
-
-            one_course['study_lvl']=study_lvl.study_level
 
             if course_program is not None:
                 #program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
@@ -90,6 +93,11 @@ class CourseView(APIView):
     def post(self, request, format=json):
         name = request.data['name']
         course = Course.objects.create(name=name)
+        print(request.META.get('HTTP_AUTHORIZATION'))
+
+        decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+        print(decoded_payload)
+
         return Response()
 
     def delete(selfself, request):
