@@ -71,16 +71,11 @@ export class ComparatorComponent implements OnInit {
   queryHomeProgram: Program;
   queryLevel: string;
 
-  queryHomeCourse_1: Course;
-  queryHomeCourse_2: Course;
-  queryHomeCourse_3: Course;
-  queryHomeCourse_4: Course;
-  queryHomeCourse_5: Course;
-  listCourses: any=[];
-  listCoursesIDs: any=[0,0,0,0,0];
+  queryHomeCourse: Course;
+  listCourses: any = [];
+  listCoursesIDs: any = [0, 0, 0, 0, 0];
   multi_courses: any = [];
-  iteration_of_course:number=0;
-
+  iteration_of_course: number = 0;
 
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
@@ -90,9 +85,6 @@ export class ComparatorComponent implements OnInit {
   ngOnInit() {
     this.countriesService.getAllCountries().subscribe(countries => this.countries = countries);
     this.universitiesService.getAllUniversities().subscribe(universities => this.universities = universities);
-
-
-
 
 
   }
@@ -121,7 +113,7 @@ export class ComparatorComponent implements OnInit {
   }
 
   filterFacultiesByHomeUniversity() {
-    this.queryHomeFaculty = this.queryHomeProgram = this.queryHomeCourse_1 = undefined;
+    this.queryHomeFaculty = this.queryHomeProgram = this.queryHomeCourse = undefined;
     this.filteredHomeFaculties = [];
     this.facultiesService.getFacultiesByUniversity(this.queryHomeUniversity.id).subscribe(faculties => {
       this.filteredHomeFaculties = faculties;
@@ -139,7 +131,7 @@ export class ComparatorComponent implements OnInit {
   }
 
   filterProgramsByHomeFaculty() {
-    this.queryHomeProgram = this.queryHomeCourse_1 = undefined;
+    this.queryHomeProgram = this.queryHomeCourse = undefined;
     this.programsService.getProgramsByFaculty(this.queryHomeFaculty.id).subscribe(programs => {
       this.filteredHomePrograms = programs;
       console.log(programs);
@@ -180,27 +172,27 @@ export class ComparatorComponent implements OnInit {
     var counter_of_courses: number = 0;
 
     for (var i = 0; i < this.listCourses.length; i++) {
-      if(this.listCourses[i] != undefined){
-        this.listCoursesIDs[i]=this.listCourses[i].id;
+      if (this.listCourses[i] != undefined) {
+        this.listCoursesIDs[i] = this.listCourses[i].id;
         counter_of_courses++;
         console.log(this.listCourses[i]);
       }
     }
 
     if (this.queryFaculty) {
-      if(counter_of_courses==1) {
-        this.multi_courses=[];
+      if (counter_of_courses == 1) {
+        this.multi_courses = [];
         this.coursesService.compareByFaculty(this.listCoursesIDs[0], this.queryFaculty.id).subscribe(courses => {
-            this.multi_courses.push(courses);
-          });
+          this.multi_courses.push(courses);
+        });
 
       }
 
       else {
 
-        this.multi_courses=[];
+        this.multi_courses = [];
         for (var i = 0; i < this.listCoursesIDs.length; i++) {
-          if(this.listCoursesIDs[i] > 0 ){
+          if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByFaculty(this.listCoursesIDs[i], this.queryFaculty.id).subscribe(courses => {
               this.multi_courses.push(courses);
             });
@@ -210,17 +202,17 @@ export class ComparatorComponent implements OnInit {
       }
       this.comparatorResult.emit(this.multi_courses);
     } else if (this.queryUniversity) {
-      if(counter_of_courses==1) {
-        this.multi_courses=[];
+      if (counter_of_courses == 1) {
+        this.multi_courses = [];
         this.coursesService.compareByUniversity(this.listCoursesIDs[0], this.queryUniversity.id).subscribe(courses => {
-            this.multi_courses.push(courses);
-          });
+          this.multi_courses.push(courses);
+        });
       }
 
       else {
-        this.multi_courses=[];
+        this.multi_courses = [];
         for (var i = 0; i < this.listCoursesIDs.length; i++) {
-          if(this.listCoursesIDs[i] > 0 ){
+          if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByUniversity(this.listCoursesIDs[i], this.queryUniversity.id).subscribe(courses => {
               this.multi_courses.push(courses);
             });
@@ -229,18 +221,18 @@ export class ComparatorComponent implements OnInit {
       }
       this.comparatorResult.emit(this.multi_courses);
     } else if (this.queryCity) {
-      if(counter_of_courses==1) {
-        this.multi_courses=[];
+      if (counter_of_courses == 1) {
+        this.multi_courses = [];
         this.coursesService.compareByCity(this.listCoursesIDs[0], this.queryCity.id).subscribe(courses => {
-            this.multi_courses.push(courses);
-          });
+          this.multi_courses.push(courses);
+        });
       }
 
       else {
 
-        this.multi_courses=[];
+        this.multi_courses = [];
         for (var i = 0; i < this.listCoursesIDs.length; i++) {
-          if(this.listCoursesIDs[i] > 0 ){
+          if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByCity(this.listCoursesIDs[i], this.queryCity.id).subscribe(courses => {
               this.multi_courses.push(courses);
             });
@@ -249,17 +241,17 @@ export class ComparatorComponent implements OnInit {
       }
       this.comparatorResult.emit(this.multi_courses);
     } else if (this.queryCountry) {
-      if(counter_of_courses==1) {
-        this.multi_courses=[];
+      if (counter_of_courses == 1) {
+        this.multi_courses = [];
         this.coursesService.compareByCountry(this.listCoursesIDs[0], this.queryCountry.id).subscribe(courses => {
-            this.multi_courses.push(courses);
-          });
+          this.multi_courses.push(courses);
+        });
       }
       else {
 
-        this.multi_courses=[];
+        this.multi_courses = [];
         for (var i = 0; i < this.listCoursesIDs.length; i++) {
-          if(this.listCoursesIDs[i] > 0 ){
+          if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByCountry(this.listCoursesIDs[i], this.queryCountry.id).subscribe(courses => {
               this.multi_courses.push(courses);
             });

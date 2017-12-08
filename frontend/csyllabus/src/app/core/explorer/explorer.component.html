@@ -1,112 +1,112 @@
 <form (keyup.enter)="exploreCourses()">
-   <div style="margin-top: 40px;">
-      <div class="col-md-12">
-        <p class="custom-card-title">Explorer</p>
-         <div style="background-color: #fffc;
+  <div style="margin-top: 40px;">
+    <div class="col-md-12">
+      <p class="custom-card-title">Explorer</p>
+      <div style="background-color: #fffc;
             position: relative;
             padding: 20px; margin-top: 120px;">
+        <mat-form-field class="input">
+          <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
+            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+              <mat-option [value]="country"
+                          (click)="queryCountry = country; filterCitiesByCountry()">-- All in {{country.name}} --
+              </mat-option>
+              <mat-option *ngFor="let university of country.universities" [value]="university"
+                          (click)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()">
+                {{university.name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input">
+          <input matInput placeholder="Filter search with keywords"
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="true"
+                 (matChipInputTokenEnd)="add($event)"
+                 (keyup.enter)="$event.stopPropagation()"
+                 required/>
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
+                      [removable]="true" (remove)="remove(keyword)">
+              {{keyword.name}}
+              <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" (click)="exploreCourses()" margin=10px>Explore</button>
 
-            <mat-form-field class="input">
-               <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
-                  <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-                  <mat-option [value]="country"
-                  (click)="queryCountry = country; filterCitiesByCountry()">-- All in {{country.name}} --</mat-option>
-                  <mat-option *ngFor="let university of country.universities" [value]="university"
-                  (click)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()">
-                  {{university.name}}
-                  </mat-option>
-                  </mat-optgroup>
-               </mat-select>
-            </mat-form-field>
-            <mat-form-field class="input">
-               <input matInput placeholder="Filter search with keywords"
-               [matChipInputFor]="chipList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               [matChipInputAddOnBlur]="true"
-               (matChipInputTokenEnd)="add($event)"
-               (keyup.enter)="$event.stopPropagation()"
-               required/>
-               <mat-chip-list #chipList>
-                  <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
-                  [removable]="true" (remove)="remove(keyword)">
-                  {{keyword.name}}
-                  <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
-                  </mat-chip>
-               </mat-chip-list>
-            </mat-form-field>
-           <br>
-            <button mat-raised-button color="primary" (click)="exploreCourses()" margin=10px>Explore</button>
-
-         </div>
-
-         <!--     <mat-form-field class="selector">
-            <mat-select placeholder="English Level">
-              <mat-option *ngFor="let level of levels" [value]="level.value">
-                {{level.viewValue}}
-              </mat-option>
-            </mat-select>
-            </mat-form-field>
-            <br/>
-            <mat-form-field class="selector">
-            <mat-select placeholder="Semester" hidden>
-              <mat-option *ngFor="let sem of semesters" [value]="sem.value">
-                {{sem.viewValue}}
-              </mat-option>
-            </mat-select>
-            </mat-form-field>
-            <br/>
-            <mat-radio-group [(ngModel)]="queryLevel">
-            <mat-radio-button class="check" value="undergraduate" [checked]="true">Undergraduate</mat-radio-button>
-            <mat-radio-button class="check" value="graduate">Graduate</mat-radio-button>
-            </mat-radio-group>
-            </div>-->
-         <!--    <mat-form-field class="input">
-            <input placeholder="Where do you want to study?" matInput [formControl]="coursesControl"
-                   [matAutocomplete]="countries_auto" [(ngModel)]="queryCountry" (ngModelChange)="filterCitiesByCountry()"
-                   required>
-            <mat-autocomplete #countries_auto="matAutocomplete" [displayWith]="displaySelect">
-              <mat-option *ngFor="let country of countries" [value]="country">
-                {{ country.name }}
-              </mat-option>
-            </mat-autocomplete>
-            </mat-form-field>-->
-         <!--<mat-form-field class="input" *ngIf="queryCountry">
-            <input placeholder="Any specific city?" matInput [formControl]="citiesControl"
-                   [matAutocomplete]="cities_auto" [(ngModel)]="queryCity">
-            <mat-autocomplete #cities_auto="matAutocomplete" [displayWith]="displaySelect"
-                              (optionSelected)="filterUniversitiesByCity()">
-              <mat-option *ngFor="let city of filteredCities" [value]="city">
-                {{ city.name }}
-              </mat-option>
-            </mat-autocomplete>
-            </mat-form-field>
-            <mat-form-field class="input" *ngIf="queryCity">
-            <input placeholder="How about university?" matInput [formControl]="universitiesControl"
-                   [matAutocomplete]="universities_auto" [(ngModel)]="queryUniversity">
-            <mat-autocomplete #universities_auto="matAutocomplete" [displayWith]="displaySelect"
-                              (optionSelected)="filterFacultiesByUniversity()">
-              <mat-option *ngFor="let university of filteredUniversities" [value]="university">
-                {{ university.name }}
-              </mat-option>
-            </mat-autocomplete>
-            </mat-form-field>
-            <mat-form-field class="input" *ngIf="queryUniversity">
-            <input placeholder="Any specific faculty?" matInput [formControl]="facultiesControl"
-                   [matAutocomplete]="faculties_auto" [(ngModel)]="queryFaculty">
-            <mat-autocomplete #faculties_auto="matAutocomplete" [displayWith]="displaySelect"
-                              (optionSelected)="filterFacultiesChange()">
-              <mat-option *ngFor="let faculty of filteredFaculties" [value]="faculty">
-                {{ faculty.name }}
-              </mat-option>
-            </mat-autocomplete>
-            </mat-form-field>
-            <br/>-->
-         <div id="state" *ngIf="!queryCountry" style="padding: 50px;">
-         </div>
       </div>
-      <div id="search-component-spinner" *ngIf="explorerStarted">
-         <mat-spinner></mat-spinner>
+
+      <!--     <mat-form-field class="selector">
+         <mat-select placeholder="English Level">
+           <mat-option *ngFor="let level of levels" [value]="level.value">
+             {{level.viewValue}}
+           </mat-option>
+         </mat-select>
+         </mat-form-field>
+         <br/>
+         <mat-form-field class="selector">
+         <mat-select placeholder="Semester" hidden>
+           <mat-option *ngFor="let sem of semesters" [value]="sem.value">
+             {{sem.viewValue}}
+           </mat-option>
+         </mat-select>
+         </mat-form-field>
+         <br/>
+         <mat-radio-group [(ngModel)]="queryLevel">
+         <mat-radio-button class="check" value="undergraduate" [checked]="true">Undergraduate</mat-radio-button>
+         <mat-radio-button class="check" value="graduate">Graduate</mat-radio-button>
+         </mat-radio-group>
+         </div>-->
+      <!--    <mat-form-field class="input">
+         <input placeholder="Where do you want to study?" matInput [formControl]="coursesControl"
+                [matAutocomplete]="countries_auto" [(ngModel)]="queryCountry" (ngModelChange)="filterCitiesByCountry()"
+                required>
+         <mat-autocomplete #countries_auto="matAutocomplete" [displayWith]="displaySelect">
+           <mat-option *ngFor="let country of countries" [value]="country">
+             {{ country.name }}
+           </mat-option>
+         </mat-autocomplete>
+         </mat-form-field>-->
+      <!--<mat-form-field class="input" *ngIf="queryCountry">
+         <input placeholder="Any specific city?" matInput [formControl]="citiesControl"
+                [matAutocomplete]="cities_auto" [(ngModel)]="queryCity">
+         <mat-autocomplete #cities_auto="matAutocomplete" [displayWith]="displaySelect"
+                           (optionSelected)="filterUniversitiesByCity()">
+           <mat-option *ngFor="let city of filteredCities" [value]="city">
+             {{ city.name }}
+           </mat-option>
+         </mat-autocomplete>
+         </mat-form-field>
+         <mat-form-field class="input" *ngIf="queryCity">
+         <input placeholder="How about university?" matInput [formControl]="universitiesControl"
+                [matAutocomplete]="universities_auto" [(ngModel)]="queryUniversity">
+         <mat-autocomplete #universities_auto="matAutocomplete" [displayWith]="displaySelect"
+                           (optionSelected)="filterFacultiesByUniversity()">
+           <mat-option *ngFor="let university of filteredUniversities" [value]="university">
+             {{ university.name }}
+           </mat-option>
+         </mat-autocomplete>
+         </mat-form-field>
+         <mat-form-field class="input" *ngIf="queryUniversity">
+         <input placeholder="Any specific faculty?" matInput [formControl]="facultiesControl"
+                [matAutocomplete]="faculties_auto" [(ngModel)]="queryFaculty">
+         <mat-autocomplete #faculties_auto="matAutocomplete" [displayWith]="displaySelect"
+                           (optionSelected)="filterFacultiesChange()">
+           <mat-option *ngFor="let faculty of filteredFaculties" [value]="faculty">
+             {{ faculty.name }}
+           </mat-option>
+         </mat-autocomplete>
+         </mat-form-field>
+         <br/>-->
+      <div id="state" *ngIf="!queryCountry" style="padding: 50px;">
       </div>
-   </div>
+    </div>
+    <div id="search-component-spinner" *ngIf="explorerStarted">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
 </form>
 

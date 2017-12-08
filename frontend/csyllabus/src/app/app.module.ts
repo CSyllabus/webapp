@@ -1,4 +1,3 @@
-import { AlwayspresentModule } from './components/alwayspresent.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -35,7 +34,6 @@ import { ContactComponent } from './components/contact/contact.component';
     AngularMaterialModule,
     HttpModule,
     CoreModule,
-    AlwayspresentModule,
     RouterModule.forRoot(ROUTES),
     FormsModule,
     ReactiveFormsModule

@@ -1,50 +1,80 @@
-<div>
-  <p *ngIf="!course" loading></p>
-  <div *ngIf="course">
-    <div class="container">
-      <div class="title">
-        <div style="padding:15px">{{course.name}}</div>
-      </div>
-      <div class="where">
-        <h1  style="font-size:120%" >{{course.faculty}}</h1>
-        <h1  style="font-size:120%;    font-weight: bold">{{course.university}}</h1>
-        <img class="logoU" src="http://www.best-masters.com/assets/img/logo_ecole/153.jpg" height="80" width="80">
-        <a href="http://www.university.com"></a>
-        <h1 style="font-size:120%">{{course.city}}, {{course.country}} </h1>
-      </div>
-      <div class="columns">
-        <div class="details">
-          <div class="subtitle">Details</div>
-          <div style="margin:20px">
-              <h4 style="margin:5px"><img matIcon style="margin-right:10px" src="https://png.icons8.com/debt/color/50/000000" height="40" width="40"> &nbsp; ECTS: &nbsp;  {{course.ects}}</h4>
-              <h4 style="margin:5px"><img matIcon style="margin-right:10px" src="https://png.icons8.com/voice-recognition/color/50/000000" height="40" width="40"> &nbsp; English Level:  &nbsp;   {{course.englishLevel}}</h4> 
-              <h4 style="margin:5px"><img matIcon  style="margin-right:10px" src="https://png.icons8.com/read-online/color/50/000000" height="40" width="40"> &nbsp; Semester: &nbsp;   {{course.semester}}</h4> 
+<div class="container">
+  <div class="col-md-12">
+    <p *ngIf="!course" loading>course:</p>
+    <div *ngIf="course">
+      <div>
+        <div
+          style="text-align:left; background-color:#448AFF; padding: 80px 0 10px 0; width: calc(100% + 48px); margin-left: -24px;"
+          class="col-md-12">
+
+          <div style="width: 70%;display:inline-block; padding-top:10px;padding-left:50px; vertical-align:top">
+            <p style="display:inline; font-size:25px; font-weight:bold; color: white;">{{course.name}}</p>
           </div>
-        </div>
-        <div class="description">
-          <div class="subtitle">Description</div>
-          <p style="margin:10px">{{course.description}}</p>
 
         </div>
-        <p><b>Modified: </b>{{course.modified}}&nbsp;&nbsp;&nbsp;<b>Created:  </b>{{course.created}}</p>
-    <!--
-        <mat-card class="social">
-          <h2 style="text-align:center">Teachers</h2>
-          <img src="http://gamesandlearning.umich.edu/wp-content/uploads/2014/10/teacherprofiles-infographic11.png"
-               height="300" width="300">
-        </mat-card>
-      -->    
-      </div>
 <!--
-      <mat-card>
-        <h2 style="text-align:center">Evaluations</h2>
-        <img src="https://png.icons8.com/rating/color/50/000000">
-        <h2 style="text-align:center">Comments</h2>
-        <img src="http://www.free-icons-download.net/images/comments-icon-62900.png" height="50px" width="50px">
-      </mat-card>
-      <img src="https://png.icons8.com/data-backup/color/50/000000"height="30" width="30">
-      <img src="https://png.icons8.com/add-database/color/50/000000"height="30" width="30">
-    -->
+        <img class="logoU" src="http://www.clker.com/cliparts/7/4/b/6/13373556381963102819fer.logo_.png" height="80">-->
+        <div class="col-md-12">
+
+          <div style="vertical-align:top; text-align:left; line-height: 1.5;" class="col-md-8">
+            {{course.description}}
+            <br><br>
+            <form class="example-form" style="width: 90%;">
+              <mat-form-field class="example-full-width" style="width: 80%;">
+                <input matInput placeholder="Full page url:" disabled
+                       value="https://csyllabus.com/demo/course/{{course.id}}">
+              </mat-form-field>
+              <a mat-icon-button target="_blank" href="https://csyllabus.com/demo/course/{{course.id}}">
+                <mat-icon>link</mat-icon>
+              </a>
+            </form>
+          </div>
+
+          <div style="text-align:right; font-size:16px; padding-top:40px; padding-left:40px" class="col-md-4">
+
+            <table style="border:0px" align=center>
+              <tr>
+                <td>{{course.university}}</td>
+              </tr>
+              <tr>
+                <td style="height:10px"></td>
+              </tr>
+              <tr>
+                <td>{{course.faculty}}</td>
+              </tr>
+              <tr>
+                <td style="height:10px"></td>
+              </tr>
+              <tr>
+                <td>Study: {{course.study_lvl}}</td>
+              </tr>
+              <tr>
+                <td style="height:10px"></td>
+              </tr>
+              <tr>
+                <td>Semesters: {{course.semester}}</td>
+              </tr>
+              <tr>
+                <td style="height:10px"></td>
+              </tr>
+              <tr>
+                <td>ECTS: {{course.ects}}</td>
+              </tr>
+              <tr>
+                <td style="height:10px"></td>
+              </tr>
+              <tr>
+                <td>Eng Level: {{course.english_level}}</td>
+              </tr>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
