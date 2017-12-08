@@ -30,6 +30,18 @@ class UniversityViewTestCase(TestCase):
         # TODO complete function body
         University.objects.create()       # stub
 
-    def put(self):
-        # TODO complete function body
-        University.objects.create()       # stub
+    def test_put(self):
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name=' ZAGREB', country=country1)
+        university1 = University.objects.create(name='University of Zagrebb', country=country1, city=city1)
+
+        c = Client()
+        response = c.put('/csyllabusapi/university',
+                         '{"id": ' + str(university1.id) + ', "name": "University of Zagreb", "country_id": '
+                         + str(country1.id) + ', "city_id": ' + str(city1.id) + '}',
+                         'application/json')
+
+        universityName = University.objects.get(id=university1.id).name
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(universityName, "University of Zagreb")

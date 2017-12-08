@@ -28,6 +28,17 @@ class CityViewTestCase(TestCase):
         # TODO complete function body
         City.objects.create()  # stub
 
-    def put(self):
-        # TODO complete function body
-        City.objects.create()  # stub
+    def test_put(self):
+        country1 = Country.objects.create(name="Croatia")
+        city1 = City.objects.create(name=" ZAGREB", country=country1)
+
+        c = Client()
+        response = c.put('/csyllabusapi/city',
+                         '{"id": ' + str(city1.id) + ', "name": "Zagreb", "country_id": ' + str(country1.id) + '}',
+                         'application/json')
+
+        cityName = City.objects.get(id=city1.id).name
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(cityName, "Zagreb")
+
