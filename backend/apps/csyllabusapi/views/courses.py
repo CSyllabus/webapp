@@ -21,7 +21,6 @@ from datetime import datetime
 from jwt_auth import utils
 from jwt_auth.compat import json, User, smart_text
 
-
 try:
     from django.utils import simplejson as json
 except ImportError:
@@ -39,7 +38,7 @@ class CourseView(APIView):
             courses = Course.objects.all()
         data = {}
         result = {}
-        coursesList = []
+        courses_list = []
         for course in courses:
             one_course = {}
             one_course['id'] = course.id
@@ -60,9 +59,8 @@ class CourseView(APIView):
             except:
                 course_program = None
 
-
             if course_program is not None:
-                #program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                # program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
 
                 try:
                     program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
@@ -86,9 +84,9 @@ class CourseView(APIView):
                     country = Country.objects.filter(id=program_country.country.id)[0]
                     one_course['country'] = country.name
 
-            coursesList.append(one_course)
+            courses_list.append(one_course)
         data['currentItemCount'] = courses.count()
-        data['items'] = coursesList
+        data['items'] = courses_list
         result['data'] = data
         return Response(result)
 
@@ -114,8 +112,6 @@ class CourseView(APIView):
         return Response()
 
 
-
-
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CourseByProgramView(APIView):
@@ -129,7 +125,7 @@ class CourseByProgramView(APIView):
 
         data = {}
         result = {}
-        coursesList = []
+        courses_list = []
         for course_id in course_ids:
             course = Course.objects.filter(id=course_id)[0]
             one_course = {}
@@ -141,11 +137,11 @@ class CourseByProgramView(APIView):
             one_course['semester'] = course.semester
             one_course['modified'] = course.modified
             one_course['created'] = course.created
-            coursesList.append(one_course)
+            courses_list.append(one_course)
 
-        coursesList.sort(key=lambda x: x['name'], reverse=False)
+        courses_list.sort(key=lambda x: x['name'], reverse=False)
         data['currentItemCount'] = len(course_ids)
-        data['items'] = coursesList
+        data['items'] = courses_list
         result['data'] = data
         return Response(result)
 
@@ -153,59 +149,56 @@ class CourseByProgramView(APIView):
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CourseByFacultyView(APIView):
-    def get(self, request, faculty_id):
+    def get(self, request, faculty_id, limit=-1, page=-1):
+        query_pairs = request.META['QUERY_STRING'].split('&')
 
-        course_faculty = CourseFaculty.objects.filter(faculty_id=faculty_id)
+        for query_pair in query_pairs:
+            query_pair_split = query_pair.split('=')
+            if query_pair_split[0] == 'limit':
+                limit = int(query_pair_split[1])
+            elif query_pair_split[0] == 'page':
+                page = int(query_pair_split[1])
 
-        course_ids = []
-        for i in course_faculty:
-            course_ids.append(i.course_id)
-
+        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id)
         data = {}
         result = {}
-        coursesList = []
-        for course_id in course_ids:
-            course = Course.objects.filter(id=course_id)[0]
-            one_course = {}
-            one_course['id'] = course.id
-            one_course['name'] = course.name
-            one_course['description'] = course.description
-            if len(course.description) <= 203:
-                one_course['short_description'] = course.description
+
+        try:
+            faculty = course_faculties[0].faculty
+            university = faculty.university
+            country = university.country
+
+            courses_list = []
+            for course_faculty in course_faculties:
+                try:
+                    course = Course.objects.filter(id=course_faculty.course.id)[0]
+
+                    if len(course.description) <= 203:
+                        short_description = course.description
+                    else:
+                        short_description = course.description[0:200] + '...'
+
+                    course_data = {'id': course.id, 'name': course.name, 'description': course.description,
+                                   'ects': course.ects, 'english_level': course.english_level, 'semester': course.semester,
+                                   'modified': course.modified, 'created': course.created, 'faculty': faculty.name,
+                                   'university': university.name, 'country': country.name,
+                                   'short_description': short_description}
+
+                    courses_list.append(course_data)
+                except IndexError:
+                    print "Course found in course_faculty " + course_faculties.id + " missing from database."
+
+            courses_list.sort(key=lambda x: x['name'], reverse=False)
+
+            if limit > 0 and page >= 0:
+                data['currentItemCount'] = limit
+                data['items'] = courses_list[(page-1)*limit:page*limit]
             else:
-                one_course['short_description'] = course.description[0:200] + '...'
+                data['currentItemCount'] = len(courses_list)
+                data['items'] = courses_list
+        except IndexError:
+            data['currentItemCount'] = 0
+            data['items'] = []
 
-            one_course['ects'] = course.ects
-            one_course['english_level'] = course.english_level
-            one_course['semester'] = course.semester
-            one_course['modified'] = course.modified
-            one_course['created'] = course.created
-            faculty = Faculty.objects.filter(id=faculty_id)[0]
-            one_course['faculty'] = faculty.name
-
-            try:
-                course_university = CourseUniversity.objects.filter(course_id=course.id)[0]
-            except:
-                course_university = None
-
-            if course_university is not None:
-                university = University.objects.filter(id=course_university.university_id)[0]
-                one_course['university'] = university.name
-                country = Country.objects.filter(id=university.country_id)[0]
-                one_course['country'] = country.name
-
-
-
-
-
-
-
-
-            coursesList.append(one_course)
-
-        coursesList.sort(key=lambda x: x['name'], reverse=False)
-        data['currentItemCount'] = len(course_ids)
-        data['items'] = coursesList
         result['data'] = data
         return Response(result)
-
