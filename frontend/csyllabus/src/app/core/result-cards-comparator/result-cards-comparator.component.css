@@ -54,6 +54,18 @@
 }
 
 
+.container{
+    width:100%;
+    background-image:url(../../../images/a4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+
+}
+
 
 
 

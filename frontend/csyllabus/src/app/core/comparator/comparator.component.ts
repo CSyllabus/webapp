@@ -60,6 +60,8 @@ export class ComparatorComponent implements OnInit {
   homeFacultiesControl: FormControl = new FormControl();
   homeProgramsControl: FormControl = new FormControl();
   homeCoursesControl: FormControl = new FormControl();
+  pokemonControl: FormControl = new FormControl();
+
 
   queryCountry: Country;
   queryCity: City;
@@ -83,10 +85,26 @@ export class ComparatorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countriesService.getAllCountries().subscribe(countries => this.countries = countries);
-    this.universitiesService.getAllUniversities().subscribe(universities => this.universities = universities);
+    this.countriesService.getAllCountries().subscribe(countries => {
+    this.countries = countries;
+
+    this.universitiesService.getAllUniversities().subscribe(universities => {
+    console.log(universities);
+      for (let country of this.countries) {
+      country['universities']  = [];
+        for (let university of universities) {
+          if (university.countryId === country.id) {
+            country.universities.push(university);
+            console.log("here");
+          } else {
+          console.log(university);
+          }
+        };
+      };
+    });
 
 
+    });
   }
 
   filterCitiesByCountry() {
@@ -141,7 +159,7 @@ export class ComparatorComponent implements OnInit {
 
   filterCoursesByHomeProgram() {
 
-    this.coursesService.getCoursesByProgram(this.queryHomeProgram.id).subscribe(courses => {
+    this.coursesService.getCoursesByProgram(1).subscribe(courses => {
       this.filteredHomeCourses = courses;
       console.log(courses);
 

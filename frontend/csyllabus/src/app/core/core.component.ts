@@ -15,8 +15,11 @@ export class CoreComponent implements OnInit {
   chooserSelectedExplorer: Boolean;
   chooserSelectedComparator: Boolean;
 
+
   constructor() {
   }
+
+
 
   ngOnInit() {
     this.explorerTab = true;
@@ -26,6 +29,8 @@ export class CoreComponent implements OnInit {
     i = 0,
     isTag,
     text;
+
+
 
   (function type() {
       text = str.slice(0, ++i);
@@ -45,6 +50,7 @@ export class CoreComponent implements OnInit {
   changeBackgroundImage($event) {
     this.backgroundImage = $event;
   }
+
 
   fetchExplorerResult($event) {
     this.explorerResult = $event;

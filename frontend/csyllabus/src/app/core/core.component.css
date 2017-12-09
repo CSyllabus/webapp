@@ -76,7 +76,7 @@ h2 {
   background: -webkit-linear-gradient(to right, #3F5EFB , #FC466B );  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #3F5EFB , #FC466B ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    background-image: url(../../images/comp_cof.jpg);
+  background-image: url(../../images/comp_cof.jpg);
   background-size: cover;
   background-position: center;
   /*height: 100vh;*/
@@ -114,6 +114,26 @@ background-image: url(../../images/explorer.jpg);
 
 #chooser-comparator-card{
 background-image: url(../../images/comparator.jpg);
+}
+
+.filters-containter-comp{
+  min-height: 100vh;
+  background-image: url(../../images/comparator.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.filters-containter-exp{
+  min-height: 100vh;
+  background-image: url(../../images/explorer.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#filters-container {
+ min-height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
 
 
@@ -154,13 +174,6 @@ font-size: 17.5px; margin-top: 0px;margin-bottom: 0px; color: white;
     bottom: 0;
     background-color: #0009;
     width: 100%;
-}
-
-#filters-container {
- min-height: 100vh;
-   background-image: url(../../images/world.jpg);
-  background-size: cover;
-  background-position: center;
 }
 
 

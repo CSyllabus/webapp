@@ -27,7 +27,9 @@
     </div>
   </div>
 
-  <div id="filters-container" [style.background] *ngIf="chooserSelectedExplorer || chooserSelectedComparator">
+
+
+  <div id="filters-container" [ngClass]="{'filters-containter-comp': chooserSelectedComparator, 'filters-containter-exp': chooserSelectedExplorer}" *ngIf="chooserSelectedExplorer || chooserSelectedComparator">
 
     <div class="bg-container custom-scrollbar" align="center">
       <img class="variable-background" *ngIf="backgroundImage && backgroundImage != ''" [src]="backgroundImage">
@@ -42,6 +44,7 @@
                         *ngIf="chooserSelectedComparator"
         ></app-comparator>
       </div>
+
 
       <!--<mat-tab-group (selectedTabChange)="changeResultCard($event)" mat-stretch-tabs >
         <mat-tab label="Explorer">
