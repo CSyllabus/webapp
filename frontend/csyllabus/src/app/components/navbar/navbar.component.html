@@ -1,7 +1,26 @@
-<div class="topnav" id="myTopnav">
-    <img routerLink="core" class="logo" src="https://preview.ibb.co/cLsuiR/logotopbar.png">
+
+<mat-toolbar class="topnav" id="myTopnav">
+        <img routerLink="core" class="logo" src="https://preview.ibb.co/cLsuiR/logotopbar.png">
+
+    <div id="navigation">
     <a routerLink="documentation">DOCUMENTATION</a>
     <a routerLink="about">ABOUT</a>
     <a routerLink="core">EXPLORE & COMPARE</a>
-    <a mat-raised-button class="icon" (click)="myFunction()">&#9776;</a>
-  </div>
+        </div>
+    <button  class="icon"  mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" id="mobile-menu" >
+        <button mat-menu-item routerLink="core">
+            <span>Explore&compare</span>
+        </button>
+        <button mat-menu-item routerLink="about">
+            <span>About</span>
+        </button>
+        <button mat-menu-item routerLink="documentation">
+            <span>Documentation</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+
