@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
-from ...models import Country, City, University, Faculty, Program, Course, ProgramCountry, ProgramCity, ProgramUniversity, ProgramFaculty, CourseProgram
+from ...models import Country, City, University, Faculty, Program, Course, ProgramCountry, ProgramCity, \
+                      ProgramUniversity, ProgramFaculty, CourseProgram
 
 
 class ComparatorTestCase(TestCase):

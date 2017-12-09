@@ -1,6 +1,8 @@
 from django.test import TestCase, Client
 from ...models import Country
+from django.core.exceptions import ObjectDoesNotExist
 import json
+from django.utils import timezone
 
 
 class CountryViewTestCase(TestCase):
@@ -8,8 +10,8 @@ class CountryViewTestCase(TestCase):
         country1 = Country.objects.create(name="Italy")
 
         c = Client()
-        country = {'modified': '2017-12-07',
-                   'created': '2017-12-07',
+        country = {'modified': str(timezone.now()),
+                   'created': str(timezone.now()),
                    'id': country1.id+1,
                    'img': None,
                    'name': 'Sweden'
@@ -21,17 +23,34 @@ class CountryViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(countryName, "Sweden")
 
-    def delete(self):
-        # TODO complete function body
-        Country.objects.create()       # stub
+    def test_delete(self):
+        country1 = Country.objects.create(name="Italy", img="")
+
+        c = Client()
+        country = {'modified': str(country1.modified),
+                   'created': str(country1.created),
+                   'id': country1.id,
+                   'img': country1.img,
+                   'name': country1.name
+                   }
+        response = c.delete('/csyllabusapi/country', json.dumps(country), 'application/json')
+
+        try:
+            countryName = Country.objects.get(id=country1.id + 1).name
+        except ObjectDoesNotExist:
+            countryName = None
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(countryName, None)
 
     def test_put(self):
         country1 = Country.objects.create(name="Croaty")
 
         c = Client()
-        response = c.put('/csyllabusapi/country',
-                         '{"id": ' + str(country1.id) + ', "name": "Croatia"}',
-                         'application/json')
+        country = {'id': country1.id,
+                   'name': 'Croatia'
+                   }
+        response = c.put('/csyllabusapi/country', json.dumps(country), 'application/json')
 
         countryName = Country.objects.get(id=country1.id).name
 

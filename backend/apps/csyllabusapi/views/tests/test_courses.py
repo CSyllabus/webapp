@@ -1,4 +1,5 @@
 from django.test import TestCase, Client
+from django.core.exceptions import ObjectDoesNotExist
 import json
 from ...models import Country, City, University, Course, Program, CourseProgram, ProgramCountry, ProgramCity, \
                       ProgramUniversity
@@ -50,17 +51,40 @@ class CourseViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(courseName, "Recommender systems")
 
-    def delete(self):
-        # TODO complete function body
-        Course.objects.create()       # stub
+    def test_delete(self):
+        course1 = Course.objects.create(name="Data bases 2", description="", ects=5, english_level="", semester=1,
+                                        winsum="")
+
+        c = Client()
+        course = {
+            'id': course1.id,
+            'name': course1.name,
+            'Description': course1.description,
+            'ects': course1.ects,
+            'english_level': course1.english_level,
+            'semester': course1.semester,
+            'winsum': course1.winsum,
+            'created': str(course1.created),
+            'modified': str(course1.modified)
+        }
+        response = c.delete('/csyllabusapi/courses', json.dumps(course), 'application/json')
+
+        try:
+            courseName = Course.objects.get(id=course1.id).name
+        except ObjectDoesNotExist:
+            courseName = None
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(courseName, None)
 
     def test_put(self):
         course1 = Course.objects.create(name="Data sciences")
 
         c = Client()
-        response = c.put('/csyllabusapi/courses',
-                         '{"id": ' + str(course1.id) + ', "name": "Data science"}',
-                         'application/json')
+        course = {'id': course1.id,
+                  'name': 'Data science'
+                  }
+        response = c.put('/csyllabusapi/courses', json.dumps(course), 'application/json')
 
         courseName = Course.objects.get(id=course1.id).name
 
