@@ -41,3 +41,9 @@ class CityTestCase(TestCase):
         # check if cities are in the right countries
         self.assertEqual(arrItCities, ["L'Aquila", "Milano"])
         self.assertEqual(arrCrCities, ["Split", "Zagreb"])
+
+    def test_strcity(self):
+        country1 = Country.objects.create(name="Italy")
+        city1 = City.objects.create(name="Milano", country=country1)
+
+        self.assertEqual(str(city1), city1.name)

@@ -21,3 +21,10 @@ class UniversityTestCase(TestCase):
             arrUni.append(University.objects.get(id=uni.id).name)
 
         self.assertEqual(arrUni, ["Politecnico di Milano", "Politecnico di Torino"])
+
+    def test_struniversity(self):
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+
+        self.assertEqual(str(university1), university1.name)

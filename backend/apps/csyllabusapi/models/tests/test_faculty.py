@@ -27,3 +27,12 @@ class FacultyTestCase(TestCase):
         self.assertEqual(arrFaculties, ["Faculty of electrical engineering and computing",
                                         "Faculty of computer science and engineering",
                                         "Faculty of telecommunications engineering"])
+
+    def test_strfaculty(self):
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+        faculty1 = Faculty.objects.create(name='Faculty of electrical engineering and computing',
+                                          university=university1, city=city1)
+
+        self.assertEqual(str(faculty1), faculty1.name)

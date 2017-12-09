@@ -24,6 +24,12 @@ class UserPostTestCase(TestCase):
         self.assertEqual(arrDSD, ["Great teachers", "Very nice course"])
         self.assertEqual(arrDB2, ["Good explanations", "Impossible to understand"])
 
+    def test_strusercourse(self):
+        course1 = Course.objects.create(name="Distributed software development")
+        usercourse1 = UserCoursePost.objects.create(content="Very nice course", course=course1)
+
+        self.assertEqual(str(usercourse1), str(usercourse1.content) + " " + str(usercourse1.course))
+
     def test_userbyfaculty(self):
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
@@ -56,3 +62,13 @@ class UserPostTestCase(TestCase):
 
         self.assertEqual(arrFer, ["Great teachers", "Very nice location"])
         self.assertEqual(arrFct, ["Good staff", "Bad staff"])
+
+    def test_struserfaculty(self):
+        country1 = Country.objects.create(name='Italy')
+        city1 = City.objects.create(name='Milano', country=country1)
+        university1 = University.objects.create(name='Politecnico di Milano', country=country1, city=city1)
+        faculty1 = Faculty.objects.create(name='Faculty of computer science and telecommunications engineering',
+                                          university=university1, city=city1)
+        userfaculty1 = UserFacultyPost.objects.create(content="Very nice location", faculty=faculty1)
+
+        self.assertEqual(str(userfaculty1), str(userfaculty1.content) + " " + str(userfaculty1.faculty))
