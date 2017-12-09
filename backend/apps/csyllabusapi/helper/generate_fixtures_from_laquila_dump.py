@@ -99,7 +99,22 @@ fixtures.append(
 #appending courses fixtures
 course_id = 441
 course_program_id = 2173
+course_university_id= 441
 for course in laquila_courses:
+    fixtures.append(
+        {
+            "model": "csyllabusapi.courseuniversity",
+            "pk": course_university_id,
+            "fields": {
+                "course": course_id,
+                "university": 4,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_university_id = course_university_id + 1
+
+
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -121,6 +136,9 @@ for course in laquila_courses:
                 "description": course['description'],
                 "ects": course['credits'],
                 "semester": course['term'],
+                "level": 'undergraduate',
+                "keywords": "",
+                "url": "",
                 "created": "2017-10-30T15:07:40.122Z",
                 "modified": "2017-10-30T15:07:41.673Z"
             }

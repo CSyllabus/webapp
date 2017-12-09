@@ -7,7 +7,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -18,7 +18,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -29,7 +29,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -40,7 +40,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -51,7 +51,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -62,7 +62,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -73,7 +73,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -84,7 +84,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -95,7 +95,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -106,7 +106,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -117,7 +117,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology"
   },
   {
@@ -128,7 +128,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -139,7 +139,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -150,7 +150,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -161,7 +161,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology"
   },
   {
@@ -172,7 +172,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -183,7 +183,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -194,7 +194,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -205,7 +205,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -216,7 +216,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -227,7 +227,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -238,7 +238,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -249,7 +249,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Telecommunication and Informatics"
   },
   {
@@ -260,7 +260,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -271,7 +271,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -282,7 +282,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -293,7 +293,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -304,7 +304,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -315,7 +315,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -326,7 +326,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Telecommunication and Informatics"
   },
   {
@@ -337,7 +337,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Information Processing, Telecommunication and Informatics"
   },
   {
@@ -348,7 +348,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -359,7 +359,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -370,7 +370,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -381,7 +381,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electronic and Computer Engineering, Electronics"
   },
   {
@@ -392,7 +392,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronic and Computer Engineering, Electronics, Wireless Technologies"
   },
   {
@@ -403,7 +403,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics"
   },
   {
@@ -414,7 +414,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronic and Computer Engineering, Electronics"
   },
   {
@@ -425,7 +425,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -436,7 +436,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Wireless Technologies"
   },
   {
@@ -447,7 +447,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Wireless Technologies"
   },
   {
@@ -458,7 +458,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -469,7 +469,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -480,7 +480,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -491,7 +491,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics, Information Processing, Wireless Technologies"
   },
   {
@@ -502,7 +502,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -513,7 +513,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -524,7 +524,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -535,7 +535,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -546,7 +546,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Information Processing, Telecommunication and Informatics"
   },
   {
@@ -557,7 +557,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -568,7 +568,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -579,7 +579,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -590,7 +590,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering, Software Engineering and Information Systems"
   },
   {
@@ -601,7 +601,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -612,7 +612,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electrical Power Engineering"
   },
   {
@@ -623,7 +623,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -634,7 +634,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -645,7 +645,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -656,7 +656,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electrical Power Engineering"
   },
   {
@@ -667,7 +667,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -678,7 +678,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -689,7 +689,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering, Software Engineering and Information Systems"
   },
   {
@@ -700,7 +700,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Electronic and Computer Engineering, Electronics"
   },
   {
@@ -711,7 +711,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Wireless Technologies"
   },
   {
@@ -722,7 +722,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering, Wireless Technologies"
   },
   {
@@ -733,7 +733,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -744,7 +744,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Information Processing"
   },
   {
@@ -755,7 +755,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -766,7 +766,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -777,7 +777,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -788,7 +788,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -799,7 +799,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -810,7 +810,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies"
   },
   {
@@ -821,7 +821,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies"
   },
   {
@@ -832,7 +832,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electronic and Computer Engineering, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -843,7 +843,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -854,7 +854,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies"
   },
   {
@@ -865,7 +865,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies"
   },
   {
@@ -876,7 +876,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -887,7 +887,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -898,7 +898,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electrical Power Engineering, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -909,7 +909,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering"
   },
   {
@@ -920,7 +920,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies"
   },
   {
@@ -931,7 +931,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -942,7 +942,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing, Telecommunication and Informatics"
   },
   {
@@ -953,7 +953,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Electronic and Computer Engineering, Information Processing, Wireless Technologies"
   },
   {
@@ -964,7 +964,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -975,7 +975,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing, Telecommunication and Informatics"
   },
   {
@@ -986,7 +986,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Information Processing"
   },
   {
@@ -997,7 +997,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Information Processing, Wireless Technologies"
   },
   {
@@ -1008,7 +1008,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1019,7 +1019,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing, Wireless Technologies"
   },
   {
@@ -1030,7 +1030,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -1041,7 +1041,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -1052,7 +1052,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing"
   },
   {
@@ -1063,7 +1063,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electrical Engineering Systems and Technologies, Software Engineering and Information Systems"
   },
   {
@@ -1074,7 +1074,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -1085,7 +1085,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -1096,7 +1096,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1107,7 +1107,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -1118,7 +1118,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -1129,7 +1129,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -1140,7 +1140,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1151,7 +1151,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1162,7 +1162,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1173,7 +1173,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1184,7 +1184,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing, Wireless Technologies"
   },
   {
@@ -1195,7 +1195,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -1206,7 +1206,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1217,7 +1217,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -1228,7 +1228,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1239,7 +1239,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1250,7 +1250,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1261,7 +1261,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1272,7 +1272,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -1283,7 +1283,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1294,7 +1294,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1305,7 +1305,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1316,7 +1316,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1327,7 +1327,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -1338,7 +1338,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -1349,7 +1349,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1360,7 +1360,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -1371,7 +1371,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1382,7 +1382,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1393,7 +1393,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electronic and Computer Engineering, Electronics, Wireless Technologies"
   },
   {
@@ -1404,7 +1404,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1415,7 +1415,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -1426,7 +1426,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -1437,7 +1437,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science"
   },
   {
@@ -1448,7 +1448,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -1459,7 +1459,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1470,7 +1470,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -1481,7 +1481,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -1492,7 +1492,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science"
   },
   {
@@ -1503,7 +1503,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -1514,7 +1514,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -1525,7 +1525,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -1536,7 +1536,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -1547,7 +1547,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -1558,7 +1558,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Control Engineering and Automation, Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -1569,7 +1569,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -1580,7 +1580,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1591,7 +1591,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1602,7 +1602,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -1613,7 +1613,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1624,7 +1624,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1635,7 +1635,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1646,7 +1646,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1657,7 +1657,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1668,7 +1668,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Electronics"
   },
   {
@@ -1679,7 +1679,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1690,7 +1690,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1701,7 +1701,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1712,7 +1712,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1723,7 +1723,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1734,7 +1734,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1745,7 +1745,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -1756,7 +1756,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1767,7 +1767,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1778,7 +1778,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies, Electrical Power Engineering"
   },
   {
@@ -1789,7 +1789,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1800,7 +1800,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -1811,7 +1811,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1822,7 +1822,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Software Engineering and Information Systems, Wireless Technologies"
   },
   {
@@ -1833,7 +1833,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -1844,7 +1844,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -1855,7 +1855,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -1866,7 +1866,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -1877,7 +1877,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -1888,7 +1888,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -1899,7 +1899,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -1910,7 +1910,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1921,7 +1921,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -1932,7 +1932,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -1943,7 +1943,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -1954,7 +1954,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1965,7 +1965,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -1976,7 +1976,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing"
   },
   {
@@ -1987,7 +1987,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing"
   },
   {
@@ -1998,7 +1998,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2009,7 +2009,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2020,7 +2020,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2031,7 +2031,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2042,7 +2042,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2053,7 +2053,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2064,7 +2064,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2075,7 +2075,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2086,7 +2086,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Information Processing"
   },
   {
@@ -2097,7 +2097,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2108,7 +2108,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering"
   },
   {
@@ -2119,7 +2119,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science"
   },
   {
@@ -2130,7 +2130,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2141,7 +2141,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2152,7 +2152,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -2163,7 +2163,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -2174,7 +2174,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics"
   },
   {
@@ -2185,7 +2185,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2196,7 +2196,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2207,7 +2207,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -2218,7 +2218,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2229,7 +2229,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -2240,7 +2240,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics"
   },
   {
@@ -2251,7 +2251,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2262,7 +2262,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Information Processing"
   },
   {
@@ -2273,7 +2273,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2284,7 +2284,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering"
   },
   {
@@ -2295,7 +2295,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science"
   },
   {
@@ -2306,7 +2306,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2317,7 +2317,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -2328,7 +2328,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2339,7 +2339,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -2350,7 +2350,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -2361,7 +2361,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -2372,7 +2372,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing"
   },
   {
@@ -2383,7 +2383,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2394,7 +2394,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2405,7 +2405,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2416,7 +2416,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -2427,7 +2427,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -2438,7 +2438,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -2449,7 +2449,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2460,7 +2460,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -2471,7 +2471,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -2482,7 +2482,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -2493,7 +2493,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2504,7 +2504,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2515,7 +2515,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2526,7 +2526,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -2537,7 +2537,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing"
   },
   {
@@ -2548,7 +2548,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -2559,7 +2559,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2570,7 +2570,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2581,7 +2581,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2592,7 +2592,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2603,7 +2603,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2614,7 +2614,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2625,7 +2625,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2636,7 +2636,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2647,7 +2647,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2658,7 +2658,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -2669,7 +2669,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -2680,7 +2680,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -2691,7 +2691,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -2702,7 +2702,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -2713,7 +2713,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing"
   },
   {
@@ -2724,7 +2724,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2735,7 +2735,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -2746,7 +2746,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -2757,7 +2757,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -2768,7 +2768,7 @@
     "englevel": 3,
     "winsumm": "1, 2",
     "semester": "3, 4",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -2779,7 +2779,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2790,7 +2790,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -2801,7 +2801,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2812,7 +2812,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -2823,7 +2823,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -2834,7 +2834,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2845,7 +2845,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "3, 5",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -2856,7 +2856,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -2867,7 +2867,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "3, 5",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -2878,7 +2878,7 @@
     "englevel": 0,
     "winsumm": "1, 2",
     "semester": "1, 2, 3, 4, 5, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2889,7 +2889,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -2900,7 +2900,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2911,7 +2911,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -2922,7 +2922,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -2933,7 +2933,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2944,7 +2944,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -2955,7 +2955,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Wireless Technologies"
   },
   {
@@ -2966,7 +2966,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -2977,7 +2977,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -2988,7 +2988,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -2999,7 +2999,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Electronic and Computer Engineering, Electronics"
   },
   {
@@ -3010,7 +3010,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -3021,7 +3021,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -3032,7 +3032,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -3043,7 +3043,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -3054,7 +3054,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3065,7 +3065,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3076,7 +3076,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -3087,7 +3087,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology"
   },
   {
@@ -3098,7 +3098,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -3109,7 +3109,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -3120,7 +3120,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology"
   },
   {
@@ -3131,7 +3131,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -3142,7 +3142,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -3153,7 +3153,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Electronic and Computer Engineering, Electronics"
   },
   {
@@ -3164,7 +3164,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -3175,7 +3175,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -3186,7 +3186,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering"
   },
   {
@@ -3197,7 +3197,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -3208,7 +3208,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -3219,7 +3219,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology"
   },
   {
@@ -3230,7 +3230,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -3241,7 +3241,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Electronic and Computer Engineering, Information Processing, Wireless Technologies"
   },
   {
@@ -3252,7 +3252,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3263,7 +3263,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3274,7 +3274,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3285,7 +3285,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3296,7 +3296,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -3307,7 +3307,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3318,7 +3318,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -3329,7 +3329,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3340,7 +3340,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -3351,7 +3351,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -3362,7 +3362,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Electrical Power Engineering, Electronic and Computer Engineering, Electronics"
   },
   {
@@ -3373,7 +3373,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -3384,7 +3384,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3395,7 +3395,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -3406,7 +3406,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3417,7 +3417,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -3428,7 +3428,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3439,7 +3439,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electrical Power Engineering"
   },
   {
@@ -3450,7 +3450,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -3461,7 +3461,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3472,7 +3472,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -3483,7 +3483,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electronic and Computer Engineering"
   },
   {
@@ -3494,7 +3494,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -3505,7 +3505,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -3516,7 +3516,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Electronic and Computer Engineering"
   },
   {
@@ -3527,7 +3527,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -3538,7 +3538,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Information Processing"
   },
   {
@@ -3549,7 +3549,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -3560,7 +3560,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -3571,7 +3571,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -3582,7 +3582,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3593,7 +3593,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -3604,7 +3604,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies, Electrical Power Engineering"
   },
   {
@@ -3615,7 +3615,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -3626,7 +3626,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Electronic and Computer Engineering, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -3637,7 +3637,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3648,7 +3648,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -3659,7 +3659,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electrical Engineering Systems and Technologies"
   },
   {
@@ -3670,7 +3670,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3681,7 +3681,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -3692,7 +3692,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -3703,7 +3703,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3714,7 +3714,7 @@
     "englevel": 0,
     "winsumm": "1, 2",
     "semester": "5, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Computer Science, Electronic and Computer Engineering"
   },
   {
@@ -3725,7 +3725,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Control Engineering and Automation, Electrical Power Engineering, Electronic and Computer Engineering, Electronics, Wireless Technologies"
   },
   {
@@ -3736,7 +3736,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -3747,7 +3747,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -3758,7 +3758,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 4,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -3769,7 +3769,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3780,7 +3780,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3791,7 +3791,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -3802,7 +3802,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3813,7 +3813,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3824,7 +3824,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": "2, 4",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -3835,7 +3835,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "3, 5",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -3846,7 +3846,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "3, 5",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -3857,7 +3857,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": "4, 6",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -3868,7 +3868,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -3879,7 +3879,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -3890,7 +3890,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3901,7 +3901,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3912,7 +3912,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -3923,7 +3923,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -3934,7 +3934,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -3945,7 +3945,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -3956,7 +3956,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -3967,7 +3967,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -3978,7 +3978,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -3989,7 +3989,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4000,7 +4000,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -4011,7 +4011,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -4022,7 +4022,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics, Information Processing"
   },
   {
@@ -4033,7 +4033,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -4044,7 +4044,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics, Wireless Technologies"
   },
   {
@@ -4055,7 +4055,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics"
   },
   {
@@ -4066,7 +4066,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electronics"
   },
   {
@@ -4077,7 +4077,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4088,7 +4088,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4099,7 +4099,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Control Engineering and Automation, Electronic and Computer Engineering, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4110,7 +4110,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -4121,7 +4121,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -4132,7 +4132,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -4143,7 +4143,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Control Engineering and Automation, Electrical Engineering Systems and Technologies, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4154,7 +4154,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Information Processing, Software Engineering and Information Systems"
   },
   {
@@ -4165,7 +4165,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4176,7 +4176,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4187,7 +4187,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Engineering, Control Engineering and Automation, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4198,7 +4198,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4209,7 +4209,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4220,7 +4220,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -4231,7 +4231,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4242,7 +4242,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronics"
   },
   {
@@ -4253,7 +4253,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Control Engineering and Automation, Electronic and Computer Engineering, Information Processing"
   },
   {
@@ -4264,7 +4264,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electronic and Computer Engineering, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4275,7 +4275,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4286,7 +4286,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4297,7 +4297,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4308,7 +4308,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4319,7 +4319,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4330,7 +4330,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Electrical Power Engineering, Software Engineering and Information Systems, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -4341,7 +4341,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -4352,7 +4352,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4363,7 +4363,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4374,7 +4374,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -4385,7 +4385,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing, Telecommunication and Informatics"
   },
   {
@@ -4396,7 +4396,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -4407,7 +4407,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -4418,7 +4418,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Software Engineering and Information Systems"
   },
   {
@@ -4429,7 +4429,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Information Processing, Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -4440,7 +4440,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics, Wireless Technologies"
   },
   {
@@ -4451,7 +4451,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -4462,7 +4462,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Wireless Technologies"
   },
   {
@@ -4473,7 +4473,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation, Electrical Engineering Systems and Technologies"
   },
   {
@@ -4484,7 +4484,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -4495,7 +4495,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -4506,7 +4506,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 5,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4517,7 +4517,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -4528,7 +4528,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Engineering Systems and Technologies"
   },
   {
@@ -4539,7 +4539,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4550,7 +4550,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electronic and Computer Engineering"
   },
   {
@@ -4561,7 +4561,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4572,7 +4572,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4583,7 +4583,7 @@
     "englevel": 3,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4594,7 +4594,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Control Engineering and Automation"
   },
   {
@@ -4605,7 +4605,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "3, 5",
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing, Electrical Engineering and Information Technology"
   },
   {
@@ -4616,7 +4616,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": 1,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Electrical Engineering and Information Technology and Computing"
   },
   {
@@ -4627,7 +4627,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Computer Science, Electronic and Computer Engineering, Electronics, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4638,7 +4638,7 @@
     "englevel": 3,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electrical Power Engineering"
   },
   {
@@ -4649,7 +4649,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -4660,7 +4660,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -4671,7 +4671,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computing"
   },
   {
@@ -4682,7 +4682,7 @@
     "englevel": 2,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4693,7 +4693,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4704,7 +4704,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": "1, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4715,7 +4715,7 @@
     "englevel": 0,
     "winsumm": 2,
     "semester": 6,
-    "studylevel": 3,
+    "studylevel": "undergraduate",
     "profile": "Computer Science, Electronic and Computer Engineering, Information Processing, Software Engineering and Information Systems, Telecommunication and Informatics"
   },
   {
@@ -4726,7 +4726,7 @@
     "englevel": 2,
     "winsumm": 1,
     "semester": "1, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Software Engineering and Information Systems"
   },
   {
@@ -4737,7 +4737,7 @@
     "englevel": 1,
     "winsumm": "1, 2",
     "semester": "1, 2, 3",
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Science"
   },
   {
@@ -4748,7 +4748,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4759,7 +4759,7 @@
     "englevel": "",
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4770,7 +4770,7 @@
     "englevel": "",
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4781,7 +4781,7 @@
     "englevel": 1,
     "winsumm": 2,
     "semester": "2, 4, 6",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4792,7 +4792,7 @@
     "englevel": 1,
     "winsumm": 1,
     "semester": 3,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Computer Engineering, Software Engineering and Information Systems"
   },
   {
@@ -4803,7 +4803,7 @@
     "englevel": "",
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Electronic and Computer Engineering"
   },
   {
@@ -4814,7 +4814,7 @@
     "englevel": "",
     "winsumm": 2,
     "semester": 2,
-    "studylevel": 4,
+    "studylevel": "graduate",
     "profile": "Telecommunication and Informatics"
   },
   {
@@ -4825,7 +4825,7 @@
     "englevel": 0,
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   },
   {
@@ -4836,7 +4836,7 @@
     "englevel": "",
     "winsumm": 1,
     "semester": "1, 3, 5",
-    "studylevel": "3, 4",
+    "studylevel": "undergraduate and graduate",
     "profile": "Computing, Electrical Engineering and Information Technology, Information and Communication Technology"
   }
 ]

@@ -6,4 +6,6 @@ export class Country {
   cities: Array<Object>;
   img: String;
   universities: Array<Object>;
+  faculties: Array<Object>;
+
 }

@@ -2,6 +2,7 @@
 
 
 {"pk": 2247, "model": "csyllabusapi.courseprogram", "fields": {"course": 515, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2247, "model": "csyllabusapi.courseuniversity", "fields": {"course": 515, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 515, "model": "csyllabusapi.course", "fields":
 {
@@ -13,6 +14,7 @@
 	"description": "This course provides a deep understanding of the concepts behind data management systems. It covers fundamental data management topics such as system architecture, data models, query processing and optimization, database design, storage organization, and transaction management. During this course, the students will learn about: The Entity-relationship and Relational Models, Relational Algebra and Calculus, The SQL Query Language, Traditional and Modern Data Storage, File Organizations and Indexing, Hashing and Sorting, Query Evaluation and Relational Operators, Query Optimization, Schema Refinement, Transaction Management (Concurrency Control and Recovery)"}},
 
 {"pk": 2248, "model": "csyllabusapi.courseprogram", "fields": {"course": 516, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2248, "model": "csyllabusapi.courseuniversity", "fields": {"course": 516, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 516, "model": "csyllabusapi.course", "fields":
 {
@@ -24,6 +26,7 @@
 	"description": "Introduction to basic concepts of operating systems. Function and general structure of an operating system. Process management. Memory management. File systems. Virtualization and virtual machines."}},
 
 {"pk": 2249, "model": "csyllabusapi.courseprogram", "fields": {"course": 517, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2249, "model": "csyllabusapi.courseuniversity", "fields": {"course": 517, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 517, "model": "csyllabusapi.course", "fields":
 {
@@ -35,6 +38,7 @@
 	"description": "Covers basic aspects of modern software development practices and tools, foundations of software engineering, how to think about software, structure it, modify it, and improve it. Covers the software development process (including agile methods) and working as part of a team of developers. Content: Object-oriented design and reasoning, Design patterns, Principles of building reliable and secure software, Performance tuning, Testing and debugging, Code layout and style, Development processes, Software project management, Tools for writing, analyzing, and debugging code, as well as source code management."}},
 
 {"pk": 2250, "model": "csyllabusapi.courseprogram", "fields": {"course": 518, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2250, "model": "csyllabusapi.courseuniversity", "fields": {"course": 518, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 518, "model": "csyllabusapi.course", "fields":
 {
@@ -46,6 +50,7 @@
 	"description": "Multiprocessors are a core component in all types of computing infrastructure, from phones to datacenters. This course will build on the prerequisites of processor design and concurrency to introduce the essential technologies required to combine multiple processing elements into a single computer. Content: Forms of parallelism, Parallel programming models, Cache coherence, Memory consistency, Synchronization, Interconnection networks, Software efficiency & optimization, GPU architecture & programming."}},
 
 {"pk": 2251, "model": "csyllabusapi.courseprogram", "fields": {"course": 519, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2251, "model": "csyllabusapi.courseuniversity", "fields": {"course": 519, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 519, "model": "csyllabusapi.course", "fields":
 {
@@ -57,6 +62,7 @@
 	"description": "The class seeks a balance between foundational but relatively basic material in algorithms, statistics, graph theory and related fields, with real-world applications inspired by the current practice of internet and cloud services. Specifically, we look at social & information networks, recommender systems, clustering and community detection, search/retrieval/topic models, dimensionality reduction, stream computing, and online ad auctions. Together, these provide a good coverage of the main uses for data mining and analytics applications in social networking, e-commerce, social media, etc. The course is combination of theoretical materials and weekly laboratory sessions, where we explore several large-scale datasets from the real world. For this, you will work with a dedicated infrastructure based on Hadoop & Apache Spark."}},
 
 {"pk": 2252, "model": "csyllabusapi.courseprogram", "fields": {"course": 520, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2252, "model": "csyllabusapi.courseuniversity", "fields": {"course": 520, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 520, "model": "csyllabusapi.course", "fields":
 {
@@ -68,6 +74,7 @@
 	"description": "This course provides an introduction to the field of Computer Graphics. We will cover elementary rendering algorithms such as rasterization and raytracing, examine mathematical concepts and algorithms for geometric modeling, and then study concepts and algorithms for computer animation. Students will experiment with modern graphics programming and build small interactive demos. Complemented by some theoretical exercises, these programming tasks lead to a graphics software project, where small teams of students design and implement a complete graphics application. Keywords: Pixels and images, 2D and 3D transformations, perspective transformations and visibility, rasterization, interpolation and lighting, OpenGL graphics API, raytracing, shader programming, texture mapping, procedural modeling, curves and surfaces, polygonal meshes, particle systems."}},
 
 {"pk": 2253, "model": "csyllabusapi.courseprogram", "fields": {"course": 521, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2253, "model": "csyllabusapi.courseuniversity", "fields": {"course": 521, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 521, "model": "csyllabusapi.course", "fields":
 {
@@ -79,6 +86,7 @@
 	"description": "This course provides a first introduction to the field of numerical analysis with a strong focus on visual computing applications. Using examples from computer graphics, geometry processing, computer vision, and computational photography, students will gain hands-on experience with a range of essential numerical algorithms. The course will begin with a review of important considerations regarding floating point arithmetic and error propagation in numerical computations. Following this, students will study and experiment with several techniques that solve systems of linear and non-linear equations. Since many interesting problems cannot be solved exactly, numerical optimization techniques constitute the second major topic of this course. Students will learn how principal component analysis can be leveraged to compress or reduce the dimension of large datasets to make them easier to store and analyze. The course concludes with a review of numerical methods that make judicious use of randomness to solve problems that would otherwise be intractable. Students will have the opportunity to gain practical experience with the discussed methods using programming assignments based on Scientific Python."}},
 
 {"pk": 2254, "model": "csyllabusapi.courseprogram", "fields": {"course": 522, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2254, "model": "csyllabusapi.courseuniversity", "fields": {"course": 522, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 522, "model": "csyllabusapi.course", "fields":
 {
@@ -90,6 +98,7 @@
 	"description": " Implementation of basic concepts of operating systems in Linux. Implementation of system calls, interrupt handling, process and memory management and file systems"}},
 
 {"pk": 2255, "model": "csyllabusapi.courseprogram", "fields": {"course": 523, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2255, "model": "csyllabusapi.courseuniversity", "fields": {"course": 523, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 523, "model": "csyllabusapi.course", "fields":
 {
@@ -101,6 +110,7 @@
 	"description": "This course is on the foundations of digital communication. The focus is on the transmission problem (rather than being on source coding). Content: Optimal receiver for vector channels, Optimal receiver for waveform (AWGN) channels, Various signaling schemes and their performance, Efficient signaling via finite-state machines, Efficient decoding via Viterbi algorithm, Communicating over bandlimited AWGN channels, Nyquist Criterion, Communicating over passband AWGN channels"}},
 
 {"pk": 2256, "model": "csyllabusapi.courseprogram", "fields": {"course": 524, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2256, "model": "csyllabusapi.courseuniversity", "fields": {"course": 524, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 524, "model": "csyllabusapi.course", "fields":
 {
@@ -112,6 +122,7 @@
 	"description": "Students learn digital signal processing theory, including discrete time, Fourier analysis, filter design, sampling, interpolation and quantization; they are introduced to image processing and data communication system design. Basic discrete-time signals and systems: signal classes and operations on discrete-time signals, signals as vectors in Hilbert space. Fourier Analysis: properties of Fourier transforms, DFT, DTFT; FFT. Discrete-Time Systems: LTI filters, convolution and modulation; difference equations; FIR vs IIR, stability issues. Z-transform: properties and regions of convergence, applications to linear systems. Filter Design: FIR design methods, IIR design methods, filter structures. Stochastic Signal Processing: random processes, spectral representation. Interpolation and Sampling: the continuous-time paradigm, interpolationthe sampling theorem, aliasing. Quantization: A/D and D/A converters. Multi-rate signal processing: upsampling and downsampling, oversampling. Multi-dimensional signals and processing: introduction to Image Processing. Practical applications: digital communication system design, ADSL."}},
 
 {"pk": 2257, "model": "csyllabusapi.courseprogram", "fields": {"course": 525, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2257, "model": "csyllabusapi.courseuniversity", "fields": {"course": 525, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 525, "model": "csyllabusapi.course", "fields":
 {
@@ -123,6 +134,7 @@
 	"description": "Understanding of the principles and applications of declaratative programming, the fundamental models of program execution, application of fundamental methods of program composition,meta-programming through the construction of interpreters and advanced programming techniques. Content: Introduction to programming in Scala, Expressions and functions, Classes and objects, Evaluation by rewriting, Pattern matching, Polymorphism, Evaluation strategies, Domain-specific languages, Constraint programming, Language interpretation, An interpreter for Lisp, An interpreter for Prolog."}},
 
 {"pk": 2258, "model": "csyllabusapi.courseprogram", "fields": {"course": 526, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2258, "model": "csyllabusapi.courseuniversity", "fields": {"course": 526, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 526, "model": "csyllabusapi.course", "fields":
 {
@@ -134,6 +146,7 @@
 	"description": "The course introduces parallel programming models, algorithms, and data structures, map-reduce frameworks and their use for data analysis, as well as shared-memory concurrency. Content: Parallel programming & execution models, Functional parallelism, Data-level parallelism, Threads and fork/join parallelism, Synchronization, Cache coherence, Memory models, Threads and Shared Memory in Java, Performance optimization. "}},
 
 {"pk": 2259, "model": "csyllabusapi.courseprogram", "fields": {"course": 527, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2259, "model": "csyllabusapi.courseuniversity", "fields": {"course": 527, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 527, "model": "csyllabusapi.course", "fields":
 {
@@ -145,6 +158,7 @@
 	"description": "The course introduces the students to the basic notions of computer architecture and, in particular, to the choices of the Instruction Set Architecture and to the memory hierarchy of modern systems. Complex digital systems in VHDL. Basic components of a computer. Instruction Set Architectures. Assembly-level programming. Multi-cycle implementation of processors. Caches. Virtual memory."}},
 
 {"pk": 2260, "model": "csyllabusapi.courseprogram", "fields": {"course": 528, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2260, "model": "csyllabusapi.courseuniversity", "fields": {"course": 528, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 528, "model": "csyllabusapi.course", "fields":
 {
@@ -156,6 +170,7 @@
 	"description": "This course provides an introduction to computer networks. It describes the principles that underly modern network operation and illustrates them using the Internet as an example. Overview of Internet operation (main components and protocols). Application layer (web, cookies, ads, email, peer to peer). Socket programming (how to write a very simple network application). Transport layer (UDP, TCP, congestion control). Network layer (IP forwarding and basic routing). Data link layer (switching and basic shared access protocols). Security (secure email, SSL, IPsec)."}},
 
 {"pk": 2261, "model": "csyllabusapi.courseprogram", "fields": {"course": 529, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2261, "model": "csyllabusapi.courseuniversity", "fields": {"course": 529, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 529, "model": "csyllabusapi.course", "fields":
 {
@@ -167,6 +182,7 @@
 	"description": "The course first develops the basic laws of electricity and magnetism and illustrates the use in understanding various electromagnetic phenomena. Electric fields: electric charges and fields; Coulomb's law; Gauss's law. Electric potential and energy: potential; energy; capacitance and capacitors; dielectric materials. Magnetism: magnetic forces and fields; Ampere's law; Biot-Savart law. Electromagnetism: electromotive force; Farady's law; inductance and inductors; Maxwell's equations. Electromagnetic waves: electromagnetic spectrum; antennas"}},
 
 {"pk": 2262, "model": "csyllabusapi.courseprogram", "fields": {"course": 530, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2262, "model": "csyllabusapi.courseuniversity", "fields": {"course": 530, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 530, "model": "csyllabusapi.course", "fields":
 {
@@ -178,6 +194,7 @@
 	"description": "The students learn the theory and practice of basic concepts and techniques in algorithms. The course covers mathematical induction, techniques for analyzing algorithms, elementary data structures, major algorithmic paradigms such as dynamic programming, sorting and searching, and graph algorithms. Mathematical Induction: Mathematical background, Euler's formula for trees, Schwartz-Zippel lemma. Analysis of Algorithms: O-notation, time and space complexity, recurrence relations, probabilistic analysis. Data structures: Arrays, linked lists, trees, heaps, hashing, graphs. Design of algorithms by induction: Evaluating polynomials, divide-and-conquer algorithms, dynamic programming. Greedy Algorithms: Spanning tree and shortest path algortihms. Sorting and searching: Merge sort, bucket sort, quicksort, heapsort, binary search. Graphs algorithms and data structures: Graphs traversals, shortest paths, spanning trees, transitive closure, decompostitions, matching, network flows. Complexity: Polynomial reductions, NP-completeness."}},
 
 {"pk": 2263, "model": "csyllabusapi.courseprogram", "fields": {"course": 531, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2263, "model": "csyllabusapi.courseuniversity", "fields": {"course": 531, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 531, "model": "csyllabusapi.course", "fields":
 {
@@ -189,6 +206,7 @@
 	"description": "This course constitutes an introduction to theory of computation. It discusses the basic theoretical models of computing (finite automata, Turing machine), as well as, provides a solid and mathematically precise understanding of their fundamental capabilities and limitations. Basic models of computation (finite automata, Turing machine). Elements of computability theory (undecidability, reducibility). Introduction to time complexity theory (P, NP and theory of NP-completeness)"}},
 
 {"pk": 2264, "model": "csyllabusapi.courseprogram", "fields": {"course": 532, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2264, "model": "csyllabusapi.courseuniversity", "fields": {"course": 532, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 532, "model": "csyllabusapi.course", "fields":
 {
@@ -200,6 +218,7 @@
 	"description": "This class teaches the theory of linear time-invariant (LTI) systems. These systems serve both as models of physical reality (such as the wireless channel) and as engineered systems (such as electrical circuits, filters and control strategies). The design of advanced systems (such as WiFi, cell phones, drones, airplanes) requires a thorough theoretical underpinning. This class teaches one of the most powerful and important pillars: The theory of linear time-invariant (LTI) systems. These systems serve both as models of physical reality (such as the wireless channel) and as engineered systems (such as filters and control strategies). The class will cover the following topics: Systems: Definitions (1 week), LTI Systems (3 weeks), The Frequency Response of stable LTI Systems (1 week), Fourier Techniques for stable LTI Systems (3 weeks); with applications to Communication Systems and Signal Processing, Laplace and Z-Transform Techniques for LTI Systems (5 weeks); with applications to Control Systems."}},
 
 {"pk": 2265, "model": "csyllabusapi.courseprogram", "fields": {"course": 533, "program": 34, "created": "2017-11-30T15:07:40.122Z"}},
+{"pk": 2265, "model": "csyllabusapi.courseuniversity", "fields": {"course": 533, "university": 5, "created": "2017-11-30T15:07:40.122Z"}},
 
 {"pk": 533, "model": "csyllabusapi.course", "fields":
 {

@@ -14,6 +14,8 @@ export class CoursesService {
 
   coursesUrl = environment.apiUrl + 'courses/';
   coursesByProgramUrl = environment.apiUrl + 'programs/';
+  coursesByFacultiesUrl = environment.apiUrl + 'faculties/';
+  coursesByUniversitiesUrl = environment.apiUrl + 'universities/';
   explorerUrl = environment.apiUrl + 'explorer';
   comparatorUrl = environment.apiUrl + 'comparator';
 
@@ -28,6 +30,16 @@ export class CoursesService {
   getCourseById(id): Observable<Course> {
     return this.http.get(this.coursesUrl + id)
       .map(res => res.json().data.items[0] as Course).catch(this.handleError);
+  }
+
+  getCoursesByFaculty(facultyId): Observable<Course[]> {
+    return this.http.get(this.coursesByFacultiesUrl+facultyId+'/courses/')
+      .map(res => res.json().data.items as Course[]).catch(this.handleError);
+  }
+
+  getCoursesByUniversity(universityId): Observable<Course[]> {
+    return this.http.get(this.coursesByUniversitiesUrl+universityId+'/courses/')
+      .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
   exploreByFaculty(keywords, facultyId): Observable<any[]> {

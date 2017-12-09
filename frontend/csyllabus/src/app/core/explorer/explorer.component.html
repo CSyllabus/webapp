@@ -15,6 +15,10 @@
                           (click)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()">
                 {{university.name}}
               </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="queryCountry = country;queryFaculty = faculty;">
+                {{faculty.name}}
+              </mat-option>
             </mat-optgroup>
           </mat-select>
         </mat-form-field>
@@ -25,7 +29,7 @@
                  [matChipInputAddOnBlur]="true"
                  (matChipInputTokenEnd)="add($event)"
                  (keyup.enter)="$event.stopPropagation()"
-                 required/>
+                 [required]="!queryUniversity && !queryFaculty" />
           <mat-chip-list #chipList>
             <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
                       [removable]="true" (remove)="remove(keyword)">
@@ -34,6 +38,7 @@
             </mat-chip>
           </mat-chip-list>
         </mat-form-field>
+
         <br>
         <button mat-raised-button color="primary" (click)="exploreCourses()" margin=10px>Explore</button>
 
