@@ -2,7 +2,6 @@
 .bgexplorer {
   max-width: 100%;
   width: 100%;
-  position: absolute;
   top: 0;
   right: 0;
   min-height: 45.5em;
@@ -65,7 +64,6 @@ h2 {
 .bgexplorer {
   max-width: 100%;
   width: 100%;
-  position: absolute;
   top: 0;
   right: 0;
   /*min-height: 45.5em;*/
