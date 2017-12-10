@@ -208,3 +208,51 @@ class CourseByFacultyView(APIView):
 
         result['data'] = data
         return Response(result)
+
+
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class CourseByUniversityView(APIView):
+    def get(self, request, university_id):
+
+        course_universities = CourseUniversity.objects.filter(university_id=university_id)
+
+        course_ids = []
+        try:
+            university = course_universities[0].university
+            country = university.country
+
+            data = {}
+            result = {}
+            courses_list = []
+            for course_university in course_universities:
+                course = Course.objects.filter(id=course_university.course_id)[0]
+                one_course = {}
+                one_course['id'] = course.id
+                one_course['name'] = course.name
+                one_course['description'] = course.description
+                one_course['ects'] = course.ects
+                one_course['english_level'] = course.english_level
+                one_course['semester'] = course.semester
+                one_course['university'] = university.name
+                one_course['country'] = country.name
+                one_course['modified'] = course.modified
+                one_course['created'] = course.created
+
+                if len(course.description) <= 203:
+                    short_description = course.description
+                else:
+                    short_description = course.description[0:200] + '...'
+
+                one_course['short_description']=short_description
+                courses_list.append(one_course)
+        except IndexError:
+            data['currentItemCount'] = 0
+            data['items'] = []
+
+        courses_list.sort(key=lambda x: x['name'], reverse=False)
+        data['currentItemCount'] = len(course_universities)
+        data['items'] = courses_list
+        result['data'] = data
+        return Response(result)

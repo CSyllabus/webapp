@@ -222,15 +222,17 @@ export class ExplorerComponent implements OnInit {
           });
         }
       } else if (this.queryUniversity) {
-        this.coursesService.exploreByUniversity(keywords, this.queryUniversity.id).subscribe(courses => {
-          this.explorerResult.emit(courses);
-          this.explorerStarted = false;
-        });
-      } else if (this.queryCity) {
-        this.coursesService.exploreByCity(keywords, this.queryCity.id).subscribe(courses => {
-          this.explorerResult.emit(courses);
-          this.explorerStarted = false;
-        });
+        if(this.keyword.length !== 0){
+          this.coursesService.exploreByUniversity(keywords, this.queryUniversity.id).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+          });
+        } else {
+          this.coursesService.getCoursesByUniversity(this.queryUniversity.id).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+          });
+        }
       } else if (this.queryCountry) {
         this.coursesService.exploreByCountry(keywords, this.queryCountry.id).subscribe(courses => {
           this.explorerResult.emit(courses);
