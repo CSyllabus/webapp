@@ -202,6 +202,8 @@ export class ComparatorComponent implements OnInit {
         this.multi_courses = [];
         this.coursesService.compareByFaculty(this.listCoursesIDs[0], this.queryFaculty.id).subscribe(courses => {
           this.multi_courses.push(courses);
+          this.comparatorStarted = false;
+
         });
 
       }
@@ -213,6 +215,7 @@ export class ComparatorComponent implements OnInit {
           if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByFaculty(this.listCoursesIDs[i], this.queryFaculty.id).subscribe(courses => {
               this.multi_courses.push(courses);
+              this.comparatorStarted = false;
             });
           }
         }
@@ -224,6 +227,7 @@ export class ComparatorComponent implements OnInit {
         this.multi_courses = [];
         this.coursesService.compareByUniversity(this.listCoursesIDs[0], this.queryUniversity.id).subscribe(courses => {
           this.multi_courses.push(courses);
+          this.comparatorStarted = false;
         });
       }
 
@@ -233,6 +237,7 @@ export class ComparatorComponent implements OnInit {
           if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByUniversity(this.listCoursesIDs[i], this.queryUniversity.id).subscribe(courses => {
               this.multi_courses.push(courses);
+              this.comparatorStarted = false;
             });
           }
         }
@@ -243,6 +248,7 @@ export class ComparatorComponent implements OnInit {
         this.multi_courses = [];
         this.coursesService.compareByCity(this.listCoursesIDs[0], this.queryCity.id).subscribe(courses => {
           this.multi_courses.push(courses);
+          this.comparatorStarted = false;
         });
       }
 
@@ -253,6 +259,7 @@ export class ComparatorComponent implements OnInit {
           if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByCity(this.listCoursesIDs[i], this.queryCity.id).subscribe(courses => {
               this.multi_courses.push(courses);
+              this.comparatorStarted = false;
             });
           }
         }
@@ -263,6 +270,7 @@ export class ComparatorComponent implements OnInit {
         this.multi_courses = [];
         this.coursesService.compareByCountry(this.listCoursesIDs[0], this.queryCountry.id).subscribe(courses => {
           this.multi_courses.push(courses);
+          this.comparatorStarted = false;
         });
       }
       else {
@@ -272,6 +280,7 @@ export class ComparatorComponent implements OnInit {
           if (this.listCoursesIDs[i] > 0) {
             this.coursesService.compareByCountry(this.listCoursesIDs[i], this.queryCountry.id).subscribe(courses => {
               this.multi_courses.push(courses);
+              this.comparatorStarted = false;
             });
           }
         }
@@ -279,7 +288,7 @@ export class ComparatorComponent implements OnInit {
       }
       this.comparatorResult.emit(this.multi_courses);
     }
-    this.comparatorStarted = false;
+
 
   }
 
