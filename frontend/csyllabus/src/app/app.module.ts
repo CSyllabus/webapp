@@ -25,7 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component'
-
+import {DocumentationComponent} from './components/documentation/documentation.component';
 
 @NgModule({
   imports: [
@@ -54,7 +54,8 @@ import { FooterComponent } from './components/footer/footer.component'
     AboutComponent,
     ContactComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DocumentationComponent
   ],
   bootstrap: [AppComponent],
 })
