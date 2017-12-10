@@ -30,63 +30,60 @@ except ImportError:
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CourseView(APIView):
-    def get(self, request, course_id=-1):
+    def get(self, request, course_id=-1, limit=-1, offset=-1):
+        query_pairs = request.META['QUERY_STRING'].split('&')
+
+        for query_pair in query_pairs:
+            query_pair_split = query_pair.split('=')
+            if query_pair_split[0] == 'limit':
+                limit = int(query_pair_split[1])
+            elif query_pair_split[0] == 'offset':
+                offset = int(query_pair_split[1])
 
         if course_id >= 0:
             courses = Course.objects.filter(id=course_id)
         else:
-            courses = Course.objects.all()
+            courses = Course.objects.all().order_by('name')
+
         data = {}
         result = {}
         courses_list = []
         for course in courses:
-            one_course = {}
-            one_course['id'] = course.id
-            one_course['name'] = course.name
-            one_course['description'] = course.description
-            one_course['ects'] = course.ects
-            one_course['english_level'] = course.english_level
-            one_course['semester'] = course.semester
-            one_course['modified'] = course.modified
-            one_course['created'] = course.created
+
+            course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
+                          'english_level': course.english_level, 'semester': course.semester,
+                          'modified': course.modified, 'created': course.created}
 
             try:
-                course_program = CourseProgram.objects.filter(course_id=course.id)[0]
+                course_faculty = CourseFaculty.objects.filter(course_id=course.id).select_related('faculty')[0]
+                course_data['faculty'] = course_faculty.faculty.name
+            except IndexError:
+                pass
 
-                program_id = course_program.program_id
-                study_lvl = Program.objects.filter(id=program_id)[0]
-                one_course['study_lvl'] = study_lvl.study_level
-            except:
-                course_program = None
+            try:
+                course_university = CourseUniversity.objects.filter(course_id=course.id).select_related('university__country')[0]
+                university = course_university.university
+                course_data['university'] = university.name
+                course_data['country'] = university.country.name
+            except IndexError:
+                pass
 
-            if course_program is not None:
-                # program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+            courses_list.append(course_data)
 
-                try:
-                    program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
-                except:
-                    program_faculty = None
+        if limit > 0 and offset >= 0:
+            data['currentItemCount'] = limit
+            data['items'] = courses_list[offset:offset + limit]
+        elif limit > 0:
+            data['currentItemCount'] = limit
+            data['items'] = courses_list[0:limit]
+        elif offset >= 0:
+            count = len(courses_list)
+            data['currentItemCount'] = count
+            data['items'] = courses_list[offset:count]
+        else:
+            data['currentItemCount'] = len(courses_list)
+            data['items'] = courses_list
 
-                program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
-                program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
-                program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
-
-                if program_faculty is not None:
-                    faculty = Faculty.objects.filter(id=program_faculty.faculty.id)[0]
-                    one_course['faculty'] = faculty.name
-                if program_university is not None:
-                    university = University.objects.filter(id=program_university.university.id)[0]
-                    one_course['university'] = university.name
-                if program_city is not None:
-                    city = City.objects.filter(id=program_city.city.id)[0]
-                    one_course['city'] = city.name
-                if program_country is not None:
-                    country = Country.objects.filter(id=program_country.country.id)[0]
-                    one_course['country'] = country.name
-
-            courses_list.append(one_course)
-        data['currentItemCount'] = courses.count()
-        data['items'] = courses_list
         result['data'] = data
         return Response(result)
 
@@ -149,17 +146,17 @@ class CourseByProgramView(APIView):
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CourseByFacultyView(APIView):
-    def get(self, request, faculty_id, limit=-1, page=-1):
+    def get(self, request, faculty_id, limit=-1, offset=-1):
         query_pairs = request.META['QUERY_STRING'].split('&')
 
         for query_pair in query_pairs:
             query_pair_split = query_pair.split('=')
             if query_pair_split[0] == 'limit':
                 limit = int(query_pair_split[1])
-            elif query_pair_split[0] == 'page':
-                page = int(query_pair_split[1])
+            elif query_pair_split[0] == 'offset':
+                offset = int(query_pair_split[1])
 
-        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id)
+        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id).select_related('faculty__university__country')
         data = {}
         result = {}
 
@@ -179,7 +176,8 @@ class CourseByFacultyView(APIView):
                         short_description = course.description[0:200] + '...'
 
                     course_data = {'id': course.id, 'name': course.name, 'description': course.description,
-                                   'ects': course.ects, 'english_level': course.english_level, 'semester': course.semester,
+                                   'ects': course.ects, 'english_level': course.english_level,
+                                   'semester': course.semester,
                                    'modified': course.modified, 'created': course.created, 'faculty': faculty.name,
                                    'university': university.name, 'country': country.name,
                                    'short_description': short_description}
@@ -190,12 +188,20 @@ class CourseByFacultyView(APIView):
 
             courses_list.sort(key=lambda x: x['name'], reverse=False)
 
-            if limit > 0 and page >= 0:
+            if limit > 0 and offset >= 0:
                 data['currentItemCount'] = limit
-                data['items'] = courses_list[(page-1)*limit:page*limit]
+                data['items'] = courses_list[offset:offset + limit]
+            elif limit > 0:
+                data['currentItemCount'] = limit
+                data['items'] = courses_list[0:limit]
+            elif offset >= 0:
+                count = len(courses_list)
+                data['currentItemCount'] = count
+                data['items'] = courses_list[offset:count]
             else:
                 data['currentItemCount'] = len(courses_list)
                 data['items'] = courses_list
+
         except IndexError:
             data['currentItemCount'] = 0
             data['items'] = []
