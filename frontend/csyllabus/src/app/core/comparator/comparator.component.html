@@ -23,11 +23,14 @@
         <mat-form-field class="input">
           <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-              <!--<mat-option [value]="country">&#45;&#45; All in {{country.name}} &#45;&#45;
-              </mat-option>-->
+
               <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (click)="queryHomeCountry=country; queryHomeUniversity = university; filterCoursesByHomeProgram()">
+                          (click)="queryHomeUniversity = university; filterCoursesByUniversity()">
                 {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="queryHomeFaculty = faculty;filterCoursesByFaculty()">
+                {{faculty.name}}
               </mat-option>
             </mat-optgroup>
           </mat-select>
@@ -64,7 +67,7 @@
         </mat-radio-group>-->
 
 
-        <div *ngIf="queryHomeUniversity">
+        <div *ngIf="queryHomeUniversity || queryHomeFaculty">
           <mat-form-field class="input" style="width:80%">
             <input  placeholder="Course?" matInput [formControl]="homeCoursesControl"
                    [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
@@ -123,11 +126,14 @@
         <mat-form-field class="input">
           <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-              <mat-option [value]="country">-- All in {{country.name}} --
-              </mat-option>
+
               <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (click)="queryUniversity = university; filterFacultiesByHomeUniversity()">
+                          (click)="queryUniversity = university; filterFacultiesByUniversity()">
                 {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="queryFaculty = faculty;">
+                {{faculty.name}}
               </mat-option>
             </mat-optgroup>
           </mat-select>

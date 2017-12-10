@@ -16,6 +16,12 @@ urlpatterns = [
     url(r'^courses', views.CourseView.as_view(), name='courses'),
     url(r'^cities/(?P<city_id>[^/]+)/universities', views.UniversitiesView.as_view(), name='universities'),
     url(r'^universities/(?P<university_id>[^/]+)/faculties', views.FacultyView.as_view(), name='faculties'),
+    url(r'^universities/(?P<university_id>[^/]+)/courses', views.CourseByUniversityView.as_view(), name='courses'),
+
+    url(r'^faculties/(?P<faculty_id>[^/]+)/courses', views.CourseByFacultyView.as_view(), name='courses'),
+
+    url(r'^faculties/', views.FacultyViewAll.as_view(), name='faculties'),
+
     url(r'^faculties/(?P<faculty_id>[^/]+)/programs', views.ProgramView.as_view(), name='programs'),
     url(r'^universities/(?P<university_id>[^/]+)/programs', views.ProgramUnivView.as_view(), name='programs'),
     url(r'^explorer', views.explorer, name='explorer'),
