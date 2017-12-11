@@ -1,42 +1,75 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed} from '@angular/core/testing';
 import { ResultCardsComparatorComponent } from './result-cards-comparator.component';
-
-import {CoreComponent} from '../core.component';
 import {AngularMaterialModule} from '../../angular-material/angular-material.module';
-import {FormsModule, FormControl, ReactiveFormsModule} from '@angular/forms';
-
-
-
-import {Http, HttpModule} from '@angular/http';
+import {CourseDialogComponent} from './course-dialog/course-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
-describe('ExplorerComponent', () => {
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MatDialogModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {CoursesService} from '../../services/courses.service';
+import {HttpModule} from '@angular/http';
+import {Course} from '../../classes/course';
+
+@NgModule({
+  declarations: [CourseDialogComponent],
+  entryComponents: [CourseDialogComponent],
+  exports: [CourseDialogComponent],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+  ],
+})
+class TestModule { }
+
+describe('ResultCardsComparatorComponent', () => {
   let component: ResultCardsComparatorComponent;
   let fixture: ComponentFixture<ResultCardsComparatorComponent>;
+  let courseTest = new Course;
+  courseTest.city = 'Test City';
+  courseTest.created = '09122017';
+  courseTest.description = 'test description';
+  courseTest.ects = 0;
+  courseTest.englishLevel = 0;
+  courseTest.faculty = 'Test Faculty';
+  courseTest.id = 0;
+  courseTest.name = 'Test course';
+  courseTest.semester = 0;
+  courseTest.winsum = 0;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ResultCardsComparatorComponent ],
       imports: [
-
         RouterTestingModule.withRoutes([]),
-        AngularMaterialModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        TestModule,
+        MatDialogModule,
+        MatCardModule,
+        HttpModule,
       ],
       providers: [
-
+        CoursesService,
       ],
     })
-    .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(()  => {
     fixture = TestBed.createComponent(ResultCardsComparatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    component.courses = [courseTest];
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should openDialog call with course id 0', () => {
+    spyOn(component, 'openDialog').and.callThrough();
+    component.openDialog(0);
+    expect(component.openDialog).toHaveBeenCalled();
+  });
+
 });
