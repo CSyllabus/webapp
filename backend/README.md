@@ -11,15 +11,15 @@
 ## Installation
 (Don't forget to be in virtual env. before these steps, see parent directory readme file)
 
-pip install -r backend/requirements/devl.pip
-createdb $project_name
+ pip install -r backend/requirements/devl.pip
+ createdb $project_name
 
 # Configuration 
-config.sh
-config.bat 
+ config.sh
+ config.bat 
 
 # Run 
-run.sh 
-run.bat 
+ run.sh 
+ run.bat 
 ```
 + don't forget to add 'csyllabusapi' to your settings installed apps
