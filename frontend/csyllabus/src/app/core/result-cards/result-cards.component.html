@@ -1,30 +1,16 @@
-<div *ngIf="courses">
-
-  <div class="container col-md-12">
-
+<div class="container" *ngIf="courses">
   <div *ngIf="courses && courses.length > 0"
        class="puls-rings-outer">
     <div class="puls-rings"></div>
   </div>
 
-  <div *ngFor="let course of courses" class="courseCard col-md-4">
+  <div *ngFor="let course of courses; let i = index" class="courseCard col-md-4" [hidden]="i >= 12*page">
     <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card">
       <mat-card-header>
-        <!--<div mat-card-avatar class="example-header-image"
-        style="    height: 50px;
-    width: 50px;
-    padding-top: 15px;
-    background-color: rgba(63,94,251,0.49);
-    text-align: center;
-    color: white;">
-          <span style="display: inline-block;
-  vertical-align: middle;
-  line-height: normal;">{{course.rank * 100  | number : '1.2-2'}}
-          </span></div>-->
         <mat-card-title>
-          <p   class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
+          <p class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
         <mat-card-subtitle>
-          <b *ngIf="course.rank"> Rank: {{course.rank * 100  | number : '1.2-2'}} </b>
+          <!--<b *ngIf="course.rank"> Rank: {{course.rank * 100 | number : '1.2-2'}} </b> -->
           <p class="cours-result-card-subtitle">
             <span *ngIf="course.faculty">{{course.faculty}}, </span>
             <span *ngIf="course.university">{{course.university}}, </span>
@@ -37,21 +23,18 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-
-        <!--<button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>-->
       </mat-card-actions>
     </mat-card>
-
   </div>
-
   <div *ngIf="!courses || courses.length === 0" style="padding: 50px; ">
     <div class="puls-rings-outer">
-    <div class="puls-rings"></div>
-  </div>
+      <div class="puls-rings"></div>
+    </div>
     <div>No courses for given search!</div>
   </div>
-
-  </div>
 </div>
-
+<div *ngIf="courses" class="container" style="text-align: center;">
+  <button mat-raised-button color="primary" (click)="page = page + 1;" *ngIf="page < (courses.length / 12)"
+          style="margin: 10px;">Show more
+  </button>
+</div>

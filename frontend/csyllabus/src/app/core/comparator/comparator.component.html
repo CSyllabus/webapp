@@ -7,17 +7,17 @@
             ">
 
       <div class="col-md-6">
-       <!-- <mat-form-field style="padding-top:30px" class="input">
-          <input placeholder="Home University" matInput [formControl]="homeUnivControl"
-                 [matAutocomplete]="home_univ_auto" [(ngModel)]="queryHomeUniversity"
-                 (ngModelChange)="filterFacultiesByHomeUniversity()"
-                 required>
-          <mat-autocomplete #home_univ_auto="matAutocomplete" [displayWith]="displaySelect">
-            <mat-option *ngFor="let university of universities" [value]="university">
-              {{ university.name }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>-->
+        <!-- <mat-form-field style="padding-top:30px" class="input">
+           <input placeholder="Home University" matInput [formControl]="homeUnivControl"
+                  [matAutocomplete]="home_univ_auto" [(ngModel)]="queryHomeUniversity"
+                  (ngModelChange)="filterFacultiesByHomeUniversity()"
+                  required>
+           <mat-autocomplete #home_univ_auto="matAutocomplete" [displayWith]="displaySelect">
+             <mat-option *ngFor="let university of universities" [value]="university">
+               {{ university.name }}
+             </mat-option>
+           </mat-autocomplete>
+         </mat-form-field>-->
 
 
         <mat-form-field class="input">
@@ -28,6 +28,10 @@
               <mat-option *ngFor="let university of country.universities" [value]="university"
                           (click)="queryHomeCountry=country; queryHomeUniversity = university; filterCoursesByHomeProgram()">
                 {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="queryHomeCountry = country;queryHomeFaculty = faculty;">
+                {{faculty.name}}
               </mat-option>
             </mat-optgroup>
           </mat-select>
@@ -66,7 +70,7 @@
 
         <div *ngIf="queryHomeUniversity">
           <mat-form-field class="input" style="width:80%">
-            <input  placeholder="Course?" matInput [formControl]="homeCoursesControl"
+            <input placeholder="Course?" matInput [formControl]="homeCoursesControl"
                    [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
                    required>
             <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displaySelect">
@@ -119,7 +123,6 @@
         </mat-form-field>-->
 
 
-
         <mat-form-field class="input">
           <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
@@ -129,12 +132,13 @@
                           (click)="queryUniversity = university; filterFacultiesByHomeUniversity()">
                 {{university.name}}
               </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="queryCountry = country;queryFaculty = faculty;">
+                {{faculty.name}}
+              </mat-option>
             </mat-optgroup>
           </mat-select>
         </mat-form-field>
-
-
-
         <!--<mat-form-field class="input" *ngIf="queryCountry">
           <input placeholder="Any specific city?" matInput [formControl]="citiesControl"
                  [matAutocomplete]="cities_auto" [(ngModel)]="queryCity">
@@ -165,8 +169,6 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>-->
-
-
       </div>
 
       <div class="button" style="margin-top: 25px;">

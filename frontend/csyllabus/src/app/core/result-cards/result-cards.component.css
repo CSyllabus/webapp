@@ -2,8 +2,8 @@
   padding: 2%;
   float: left;
   text-align: left;
-  height: 400px;
-  max-height: 400px;
+  height: 350px;
+  max-height: 350px;
   overflow: hidden;
 }
 
@@ -17,22 +17,10 @@
 
 }
 
-.container{
-    width:100%;
-    background-image:url(../../../images/a4.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-
-
-}
-
 @media only screen and (max-width: 1000px) {
 
   .hideImg {
-    display:none;
+    display: none;
   }
 }
 
@@ -44,7 +32,7 @@
 
 .cours-result-card-title {
   /*height: 75px;*/
-  padding-bottom:15px;
+  padding-bottom: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 18px;
@@ -65,9 +53,19 @@
   }
 }
 
+.example-card {
+  transition: all .2s ease-in-out;
+}
+
+.example-card:hover {
+  transform: scale(1.1);
+}
 
 
 
+@media only screen and (min-width: 768px) {
+  .example-card {
+  height: 350px;
+}
 
-.example-card { transition: all .2s ease-in-out; }
-.example-card:hover { transform: scale(1.1); }
+}

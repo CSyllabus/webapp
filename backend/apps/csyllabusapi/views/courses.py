@@ -208,3 +208,68 @@ class CourseByFacultyView(APIView):
 
         result['data'] = data
         return Response(result)
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class CourseByUniversityView(APIView):
+    def get(self, request, university_id, limit=-1, offset=-1):
+        query_pairs = request.META['QUERY_STRING'].split('&')
+
+        for query_pair in query_pairs:
+            query_pair_split = query_pair.split('=')
+            if query_pair_split[0] == 'limit':
+                limit = int(query_pair_split[1])
+            elif query_pair_split[0] == 'offset':
+                offset = int(query_pair_split[1])
+
+        course_universities = CourseUniversity.objects.filter(university_id=university_id).select_related('university__country')
+        data = {}
+        result = {}
+
+        try:
+            university = course_universities[0].university
+            country = university.country
+
+            courses_list = []
+            for course_university in course_universities:
+                try:
+                    course = Course.objects.filter(id=course_university.course.id)[0]
+
+                    if len(course.description) <= 203:
+                        short_description = course.description
+                    else:
+                        short_description = course.description[0:200] + '...'
+
+                    course_data = {'id': course.id, 'name': course.name, 'description': course.description,
+                                   'ects': course.ects, 'english_level': course.english_level,
+                                   'semester': course.semester,
+                                   'modified': course.modified, 'created': course.created,
+                                   'university': university.name, 'country': country.name,
+                                   'short_description': short_description}
+
+                    courses_list.append(course_data)
+                except IndexError:
+                    print "Course found in course_faculty " + course_university.id + " missing from database."
+
+            courses_list.sort(key=lambda x: x['name'], reverse=False)
+
+            if limit > 0 and offset >= 0:
+                data['currentItemCount'] = limit
+                data['items'] = courses_list[offset:offset + limit]
+            elif limit > 0:
+                data['currentItemCount'] = limit
+                data['items'] = courses_list[0:limit]
+            elif offset >= 0:
+                count = len(courses_list)
+                data['currentItemCount'] = count
+                data['items'] = courses_list[offset:count]
+            else:
+                data['currentItemCount'] = len(courses_list)
+                data['items'] = courses_list
+
+        except IndexError:
+            data['currentItemCount'] = 0
+            data['items'] = []
+
+        result['data'] = data
+        return Response(result)

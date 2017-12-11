@@ -12,6 +12,7 @@ export class ResultCardsComponent implements OnInit {
 
  @Input() courses: any = [];
 
+ page = 1;
   constructor(private dialog: MatDialog) { }
 
   openDialog(course_id){

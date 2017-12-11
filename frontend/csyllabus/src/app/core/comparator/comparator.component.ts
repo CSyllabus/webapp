@@ -5,24 +5,19 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
 const COMMA = 188;
-
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
-
-
 import {CountriesService} from '../../services/countries.service';
 import {CitiesService} from '../../services/cities.service';
 import {UniversitiesService} from '../../services/universities.service';
 import {FacultiesService} from '../../services/faculties.service';
 import {CoursesService} from '../../services/courses.service';
 import {ProgramsService} from '../../services/programs.service';
-
 import {Course} from '../../classes/course';
 import {Country} from '../../classes/country';
 import {City} from '../../classes/city';
 import {University} from '../../classes/university';
 import {Faculty} from '../../classes/faculty';
 import {Program} from '../../classes/program';
-
 
 @Component({
   selector: 'app-comparator',
@@ -31,11 +26,9 @@ import {Program} from '../../classes/program';
 })
 export class ComparatorComponent implements OnInit {
 
-
   @Output() backgroundImage = new EventEmitter<any>();
   @Output() comparatorResult = new EventEmitter<any>();
   @Output() mainCourse = new EventEmitter<any>();
-
 
   comparatorStarted: Boolean;
   countries: Country[];
@@ -62,7 +55,6 @@ export class ComparatorComponent implements OnInit {
   homeCoursesControl: FormControl = new FormControl();
   pokemonControl: FormControl = new FormControl();
 
-
   queryCountry: Country;
   queryCity: City;
   queryHomeUniversity: University;
@@ -86,24 +78,29 @@ export class ComparatorComponent implements OnInit {
 
   ngOnInit() {
     this.countriesService.getAllCountries().subscribe(countries => {
-    this.countries = countries;
-
-    this.universitiesService.getAllUniversities().subscribe(universities => {
-    console.log(universities);
-      for (let country of this.countries) {
-      country['universities']  = [];
-        for (let university of universities) {
-          if (university.countryId === country.id) {
-            country.universities.push(university);
-            console.log("here");
-          } else {
-          console.log(university);
+      this.countries = countries;
+      this.universitiesService.getAllUniversities().subscribe(universities => {
+        this.facultiesService.getAllFaculties().subscribe(faculties => {
+          for (let country of this.countries) {
+            country['universities'] = [];
+            country['faculties'] = [];
+            for (let university of universities) {
+              if (university.countryId === country.id) {
+                let flag = true;
+                for (let faculty of faculties) {
+                  if (faculty.universityId === university.id) {
+                    flag = false;
+                    country.faculties.push(faculty);
+                  }
+                }
+                if (flag) {
+                  country.universities.push(university);
+                }
+              }
+            }
           }
-        };
-      };
-    });
-
-
+        });
+      });
     });
   }
 
