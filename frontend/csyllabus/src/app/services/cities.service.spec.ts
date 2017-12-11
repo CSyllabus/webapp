@@ -1,55 +1,89 @@
-import { TestBed, inject} from '@angular/core/testing';
-import { CitiesService } from './cities.service';
-import { HttpModule, XHRBackend, Response, ResponseOptions } from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+import {TestBed, inject, async} from '@angular/core/testing';
+import {CitiesService} from './cities.service';
+import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod} from '@angular/http';
+import {MockBackend, MockConnection} from '@angular/http/testing';
+import {environment} from '../../environments/environment';
 
-describe('CitiesService', () => {
-  let backend: MockBackend;
-  let citiesService: CitiesService;
-
+describe('Service: Cities', () => {
+  let mockBackend: MockBackend;
+  let service: CitiesService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CitiesService, { provide: XHRBackend, useClass: MockBackend }],
-      imports: [ HttpModule ]
+      providers: [
+        CitiesService,
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Http,
+          useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options),
+          deps: [ MockBackend, BaseRequestOptions ]
+        }
+      ]
     });
   });
 
-  it('should be created', inject([CitiesService], (service: CitiesService) => {
+  beforeEach(inject([ MockBackend, Http ],
+    (mb: MockBackend, http: Http) => {
+      mockBackend = mb;
+      service = new CitiesService(http);
+    }));
+  it('should  be created ', inject([ CitiesService ], (service: CitiesService) => {
     expect(service).toBeTruthy();
   }));
 
-  it('retrieves all the cities', inject( [CitiesService], ( service ) => {
-    return service.getAllCities().toPromise().then( (result) => {
-      expect(result.length).toBeGreaterThan(0);
-    } );
-  }));
-
-  it('retrieves all the cities by countries 0', inject( [CitiesService], ( service ) => {
-    return service.getCitiesByCountry(0).toPromise().then( (result) => {
-      expect(result.length).toBeGreaterThan(0);
-    } );
-  }));
-
-  it('should parse object', inject([CitiesService, XHRBackend], (citiesService, backend) => {
-    const mockResponse = {
-      data: [
-        { test: 'cities'
-        },
-      ]
-    }
-
-    // When the request subscribes for results on a connection, return a fake response
-    backend.connections.subscribe(connection => {
-      connection.mockRespond(new Response( new ResponseOptions({
-        body: JSON.stringify(mockResponse)
+  it('should call getAllCities and return test name', (done) => {
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      expect(connection.request.method).toEqual(RequestMethod.Get);
+      let citiesUrl = environment.apiUrl + 'cities/';
+      expect(connection.request.url).toEqual(citiesUrl);
+      connection.mockRespond(new Response(new ResponseOptions({
+          body: {
+            data: {
+              items: [{
+                id: 0,
+                countryId: 0,
+                created: '09122017',
+                img: 'test.png',
+                modified: '09122017',
+                name: 'test',
+                universities: 'test',
+              }, ]
+            },
+          }
       })));
     });
-    citiesService.getAllCities().subscribe((res) => {
+    service.getAllCities().subscribe(result => {
+      expect(result[0].name).toEqual('test');
+      done();
     });
+  });
 
-    citiesService.getCitiesByCountry(0).subscribe((res) => {
+  it('should call getCitiesByCountry and return test name', (done) => {
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      expect(connection.request.method).toEqual(RequestMethod.Get);
+      let countriesUrl = environment.apiUrl + 'countries/' + 0 + '/cities/';
+      expect(connection.request.url).toEqual(countriesUrl);
+      connection.mockRespond(new Response(new ResponseOptions({
+        body: {
+          data: {
+            items: [{
+              id: 0,
+              countryId: 0,
+              created: '09122017',
+              img: 'test.png',
+              modified: '09122017',
+              name: 'test',
+              universities: 'test',
+            }, ]
+          },
+        }
+      })));
     });
-  }));
+    service.getCitiesByCountry(0).subscribe(result => {
+      expect(result[0].name).toEqual('test');
+      done();
+    });
+  });
 
 });
 

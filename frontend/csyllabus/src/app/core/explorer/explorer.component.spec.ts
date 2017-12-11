@@ -78,7 +78,7 @@ describe('ExplorerComponent', () => {
   course.englishLevel = 0;
   course.faculty = 'Test';
   course.id = 0;
-  course.name = 'Test';
+  course.name = 'test';
   course.semester = 0;
   course.winsum = 0;
   program.courses = [course,course];
@@ -204,7 +204,8 @@ describe('ExplorerComponent', () => {
   it('should filterCitiesByCountry subscribe ', async(() => {
     let response: City[];
     component.queryCountry = queryCountry;
-    component.queryCountry.id = 0;
+    component.queryCountry.id = 1;
+    component.queryCountry.img = 'test.png';
 
     spyOn(citiesService, 'getCitiesByCountry').and.returnValue(of(response));
 
@@ -320,11 +321,16 @@ describe('ExplorerComponent', () => {
   });
 
   it('should add', () => {
-    component.keyword = keywords;
-    let event = {value: 'test', input: undefined};
+    /*component.keyword = keywords;
+    let newDiv = document.createElement('test');
+    let newContent = document.createTextNode('test');
+    newDiv.appendChild(newContent);
+    let event: MatChipInputEvent;
+    event.input = <HTMLInputElement>document.getElementById('test1');
+    event.value = 'test';
     spyOn(component, 'add').and.callThrough();
     component.add(event);
-    //expect(component.add ).toHaveBeenCalled();
+    expect(component.add ).toHaveBeenCalled();*/
   });
 
 });

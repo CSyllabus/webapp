@@ -97,10 +97,10 @@ describe('ComparatorComponent', () => {
   let queryCountry = new Country;
   queryCountry.cities = [city];
   queryCountry.created = '09122017';
-  queryCountry.created = '09122017';
   queryCountry.name = 'Test Country';
   queryCountry.img = 'test.png';
   queryCountry.id = 0;
+  queryCountry.modified = '09122017';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -244,19 +244,26 @@ describe('ComparatorComponent', () => {
     expect(component.filterProgramsByHomeFaculty).toHaveBeenCalled();
   });
 
-  it('should filterCitiesByCountry subscribe ', async(() => {
+  it('should filterCitiesByCountry subscribe ', () => {
     let response: City[];
-    component.queryCountry = queryCountry;
-    component.queryCountry.id = 0;
 
-    spyOn(citiesService, 'getCitiesByCountry').and.returnValue(of(response));
+    spyOn(citiesService, 'getCitiesByCountry').and.returnValue(of(response)).and.callThrough();
+
+    component.queryCountry = queryCountry;
+    component.queryCountry.id = 1;
+    component.queryCountry.img = 'test.png';
 
     component.filterCitiesByCountry();
-
+    if (component.queryCountry && component.queryCountry.id) {
+      expect(component.queryCountry).toBeDefined();
+    }
+    expect(component.queryCountry).toBeDefined();
+    expect(component.queryCountry.id).toEqual(1);
     fixture.detectChanges();
 
     expect(component.filteredCities).toEqual(response);
-  }));
+  });
+
 
   it('should filterProgramsByHomeFaculty subscribe ', async(() => {
     const response: Program[] = [];
