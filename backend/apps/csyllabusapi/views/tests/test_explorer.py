@@ -15,10 +15,46 @@ class ExplorerTestCase(TestCase):
         ProgramCountry.objects.create(program=program1, country=country1)
         ProgramCity.objects.create(program=program1, city=city1)
         ProgramUniversity.objects.create(program=program1, university=university1)
-        ProgramFaculty.objects.create(program=program1, faculty=faculty1)
         CourseProgram.objects.create(course=course1, program=program1)
 
+        # creation of http get request
         c = Client()
+
+        # Testing explorer with ProgramCountry
+        response = c.get('/csyllabusapi/explorer?keywords=java&country_id=' + str(country1.id))
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Java"])
+
+        # Testing explorer with ProgramCity
+        response = c.get('/csyllabusapi/explorer?keywords=java&city_id=' + str(city1.id))
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Java"])
+
+        # Testing explorer with ProgramUniversity
+        response = c.get('/csyllabusapi/explorer?keywords=java&university_id=' + str(university1.id))
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Java"])
+
+        # Testing explorer with ProgramFaculty
+        ProgramFaculty.objects.create(program=program1, faculty=faculty1)
         response = c.get('/csyllabusapi/explorer?keywords=java&country_id=' + str(country1.id) + '&city_id='
                          + str(city1.id) + '&university_id=' + str(university1.id) + '&faculty_id=' + str(faculty1.id))
 
@@ -29,3 +65,6 @@ class ExplorerTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(arrCourses, ["Java"])
+
+        # TODO Testing explorer with long course description
+        course2 = Course.objects.create(name="Soft computing", description="")
