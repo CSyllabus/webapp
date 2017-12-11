@@ -10,16 +10,15 @@
 
 ## Installation
 (Don't forget to be in virtual env. before these steps, see parent directory readme file)
-```
 pip install -r backend/requirements/devl.pip
 createdb $project_name
-python manage.py migrate
-python manage.py loadtestdata users.EmailUser:100
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer_fixtures_json.json
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/laquila_fixtures_json.json
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup_fixtures_json.json
-python manage.py course_similarity
-python manage.py createsuperuser
-python manage.py runserver
+
+# Configuration (Linux/Windows)
+config.sh
+config.bat
+
+# Run (Linux/Windows)
+run.sh 
+run.bat 
 ```
 + don't forget to add 'csyllabusapi' to your settings installed apps
