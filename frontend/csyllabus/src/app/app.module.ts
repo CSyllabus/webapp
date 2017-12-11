@@ -24,8 +24,8 @@ import {ROUTES} from './app.routes';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-
-
+import { FooterComponent } from './components/footer/footer.component'
+import {DocumentationComponent} from './components/documentation/documentation.component';
 
 @NgModule({
   imports: [
@@ -53,7 +53,9 @@ import { ContactComponent } from './components/contact/contact.component';
     NotFoundComponent,
     AboutComponent,
     ContactComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent,
+    DocumentationComponent
   ],
   bootstrap: [AppComponent],
 })
