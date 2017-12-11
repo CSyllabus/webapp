@@ -10,14 +10,15 @@
 
 ## Installation
 (Don't forget to be in virtual env. before these steps, see parent directory readme file)
+
 pip install -r backend/requirements/devl.pip
 createdb $project_name
 
-# Configuration (Linux/Windows)
+# Configuration 
 config.sh
-config.bat
+config.bat 
 
-# Run (Linux/Windows)
+# Run 
 run.sh 
 run.bat 
 ```
