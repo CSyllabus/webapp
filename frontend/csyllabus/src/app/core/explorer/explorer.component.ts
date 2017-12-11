@@ -187,7 +187,7 @@ export class ExplorerComponent implements OnInit {
           this.coursesService.exploreByFaculty(keywords, this.queryFaculty.id).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerStarted = false;
-            this.snackBar.open('Showing top 12 results for given search, ordered by keyword search', 'CLOSE', {
+            this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
           });
@@ -195,7 +195,7 @@ export class ExplorerComponent implements OnInit {
           this.coursesService.getCoursesByFaculty(this.queryFaculty.id, 0).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerStarted = false;
-            this.snackBar.open('Showing top 12 results for given search, ordered alphabetically', 'CLOSE', {
+            this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
               duration: 5000
             });
           });
@@ -205,7 +205,7 @@ export class ExplorerComponent implements OnInit {
           this.coursesService.exploreByUniversity(keywords, this.queryFaculty.id).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerStarted = false;
-            this.snackBar.open('Showing top 12 results for given search, ordered by keyword search', 'CLOSE', {
+            this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
           });
@@ -213,7 +213,7 @@ export class ExplorerComponent implements OnInit {
           this.coursesService.getCoursesByUniversity(this.queryUniversity.id, 0).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerStarted = false;
-            this.snackBar.open('Showing top 12 results for given search, ordered alphabetically', 'CLOSE', {
+            this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
               duration: 5000
             });
           });
@@ -223,7 +223,7 @@ export class ExplorerComponent implements OnInit {
           this.coursesService.exploreByCountry(keywords, this.queryCountry.id).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerStarted = false;
-            this.snackBar.open('Showing top 12 results for given search, ordered by keyword search', 'CLOSE', {
+            this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
           });

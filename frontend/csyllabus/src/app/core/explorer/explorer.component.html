@@ -3,41 +3,42 @@
     <p class="custom-card-title">Explore courses from a university</p>
     <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
       <br>
-      <mat-form-field class="input">
-        <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
-          <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-            <mat-option [value]="country"
-                        (click)="queryCountry = country; filterCitiesByCountry()">-- All in {{country.name}} --
-            </mat-option>
-            <mat-option *ngFor="let university of country.universities" [value]="university"
-                        (click)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()">
-              {{university.name}}
-            </mat-option>
-            <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                        (click)="queryCountry = country;queryFaculty = faculty;">
-              {{faculty.name}}
-            </mat-option>
-          </mat-optgroup>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="input">
-        <input matInput placeholder="Filter search with keywords"
-               [matChipInputFor]="chipList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               [matChipInputAddOnBlur]="true"
-               (matChipInputTokenEnd)="add($event)"
-               (keyup.enter)="$event.stopPropagation()"
-               [required]="!queryUniversity && !queryFaculty"/>
-        <mat-chip-list #chipList>
-          <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
-                    [removable]="true" (remove)="remove(keyword)">
-            {{keyword.name}}
-            <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
-      </mat-form-field>
-
+      <div class="forms-group">
+        <mat-form-field class="input">
+          <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
+            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+              <mat-option [value]="country"
+                          (click)="queryCountry = country; filterCitiesByCountry()">-- All in {{country.name}} --
+              </mat-option>
+              <mat-option *ngFor="let university of country.universities" [value]="university"
+                          (click)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()">
+                {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="queryCountry = country;queryFaculty = faculty;">
+                {{faculty.name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input">
+          <input matInput placeholder="Filter search with keywords"
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="true"
+                 (matChipInputTokenEnd)="add($event)"
+                 (keyup.enter)="$event.stopPropagation()"
+                 [required]="!queryUniversity && !queryFaculty"/>
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
+                      [removable]="true" (remove)="remove(keyword)">
+              {{keyword.name}}
+              <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
       <br>
       <div style="text-align: center;">
 

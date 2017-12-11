@@ -125,15 +125,9 @@ class CourseByProgramView(APIView):
         courses_list = []
         for course_id in course_ids:
             course = Course.objects.filter(id=course_id)[0]
-            one_course = {}
-            one_course['id'] = course.id
-            one_course['name'] = course.name
-            one_course['description'] = course.description
-            one_course['ects'] = course.ects
-            one_course['english_level'] = course.english_level
-            one_course['semester'] = course.semester
-            one_course['modified'] = course.modified
-            one_course['created'] = course.created
+            one_course = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
+                          'english_level': course.english_level, 'semester': course.semester,
+                          'modified': course.modified, 'created': course.created}
             courses_list.append(one_course)
 
         courses_list.sort(key=lambda x: x['name'], reverse=False)
@@ -156,7 +150,7 @@ class CourseByFacultyView(APIView):
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
 
-        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id).select_related('faculty__university__country')
+        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id).select_related('course').prefetch_related('faculty__university__country')
         data = {}
         result = {}
 
@@ -168,7 +162,7 @@ class CourseByFacultyView(APIView):
             courses_list = []
             for course_faculty in course_faculties:
                 try:
-                    course = Course.objects.filter(id=course_faculty.course.id)[0]
+                    course = course_faculty.course
 
                     if len(course.description) <= 203:
                         short_description = course.description
@@ -222,7 +216,7 @@ class CourseByUniversityView(APIView):
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
 
-        course_universities = CourseUniversity.objects.filter(university_id=university_id).select_related('university__country')
+        course_universities = CourseUniversity.objects.filter(university_id=university_id).select_related('course').prefetch_related('university__country')
         data = {}
         result = {}
 
@@ -233,7 +227,7 @@ class CourseByUniversityView(APIView):
             courses_list = []
             for course_university in course_universities:
                 try:
-                    course = Course.objects.filter(id=course_university.course.id)[0]
+                    course = course_university.course
 
                     if len(course.description) <= 203:
                         short_description = course.description

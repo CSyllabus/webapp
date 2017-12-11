@@ -143,55 +143,54 @@ def comparator(request):
 
     for course_to_compare in courses_to_return[0:ret_len]:
 
-        course_to_compare = course_to_compare
+        if float(course_to_compare.result) > 0.01:
+            single_course = {}
+            single_course['result'] = course_to_compare.result
 
-        single_course = {}
-        single_course['result'] = course_to_compare.result
+            course = Course.objects.filter(id=course_to_compare.second_course_id)[0]
+            single_course['id'] = course.id
+            single_course['name'] = course.name
 
-        course = Course.objects.filter(id=course_to_compare.second_course_id)[0]
-        single_course['id'] = course.id
-        single_course['name'] = course.name
-
-        single_course['description'] = course.description
-        if len(course.description) <= 203:
-            single_course['short_description'] = course.description
-        else:
-            single_course['short_description'] = course.description[0:200] + '...'
-        single_course['ects'] = course.ects
-        try:
-            single_course['english_level'] = course.english_level
-        except:
-            single_course['english_level'] = 1
-
-        single_course['semester'] = course.semester
-
-        course_program = CourseProgram.objects.filter(course_id=course.id)
-
-        if course_program is not None:
-            course_program = course_program[0]
+            single_course['description'] = course.description
+            if len(course.description) <= 203:
+                single_course['short_description'] = course.description
+            else:
+                single_course['short_description'] = course.description[0:200] + '...'
+            single_course['ects'] = course.ects
             try:
-                program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                single_course['english_level'] = course.english_level
             except:
-                program_faculty = None
-            # program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
-            program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
-            program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
-            program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
+                single_course['english_level'] = 1
 
-            if program_faculty is not None:
-                faculty = Faculty.objects.filter(id=program_faculty.faculty.id)[0]
-                single_course['faculty'] = faculty.name
-            if program_university is not None:
-                university = University.objects.filter(id=program_university.university.id)[0]
-                single_course['university'] = university.name
-            if program_city is not None:
-                city = City.objects.filter(id=program_city.city.id)[0]
-                single_course['city'] = city.name
+            single_course['semester'] = course.semester
 
-            if program_country is not None:
-                country = Country.objects.filter(id=program_country.country.id)[0]
-                single_course['country'] = country.name
-        courseList.append(single_course)
+            course_program = CourseProgram.objects.filter(course_id=course.id)
+
+            if course_program is not None:
+                course_program = course_program[0]
+                try:
+                    program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                except:
+                    program_faculty = None
+                # program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
+                program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
+                program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
+                program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
+
+                if program_faculty is not None:
+                    faculty = Faculty.objects.filter(id=program_faculty.faculty.id)[0]
+                    single_course['faculty'] = faculty.name
+                if program_university is not None:
+                    university = University.objects.filter(id=program_university.university.id)[0]
+                    single_course['university'] = university.name
+                if program_city is not None:
+                    city = City.objects.filter(id=program_city.city.id)[0]
+                    single_course['city'] = city.name
+
+                if program_country is not None:
+                    country = Country.objects.filter(id=program_country.country.id)[0]
+                    single_course['country'] = country.name
+            courseList.append(single_course)
 
     courseList.insert(0, main_course)
     #print (main_course)
