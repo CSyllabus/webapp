@@ -10,7 +10,7 @@ describe('FooterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ FooterComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
