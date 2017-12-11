@@ -24,7 +24,7 @@ export class CoreComponent implements OnInit {
     this.explorerTab = true;
     this.comparatorTab = false;
 
-    var str = "<p>We have 625 courses from 10 universities!</p>",
+    var str = "<p>We have 586 courses from 4 universities!</p>",
       i = 0,
       isTag,
       text;
