@@ -4,6 +4,8 @@ import {SearchDialogComponent} from './search-dialog/search-dialog.component'
 import {AngularMaterialModule} from '../../angular-material/angular-material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import {Component, DebugElement, QueryList, ViewChild, ViewChildren} from '@angular/core';
+
 import {CitiesService} from '../../services/cities.service';
 import {UniversitiesService} from '../../services/universities.service';
 import {FacultiesService} from '../../services/faculties.service';
@@ -21,12 +23,13 @@ import {City} from '../../classes/city';
 import {University} from '../../classes/university';
 import {Country} from '../../classes/country';
 import {Faculty} from '../../classes/faculty';
-import {MatChipInput, MatChipInputEvent, MatDialogModule} from "@angular/material";
+import {MatChipInput, MatChipInputEvent, MatDialogModule, MatChipList} from "@angular/material";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {Program} from "../../classes/program";
 import {Course} from "../../classes/course";
 import {of} from "rxjs/observable/of";
+import {By} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [SearchDialogComponent],
@@ -48,6 +51,8 @@ describe('ExplorerComponent', () => {
   let countriesService: CountriesService;
   let coursesService: CoursesService;
   let programsService: ProgramsService;
+  let chipListDebugElement: DebugElement;
+  let chipListNativeElement: HTMLElement;
 
   let keywords = [{ name: 'test'}, { name: 'Test'}];
   let city = new City;
@@ -145,6 +150,37 @@ describe('ExplorerComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should add test to chip list...', async(() => {
+    let field: HTMLInputElement = fixture.debugElement.query(By.css('.input')).nativeElement;
+
+    spyOn(component, 'add').and.callThrough();
+
+    field.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    let event: MatChipInputEvent = {value: 'test', input: fixture.debugElement.query(By.css('.input')).nativeElement};
+
+    component.add(event);
+    expect(field.textContent.trim()).toBe('Search for keywords *');
+    expect(component.add).toHaveBeenCalled();
+    expect(component.keyword[0].name).toContain('test');
+  }));
+
+  it('should add nothing to chip list...', async(() => {
+    let field: HTMLInputElement = fixture.debugElement.query(By.css('.input')).nativeElement;
+
+    component.keyword = keywords;
+
+    spyOn(component, 'add').and.callThrough();
+
+    field.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    let event: MatChipInputEvent = {value: 'test', input: fixture.debugElement.query(By.css('.input')).nativeElement};
+
+    component.add(event);
+    expect(component.add).toHaveBeenCalled();
+    expect(component.keyword).not.toContain('test');
+  }));
 
 
   it('should ngOnInit call', () => {
@@ -323,13 +359,21 @@ describe('ExplorerComponent', () => {
   it('should add', () => {
     /*component.keyword = keywords;
     let newDiv = document.createElement('test');
+
     let newContent = document.createTextNode('test');
+
     newDiv.appendChild(newContent);
-    let event: MatChipInputEvent;
-    event.input = <HTMLInputElement>document.getElementById('test1');
-    event.value = 'test';
+
+    let input = <HTMLInputElement>document.getElementById('test1');
+    input.value = 'test';
+    let value = 'test';
+
+    let event = {input: input, value: value};
+
     spyOn(component, 'add').and.callThrough();
+
     component.add(event);
+
     expect(component.add ).toHaveBeenCalled();*/
   });
 

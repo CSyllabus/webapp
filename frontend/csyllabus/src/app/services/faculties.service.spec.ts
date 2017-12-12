@@ -1,7 +1,7 @@
 import {FacultiesService} from './faculties.service';
 
 import {TestBed, inject, async} from '@angular/core/testing';
-import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod} from '@angular/http';
+import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod, ResponseType} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {environment} from '../../environments/environment';
 
@@ -11,6 +11,11 @@ import {Country} from '../classes/country';
 import {City} from '../classes/city';
 import {Course} from '../classes/course';
 import {Program} from '../classes/program';
+
+class MockError extends Response implements Error {
+  name:any
+  message: any
+}
 
 describe('Service: Faculties', () => {
   let mockBackend: MockBackend;
@@ -133,10 +138,46 @@ describe('Service: Faculties', () => {
     } );
   }));
 
+  it('should call getAllFaculties and return error', (done) => {
+    const body = {
+      data: {
+        items: [faculty]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getAllFaculties().toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
+  });
+
   it('retrieves all the faculties by university id 0', inject( [FacultiesService], ( service ) => {
     return service.getFacultiesByUniversity().toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
+
+  it('should call getFacultiesByUniversity and return error', (done) => {
+    const body = {
+      data: {
+        items: [faculty]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getFacultiesByUniversity(university.id).toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
+  });
 
 });

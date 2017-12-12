@@ -1,7 +1,7 @@
 import {CoursesService} from './courses.service';
 
 import {TestBed, inject, async} from '@angular/core/testing';
-import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod} from '@angular/http';
+import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod, ResponseType} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {environment} from '../../environments/environment';
 
@@ -11,6 +11,11 @@ import {Country} from '../classes/country';
 import {City} from '../classes/city';
 import {Course} from '../classes/course';
 import {Program} from '../classes/program';
+
+class MockError extends Response implements Error {
+  name:any
+  message: any
+}
 
 describe('Service: Courses', () => {
   let mockBackend: MockBackend;
@@ -362,6 +367,24 @@ describe('Service: Courses', () => {
       expect(result[0]).toEqual(course);
       done();
     });
+  });
+
+  it('should call getAllCourses and return error', (done) => {
+    const body = {
+      data: {
+        items: [course]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getAllCourses().toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
   });
 
 });

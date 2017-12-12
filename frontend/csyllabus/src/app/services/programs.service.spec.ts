@@ -1,7 +1,7 @@
 import {ProgramsService} from './programs.service';
 
 import {TestBed, inject, async} from '@angular/core/testing';
-import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod} from '@angular/http';
+import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod, ResponseType} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {environment} from '../../environments/environment';
 
@@ -11,6 +11,11 @@ import {Country} from '../classes/country';
 import {City} from '../classes/city';
 import {Course} from '../classes/course';
 import {Program} from '../classes/program';
+
+class MockError extends Response implements Error {
+  name:any
+  message: any
+}
 
 describe('Service: Programs', () => {
   let mockBackend: MockBackend;
@@ -162,6 +167,60 @@ describe('Service: Programs', () => {
       expect(result[0]).toEqual(program);
       done();
     });
+  });
+
+  it('should call getProgramsByUniversity and return error', (done) => {
+    const body = {
+      data: {
+        items: [program]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getProgramsByUniversity(university.id).toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
+  });
+
+  it('should call getProgramsByFaculty and return error', (done) => {
+    const body = {
+      data: {
+        items: [program]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getProgramsByFaculty(faculty.id).toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
+  });
+
+  it('should call getAllPrograms and return error', (done) => {
+    const body = {
+      data: {
+        items: [program]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getAllPrograms().toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
   });
 
 });

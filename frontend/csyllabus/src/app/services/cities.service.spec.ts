@@ -1,7 +1,7 @@
 import {TestBed, inject, async} from '@angular/core/testing';
 import {CitiesService} from './cities.service';
 
-import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod} from '@angular/http';
+import {Response, ResponseOptions, BaseRequestOptions, Http, RequestMethod, ResponseType} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {environment} from '../../environments/environment';
 
@@ -11,6 +11,13 @@ import {Country} from '../classes/country';
 import {City} from '../classes/city';
 import {Course} from '../classes/course';
 import {Program} from '../classes/program';
+
+import 'rxjs/add/observable/throw';
+
+class MockError extends Response implements Error {
+  name:any
+  message: any
+}
 
 describe('Service: Cities', () => {
   let mockBackend: MockBackend;
@@ -125,6 +132,43 @@ describe('Service: Cities', () => {
       done();
     });
   });
+
+  it('should call getCitiesByCountry and return error', (done) => {
+    const body = {
+        data: {
+          items: [city]
+        },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getCitiesByCountry(country.id).toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
+    });
+
+  it('should call getAllCities and return error', (done) => {
+    const body = {
+      data: {
+        items: [city]
+      },
+    };
+
+    const opts = {type: ResponseType.Error, status: 404, body: body};
+    const responseOpts = new ResponseOptions(opts);
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockError(new MockError(responseOpts));
+    });
+    service.getAllCities().toPromise().then();
+    expect(responseOpts).toBeDefined();
+    done();
+  });
+
 
   it('retrieves all the cities', inject( [CitiesService], ( service ) => {
     return service.getAllCities().toPromise().then( (result) => {
