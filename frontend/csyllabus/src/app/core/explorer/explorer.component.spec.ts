@@ -1,33 +1,33 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {ExplorerComponent} from './explorer.component';
-import {SearchDialogComponent} from './search-dialog/search-dialog.component';
-import {AngularMaterialModule} from '../../angular-material/angular-material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-import {CitiesService} from '../../services/cities.service';
-import {UniversitiesService} from '../../services/universities.service';
-import {FacultiesService} from '../../services/faculties.service';
-import {CoursesService} from '../../services/courses.service';
-import {CountriesService} from '../../services/countries.service';
-import {ProgramsService} from '../../services/programs.service';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterTestingModule} from '@angular/router/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatChipInputEvent, MatDialogModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { of} from 'rxjs/observable/of';
+import { By} from '@angular/platform-browser';
+import { HttpModule, XHRBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
-import { HttpModule, XHRBackend} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+import { ExplorerComponent } from './explorer.component';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 
-import {City} from '../../classes/city';
-import {University} from '../../classes/university';
-import {Country} from '../../classes/country';
-import {Faculty} from '../../classes/faculty';
-import {MatChipInputEvent, MatDialogModule} from '@angular/material';
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {Program} from '../../classes/program';
-import {Course} from '../../classes/course';
-import {of} from 'rxjs/observable/of';
-import {By} from '@angular/platform-browser';
+import { CitiesService } from '../../services/cities.service';
+import { UniversitiesService } from '../../services/universities.service';
+import { FacultiesService } from '../../services/faculties.service';
+import { CoursesService } from '../../services/courses.service';
+import { CountriesService } from '../../services/countries.service';
+import { ProgramsService } from '../../services/programs.service';
+
+import { Course } from '../../classes/course';
+import { City } from '../../classes/city';
+import { University } from '../../classes/university';
+import { Country } from '../../classes/country';
+import { Faculty } from '../../classes/faculty';
+import { Program } from '../../classes/program';
 
 @NgModule({
   declarations: [SearchDialogComponent],
