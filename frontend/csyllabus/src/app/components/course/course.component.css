@@ -5,8 +5,7 @@
   width: 97%;
   max-width: 97%;
   margin-bottom: 1.5%;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 .5px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   background-color: rgba(255, 255, 255, 0.85);
   position: relative;
@@ -14,36 +13,40 @@
   -moz-box-shadow: 0px 0px 16px -5px rgba(0, 0, 0, 0.75);
   -box-shadow: 0px 0px 16px -5px rgba(0, 0, 0, 0.75);
 }
+.where{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(65, 65, 65);
+  font-weight: lighter;
+}
+p{
+  color: rgb(65, 65, 65);
+}
 
-.title {
+.title {  
   font-family: 'Roboto', sans-serif;
   font-size: 180%;
-  font-weight: bold;
-  border-radius: 5px;
   color: white;
-  background-color: rgba(56, 65, 143, 0.85);
+  background:linear-gradient(to bottom, rgb(116,153,227), rgb(47, 75, 131));;
 }
 
 .subtitle {
   font-family: 'Roboto', sans-serif;
-
   font-size: 110%;
-  font-weight: bold;
-  border-radius: 5px;
   padding: 5px;
   color: white;
-  background-color: rgba(11, 14, 33, 0.85);
+  background:linear-gradient(to bottom, rgb(116,153,227), rgb(47, 75, 131));
   text-align: center;
 }
 
 @media only screen and (min-width: 900px) {
   .description {
     text-align: justify;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     float: left;
     width: 75%;
     margin: 2%;
+    color: rgb(65, 65, 65);
     margin-right: 0% !important;
-    border-radius: 5px;
     align-self: center;
     background: white;
   }
@@ -56,8 +59,8 @@
     width: 19%;
     float: left;
     margin: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-right: 0% !important;
-    border-radius: 5px;
     align-self: center;
     background: white;
   }
@@ -66,23 +69,23 @@
 @media only screen and (min-width: 900px) {
   .description {
     text-align: justify;
-
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 2%;
-    border-radius: 5px;
     align-self: center;
+    color: rgb(65, 65, 65);
     background: white;
     padding-bottom: 10px;
   }
 
   .details {
     margin: 2%;
-    text-align: center;
+    text-align: justify;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-bottom: 10px;
-
-    border-radius: 5px;
     align-self: center;
     background: white;
     float: center;
+    color: rgb(65, 65, 65);
   }
 
   /*
