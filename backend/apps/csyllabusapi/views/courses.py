@@ -15,7 +15,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import parser_classes
-from datetime import datetime
+from django.utils import timezone
 
 try:
     from django.utils import simplejson as json
@@ -100,7 +100,7 @@ class CourseView(APIView):
     def put(selfself, request):
         id = request.data['id']
         name = request.data['name']
-        Course.objects.filter(id=id).update(name=name, modified=datetime.utcnow())
+        Course.objects.filter(id=id).update(name=name, modified=timezone.now())
         return Response()
 
 
