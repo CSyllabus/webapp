@@ -1,33 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Country } from './classes/country';
-import { City } from './classes/city';
-import { University } from './classes/university';
-import { Faculty } from './classes/faculty';
-import { Program } from './classes/program';
-import { Course } from './classes/course';
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
+/**
+ * AppComponent parent node
+ * <p>
+ * @author CSyllabus Team
+ */
 export class AppComponent implements OnInit {
 
+  /**
+   * title {@link string} instance representing the name of csyllabus website.
+   */
   title = 'CSyllabus';
 
-  countries: Country[] = [];
-  cities: City[] = [];
-  universities: University[] = [];
-  faculties: Faculty[] = [];
-  programs: Program[] = [];
-  courses: Course[] = [];
-
+  /**
+   * @constructor create AppComponent object.
+   */
   constructor() { }
 
-
+  /**
+   * ngOnInit
+   */
   ngOnInit() {
   }
 }

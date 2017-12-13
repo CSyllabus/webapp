@@ -27,7 +27,6 @@
 }
 
 table, th, td {
-    /*border: 1px solid rgb(208, 206, 206);*/
     border-collapse: collapse;
     vertical-align: center;
 }
@@ -66,12 +65,7 @@ table {
 }
 .logoU {
     margin-top: -50px;
-
     margin-left: 75%;
-    /*position: absolute;*/
     background-color: white;
-    /*border-radius: 80px;*/
-    /*top: 0px;*/
-    border: 1px solid lightgrey;
     border: 1px solid lightgrey;
 }

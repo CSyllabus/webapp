@@ -1,14 +1,14 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule } from '@angular/http';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs/observable/of';
 
-import {CourseComponent} from './course.component';
-import {CoursesService} from '../../services/courses.service';
-import {RouterTestingModule} from '@angular/router/testing';
+import { CourseComponent } from './course.component';
+import { CoursesService } from '../../services/courses.service';
+import { Course } from '../../classes/course';
 
-import {HttpModule} from '@angular/http';
-import {AngularMaterialModule} from '../../angular-material/angular-material.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {of} from 'rxjs/observable/of';
-import {Course} from '../../classes/course';
 describe('CourseComponent', () => {
   let component: CourseComponent;
   let fixture: ComponentFixture<CourseComponent>;

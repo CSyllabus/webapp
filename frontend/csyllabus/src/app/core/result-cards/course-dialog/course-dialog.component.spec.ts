@@ -1,15 +1,18 @@
-import {async, inject, TestBed} from '@angular/core/testing';
-import { CourseDialogComponent } from './course-dialog.component';
-import { MatDialog} from '@angular/material';
-import {AngularMaterialModule} from '../../../angular-material/angular-material.module';
-import {MatDialogModule} from '@angular/material';
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CoursesService} from '../../../services/courses.service';
-import {HttpModule} from '@angular/http';
-import {of} from 'rxjs/observable/of';
+import { inject, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material';
+import { AngularMaterialModule } from '../../../angular-material/angular-material.module';
+import { MatDialogModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { of } from 'rxjs/observable/of';
+
+import { CoursesService} from '../../../services/courses.service';
+
 import {Course} from '../../../classes/course';
+
+import { CourseDialogComponent } from './course-dialog.component';
 
 @NgModule({
   declarations: [CourseDialogComponent],

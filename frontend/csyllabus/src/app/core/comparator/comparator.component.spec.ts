@@ -1,34 +1,33 @@
-import { async, fakeAsync, tick , inject , ComponentFixture , TestBed} from '@angular/core/testing';
+import { async, fakeAsync, tick , inject , ComponentFixture , TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs/observable/of';
+import { MatDialogModule } from '@angular/material';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule, XHRBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 import { ComparatorComponent } from './comparator.component';
-import {AngularMaterialModule} from '../../angular-material/angular-material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {UniversitiesService} from '../../services/universities.service';
-import {FacultiesService} from '../../services/faculties.service';
-import {CoursesService} from '../../services/courses.service';
-import {CountriesService} from '../../services/countries.service';
-import {ProgramsService} from '../../services/programs.service';
-import {CitiesService} from '../../services/cities.service';
-import { of } from 'rxjs/observable/of';
-import {SearchDialogComponent} from './search-dialog/search-dialog.component';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 
-import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import { UniversitiesService } from '../../services/universities.service';
+import { FacultiesService } from '../../services/faculties.service';
+import { CoursesService } from '../../services/courses.service';
+import { CountriesService } from '../../services/countries.service';
+import { ProgramsService } from '../../services/programs.service';
+import { CitiesService } from '../../services/cities.service';
 
-import { HttpModule, XHRBackend} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
-
-import {City} from '../../classes/city';
-import {University} from '../../classes/university';
-import {Country} from '../../classes/country';
-import {Faculty} from '../../classes/faculty';
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {Program} from '../../classes/program';
-import {Course} from '../../classes/course';
-import {MatDialogModule} from '@angular/material';
+import { City } from '../../classes/city';
+import { University } from '../../classes/university';
+import { Country } from '../../classes/country';
+import { Faculty } from '../../classes/faculty';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { Program } from '../../classes/program';
+import { Course } from '../../classes/course';
 
 @NgModule({
   declarations: [SearchDialogComponent],

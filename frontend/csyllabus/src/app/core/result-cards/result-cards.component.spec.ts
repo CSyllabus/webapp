@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { HttpModule } from '@angular/http';
+
 import { ResultCardsComponent } from './result-cards.component';
-import {AngularMaterialModule} from '../../angular-material/angular-material.module';
-import {CourseDialogComponent} from './course-dialog/course-dialog.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterTestingModule} from '@angular/router/testing';
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatDialogModule} from '@angular/material';
-import {MatCardModule} from '@angular/material/card';
-import {CoursesService} from '../../services/courses.service';
-import {HttpModule} from '@angular/http';
-import {Course} from '../../classes/course';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+
+import { CoursesService } from '../../services/courses.service';
+
+import { Course } from '../../classes/course';
 
 @NgModule({
   declarations: [CourseDialogComponent],
