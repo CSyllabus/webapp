@@ -74,6 +74,8 @@ class Command(BaseCommand):
         # converts the word to its integer word id and returns the result
         # as a sparse vector
         corpus = [dictionary.doc2bow(text) for text in texts]
+
+        print(corpus)
         # parametar 2: num_topics
         lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=10)
         # parametar 2: num_topics

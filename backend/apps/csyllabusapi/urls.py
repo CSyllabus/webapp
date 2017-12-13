@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^explorer', views.explorer, name='explorer'),
     url(r'^comparator', views.comparator, name='comparator'),
 
+    url(r'^users/self', views.UserViewSelf.as_view(), name='user'),
 
 ]
 

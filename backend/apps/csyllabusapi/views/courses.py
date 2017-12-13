@@ -51,7 +51,7 @@ class CourseView(APIView):
         for course in courses:
 
             course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                          'english_level': course.english_level, 'semester': course.semester,
+                          'englishLevel': course.english_level, 'semester': course.semester,
                           'modified': course.modified, 'created': course.created}
 
             try:
@@ -126,7 +126,7 @@ class CourseByProgramView(APIView):
         for course_id in course_ids:
             course = Course.objects.filter(id=course_id)[0]
             one_course = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                          'english_level': course.english_level, 'semester': course.semester,
+                          'englishLevel': course.english_level, 'semester': course.semester,
                           'modified': course.modified, 'created': course.created}
             courses_list.append(one_course)
 
@@ -170,7 +170,7 @@ class CourseByFacultyView(APIView):
                         short_description = course.description[0:200] + '...'
 
                     course_data = {'id': course.id, 'name': course.name, 'description': course.description,
-                                   'ects': course.ects, 'english_level': course.english_level,
+                                   'ects': course.ects, 'englishLevel': course.english_level,
                                    'semester': course.semester,
                                    'modified': course.modified, 'created': course.created, 'faculty': faculty.name,
                                    'university': university.name, 'country': country.name,
@@ -235,7 +235,7 @@ class CourseByUniversityView(APIView):
                         short_description = course.description[0:200] + '...'
 
                     course_data = {'id': course.id, 'name': course.name, 'description': course.description,
-                                   'ects': course.ects, 'english_level': course.english_level,
+                                   'ects': course.ects, 'englishLevel': course.english_level,
                                    'semester': course.semester,
                                    'modified': course.modified, 'created': course.created,
                                    'university': university.name, 'country': country.name,
