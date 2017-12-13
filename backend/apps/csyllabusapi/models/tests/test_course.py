@@ -15,6 +15,11 @@ class CourseTestCase(TestCase):
 
         self.assertEqual(arrCourses, ["Data bases 2", "Advanced data mining"])
 
+    def test_strcourse(self):
+        course1 = Course.objects.create(name='Data bases 2')
+
+        self.assertEqual(str(course1), course1.name)
+
     def test_coursebyprogram(self):
         course1 = Course.objects.create(name='Data bases 2')
         course2 = Course.objects.create(name='Recommender systems')

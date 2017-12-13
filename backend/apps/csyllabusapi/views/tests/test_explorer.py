@@ -4,7 +4,83 @@ from ...models import Country, City, University, Faculty, Course, Program, Progr
 
 
 class ExplorerTestCase(TestCase):
-    def test_get(self):
+
+    def test_getbycountryid(self):
+        """Tests get request for explorer using country_id as parameter"""
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+        program1 = Program.objects.create(name='Computer science and engineering')
+        course1 = Course.objects.create(name="Java")
+        ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
+        CourseProgram.objects.create(course=course1, program=program1)
+
+        # creation of http get request
+        c = Client()
+        response = c.get('/csyllabusapi/explorer?keywords=java&country_id=' + str(country1.id))
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Java"])
+
+    def test_getbycityid(self):
+        """Tests get request for explorer using city_id as parameter"""
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+        program1 = Program.objects.create(name='Computer science and engineering')
+        course1 = Course.objects.create(name="Java")
+        ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
+        CourseProgram.objects.create(course=course1, program=program1)
+
+        # creation of http get request
+        c = Client()
+
+        # Testing explorer with ProgramCity
+        response = c.get('/csyllabusapi/explorer?keywords=java&city_id=' + str(city1.id))
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Java"])
+
+    def test_getbyuniversityid(self):
+        """Tests get request for explorer using university_id as parameter"""
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+        program1 = Program.objects.create(name='Computer science and engineering')
+        course1 = Course.objects.create(name="Java")
+        ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
+        CourseProgram.objects.create(course=course1, program=program1)
+
+        # creation of http get request
+        c = Client()
+        response = c.get('/csyllabusapi/explorer?keywords=java&university_id=' + str(university1.id))
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Java"])
+
+    def test_getbyfacultyid(self):
+        """Tests get request for explorer using faculty_id as parameter"""
         country1 = Country.objects.create(name='Croatia')
         city1 = City.objects.create(name='Zagreb', country=country1)
         university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
@@ -15,12 +91,14 @@ class ExplorerTestCase(TestCase):
         ProgramCountry.objects.create(program=program1, country=country1)
         ProgramCity.objects.create(program=program1, city=city1)
         ProgramUniversity.objects.create(program=program1, university=university1)
-        ProgramFaculty.objects.create(program=program1, faculty=faculty1)
+
         CourseProgram.objects.create(course=course1, program=program1)
 
+        # creation of http get request
         c = Client()
-        response = c.get('/csyllabusapi/explorer?keywords=java&country_id=' + str(country1.id) + '&city_id='
-                         + str(city1.id) + '&university_id=' + str(university1.id) + '&faculty_id=' + str(faculty1.id))
+        ProgramFaculty.objects.create(program=program1, faculty=faculty1)
+        response = c.get('/csyllabusapi/explorer?keywords=java&faculty_id=' + str(faculty1.id))
+
 
         arrCourses = []
         for value in response.data.itervalues():
@@ -28,4 +106,11 @@ class ExplorerTestCase(TestCase):
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
+
         self.assertEqual(arrCourses, ["Java"])
+
+    def getwithlongdescription(self):
+        """Tests get request for explorer using faculty_id as parameter and course description with length of more
+        than 200 characters"""
+        # TODO Testing explorer with long course description
+        course2 = Course.objects.create(name="Soft computing", description="")

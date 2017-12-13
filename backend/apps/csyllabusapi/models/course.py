@@ -24,7 +24,7 @@ class Course(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 class CourseProgram(models.Model):
     created = models.DateTimeField(editable=False)

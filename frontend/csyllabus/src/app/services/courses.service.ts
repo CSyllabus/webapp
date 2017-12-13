@@ -51,7 +51,7 @@ export class CoursesService {
   }
 
   getCoursesByProgram(programId): Observable<Course[]> {
-    return this.http.get(this.coursesByProgramUrl+programId+'/courses/')
+    return this.http.get(this.coursesByProgramUrl + programId + '/courses/')
       .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 

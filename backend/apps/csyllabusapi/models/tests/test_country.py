@@ -14,3 +14,8 @@ class CountryTestCase(TestCase):
             arrCountries.append(Country.objects.get(id=country.id).name)
 
         self.assertEqual(arrCountries, ["Italy", "Ireland"])
+
+    def test_strcity(self):
+        country1 = Country.objects.create(name="Italy")
+
+        self.assertEqual(str(country1), country1.name)

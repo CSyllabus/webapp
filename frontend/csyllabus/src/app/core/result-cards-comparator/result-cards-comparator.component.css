@@ -31,7 +31,6 @@
 }
 
 .cours-result-card-title {
-  /*height: 75px;*/
   padding-bottom:15px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -52,10 +51,6 @@
     opacity: 1.0;
   }
 }
-
-
-
-
 
 .example-card { transition: all .2s ease-in-out; }
 .example-card:hover { transform: scale(1.1); }
