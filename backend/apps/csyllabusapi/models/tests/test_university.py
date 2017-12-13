@@ -20,6 +20,7 @@ class UniversityTestCase(TestCase):
         for uni in universities:
             arrUni.append(University.objects.get(id=uni.id).name)
 
+
         self.assertEqual(arrUni, ["Politecnico di Milano", "Politecnico di Torino"])
 
     def test_struniversity(self):

@@ -4,6 +4,7 @@ from ...models import Country, City, University, Faculty, Course, Program, Progr
 
 
 class ExplorerTestCase(TestCase):
+
     def test_getbycountryid(self):
         """Tests get request for explorer using country_id as parameter"""
         country1 = Country.objects.create(name='Croatia')
@@ -90,6 +91,7 @@ class ExplorerTestCase(TestCase):
         ProgramCountry.objects.create(program=program1, country=country1)
         ProgramCity.objects.create(program=program1, city=city1)
         ProgramUniversity.objects.create(program=program1, university=university1)
+
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of http get request
@@ -97,12 +99,14 @@ class ExplorerTestCase(TestCase):
         ProgramFaculty.objects.create(program=program1, faculty=faculty1)
         response = c.get('/csyllabusapi/explorer?keywords=java&faculty_id=' + str(faculty1.id))
 
+
         arrCourses = []
         for value in response.data.itervalues():
             for item in value["items"]:
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
+
         self.assertEqual(arrCourses, ["Java"])
 
     def getwithlongdescription(self):

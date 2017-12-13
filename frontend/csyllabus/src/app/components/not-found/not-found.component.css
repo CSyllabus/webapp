@@ -1,7 +1,10 @@
 
 .container {
     font-family: 'Open Sans', sans-serif;
-    background: url(../../../images/step1.jpg); 
+    background: -webkit-linear-gradient(bottom, rgb(83, 110, 163) ,rgb(47, 75, 131)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom,rgb(83, 110, 163),rgb(47, 75, 131)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom,rgb(83, 110, 163),rgb(47, 75, 131)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, rgb(83, 110, 163), rgb(47, 75, 131)); /* Standard syntax */
     background-size:cover;   
     width: 100%;
     padding: 8%;

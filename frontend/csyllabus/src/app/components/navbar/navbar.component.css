@@ -4,10 +4,9 @@
     background: -o-linear-gradient(right,rgb(116,153,227),rgb(47, 75, 131)); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(right,rgb(116,153,227),rgb(47, 75, 131)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, rgb(116,153,227), rgb(47, 75, 131)); /* Standard syntax */
-    overflow: hidden;
     margin-bottom: 10px;
     width: 100%;
-    position: absolute;
+    float: left;
 }
 .logo{
     float:left;

@@ -61,6 +61,7 @@ class UserPostTestCase(TestCase):
             arrFct.append(UserFacultyPost.objects.get(id=userFaculty.id).content)
 
         self.assertEqual(arrFer, ["Great teachers", "Very nice location"])
+
         self.assertEqual(arrFct, ["Good staff", "Bad staff"])
 
     def test_struserfaculty(self):
@@ -72,3 +73,4 @@ class UserPostTestCase(TestCase):
         userfaculty1 = UserFacultyPost.objects.create(content="Very nice location", faculty=faculty1)
 
         self.assertEqual(str(userfaculty1), str(userfaculty1.content) + " " + str(userfaculty1.faculty))
+

@@ -32,7 +32,7 @@ h2 {
 }
 
 .bgexplorer .container {
-  margin-top: 100px; 
+  margin-top: 100px;
   align-self: center;
   background: white;
   max-width: 80%;
@@ -75,18 +75,15 @@ h2 {
   position: absolute;
   top: 0;
   right: 0;
-  /*min-height: 45.5em;*/
   height: 100vh;
   max-height: 100%;
    /*Background Gradient for Monochromatic Colors*/
   background: #FC466B ;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #3F5EFB , #FC466B );  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #3F5EFB , #FC466B ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
   background-image: url(../../images/world.jpg);
   background-size: cover;
   background-position: center;
-  /*height: 100vh;*/
 }
 
 .mat-tab-labels {
@@ -96,6 +93,5 @@ h2 {
 
 .bgexplorer {
   max-height: 100vh;
-  overflow-y: scroll;
 }
 

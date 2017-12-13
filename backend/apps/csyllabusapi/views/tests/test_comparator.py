@@ -14,11 +14,14 @@ class ComparatorTestCase(TestCase):
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of second course
+
         country2 = Country.objects.create(name='Italy')
         city2 = City.objects.create(name='Milano', country=country2)
         university2 = University.objects.create(name='Politecnico di Milano', country=country2, city=city2)
         program2 = Program.objects.create(name='Computer science and engineering', study_level='Postgraduate')
+
         course2 = Course.objects.create(name='Data mining', description='Data mining course')
+
         ProgramCountry.objects.create(program=program2, country=country2)
         ProgramCity.objects.create(program=program2, city=city2)
         ProgramUniversity.objects.create(program=program2, university=university2)
@@ -186,3 +189,4 @@ class ComparatorTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(arrCourses, ["Data mining"])
+
