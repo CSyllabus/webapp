@@ -71,8 +71,9 @@ export class ComparatorComponent implements OnInit {
   queryLevel: string;
   queryHomeCourse: Course;
 
-  constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
-              private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private programsService: ProgramsService, private dialog: MatDialog) {
+  constructor(private coursesService: CoursesService, private countriesService: CountriesService,
+              private citiesService: CitiesService, private universitiesService: UniversitiesService,
+              private facultiesService: FacultiesService, private programsService: ProgramsService) {
   }
 
   ngOnInit() {

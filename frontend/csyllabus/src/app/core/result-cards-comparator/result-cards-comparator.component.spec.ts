@@ -26,7 +26,7 @@ class TestModule { }
 describe('ResultCardsComparatorComponent', () => {
   let component: ResultCardsComparatorComponent;
   let fixture: ComponentFixture<ResultCardsComparatorComponent>;
-  let courseTest = new Course;
+  const courseTest = new Course;
   courseTest.city = 'Test City';
   courseTest.created = '09122017';
   courseTest.description = 'test description';
@@ -52,7 +52,7 @@ describe('ResultCardsComparatorComponent', () => {
       providers: [
         CoursesService,
       ],
-    })
+    });
   }));
 
   beforeEach(()  => {

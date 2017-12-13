@@ -1,8 +1,8 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
-import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {TestBed} from '@angular/core/testing';
+import {MatDialogModule, MatDialog} from '@angular/material';
 import { SearchDialogComponent } from './search-dialog.component';
 import {NgModule} from '@angular/core';
-import {CommonModule} from "@angular/common";
+import {CommonModule} from '@angular/common';
 import {AngularMaterialModule} from '../../../angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,7 +30,7 @@ describe('SearchDialogComponent explorer', () => {
   beforeEach(()  => {
     dialog = TestBed.get(MatDialog);
 
-    let dialogRef = dialog.open(SearchDialogComponent);
+    const dialogRef = dialog.open(SearchDialogComponent);
 
     component = dialogRef.componentInstance;
 

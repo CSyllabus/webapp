@@ -26,7 +26,7 @@ class TestModule { }
 describe('ResultCardsComponent', () => {
   let component: ResultCardsComponent;
   let fixture: ComponentFixture<ResultCardsComponent>;
-  let courseTest = new Course;
+  const courseTest = new Course;
   courseTest.city = 'Test City';
   courseTest.created = '09122017';
   courseTest.description = 'test description';
@@ -53,7 +53,7 @@ describe('ResultCardsComponent', () => {
       providers: [
         CoursesService,
       ],
-    })
+    });
   }));
 
   beforeEach(()  => {

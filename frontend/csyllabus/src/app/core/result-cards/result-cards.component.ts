@@ -14,9 +14,9 @@ export class ResultCardsComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-  openDialog(course_id){
+  openDialog(courseId) {
      this.dialog.open(CourseDialogComponent, {
-        width: '', data: {'course_id': course_id}
+        width: '', data: {'course_id': courseId}
       });
   }
 

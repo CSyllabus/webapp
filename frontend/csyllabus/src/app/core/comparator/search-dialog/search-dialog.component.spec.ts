@@ -30,7 +30,7 @@ describe('SearchDialogComponent explorer', () => {
   beforeEach(()  => {
     dialog = TestBed.get(MatDialog);
 
-    let dialogRef = dialog.open(SearchDialogComponent);
+    const dialogRef = dialog.open(SearchDialogComponent);
 
     component = dialogRef.componentInstance;
 

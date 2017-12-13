@@ -15,34 +15,34 @@ import {Program} from '../classes/program';
 import 'rxjs/add/observable/throw';
 
 class MockError extends Response implements Error {
-  name:any
-  message: any
+  name: any;
+  message: any;
 }
 
 describe('Service: Cities', () => {
   let mockBackend: MockBackend;
   let service: CitiesService;
-  let city = new City;
+  const city = new City;
   city.id = 0;
   city.countryId = 0;
   city.created = '09122017';
-  city.img = 'test.png'
+  city.img = 'test.png';
   city.modified = '09122017';
-  let university = new University;
+  const university = new University;
   university.id = 0;
   university.cityId = 0;
   university.countryId = 0;
-  university.img = 'test.png'
+  university.img = 'test.png';
   university.created = '09122017';
   university.name = 'Test University';
   university.modified = '09122017';
-  let program = new Program;
+  const program = new Program;
   program.created = '09122017';
   program.id = 0;
   program.modified = '09122017';
   program.name = 'Test Program';
   program.studyLevel = '0';
-  let course = new Course;
+  const course = new Course;
   course.city = 'Test City';
   course.created = '09122017';
   course.description = 'test';
@@ -54,7 +54,7 @@ describe('Service: Cities', () => {
   course.semester = 0;
   course.winsum = 0;
   program.courses = [course, course];
-  let faculty = new Faculty;
+  const faculty = new Faculty;
   faculty.img = 'test.png';
   faculty.cityId = 0;
   faculty.created = '09122017';
@@ -64,7 +64,7 @@ describe('Service: Cities', () => {
   faculty.universityId = 0;
   university.faculties = [faculty];
   city.universities = [university];
-  let country = new Country;
+  const country = new Country;
   country.cities = [city];
   country.created = '09122017';
   country.created = '09122017';
@@ -91,14 +91,14 @@ describe('Service: Cities', () => {
       mockBackend = mb;
       service = new CitiesService(http);
     }));
-  it('should  be created ', inject([ CitiesService ], (service: CitiesService) => {
-    expect(service).toBeTruthy();
+  it('should  be created ', inject([ CitiesService ], (s: CitiesService) => {
+    expect(s).toBeTruthy();
   }));
 
   it('should call getAllCities and return test name', (done) => {
     mockBackend.connections.subscribe((connection: MockConnection) => {
       expect(connection.request.method).toEqual(RequestMethod.Get);
-      let citiesUrl = environment.apiUrl + 'cities/';
+      const citiesUrl = environment.apiUrl + 'cities/';
       expect(connection.request.url).toEqual(citiesUrl);
       connection.mockRespond(new Response(new ResponseOptions({
           body: {
@@ -170,14 +170,14 @@ describe('Service: Cities', () => {
   });
 
 
-  it('retrieves all the cities', inject( [CitiesService], ( service ) => {
-    return service.getAllCities().toPromise().then( (result) => {
+  it('retrieves all the cities', inject( [CitiesService], ( s ) => {
+    return s.getAllCities().toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('retrieves all the Cities by country id 0', inject( [CitiesService], ( service ) => {
-    return service.getCitiesByCountry(0).toPromise().then( (result) => {
+  it('retrieves all the Cities by country id 0', inject( [CitiesService], ( s ) => {
+    return s.getCitiesByCountry(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));

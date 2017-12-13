@@ -53,11 +53,10 @@ export class CoreComponent implements OnInit {
   }
 
   changeResultCard($event: any) {
-    if ($event.index == 1) {
+    if ($event.index === 1) {
       this.explorerTab = false;
       this.comparatorTab = true;
-    }
-    else {
+    } else {
       this.explorerTab = true;
       this.comparatorTab = false;
     }

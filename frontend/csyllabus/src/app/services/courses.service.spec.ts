@@ -13,8 +13,8 @@ import {Course} from '../classes/course';
 import {Program} from '../classes/program';
 
 class MockError extends Response implements Error {
-  name:any
-  message: any
+  name: any;
+  message: any;
 }
 
 describe('Service: Courses', () => {
@@ -23,28 +23,28 @@ describe('Service: Courses', () => {
   const exploreUrl = environment.apiUrl + 'explorer';
   const comparatorUrl = environment.apiUrl + 'comparator';
 
-  let keywords = 'test';
-  let city = new City;
+  const keywords = 'test';
+  const city = new City;
   city.id = 1;
   city.countryId = 1;
   city.created = '09122917';
-  city.img = 'test.png'
+  city.img = 'test.png';
   city.modified = '09122017';
-  let university = new University;
+  const university = new University;
   university.id = 1;
   university.cityId = 1;
   university.countryId = 1;
-  university.img = 'test.png'
+  university.img = 'test.png';
   university.created = '09122017';
   university.name = 'Test University';
   university.modified = '09122017';
-  let program = new Program;
+  const program = new Program;
   program.created = '09122017';
   program.id = 1;
   program.modified = '09122017';
   program.name = 'Test Program';
   program.studyLevel = '0';
-  let course = new Course;
+  const course = new Course;
   course.city = 'Test City';
   course.created = '09122017';
   course.description = 'test';
@@ -56,7 +56,7 @@ describe('Service: Courses', () => {
   course.semester = 0;
   course.winsum = 0;
   program.courses = [course, course];
-  let faculty = new Faculty;
+  const faculty = new Faculty;
   faculty.img = 'test.png';
   faculty.cityId = 1;
   faculty.created = '09122017';
@@ -66,7 +66,7 @@ describe('Service: Courses', () => {
   faculty.universityId = 1;
   university.faculties = [faculty];
   city.universities = [university];
-  let country = new Country;
+  const country = new Country;
   country.cities = [city];
   country.created = '09122017';
   country.created = '09122017';
@@ -94,66 +94,66 @@ describe('Service: Courses', () => {
       service = new CoursesService(http);
     }
   ));
-  it('should  be created ', inject([ CoursesService ], (service: CoursesService) => {
-    expect(service).toBeTruthy();
+  it('should  be created ', inject([ CoursesService ], (s: CoursesService) => {
+    expect(s).toBeTruthy();
   }));
 
-  it('retrieve all the courses by id 0', inject( [CoursesService], ( service ) => {
-    return service.getCourseById(0).toPromise().then( (result) => {
+  it('retrieve all the courses by id 0', inject( [CoursesService], ( s ) => {
+    return s.getCourseById(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('retrieve all the courses by id program 0', inject( [CoursesService], ( service ) => {
-    return service.getCoursesByProgram(0).toPromise().then( (result) => {
+  it('retrieve all the courses by id program 0', inject( [CoursesService], ( s ) => {
+    return s.getCoursesByProgram(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('explore all the courses by id faculty 0 and keyword java', inject( [CoursesService], ( service ) => {
-    return service.exploreByFaculty('java', 0).toPromise().then( (result) => {
+  it('explore all the courses by id faculty 0 and keyword java', inject( [CoursesService], ( s ) => {
+    return s.exploreByFaculty('java', 0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('explore all the courses by id univeristy 0 and keyword java', inject( [CoursesService], ( service ) => {
-    return service.exploreByUniversity('java', 0).toPromise().then( (result) => {
+  it('explore all the courses by id univeristy 0 and keyword java', inject( [CoursesService], ( s ) => {
+    return s.exploreByUniversity('java', 0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('explore all the courses by id city 0 and keyword java', inject( [CoursesService], ( service ) => {
-    return service.exploreByCity('java', 0).toPromise().then( (result) => {
+  it('explore all the courses by id city 0 and keyword java', inject( [CoursesService], ( s ) => {
+    return s.exploreByCity('java', 0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('explore all the courses by id country 0 and keyword java', inject( [CoursesService], ( service ) => {
-    return service.exploreByCountry('java', 0).toPromise().then( (result) => {
+  it('explore all the courses by id country 0 and keyword java', inject( [CoursesService], ( s ) => {
+    return s.exploreByCountry('java', 0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('compare all the courses by id faculty 0', inject( [CoursesService], ( service ) => {
-    return service.compareByFaculty(0).toPromise().then( (result) => {
+  it('compare all the courses by id faculty 0', inject( [CoursesService], ( s ) => {
+    return s.compareByFaculty(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('compare all the courses by id univeristy 0', inject( [CoursesService], ( service ) => {
-    return service.compareByUniversity(0).toPromise().then( (result) => {
+  it('compare all the courses by id univeristy 0', inject( [CoursesService], ( s ) => {
+    return s.compareByUniversity(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('compare all the courses by id city 0', inject( [CoursesService], ( service ) => {
-    return service.compareByCity(0).toPromise().then( (result) => {
+  it('compare all the courses by id city 0', inject( [CoursesService], ( s ) => {
+    return s.compareByCity(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('compare all the courses by id country 0', inject( [CoursesService], ( service ) => {
-    return service.compareByCountry(0).toPromise().then( (result) => {
+  it('compare all the courses by id country 0', inject( [CoursesService], ( s ) => {
+    return s.compareByCountry(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
@@ -178,7 +178,7 @@ describe('Service: Courses', () => {
   });
 
   it('should call getCourseById and return course mock', (done) => {
-    let course1 = course;
+    const course1 = course;
     course1.id = 1;
     mockBackend.connections.subscribe((connection: MockConnection) => {
       expect(connection.request.method).toEqual(RequestMethod.Get);

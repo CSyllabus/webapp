@@ -2,14 +2,13 @@ import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import {CourseComponent} from './course.component';
 import {CoursesService} from '../../services/courses.service';
-import {ActivatedRoute} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 
-import {Http, HttpModule} from '@angular/http';
+import {HttpModule} from '@angular/http';
 import {AngularMaterialModule} from '../../angular-material/angular-material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {of} from "rxjs/observable/of";
-import {Course} from "../../classes/course";
+import {of} from 'rxjs/observable/of';
+import {Course} from '../../classes/course';
 describe('CourseComponent', () => {
   let component: CourseComponent;
   let fixture: ComponentFixture<CourseComponent>;
@@ -42,7 +41,7 @@ describe('CourseComponent', () => {
   });
 
   it('should ngOnInit subscribe ',  inject( [CoursesService], ( service ) => {
-    let response: Course;
+    const response = new Course;
 
     spyOn(service, 'getCourseById').and.returnValue(of(response));
 
@@ -52,5 +51,4 @@ describe('CourseComponent', () => {
 
     expect(component.course).toEqual(response);
   }));
-
 });

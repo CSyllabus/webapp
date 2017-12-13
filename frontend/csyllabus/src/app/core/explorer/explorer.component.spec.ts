@@ -1,10 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ExplorerComponent} from './explorer.component';
-import {SearchDialogComponent} from './search-dialog/search-dialog.component'
+import {SearchDialogComponent} from './search-dialog/search-dialog.component';
 import {AngularMaterialModule} from '../../angular-material/angular-material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-import {Component, DebugElement, QueryList, ViewChild, ViewChildren} from '@angular/core';
 
 import {CitiesService} from '../../services/cities.service';
 import {UniversitiesService} from '../../services/universities.service';
@@ -23,13 +21,13 @@ import {City} from '../../classes/city';
 import {University} from '../../classes/university';
 import {Country} from '../../classes/country';
 import {Faculty} from '../../classes/faculty';
-import {MatChipInput, MatChipInputEvent, MatDialogModule, MatChipList} from "@angular/material";
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
-import {Program} from "../../classes/program";
-import {Course} from "../../classes/course";
-import {of} from "rxjs/observable/of";
-import {By} from "@angular/platform-browser";
+import {MatChipInputEvent, MatDialogModule} from '@angular/material';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {Program} from '../../classes/program';
+import {Course} from '../../classes/course';
+import {of} from 'rxjs/observable/of';
+import {By} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [SearchDialogComponent],
@@ -51,31 +49,29 @@ describe('ExplorerComponent', () => {
   let countriesService: CountriesService;
   let coursesService: CoursesService;
   let programsService: ProgramsService;
-  let chipListDebugElement: DebugElement;
-  let chipListNativeElement: HTMLElement;
 
-  let keywords = [{ name: 'test'}, { name: 'Test'}];
-  let city = new City;
+  const keywords = [{ name: 'test'}, { name: 'Test'}];
+  const city = new City;
   city.id = 0;
   city.countryId = 0;
   city.created = '09122017';
-  city.img = 'test.png'
+  city.img = 'test.png';
   city.modified = '09122017';
-  let university = new University;
+  const university = new University;
   university.id = 0;
   university.cityId = 0;
   university.countryId = 0;
-  university.img = 'test.png'
+  university.img = 'test.png';
   university.created = '09122017';
   university.name = 'Test University';
   university.modified = '09122017';
-  let program = new Program;
+  const program = new Program;
   program.created = '09122017';
   program.id = 0;
   program.modified = '09122017';
   program.name = 'Test Program';
   program.studyLevel = '0';
-  let course = new Course;
+  const course = new Course;
   course.city = 'Test City';
   course.created = '09122017';
   course.description = 'test';
@@ -86,8 +82,8 @@ describe('ExplorerComponent', () => {
   course.name = 'test';
   course.semester = 0;
   course.winsum = 0;
-  program.courses = [course,course];
-  let faculty = new Faculty;
+  program.courses = [course, course];
+  const faculty = new Faculty;
   faculty.img = 'test.png';
   faculty.cityId = 0;
   faculty.created = '09122017';
@@ -97,7 +93,7 @@ describe('ExplorerComponent', () => {
   faculty.universityId = 0;
   university.faculties = [faculty];
   city.universities = [university];
-  let queryCountry = new Country;
+  const queryCountry = new Country;
   queryCountry.cities = [city];
   queryCountry.created = '09122017';
   queryCountry.created = '09122017';
@@ -152,13 +148,13 @@ describe('ExplorerComponent', () => {
   });
 
   it('should add test to chip list...', async(() => {
-    let field: HTMLInputElement = fixture.debugElement.query(By.css('.input')).nativeElement;
+    const field: HTMLInputElement = fixture.debugElement.query(By.css('.input')).nativeElement;
 
     spyOn(component, 'add').and.callThrough();
 
     field.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    let event: MatChipInputEvent = {value: 'test', input: fixture.debugElement.query(By.css('.input')).nativeElement};
+    const event: MatChipInputEvent = {value: 'test', input: fixture.debugElement.query(By.css('.input')).nativeElement};
 
     component.add(event);
     expect(field.textContent.trim()).toBe('Search for keywords *');
@@ -167,7 +163,7 @@ describe('ExplorerComponent', () => {
   }));
 
   it('should add nothing to chip list...', async(() => {
-    let field: HTMLInputElement = fixture.debugElement.query(By.css('.input')).nativeElement;
+    const field: HTMLInputElement = fixture.debugElement.query(By.css('.input')).nativeElement;
 
     component.keyword = keywords;
 
@@ -175,7 +171,7 @@ describe('ExplorerComponent', () => {
 
     field.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    let event: MatChipInputEvent = {value: 'test', input: fixture.debugElement.query(By.css('.input')).nativeElement};
+    const event: MatChipInputEvent = {value: 'test', input: fixture.debugElement.query(By.css('.input')).nativeElement};
 
     component.add(event);
     expect(component.add).toHaveBeenCalled();
@@ -194,7 +190,7 @@ describe('ExplorerComponent', () => {
 
     spyOn(component, 'exploreCourses').and.callThrough();
 
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
 
     fixture.whenStable().then(() => {
@@ -214,7 +210,7 @@ describe('ExplorerComponent', () => {
 
   it('should emit on filterFacultiesChange', (done) => {
 
-    let facultyTest = new Faculty;
+    const facultyTest = new Faculty;
     facultyTest.img = 'test';
     component.queryFaculty = facultyTest;
 
@@ -238,7 +234,7 @@ describe('ExplorerComponent', () => {
   }));
 
   it('should filterCitiesByCountry subscribe ', async(() => {
-    let response: City[];
+    const response: City[] = [];
     component.queryCountry = queryCountry;
     component.queryCountry.id = 1;
     component.queryCountry.img = 'test.png';
@@ -274,7 +270,7 @@ describe('ExplorerComponent', () => {
   });
 
   it('should exploreByFaculty', async(() => {
-    let response: Course[];
+    const response: Course[] = [];
     component.explorerStarted = true;
     component.keyword = [keywords, keywords];
     component.queryCountry = queryCountry;
@@ -292,7 +288,7 @@ describe('ExplorerComponent', () => {
   }));
 
   it('should exploreByUniversity', async(() => {
-    let response: Course[];
+    const response: Course[] = [];
     component.explorerStarted = true;
     component.keyword = [keywords, keywords];
     component.queryCountry = queryCountry;
@@ -310,7 +306,7 @@ describe('ExplorerComponent', () => {
   }));
 
   it('should exploreByCity', async(() => {
-    let response: Course[];
+    const response: Course[] = [];
     component.explorerStarted = true;
     component.keyword = [keywords, keywords];
     component.queryCountry = queryCountry;
@@ -328,7 +324,7 @@ describe('ExplorerComponent', () => {
   }));
 
   it('should exploreByCountry', async(() => {
-    let response: Course[];
+    const response: Course[] = [];
     component.explorerStarted = true;
     component.keyword = [keywords, keywords];
     component.queryCountry = queryCountry;
@@ -348,33 +344,19 @@ describe('ExplorerComponent', () => {
   it('should remove call', () => {
     spyOn(component, 'remove').and.callThrough();
     component.keyword = ['test'];
-    let keyword = 'test';
+    const keyword = 'test';
     component.remove(keyword);
     expect(component.keyword).not.toContain('test');
   });
 
-  it('should add call', () => {
-  });
+  it('should ngOnInit() subscribe CountriesService', async(() => {
+    const response: Country[] = [];
 
-  it('should add', () => {
-    /*component.keyword = keywords;
-    let newDiv = document.createElement('test');
+    spyOn(countriesService, 'getAllCountries').and.returnValue(of(response));
 
-    let newContent = document.createTextNode('test');
+    component.ngOnInit();
 
-    newDiv.appendChild(newContent);
-
-    let input = <HTMLInputElement>document.getElementById('test1');
-    input.value = 'test';
-    let value = 'test';
-
-    let event = {input: input, value: value};
-
-    spyOn(component, 'add').and.callThrough();
-
-    component.add(event);
-
-    expect(component.add ).toHaveBeenCalled();*/
-  });
+    fixture.detectChanges();
+  }));
 
 });

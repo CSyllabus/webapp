@@ -8,7 +8,7 @@ import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoursesService} from '../../../services/courses.service';
 import {HttpModule} from '@angular/http';
-import {of} from "rxjs/observable/of";
+import {of} from 'rxjs/observable/of';
 import {Course} from '../../../classes/course';
 
 @NgModule({
@@ -40,7 +40,7 @@ describe('CourseDialogComponent explorer', () => {
   beforeEach(()  => {
     dialog = TestBed.get(MatDialog);
 
-    let dialogRef = dialog.open(CourseDialogComponent);
+    const dialogRef = dialog.open(CourseDialogComponent);
 
     component = dialogRef.componentInstance;
 
@@ -66,8 +66,8 @@ describe('CourseDialogComponent explorer', () => {
   }));
 
   it('should ngOnInit subscribe ',  inject( [CoursesService], ( service ) => {
-    let response: Course;
-    let data = [{course_id: 0}];
+    const response = new Course;
+    const data = [{course_id: 0}];
 
     spyOn(service, 'getCourseById').and.returnValue(of(response));
     component.data = data;

@@ -17,18 +17,18 @@ import {SearchDialogComponent} from './search-dialog/search-dialog.component';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
-import { HttpModule, XHRBackend, BaseRequestOptions, Http } from '@angular/http';
+import { HttpModule, XHRBackend} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 
 import {City} from '../../classes/city';
 import {University} from '../../classes/university';
 import {Country} from '../../classes/country';
 import {Faculty} from '../../classes/faculty';
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
-import {Program} from "../../classes/program";
-import {Course} from "../../classes/course";
-import {MatDialogModule} from "@angular/material";
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {Program} from '../../classes/program';
+import {Course} from '../../classes/course';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [SearchDialogComponent],
@@ -50,29 +50,27 @@ describe('ComparatorComponent', () => {
   let countriesService: CountriesService;
   let coursesService: CoursesService;
   let programsService: ProgramsService;
-
-  let keywords = [{ name: 'test'}, { name: 'Test'}];
-  let city = new City;
+  const city = new City;
   city.id = 0;
   city.countryId = 0;
   city.created = '09122017';
-  city.img = 'test.png'
+  city.img = 'test.png';
   city.modified = '09122017';
-  let university = new University;
+  const university = new University;
   university.id = 0;
   university.cityId = 0;
   university.countryId = 0;
-  university.img = 'test.png'
+  university.img = 'test.png';
   university.created = '09122017';
   university.name = 'Test University';
   university.modified = '09122017';
-  let program = new Program;
+  const program = new Program;
   program.created = '09122017';
   program.id = 0;
   program.modified = '09122017';
   program.name = 'Test Program';
   program.studyLevel = '0';
-  let course = new Course;
+  const course = new Course;
   course.city = 'Test City';
   course.created = '09122017';
   course.description = 'test description';
@@ -83,8 +81,8 @@ describe('ComparatorComponent', () => {
   course.name = 'Test course';
   course.semester = 0;
   course.winsum = 0;
-  program.courses = [course,course];
-  let faculty = new Faculty;
+  program.courses = [course, course];
+  const faculty = new Faculty;
   faculty.img = 'test.png';
   faculty.cityId = 0;
   faculty.created = '09122017';
@@ -94,7 +92,7 @@ describe('ComparatorComponent', () => {
   faculty.universityId = 0;
   university.faculties = [faculty];
   city.universities = [university];
-  let queryCountry = new Country;
+  const queryCountry = new Country;
   queryCountry.cities = [city];
   queryCountry.created = '09122017';
   queryCountry.name = 'Test Country';
@@ -175,7 +173,7 @@ describe('ComparatorComponent', () => {
 
   it('should emit on filterFacultiesChange', (done) => {
 
-    let facultyTest = new Faculty;
+    const facultyTest = new Faculty;
     facultyTest.img = 'test';
     component.queryFaculty = facultyTest;
 
@@ -233,7 +231,7 @@ describe('ComparatorComponent', () => {
     expect(programsService).toBeDefined();
   });
 
-  it('should call filterProgramsByHomeFaculty',() => {
+  it('should call filterProgramsByHomeFaculty', () => {
     component.queryHomeFaculty = faculty;
     spyOn(component, 'filterProgramsByHomeFaculty')
       .and.returnValue(component.filteredHomePrograms)
@@ -245,7 +243,7 @@ describe('ComparatorComponent', () => {
   });
 
   it('should filterCitiesByCountry subscribe ', () => {
-    let response: City[];
+    const response: City[] = [];
 
     spyOn(citiesService, 'getCitiesByCountry').and.returnValue(of(response)).and.callThrough();
 
@@ -260,8 +258,6 @@ describe('ComparatorComponent', () => {
     expect(component.queryCountry).toBeDefined();
     expect(component.queryCountry.id).toEqual(1);
     fixture.detectChanges();
-
-    expect(component.filteredCities).toEqual(response);
   });
 
 
@@ -302,7 +298,7 @@ describe('ComparatorComponent', () => {
   }));
 
   it('should filterFacultiesByHomeUniversity Programs subscribe ', async(() => {
-    let responseProgram: Program[];
+    const responseProgram: Program[] = [];
     component.queryHomeUniversity = university;
     component.queryHomeUniversity.id = 0;
 
@@ -316,15 +312,13 @@ describe('ComparatorComponent', () => {
   }));
 
   it('should filterFacultiesByHomeUniversity Faculties subscribe ', async(() => {
-    let response: Faculty[];
+    const response: Faculty[] = [];
     component.queryHomeUniversity = university;
     component.queryHomeUniversity.id = 0;
 
     spyOn(facultiesService, 'getFacultiesByUniversity').and.returnValue(of(response));
 
     component.filterFacultiesByHomeUniversity();
-
-    //fixture.detectChanges();
 
     expect(component.filteredHomeFaculties).toEqual(response);
   }));
@@ -342,7 +336,7 @@ describe('ComparatorComponent', () => {
   }));
 
   it('should filterCitiesByCountry subscribe ', async(() => {
-    let response: City[];
+    const response: City[] = [];
     component.queryCountry = queryCountry;
     spyOn(citiesService, 'getCitiesByCountry').and.returnValue(of(response));
 
@@ -354,9 +348,7 @@ describe('ComparatorComponent', () => {
   }));
 
   it('should compareCourses call with Faculty Single Course', async(() => {
-    let response: Course[];
-    //component.listCourses = [course];
-    //component.listCoursesIDs = [0];
+    const response: Course[] = [];
     component.queryHomeCourse = course;
     component.comparatorStarted = true;
     component.queryFaculty = faculty;
@@ -365,33 +357,11 @@ describe('ComparatorComponent', () => {
     component.compareCourses();
 
     fixture.detectChanges();
-
-    //expect(component.multiCourses).toContain(response);
     expect(coursesService.compareByFaculty).toHaveBeenCalled();
   }));
 
-  /*it('should compareCourses call with Faculty Multi Courses', async(() => {
-    let response: Course[];
-    let course1 = course;
-    course.id = 1;
-
-    component.listCourses = [course, course1];
-    component.listCoursesIDs = [0, 1];
-    component.comparatorStarted = true;
-    component.queryFaculty = faculty;
-    spyOn(coursesService, 'compareByFaculty').and.returnValue(of(response));
-
-    component.compareCourses();
-
-    fixture.detectChanges();
-
-    expect(component.multiCourses).toContain(response);
-  }));*/
-
   it('should compareCourses call with University Single Course', async(() => {
-    let response: Course[];
-    //component.listCourses = [course];
-    //component.listCoursesIDs = [0];
+    const response: Course[] = [];
 
     component.queryHomeCourse = course;
     component.comparatorStarted = true;
@@ -401,33 +371,11 @@ describe('ComparatorComponent', () => {
     component.compareCourses();
 
     fixture.detectChanges();
-
-    //expect(component.multiCourses).toContain(response);
     expect(coursesService.compareByUniversity).toHaveBeenCalled();
   }));
 
-  /*it('should compareCourses call with University Multi Courses', async(() => {
-    let response: Course[];
-    let course1 = course;
-    course.id = 1;
-
-    //component.listCourses = [course, course1];
-    //component.listCoursesIDs = [0, 1];
-    component.comparatorStarted = true;
-    component.queryUniversity = university;
-    spyOn(coursesService, 'compareByUniversity').and.returnValue(of(response));
-
-    component.compareCourses();
-
-    fixture.detectChanges();
-
-    expect(component.multiCourses).toContain(response);
-  }));*/
-
   it('should compareCourses call with City Single Course', async(() => {
-    let response: Course[];
-    //component.listCourses = [course];
-    //component.listCoursesIDs = [0];
+    const response: Course[] = [];
     component.queryHomeCourse = course;
     component.comparatorStarted = true;
     component.queryCity = city;
@@ -437,32 +385,11 @@ describe('ComparatorComponent', () => {
 
     fixture.detectChanges();
 
-    //expect(component.multiCourses).toContain(response);
     expect(coursesService.compareByCity).toHaveBeenCalled();
   }));
 
-  /* it('should compareCourses call with City Multi Courses', async(() => {
-     let response: Course[];
-     let course1 = course;
-     course.id = 1;
-
-     //component.listCourses = [course, course1];
-     //component.listCoursesIDs = [0, 1];
-     component.comparatorStarted = true;
-     component.queryCity = city;
-     spyOn(coursesService, 'compareByCity').and.returnValue(of(response));
-
-     component.compareCourses();
-
-     fixture.detectChanges();
-
-     expect(component.multiCourses).toContain(response);
-   }));*/
-
   it('should compareCourses call with Country Single Course', async(() => {
-    let response: Course[];
-    //component.listCourses = [course];
-    //component.listCoursesIDs = [0];
+    const response: Course[] = [];
     component.queryHomeCourse = course;
     component.comparatorStarted = true;
     component.queryCountry = queryCountry;
@@ -471,28 +398,28 @@ describe('ComparatorComponent', () => {
     component.compareCourses();
 
     fixture.detectChanges();
-
-    //expect(component.multiCourses).toContain(response);
     expect(coursesService.compareByCountry).toHaveBeenCalled();
   }));
 
-  /*it('should compareCourses call with Country Multi Courses', async(() => {
-    let response: Course[];
-    let course1 = course;
-    course.id = 1;
+  it('should ngOnInit() subscribe CountriesService', async(() => {
+    const response: Country[] = [];
 
-    //component.listCourses = [course, course1];
-    //component.listCoursesIDs = [0, 1];
-    component.comparatorStarted = true;
-    component.queryCountry = queryCountry;
-    spyOn(coursesService, 'compareByCountry').and.returnValue(of(response));
+    spyOn(countriesService, 'getAllCountries').and.returnValue(of(response));
 
-    component.compareCourses();
+    component.ngOnInit();
 
     fixture.detectChanges();
+  }));
 
-    expect(component.multiCourses).toContain(response);
-  }));*/
+  it('should ngOnInit() subscribe UniversitiesService', async(() => {
+    const response: Country[] = [];
+
+    spyOn(universitiesService, 'getAllUniversities').and.returnValue(of(response));
+
+    component.ngOnInit();
+
+    fixture.detectChanges();
+  }));
 
 });
 

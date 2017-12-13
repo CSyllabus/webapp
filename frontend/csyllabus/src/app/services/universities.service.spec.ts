@@ -13,34 +13,34 @@ import {Course} from '../classes/course';
 import {Program} from '../classes/program';
 
 class MockError extends Response implements Error {
-  name:any
-  message: any
+  name: any;
+  message: any;
 }
 
 describe('Service: Universities', () => {
   let mockBackend: MockBackend;
   let service: UniversitiesService;
-  let city = new City;
+  const city = new City;
   city.id = 0;
   city.countryId = 0;
   city.created = '09122017';
-  city.img = 'test.png'
+  city.img = 'test.png';
   city.modified = '09122017';
-  let university = new University;
+  const university = new University;
   university.id = 0;
   university.cityId = 0;
   university.countryId = 0;
-  university.img = 'test.png'
+  university.img = 'test.png';
   university.created = '09122017';
   university.name = 'Test University';
   university.modified = '09122017';
-  let program = new Program;
+  const program = new Program;
   program.created = '09122017';
   program.id = 0;
   program.modified = '09122017';
   program.name = 'Test Program';
   program.studyLevel = '0';
-  let course = new Course;
+  const course = new Course;
   course.city = 'Test City';
   course.created = '09122017';
   course.description = 'test';
@@ -52,7 +52,7 @@ describe('Service: Universities', () => {
   course.semester = 0;
   course.winsum = 0;
   program.courses = [course, course];
-  let faculty = new Faculty;
+  const faculty = new Faculty;
   faculty.img = 'test.png';
   faculty.cityId = 0;
   faculty.created = '09122017';
@@ -62,7 +62,7 @@ describe('Service: Universities', () => {
   faculty.universityId = 0;
   university.faculties = [faculty];
   city.universities = [university];
-  let country = new Country;
+  const country = new Country;
   country.cities = [city];
   country.created = '09122017';
   country.created = '09122017';
@@ -89,18 +89,18 @@ describe('Service: Universities', () => {
       mockBackend = mb;
       service = new UniversitiesService(http);
     }));
-  it('should  be created ', inject([ UniversitiesService ], (service: UniversitiesService) => {
-    expect(service).toBeTruthy();
+  it('should  be created ', inject([ UniversitiesService ], (s: UniversitiesService) => {
+    expect(s).toBeTruthy();
   }));
 
-  it('retrieves all the universities', inject( [UniversitiesService], ( service ) => {
-    return service.getAllUniversities().toPromise().then( (result) => {
+  it('retrieves all the universities', inject( [UniversitiesService], ( s ) => {
+    return s.getAllUniversities().toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));
 
-  it('retrieves all the universities by id city 0', inject( [UniversitiesService], ( service ) => {
-    return service.getUniversitiesByCity(0).toPromise().then( (result) => {
+  it('retrieves all the universities by id city 0', inject( [UniversitiesService], ( s ) => {
+    return s.getUniversitiesByCity(0).toPromise().then( (result) => {
       expect(result.length).toBeGreaterThan(0);
     } );
   }));

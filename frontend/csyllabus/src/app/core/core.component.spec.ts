@@ -90,7 +90,7 @@ describe('CoreComponent', () => {
 
   it('should changeResultCard call with event index different to 1', () => {
 
-    let event = {index: 0}
+    const event = {index: 0};
     spyOn(component, 'changeResultCard').and.callThrough();
     component.changeResultCard(event);
     expect(component.explorerTab ).toEqual(true);
@@ -98,7 +98,7 @@ describe('CoreComponent', () => {
 
   it('should changeResultCard call with event index different to 0', () => {
 
-    let event = {index: 1}
+    const event = {index: 1};
     spyOn(component, 'changeResultCard').and.callThrough();
     component.changeResultCard(event);
     expect(component.explorerTab ).toEqual(false);
