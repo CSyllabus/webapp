@@ -77,7 +77,7 @@
     "model": "csyllabusapi.university",
     "pk": 2,
     "fields": {
-      "name": "Polytechnic University of Milano",
+      "name": "Politecnico di Milano",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": 2,
