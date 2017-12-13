@@ -25,7 +25,8 @@ class UserViewSelf(APIView):
         try:
             decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
             user = User.objects.filter(id=decoded_payload['user_id'])[0]
-            user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name}
+            user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
+                         'username': user.username}
             users_list.append(user_data)
             data['currentItemCount'] = 1
         except IndexError:

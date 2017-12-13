@@ -1,0 +1,28 @@
+.color-1{
+  color: rgb(96,125,139)
+}
+
+.color-1-bck{
+  background-color: #37474F;
+}
+
+.color-2-bck{
+  background-color: #263238 !important;
+}
+
+.sidebar-link {
+display: block;
+  width: 240px;
+  padding: 14px 40px;
+  color: rgba(255, 255, 255, 0.56);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  background-color: #00BCD4;
+  color: #37474F;
+}
+
+
+

@@ -20,7 +20,7 @@ from rest_framework.decorators import parser_classes
 from datetime import datetime
 from jwt_auth import utils
 from jwt_auth.compat import json, User, smart_text
-
+import ast
 try:
     from django.utils import simplejson as json
 except ImportError:
@@ -50,8 +50,13 @@ class CourseView(APIView):
         courses_list = []
         for course in courses:
 
+            try:
+                course.keywords = ast.literal_eval(course.keywords)
+            except:
+                pass
+
             course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                          'englishLevel': course.english_level, 'semester': course.semester,
+                          'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
                           'modified': course.modified, 'created': course.created}
 
             try:
@@ -102,10 +107,42 @@ class CourseView(APIView):
         Course.objects.filter(id=id).delete()
         return Response()
 
-    def put(selfself, request):
-        id = request.data['id']
-        name = request.data['name']
-        Course.objects.filter(id=id).update(name=name, modified=datetime.utcnow())
+    def put(selfself, request, course_id):
+        try:
+            course = Course.objects.filter(id=course_id)[0]
+            try:
+                course.name = request.data['name']
+            except:
+                pass
+            try:
+                course.description = request.data['description']
+            except:
+                pass
+            try:
+                course.level = request.data['level']
+            except:
+                pass
+            try:
+                course.english_level = request.data['englishLevel']
+            except:
+                pass
+            try:
+                course.semestar = request.data['semestar']
+            except:
+                pass
+            try:
+                course.ects = request.data['ects']
+            except:
+                pass
+            try:
+                print request.data['keywords']
+                course.keywords = request.data['keywords']
+            except:
+                pass
+            course.save()
+        except IndexError:
+            pass
+
         return Response()
 
 
@@ -126,7 +163,7 @@ class CourseByProgramView(APIView):
         for course_id in course_ids:
             course = Course.objects.filter(id=course_id)[0]
             one_course = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                          'englishLevel': course.english_level, 'semester': course.semester,
+                          'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
                           'modified': course.modified, 'created': course.created}
             courses_list.append(one_course)
 
