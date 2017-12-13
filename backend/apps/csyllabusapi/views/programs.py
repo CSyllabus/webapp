@@ -50,8 +50,6 @@ class ProgramView(APIView):
         result['data'] = data
         return Response(result)
 
-        return Response()
-
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
@@ -83,5 +81,3 @@ class ProgramUnivView(APIView):
         data['currentItemCount'] = programs.count()
         result['data'] = data
         return Response(result)
-
-        return Response()

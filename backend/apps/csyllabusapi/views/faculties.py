@@ -43,7 +43,3 @@ class FacultyView(APIView):
         data['currentItemCount'] = faculties.count()
         result['data'] = data
         return Response(result)
-
-
-
-        return Response()
