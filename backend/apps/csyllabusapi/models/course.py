@@ -28,7 +28,7 @@ class Course(models.Model):
         return super(Course, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class CourseProgram(models.Model):

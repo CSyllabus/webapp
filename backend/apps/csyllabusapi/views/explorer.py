@@ -118,10 +118,8 @@ def explorer(request):
                 single_course['country'] = country.name
         courseList.append(single_course)
 
-
     result['items'] = courseList
     result['currentItemCount'] = courses.count()
     data['data'] = result
-
 
     return Response(data)

@@ -81,7 +81,7 @@ class User(PermissionsMixin, AbstractBaseUser ):
 
 
     def __str__(self):
-        return self.name
+        return str(self.username)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -100,7 +100,7 @@ class UserFaculty(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return str(self.user) + " " + str(self.faculty)
 
 
 class TeacherCourse(models.Model):
@@ -116,4 +116,4 @@ class TeacherCourse(models.Model):
         return super(TeacherCourse, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return str(self.user) + " " + str(self.course)
