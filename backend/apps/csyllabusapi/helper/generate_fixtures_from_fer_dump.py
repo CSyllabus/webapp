@@ -139,6 +139,8 @@ for course_sublist in fer_courses:
 #appending courses fixtures
 course_id = 1
 course_program_id = 1
+course_university_id= 1
+course_faculty_id=1
 for course in fer_courses:
     course_programs = course['profile'].split(',')
     i = 0
@@ -163,6 +165,32 @@ for course in fer_courses:
 
     fixtures.append(
         {
+            "model": "csyllabusapi.courseuniversity",
+            "pk": course_university_id,
+            "fields": {
+                "course": course_id,
+                "university": 1,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_university_id = course_university_id + 1
+
+    fixtures.append(
+        {
+            "model": "csyllabusapi.coursefaculty",
+            "pk": course_faculty_id,
+            "fields": {
+                "course": course_id,
+                "faculty": 1,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_faculty_id = course_faculty_id + 1
+
+    fixtures.append(
+        {
             "model": "csyllabusapi.course",
             "pk": course_id,
             "fields": {
@@ -171,7 +199,9 @@ for course in fer_courses:
                 "ects": course['ects'],
                 "english_level": course['englevel'],
                 "semester": course['semester'],
-                "winsum": course['winsumm'],
+                "level": course['studylevel'],
+                "keywords": "",
+                "url": "",
                 "created": "2017-10-30T15:07:40.122Z",
                 "modified": "2017-10-30T15:07:41.673Z"
             }

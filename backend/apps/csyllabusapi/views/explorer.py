@@ -44,17 +44,12 @@ def explorer(request):
         university_id = request.query_params['university_id']
     except:
         university_id = None
-   # semester = request.query_params['semester']
-
 
     vector = SearchVector(*['description','name'])
     query = SearchQuery(keywords)
     program_ids = []
     courses_obj = []
     courses_ids = []
-
-    #print university_id
-
 
     if(faculty_id is not None):
         program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
@@ -64,9 +59,6 @@ def explorer(request):
         program_ids = ProgramCity.objects.filter(city_id=city_id).values_list('program_id', flat=True)
     elif(country_id is not None):
         program_ids = ProgramCountry.objects.filter(country_id=country_id).values_list('program_id', flat=True)
-
-    #for i in reversed(program_ids):
-      #  print (i)
 
     courses_obj = CourseProgram.objects.filter(program_id__in=program_ids)
 

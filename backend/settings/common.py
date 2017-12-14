@@ -30,7 +30,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "users",
+
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -127,7 +127,9 @@ REST_FRAMEWORK = {
         "backend.permissions.DjangoModelViewPermissions",
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         "rest_framework.authentication.SessionAuthentication",
+        'rest_framework.authentication.BasicAuthentication',
     ),
     "DEFAULT_PAGINATION_CLASS": "backend.pagination.StandardPagination",
     "DEFAULT_FILTER_BACKENDS": (
@@ -136,4 +138,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTH_USER_MODEL = 'users.EmailUser'
+#AUTH_USER_MODEL = 'users.EmailUser'
+
+AUTH_USER_MODEL = 'csyllabusapi.User'

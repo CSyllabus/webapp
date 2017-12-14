@@ -15,6 +15,7 @@ export class UniversitiesService {
   universitiesUrl = environment.apiUrl + 'universities/';
   universitiesAllUrl = environment.apiUrl + 'universitiesall/';
   citiesUrl = environment.apiUrl + 'cities/';
+  countriesUrl = environment.apiUrl + 'countries/';
 
   constructor(private http: Http) {
   }
@@ -29,6 +30,10 @@ export class UniversitiesService {
       .map(res => res.json().data.items as University[]).catch(this.handleError);
   }
 
+  getUniversitiesByCountry(countryId): Observable<University[]> {
+    return this.http.get(this.countriesUrl + countryId + '/universities/')
+      .map(res => res.json().data.items as University[]).catch(this.handleError);
+  }
 
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :

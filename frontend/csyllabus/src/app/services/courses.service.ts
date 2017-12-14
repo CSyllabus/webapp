@@ -14,6 +14,8 @@ export class CoursesService {
 
   coursesUrl = environment.apiUrl + 'courses/';
   coursesByProgramUrl = environment.apiUrl + 'programs/';
+  coursesByFacultiesUrl = environment.apiUrl + 'faculties/';
+  coursesByUniversitiesUrl = environment.apiUrl + 'universities/';
   explorerUrl = environment.apiUrl + 'explorer';
   comparatorUrl = environment.apiUrl + 'comparator';
 
@@ -30,23 +32,35 @@ export class CoursesService {
       .map(res => res.json().data.items[0] as Course).catch(this.handleError);
   }
 
+  getCoursesByFaculty(facultyId, offset): Observable<Course[]> {
+    return this.http
+      .get(this.coursesByFacultiesUrl + facultyId + '/courses/' + '?limit=-1&offset=' + offset)
+      .map(res => res.json().data.items as Course[]).catch(this.handleError);
+  }
+
+  getCoursesByUniversity(universityId, offset): Observable<Course[]> {
+    return this.http
+      .get(this.coursesByUniversitiesUrl + universityId + '/courses/' + '?limit=-1&offset=' + offset)
+      .map(res => res.json().data.items as Course[]).catch(this.handleError);
+  }
+
   exploreByFaculty(keywords, facultyId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&faculty_id=' + facultyId  + '&/')
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&faculty_id=' + facultyId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   exploreByUniversity(keywords, universityId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&university_id=' + universityId  + '&/')
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&university_id=' + universityId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   exploreByCity(keywords, cityId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&city_id=' + cityId  + '&/')
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&city_id=' + cityId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   exploreByCountry(keywords, countryId): Observable<any[]> {
-    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&country_id=' + countryId  + '&/')
+    return this.http.get(this.explorerUrl + '?keywords=' + keywords + '&country_id=' + countryId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
@@ -57,22 +71,22 @@ export class CoursesService {
 
 
   compareByFaculty(courseId, facultyId): Observable<any[]> {
-    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&faculty_id=' + facultyId  + '&/')
+    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&faculty_id=' + facultyId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   compareByUniversity(courseId, universityId): Observable<any[]> {
-    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&university_id=' + universityId  + '&/')
+    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&university_id=' + universityId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   compareByCity(courseId, cityId): Observable<any[]> {
-    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&city_id=' + cityId  + '&/')
+    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&city_id=' + cityId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
   compareByCountry(courseId, countryId): Observable<any[]> {
-    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&country_id=' + countryId  + '&/')
+    return this.http.get(this.comparatorUrl + '?course=' + courseId + '&country_id=' + countryId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
 

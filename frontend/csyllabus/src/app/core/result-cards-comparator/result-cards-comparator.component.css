@@ -31,6 +31,7 @@
 }
 
 .cours-result-card-title {
+  /*height: 75px;*/
   padding-bottom:15px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -50,6 +51,14 @@
     -webkit-transform: scale(1.0, 1.0);
     opacity: 1.0;
   }
+}
+
+.container{
+    background-image:url(../../../images/a4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .example-card { transition: all .2s ease-in-out; }

@@ -4,6 +4,8 @@ from .country import Country
 from .city import City
 from .course import Course
 from .course import CourseProgram
+from .course import CourseFaculty
+from .course import CourseUniversity
 from .faculty import Faculty
 from .program import Program
 from .program import ProgramFaculty

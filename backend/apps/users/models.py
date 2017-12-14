@@ -4,7 +4,7 @@ from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
                                         BaseUserManager)
 from django.db import models
 from django.utils import timezone
-
+from django.contrib.auth.models import AbstractUser
 
 class EmailUserManager(BaseUserManager):
     def _create_user(self, email, password, is_staff, is_superuser,

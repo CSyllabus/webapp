@@ -1,10 +1,7 @@
 .form {
     margin: 20px;
   }
-.input {
-    width: 100%;
-    max-width: 90%;
-  }
+
 .check {
     margin-top:10px;
     margin-bottom: 10px;
@@ -40,4 +37,22 @@
     width: 100vw;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.33);
+}
+
+.custom-card-title{
+  font-size: 24px;
+  margin: 0;
+  color: white;
+  padding: 6px 30px;
+  position:relative;
+  text-align: left;
+
+  background-color: rgba(85, 118, 184, 0.9);
+  width: 100%;
+}
+
+.forms-group {
+  border-radius: 2px;
+  border: 1px rgba(0, 0, 0, 0.11) solid;
+  padding: 10px;
 }

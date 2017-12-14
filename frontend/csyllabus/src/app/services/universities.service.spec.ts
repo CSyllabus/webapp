@@ -143,6 +143,25 @@ describe('Service: Universities', () => {
     });
   });
 
+  it('should call getUniversitiesByCountry id and return university mock', (done) => {
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      expect(connection.request.method).toEqual(RequestMethod.Get);
+      const url = environment.apiUrl + 'countries/' + university.id + '/universities/';
+      expect(connection.request.url).toEqual(url);
+      connection.mockRespond(new Response(new ResponseOptions({
+        body: {
+          data: {
+            items: [university]
+          },
+        }
+      })));
+    });
+    service.getUniversitiesByCountry(country.id).subscribe(result => {
+      expect(result[0]).toEqual(university);
+      done();
+    });
+  });
+
   it('should call getAllUniversities and return error', (done) => {
     const body = {
       data: {

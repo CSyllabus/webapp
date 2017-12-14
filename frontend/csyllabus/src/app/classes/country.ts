@@ -28,4 +28,7 @@ export class Country {
    * The {@link String} instance representing img.
    */
   img: String;
+  universities: Array<Object>;
+  faculties: Array<Object>;
+
 }

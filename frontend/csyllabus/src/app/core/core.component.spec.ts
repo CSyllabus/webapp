@@ -22,6 +22,7 @@ import { FacultiesService } from '../services/faculties.service';
 import { CoursesService } from '../services/courses.service';
 import { CountriesService } from '../services/countries.service';
 import { ProgramsService } from '../services/programs.service';
+import {of} from "rxjs/observable/of";
 
 describe('CoreComponent', () => {
   let component: CoreComponent;

@@ -41,37 +41,37 @@ h2{
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-}    
+}
 .row2{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-}    
+}
 .row3{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-}    
+}
 @media only screen and (min-width: 900px) {
     .row1{
         width: 30%;
         float: left;
         height: 500px;
-        min-height: 560px !important; 
+        min-height: 560px !important;
     }
     .row2{
         width: 30%;
         float: left;
         height: 460px;
-        min-height: 460px!important; 
+        min-height: 460px!important;
     }
     .row3{
         width: 30%;
         float: left;
         height: 450px;
-        min-height: 500px !important; 
+        min-height: 500px !important;
     }
     .ourteam{
         width: 90%;
@@ -85,17 +85,30 @@ h2{
         margin-left:10px;
         margin-right:10px;
     }
-    .rowback{
-        background-color: rgba(242, 242, 242, 0.453) !important;
-    }
-} 
-hr { 
-    border-top: 3px solid rgb(116,153,227); 
-    border-left:none; 
-    border-right:none; 
-    border-bottom:none; 
+
+}
+hr {
+    border-top: 3px solid rgb(116,153,227);
+    border-left:none;
+    border-right:none;
+    border-bottom:none;
     height: 6px;
-    width:2%; 
+    width:2%;
     margin-top: 50px;
     margin-bottom: 50px;
-  } 
+  }
+
+.intro-content{
+  height: 100em;
+  padding-top:150px;
+  background: url('../../../images/fer.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+}
+
+.transparent {
+  background-color: rgba(255,255,255,0.90);
+}
