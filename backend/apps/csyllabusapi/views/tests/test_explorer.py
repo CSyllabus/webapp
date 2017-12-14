@@ -140,7 +140,6 @@ class ExplorerTestCase(TestCase):
         for value in response.data.itervalues():
             for item in value["items"]:
                 arrCourses.append(item["name"])
-                print(item["short_description"])
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(arrCourses, ["Soft computing"])
