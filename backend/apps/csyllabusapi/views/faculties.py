@@ -46,10 +46,6 @@ class FacultyView(APIView):
         return Response(result)
 
 
-
-        return Response()
-
-
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class FacultyViewAll(APIView):
@@ -76,8 +72,4 @@ class FacultyViewAll(APIView):
         data['currentItemCount'] = faculties.count()
         result['data'] = data
         return Response(result)
-
-
-
-        return Response()
 

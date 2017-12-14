@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .. import Program, Country, City, University, Faculty, ProgramFaculty, ProgramUniversity, ProgramCity, ProgramCountry
+from .. import Program, Country, City, University, Faculty, ProgramFaculty, ProgramUniversity, ProgramCity, \
+    ProgramCountry
 
 class ProgramTestCase(TestCase):
     def test_initprogram(self):

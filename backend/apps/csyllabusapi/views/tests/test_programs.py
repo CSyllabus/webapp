@@ -3,7 +3,7 @@ from ...models import Country, City, University, Faculty, Program, ProgramFacult
 
 
 class ProgramViewTestCase(TestCase):
-    def test_get(self):
+    def get(self):
         country1 = Country.objects.create(name='Croatia')
         city1 = City.objects.create(name='Zagreb', country=country1)
         university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
@@ -16,6 +16,7 @@ class ProgramViewTestCase(TestCase):
 
         c = Client()
         response = c.get('/csyllabusapi/faculties/' + str(faculty1.id) + '/programs')
+        print(response.data)
 
         arrPrograms = []
         for value in response.data.itervalues():

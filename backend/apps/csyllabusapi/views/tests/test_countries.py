@@ -16,4 +16,4 @@ class CountriesViewTestCase(TestCase):
                 arrCountries.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrCountries, ["Italy", "Croatia"])
+        self.assertEqual(arrCountries, ["Croatia", "Italy"])
