@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {ComparatorComponent} from '../comparator/comparator.component';
 import {Course} from '../../classes/course';
 
-import {CourseDialogComponent} from '../result-cards/course-dialog/course-dialog.component';
+import {CourseDialogComponent} from './course-dialog/course-dialog.component';
 @Component({
   selector: 'app-result-cards-comparator',
   templateUrl: './result-cards-comparator.component.html',
@@ -18,9 +18,9 @@ export class ResultCardsComparatorComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-openDialog(course_id){
+openDialog(courseId) {
      this.dialog.open(CourseDialogComponent, {
-        width: '', data: {'course_id': course_id}
+        width: '', data: {'course_id': courseId}
       });
   }
 

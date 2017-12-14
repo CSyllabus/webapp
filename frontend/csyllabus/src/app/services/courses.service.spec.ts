@@ -387,4 +387,44 @@ describe('Service: Courses', () => {
     done();
   });
 
+  it('should call getCoursesByFaculty and return error', (done) => {
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      expect(connection.request.method).toEqual(RequestMethod.Get);
+      const coursesByFacultiesUrl = environment.apiUrl + 'faculties/';
+      const url = coursesByFacultiesUrl + faculty.id + '/courses/' + '?limit=-1&offset=' + 'test';
+      expect(url).toBeDefined();
+      connection.mockRespond(new Response(new ResponseOptions({
+        body: {
+          data: {
+            items: [course, course]
+          },
+        }
+      })));
+    });
+    service.getCoursesByFaculty(course.id, 'test').subscribe(result => {
+      expect(result[0]).toEqual(course);
+    done();
+    });
+  });
+
+  it('should call getCoursesByUniversity and return error', (done) => {
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      expect(connection.request.method).toEqual(RequestMethod.Get);
+      const coursesByUniversitiesUrl = environment.apiUrl + 'universities/';
+      const url = coursesByUniversitiesUrl + university.id + '/courses/' + '?limit=-1&offset=' + 'test';
+      expect(url).toBeDefined();
+      connection.mockRespond(new Response(new ResponseOptions({
+        body: {
+          data: {
+            items: [course, course]
+          },
+        }
+      })));
+    });
+    service.getCoursesByUniversity(course.id, 'test').subscribe(result => {
+      expect(result[0]).toEqual(course);
+    done();
+    });
+  });
+
 });
