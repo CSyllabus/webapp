@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
-import { ActivatedRoute } from '@angular/router';
-import { Course } from '../../course/course';
-import { User } from '../user';
-import { environment } from '../../../environments/environment';
-
-declare var window: any;
+import {Component, OnInit} from '@angular/core';
+import {UsersService} from '../users.service';
+import {ActivatedRoute} from '@angular/router';
+import {Course} from '../../course/course';
+import {User} from '../user';
+import {environment} from '../../../environments/environment';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-category',
@@ -14,24 +13,32 @@ declare var window: any;
 })
 
 export class UserComponent implements OnInit {
-  dataUrl = environment.dataUrl;
-  courses: Course[] = [];
   user: User;
+  newPassword: string;
+  newPassword2: string;
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', );
+  password2 = new FormControl('', );
   constructor(private usersService: UsersService, private route: ActivatedRoute) {
+    this.usersService.getSelf().subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit() {
-    window.componentHandler.upgradeAllRegistered();
-    /*this.route.params.subscribe(params => {
-      this.usersService.getUserPosts(+params['id']).subscribe(posts => {
-        this.posts = posts;
-      });
-      this.usersService.getUser(+params['id']).subscribe(user => {
+  }
+
+  saveUser() {
+    if (this.newPassword && (this.newPassword === this.newPassword2)){
+      this.user['newPassword'] = this.newPassword;
+    }
+    this.usersService.putSelf(this.user).subscribe(res => {
+      alert("Succesfully saved :)");
+      this.usersService.getSelf().subscribe(user => {
         this.user = user;
       });
-
-    });*/
+    }, error => alert(error));
   }
 
 }
