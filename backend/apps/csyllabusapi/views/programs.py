@@ -33,7 +33,6 @@ class ProgramView(APIView):
         data = {}
         programList = []
 
-
         for program_id in program_ids:
             program = Program.objects.filter(id=program_id)[0]
             single_program = {}

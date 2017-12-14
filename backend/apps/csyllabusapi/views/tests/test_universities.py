@@ -22,7 +22,7 @@ class UniversitiesViewAllTestCase(TestCase):
                 arrUni.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrUni, ["University of Zagreb", "Politecnico di Milano", "Politecnico di Torino"])
+        self.assertEqual(arrUni, ["Politecnico di Milano", "Politecnico di Torino", "University of Zagreb"])
 
 
 class UniversitiesViewTestCase(TestCase):
@@ -41,4 +41,4 @@ class UniversitiesViewTestCase(TestCase):
                 arrUni.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrUni, ["Universita degli studi di Milano", "Politecnico di Milano"])
+        self.assertEqual(arrUni, ["Politecnico di Milano", "Universita degli studi di Milano"])

@@ -127,7 +127,7 @@ class CourseView(APIView):
             except:
                 pass
             try:
-                course.semestar = request.data['semestar']
+                course.semester = request.data['semester']
             except:
                 pass
             try:

@@ -8,9 +8,13 @@ class ComparatorTestCase(TestCase):
     def test_getbycountryid(self):
         # creation of first course
         country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
         program1 = Program.objects.create(name='Data science', study_level='Postgraduate')
         course1 = Course.objects.create(name='Data bases 2', description='Data bases 2 course')
         ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of second course
@@ -41,14 +45,18 @@ class ComparatorTestCase(TestCase):
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrCourses, ["Data mining"])
+        self.assertEqual(arrCourses, ["Data bases 2", "Data mining"])
 
     def test_getbycityid(self):
         # creation of first course
         country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
         program1 = Program.objects.create(name='Data science', study_level='Postgraduate')
         course1 = Course.objects.create(name='Data bases 2', description='Data bases 2 course')
         ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of second course
@@ -76,14 +84,18 @@ class ComparatorTestCase(TestCase):
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrCourses, ["Data mining"])
+        self.assertEqual(arrCourses, ["Data bases 2", "Data mining"])
 
     def test_getbyuniversityid(self):
         # creation of first course
         country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
         program1 = Program.objects.create(name='Data science', study_level='Postgraduate')
         course1 = Course.objects.create(name='Data bases 2', description='Data bases 2 course')
         ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of second course
@@ -111,14 +123,18 @@ class ComparatorTestCase(TestCase):
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrCourses, ["Data mining"])
+        self.assertEqual(arrCourses, ["Data bases 2", "Data mining"])
 
     def test_getbyfacultyid(self):
         # creation of first course
         country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
         program1 = Program.objects.create(name='Data science', study_level='Postgraduate')
         course1 = Course.objects.create(name='Data bases 2', description='Data bases 2 course')
         ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of second course
@@ -149,15 +165,19 @@ class ComparatorTestCase(TestCase):
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrCourses, ["Data mining"])
+        self.assertEqual(arrCourses, ["Data bases 2", "Data mining"])
 
     def getwithmultiplecourses(self):
         # TODO finish
         # creation of first course
         country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
         program1 = Program.objects.create(name='Data science', study_level='Postgraduate')
         course1 = Course.objects.create(name='Data bases 2', description='Data bases 2 course')
         ProgramCountry.objects.create(program=program1, country=country1)
+        ProgramCity.objects.create(program=program1, city=city1)
+        ProgramUniversity.objects.create(program=program1, university=university1)
         CourseProgram.objects.create(course=course1, program=program1)
 
         # creation of second course
@@ -188,5 +208,5 @@ class ComparatorTestCase(TestCase):
                 arrCourses.append(item["name"])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(arrCourses, ["Data mining"])
+        self.assertEqual(arrCourses, ["Data bases 2", "Data mining"])
 
