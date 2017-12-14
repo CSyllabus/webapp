@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter, Inject} from '@angular/core';
-import {MatChipInputEvent, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
