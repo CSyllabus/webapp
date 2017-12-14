@@ -37,12 +37,6 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <!--<mat-radio-group style="float:left; padding-left:40px" [(ngModel)]="study_lvl">
-        <mat-radio-button style="padding-left:20px" value="UG">Undergraduate</mat-radio-button>
-        <mat-radio-button style="padding-left:20px" value="G">Graduate</mat-radio-button>
-        <mat-radio-button style="padding-left:20px" value="A" default>Any</mat-radio-button>
-      </mat-radio-group>-->
-
       <mat-form-field class="input" *ngIf="queryHomeProgram">
         <input placeholder="Course?" matInput [formControl]="homeCoursesControl"
                [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"

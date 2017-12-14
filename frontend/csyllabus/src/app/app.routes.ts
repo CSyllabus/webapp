@@ -1,8 +1,8 @@
-import {CoreComponent} from './core/core.component';
-import {CourseComponent} from './components/course/course.component';
-import {AboutComponent} from './components/about/about.component';
-import {ContactComponent} from './components/contact/contact.component';
-import {NotFoundComponent} from './components/not-found/not-found.component';
+import { CoreComponent } from './core/core.component';
+import { CourseComponent } from './components/course/course.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const ROUTES = [
   {

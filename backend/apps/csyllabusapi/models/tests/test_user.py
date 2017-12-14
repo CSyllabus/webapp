@@ -15,7 +15,13 @@ class UserTestCase(TestCase):
 
         self.assertEqual(arrUsers, ["guber", "filipt"])
 
-    def test_usersbyfaculty(self):
+    def test_struser(self):
+        user1 = User.objects.create(username="guber", password="none", firstname="Emanuel", lastname="Guberovic")
+
+        self.assertEqual(str(user1), str(user1.username))
+
+    def test_userbyfaculty(self):
+
         user1 = User.objects.create(username="adri", password="none", firstname="Adrien", lastname="Roques")
         user2 = User.objects.create(username="smayoral", password="none", firstname="Sebastian", lastname="Mayoral")
         user3 = User.objects.create(username="zvone", password="none", firstname="Zvonimir", lastname="Relja")
@@ -53,7 +59,19 @@ class UserTestCase(TestCase):
         self.assertEqual(arrFer, ["zvone", "mvukosav"])
         self.assertEqual(arrFct, ["adri", "smayoral"])
 
-    def test_teachersbycourse(self):
+    def test_struserfaculty(self):
+        user1 = User.objects.create(username="zvone", password="none", firstname="Zvonimir", lastname="Relja")
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+        faculty1 = Faculty.objects.create(name='Faculty of electrical engineering and computing',
+                                          university=university1, city=city1)
+        userfaculty1 = UserFaculty.objects.create(user=user1, faculty=faculty1)
+
+        self.assertEqual(str(userfaculty1), str(userfaculty1.user) + " " + str(userfaculty1.faculty))
+
+    def test_teacherbycourse(self):
+
         user1 = User.objects.create(username="ivana", password="none", firstname="Ivana", lastname="Bosnic")
         user2 = User.objects.create(username="raffaela", password="none", firstname="Raffaela", lastname="Mirandola")
         user3 = User.objects.create(username="stefano", password="none", firstname="Stefano", lastname="Paraboschi")
@@ -78,4 +96,13 @@ class UserTestCase(TestCase):
             arrDB2.append(User.objects.get(id=teacherCourse.user.id).username)
 
         self.assertEqual(arrDSD, ["ivana", "raffaela"])
+
         self.assertEqual(arrDB2, ["stefano", "daniele"])
+
+    def test_strteachercourse(self):
+        user1 = User.objects.create(username="raffaela", password="mirandola", firstname="Raffaela",
+                                    lastname="Mirandola")
+        course1 = Course.objects.create(name="Distributed software development")
+        teachercourse1 = TeacherCourse.objects.create(user=user1, course=course1)
+
+        self.assertEqual(str(teachercourse1), str(teachercourse1.user) + " " + str(teachercourse1.course))
