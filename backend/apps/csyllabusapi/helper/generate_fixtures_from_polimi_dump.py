@@ -47,7 +47,7 @@ fixtures.append(
 )
 
 #appending programs fixtures
-program_id = 35
+program_id = 36
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -97,8 +97,8 @@ fixtures.append(
 )
 
 #appending courses fixtures
-course_id = 534
-course_program_id = 2266
+course_id = 605
+course_program_id = 2336
 for course in polimi_courses:
     fixtures.append(
         {
