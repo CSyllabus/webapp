@@ -26,7 +26,7 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should myFunction call topnav', () => {
+  /*it('should myFunction call topnav', () => {
     const x = document.getElementById('myTopnav');
     spyOn(component, 'myFunction').and.callThrough();
     component.myFunction();
@@ -40,7 +40,7 @@ describe('NavbarComponent', () => {
     component.myFunction();
     expect(x.className).toEqual('topnav');
   });
-
+*/
 });
 
 
