@@ -26,6 +26,21 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component'
 import {DocumentationComponent} from './components/documentation/documentation.component';
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+import { SocialComponent } from './components/social/social.component';
+
+let config = new AuthServiceConfig([
+  //I dont understand wath is a provider hehe, I puted the same as in the demo//
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com") 
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("561602290896109")
+  }
+]);
 
 @NgModule({
   imports: [
@@ -36,8 +51,8 @@ import {DocumentationComponent} from './components/documentation/documentation.c
     CoreModule,
     RouterModule.forRoot(ROUTES),
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    SocialLoginModule.initialize(config)
   ],
   providers: [
     CountriesService,
@@ -45,7 +60,7 @@ import {DocumentationComponent} from './components/documentation/documentation.c
     CoursesService,
     FacultiesService,
     ProgramsService,
-    UniversitiesService
+    UniversitiesService,
    ],
   declarations: [
     AppComponent,
@@ -55,7 +70,8 @@ import {DocumentationComponent} from './components/documentation/documentation.c
     ContactComponent,
     NavbarComponent,
     FooterComponent,
-    DocumentationComponent
+    DocumentationComponent,
+    SocialComponent
   ],
   bootstrap: [AppComponent],
 })

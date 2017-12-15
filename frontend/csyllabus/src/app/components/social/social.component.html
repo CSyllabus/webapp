@@ -1,0 +1,35 @@
+
+<div class="jumbotron bg-transparent text-center">
+  <!-- The following is shown if the user is not logged ing -->
+  <div *ngIf="!user" class="card text-center">
+    <h6 class="card-header">
+      Comments not Available
+    </h6>
+    <div class="card-block">
+      <h4 class="card-title">Not signed in yet</h4>
+      <p class="card-text">Sign in with</p>
+    </div>
+    <div class="card-block">
+      <button class="Googlebutton" (click)="signInWithGoogle()"></button>
+      <button class="Facebookbutton" (click)="signInWithFB()"></button>
+    </div>
+  </div>
+  <!-- The following is shown if the user is logged ing -->
+  <div *ngIf="user" class="card text-center">
+    <h6 class="card-header">
+      Comments Available
+    </h6>
+    <div class="card-block"></div>
+    <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+    <div class="card-block">
+      <h4 class="card-title">{{ user.name }}</h4>
+      <p class="card-text">{{ user.email }}</p>
+    </div>
+    <div class="card-block">
+      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+    </div>
+  </div>
+</div>
+<p>
+  social works!
+</p>
