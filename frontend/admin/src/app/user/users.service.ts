@@ -17,9 +17,9 @@ export class UsersService {
    *
    * @returns {Observable<R>}
    */
-  getAllUsers(): Observable<User[]> {
-    return this.http.get(this.usersUrl)
-      .map(res => res.json() as User[]);
+  getAllUsers(limit, offset, orderBy, orderDirection, filter): Observable<User[]> {
+    return this.http.get(this.usersUrl + '?limit=' + limit + '&offset=' + offset)
+      .map(res => res.json().data.items as User[]);
   }
 
   /**
@@ -27,8 +27,8 @@ export class UsersService {
    * @returns {Observable<R>}
    */
   getUsersCount(): Observable<number> {
-    return this.http.get(this.usersUrl + 'count')
-      .map(res => res.json() as number);
+    return this.http.get(this.usersUrl)
+      .map(res => res.json().data.currentItemCount as number);
   }
 
   /**
@@ -38,7 +38,7 @@ export class UsersService {
    */
   getUser(id): Observable<User> {
     return this.http.get(this.usersUrl + id)
-      .map(res => res.json() as User);
+      .map(res => res.json().data.items[0] as User);
   }
 
   /**
@@ -57,6 +57,15 @@ export class UsersService {
       .map(res => res.json().data.items[0] as User);
   }
 
+  putUser(id: number, data): Observable<User> {
+    return this.http.put(this.usersUrl + id, data)
+      .map(res => res).catch(this.handleError);
+  }
+
+  postUser(data): Observable<User> {
+    return this.http.post(this.usersUrl, data)
+      .map(res => res).catch(this.handleError);
+  }
 
   /**
    *
@@ -74,6 +83,11 @@ export class UsersService {
       .map(res => res);
   }
 
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(this.usersUrl + id)
+      .map(res => res);
+  }
+
   /**
    *
    * @param id
@@ -84,4 +98,12 @@ export class UsersService {
       .map(res => res.json() as Course[]);
   }
 
+
+
+  private handleError(error: any) {
+    let errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
 }

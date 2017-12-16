@@ -8,8 +8,6 @@ from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
                                         BaseUserManager)
 
 
-
-
 class UserManager(BaseUserManager):
     def _create_user(self, username, password, is_admin,
                      **extra_fields):
@@ -32,7 +30,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_user(self, username, password, **extra_fields):
-
         return self._create_user(
             username,
             password,
@@ -47,11 +44,12 @@ class UserManager(BaseUserManager):
             **extra_fields
         )
 
-class User(PermissionsMixin, AbstractBaseUser ):
-    username = models.CharField(max_length=25, unique = True)
+
+class User(PermissionsMixin, AbstractBaseUser):
+    username = models.CharField(max_length=25, unique=True)
     password = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=50, blank = True, null= True)
-    last_name = models.CharField(max_length=50, blank = True, null= True)
+    first_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(
         max_length=254,
         unique=True,
@@ -59,7 +57,7 @@ class User(PermissionsMixin, AbstractBaseUser ):
             'unique': 'That email address is already taken.'
         }
     )
-    is_admin = models.BooleanField(default= False)
+    is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
@@ -70,6 +68,7 @@ class User(PermissionsMixin, AbstractBaseUser ):
     modified = models.DateTimeField()
 
     objects = UserManager()
+
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         if not self.id:
@@ -79,14 +78,14 @@ class User(PermissionsMixin, AbstractBaseUser ):
         self.modified = timezone.now()
         return super(User, self).save(*args, **kwargs)
 
-
     def __str__(self):
         return str(self.username)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
-class UserFaculty(models.Model):
+
+class AdminFaculty(models.Model):
     created = models.DateTimeField(editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
@@ -96,24 +95,23 @@ class UserFaculty(models.Model):
         if not self.id:
             self.created = timezone.now()
 
-        return super(UserFaculty, self).save(*args, **kwargs)
-
+        return super(AdminFaculty, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.user) + " " + str(self.faculty)
 
 
-class TeacherCourse(models.Model):
+class AdminUniversity(models.Model):
     created = models.DateTimeField(editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         if not self.id:
             self.created = timezone.now()
 
-        return super(TeacherCourse, self).save(*args, **kwargs)
+        return super(AdminUniversity, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.user) + " " + str(self.course)
+        return str(self.user) + " " + str(self.faculty)

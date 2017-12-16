@@ -23,7 +23,7 @@ export class CoursesService {
   }
 
   getCoursesCount(): Observable<number> {
-    return this.http.get(this.coursesUrl)
+    return this.http.get(this.simpleCoursesUrl)
       .map(res => res.json().data.currentItemCount as number);
   }
 

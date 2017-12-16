@@ -15,6 +15,7 @@ import { AuthService } from './auth.service';
 import { CoursesService } from './course/courses.service';
 import { UsersService } from './user/users.service';
 import { UserComponent } from './user/user/user.component';
+import { UsersComponent } from './user/users/users.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -41,8 +42,16 @@ const ROUTES = [
     component: CourseComponent
   },
   {
-    path: 'user/:id',
+    path: 'user/:task/:id',
     component: UserComponent
+  },
+  {
+    path: 'user/:task',
+    component: UserComponent
+  },
+  {
+    path: 'users',
+    component: UsersComponent
   }
 ];
 
@@ -52,6 +61,7 @@ const ROUTES = [
     CoursesComponent,
     CourseComponent,
     UserComponent,
+    UsersComponent,
     LoginComponent
   ],
   imports: [
