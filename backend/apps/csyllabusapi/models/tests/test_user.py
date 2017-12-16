@@ -3,11 +3,14 @@ from .. import User, Country, City, University, Faculty, UserFaculty, Course, Te
 
 class UserTestCase(TestCase):
     def test_inituser(self):
-        User.objects.create(username="guber", password="none", firstname="Emanuel", lastname="Guberovic")
-        User.objects.create(username="tbenetti", password="none", firstname="Thomas", lastname="Benetti")
-        User.objects.create(username="filipt", password="none", firstname="Filip", lastname="Turcinovic")
+        User.objects.create(username="guber", password="none", first_name="Emanuel", last_name="Guberovic",
+                            email="guber@csyllabus.com")
+        User.objects.create(username="tbenetti", password="none", first_name="Thomas", last_name="Benetti",
+                            email="tbenetti@csyllabus.com")
+        User.objects.create(username="filipt", password="none", first_name="Filip", last_name="Turcinovic",
+                            email="filipt@csyllabus.com")
 
-        users = User.objects.filter(lastname__endswith="vic")
+        users = User.objects.filter(last_name__endswith="vic")
 
         arrUsers = []
         for user in users:
@@ -15,11 +18,22 @@ class UserTestCase(TestCase):
 
         self.assertEqual(arrUsers, ["guber", "filipt"])
 
-    def test_usersbyfaculty(self):
-        user1 = User.objects.create(username="adri", password="none", firstname="Adrien", lastname="Roques")
-        user2 = User.objects.create(username="smayoral", password="none", firstname="Sebastian", lastname="Mayoral")
-        user3 = User.objects.create(username="zvone", password="none", firstname="Zvonimir", lastname="Relja")
-        user4 = User.objects.create(username="mvukosav", password="none", firstname="Matej", lastname="Vukosav")
+    def test_struser(self):
+        user1 = User.objects.create(username="guber", password="none", first_name="Emanuel", last_name="Guberovic",
+                                    email="guber@csyllabus.com")
+
+        self.assertEqual(str(user1), str(user1.username))
+
+    def test_userbyfaculty(self):
+
+        user1 = User.objects.create(username="adri", password="none", first_name="Adrien", last_name="Roques",
+                                    email="adri@csyllabus.com")
+        user2 = User.objects.create(username="smayoral", password="none", first_name="Sebastian", last_name="Mayoral",
+                                    email="smayoral@csyllabus.com")
+        user3 = User.objects.create(username="zvone", password="none", first_name="Zvonimir", last_name="Relja",
+                                    email="zvone@csyllabus.com")
+        user4 = User.objects.create(username="mvukosav", password="none", first_name="Matej", last_name="Vukosav",
+                                    email="mvukosav@csyllabus.com")
 
         country1 = Country.objects.create(name='Croatia')
         country2 = Country.objects.create(name='Italy')
@@ -53,11 +67,28 @@ class UserTestCase(TestCase):
         self.assertEqual(arrFer, ["zvone", "mvukosav"])
         self.assertEqual(arrFct, ["adri", "smayoral"])
 
-    def test_teachersbycourse(self):
-        user1 = User.objects.create(username="ivana", password="none", firstname="Ivana", lastname="Bosnic")
-        user2 = User.objects.create(username="raffaela", password="none", firstname="Raffaela", lastname="Mirandola")
-        user3 = User.objects.create(username="stefano", password="none", firstname="Stefano", lastname="Paraboschi")
-        user4 = User.objects.create(username="daniele", password="none", firstname="Daniele", lastname="Braga")
+    def test_struserfaculty(self):
+        user1 = User.objects.create(username="zvone", password="none", first_name="Zvonimir", last_name="Relja",
+                                    email="zvone@csyllabus.com")
+        country1 = Country.objects.create(name='Croatia')
+        city1 = City.objects.create(name='Zagreb', country=country1)
+        university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
+        faculty1 = Faculty.objects.create(name='Faculty of electrical engineering and computing',
+                                          university=university1, city=city1)
+        userfaculty1 = UserFaculty.objects.create(user=user1, faculty=faculty1)
+
+        self.assertEqual(str(userfaculty1), str(userfaculty1.user) + " " + str(userfaculty1.faculty))
+
+    def test_teacherbycourse(self):
+
+        user1 = User.objects.create(username="ivana", password="none", first_name="Ivana", last_name="Bosnic",
+                                    email="ivana.bosnic@fer.hr")
+        user2 = User.objects.create(username="raffaela", password="none", first_name="Raffaela", last_name="Mirandola",
+                                    email="raffaela.mirandola@polimi.it")
+        user3 = User.objects.create(username="stefano", password="none", first_name="Stefano", last_name="Paraboschi",
+                                    email="stefano.paraboschi@polimi.it")
+        user4 = User.objects.create(username="daniele", password="none", first_name="Daniele", last_name="Braga",
+                                    email="daniele.braga@polimi.it")
 
         course1 = Course.objects.create(name="Distributed software development")
         course2 = Course.objects.create(name="Data bases 2")
@@ -78,4 +109,13 @@ class UserTestCase(TestCase):
             arrDB2.append(User.objects.get(id=teacherCourse.user.id).username)
 
         self.assertEqual(arrDSD, ["ivana", "raffaela"])
+
         self.assertEqual(arrDB2, ["stefano", "daniele"])
+
+    def test_strteachercourse(self):
+        user1 = User.objects.create(username="raffaela", password="mirandola", first_name="Raffaela",
+                                    last_name="Mirandola", email="raffaela.mirandola@polimi.it")
+        course1 = Course.objects.create(name="Distributed software development")
+        teachercourse1 = TeacherCourse.objects.create(user=user1, course=course1)
+
+        self.assertEqual(str(teachercourse1), str(teachercourse1.user) + " " + str(teachercourse1.course))

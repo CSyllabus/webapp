@@ -3,6 +3,7 @@ import {CourseComponent} from './components/course/course.component';
 import {AboutComponent} from './components/about/about.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {DocumentationComponent} from "./components/documentation/documentation.component";
 
 export const ROUTES = [
   {
@@ -25,6 +26,10 @@ export const ROUTES = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'documentation',
+    component: DocumentationComponent
   },
   {
     path: 'not-found',

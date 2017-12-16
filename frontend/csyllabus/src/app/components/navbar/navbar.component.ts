@@ -1,25 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  constructor() { }
-  
-  ngOnInit() {
-     /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+export class NavbarComponent  {
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
+  onAnchorClick ( ) {
+    this.route.fragment.subscribe ( f => {
+      const element = document.querySelector ( "#" + f )
+      if ( element ) element.scrollIntoView ( element )
+    });
   }
-  myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
- 
-  
+
+
 }

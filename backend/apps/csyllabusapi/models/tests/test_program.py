@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .. import Program, Country, City, University, Faculty, ProgramFaculty, ProgramUniversity, ProgramCity, ProgramCountry
+from .. import Program, Country, City, University, Faculty, ProgramFaculty, ProgramUniversity, ProgramCity, \
+    ProgramCountry
 
 class ProgramTestCase(TestCase):
     def test_initprogram(self):
@@ -16,6 +17,11 @@ class ProgramTestCase(TestCase):
 
         self.assertEqual(arrPrograms, ["Electrical engineering", "Computer science and engineering",
                                        "Telecommunications engineering"])
+
+    def test_strprogram(self):
+        program1 = Program.objects.create(name='Electrical engineering')
+
+        self.assertEqual(str(program1), program1.name)
 
     def test_programbyfaculty(self):
         country1 = Country.objects.create(name='Croatia')

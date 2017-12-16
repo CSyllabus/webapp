@@ -35,6 +35,8 @@ class UniversitiesViewAll(APIView):
             one_university['modified'] = university.modified
             one_university['created'] = university.created
             universitiesList.append(one_university)
+
+        universitiesList.sort(key=lambda x: x['name'], reverse=False)
         data['currentItemCount'] = universities.count()
         data['items'] = universitiesList
         result['data'] = data
@@ -61,6 +63,7 @@ class UniversitiesView(APIView):
             single_univeristy['city_id'] = university.city_id
             university_list.append(single_univeristy)
 
+        university_list.sort(key=lambda x: x['name'], reverse=False)
         data['items'] = university_list
         data['currentItemCount'] = universities.count()
         result['data'] = data
@@ -73,17 +76,16 @@ class UniversitiesViewCountry(APIView):
         universities = University.objects.filter(country_id=country_id)
         data = {}
         result = {}
-        universitiesList = []
+        universities_list = []
         for university in universities:
-            one_university = {}
-            one_university['id'] = university.id
-            one_university['name'] = university.name
-                    # one_university['img'] = university.img
-            one_university['modified'] = university.modified
-            one_university['created'] = university.created
-            universitiesList.append(one_university)
+            university_data = {'id': university.id, 'name': university.name, 'modified': university.modified,
+                              'created': university.created}
+            # one_university['img'] = university.img
+            universities_list.append(university_data)
+
+            universities_list.sort(key=lambda x: x['name'], reverse=False)
         data['currentItemCount'] = universities.count()
-        data['items'] = universitiesList
+        data['items'] = universities_list
         result['data'] = data
         return Response(result)
 

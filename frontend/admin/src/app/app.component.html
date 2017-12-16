@@ -1,0 +1,54 @@
+<div *ngIf="selfUser">
+  <header>
+    <mat-toolbar color="primary" class="color-1-bck">
+      <button type="button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span style="margin-left: 30px;">CSyllabus Admin</span>
+      <div style="position: absolute; right: 30px;">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item disabled>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Turn of notifications</span>
+          </button>
+          <button mat-menu-item [routerLink]="['user/'+selfUser.id]">
+            <mat-icon>account_circle</mat-icon>
+            <span> {{selfUser.username}}</span>
+          </button>
+          <button mat-menu-item (click)="logOut()">
+            <mat-icon>power</mat-icon>
+            <span>Log out</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+  </header>
+  <div>
+    <header style="display: inline-block;">
+      <mat-sidenav-container style="height: 100vh; ">
+        <mat-sidenav mode="over" #sidenav class="color-2-bck" style="width: 240px; overflow: hidden;">
+          <nav>
+            <a class="sidebar-link" [routerLink]="['home']" [routerLinkActive]="['active']">
+              <mat-icon style="margin-right: 32px">home</mat-icon>
+              <span style="position: absolute;line-height: 24px;">Homepage</span></a>
+            <a class="sidebar-link" [routerLink]="['courses']" [routerLinkActive]="['active']">
+              <mat-icon style="margin-right: 32px">book</mat-icon>
+              <span style="position: absolute;line-height: 24px;">Courses</span>
+            </a>
+            <div class="mdl-layout-spacer"></div>
+            <a class="sidebar-link" href="" style="position: absolute; bottom: 0;">
+              <mat-icon style="margin-right: 32px">help_outline</mat-icon>
+              <span style="position: absolute;" class="visuallyhidden">Help</span></a>
+          </nav>
+        </mat-sidenav>
+        <div class="intrev-content">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-container>
+    </header>
+  </div>
+</div>
+<app-login *ngIf="!selfUser" (token)="setToken($event)"></app-login>

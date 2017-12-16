@@ -1,0 +1,32 @@
+.login-title {
+  background-color: rgb(96, 125, 139);
+  margin-top: -48px !important;
+  padding: 20px;
+  color: white;
+}
+
+.outer-login-container {
+  height: 100vh;
+  display: table;
+}
+
+.inner-login-container {
+  width: 100vw;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.login-card {
+  width: 300px !important;
+  display: inline-block;
+}
+
+.login-card mat-form-field {
+  width: 240px !important;
+}
+
+.login-card mat-card-actions {
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  margin-top: 24px;
+}

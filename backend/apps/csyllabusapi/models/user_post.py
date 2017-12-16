@@ -18,9 +18,8 @@ class UserCoursePost(models.Model):
         self.modified = timezone.now()
         return super(UserCoursePost, self).save(*args, **kwargs)
 
-
     def __str__(self):
-        return self.name
+        return str(self.content) + " " + str(self.course)
 
 
 class UserFacultyPost(models.Model):
@@ -38,4 +37,4 @@ class UserFacultyPost(models.Model):
         return super(UserFacultyPost, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return str(self.content) + " " + str(self.faculty)

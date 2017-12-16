@@ -1,0 +1,93 @@
+import { inject, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material';
+import { AngularMaterialModule } from '../../../angular-material/angular-material.module';
+import { MatDialogModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { of } from 'rxjs/observable/of';
+
+import { CoursesService} from '../../../services/courses.service';
+
+import {Course} from '../../../classes/course';
+
+import { CourseDialogComponent } from './course-dialog.component';
+
+@NgModule({
+  declarations: [CourseDialogComponent],
+  entryComponents: [CourseDialogComponent],
+  exports: [CourseDialogComponent],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+    HttpModule,
+  ],
+  providers: [
+    CoursesService,
+    HttpModule,
+  ],
+})
+class TestModule { }
+
+describe('CourseDialogComponent comparator', () => {
+  let component: CourseDialogComponent;
+  let dialog: MatDialog;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [MatDialogModule, TestModule, AngularMaterialModule, CommonModule, BrowserAnimationsModule]
+    });
+  });
+
+  beforeEach(()  => {
+    dialog = TestBed.get(MatDialog);
+
+    const dialogRef = dialog.open(CourseDialogComponent);
+
+    component = dialogRef.componentInstance;
+
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('retrieve all the courses by id 0', inject( [CoursesService], ( service ) => {
+    spyOn(component, 'ngOnInit').and.callThrough();
+    return service.getCourseById(0).toPromise().then( (result) => {
+      component.ngOnInit();
+      expect(component.course).toEqual(result);
+    });
+  }));
+
+  it('should ngOnInit subscribe ',  inject( [CoursesService], ( service ) => {
+    const response = new Course;
+    const data = [{course_id: 0}];
+
+    spyOn(service, 'getCourseById').and.returnValue(of(response));
+
+    component.data = data;
+    component.data.course_id = 0;
+
+    component.ngOnInit();
+
+
+    expect(component.course).toEqual(response);
+  }));
+
+  it('should onNoClick call', () => {
+    spyOn(component, 'onNoClick').and.callThrough();
+    component.onNoClick();
+    expect(component.onNoClick).toHaveBeenCalled();
+  });
+
+  it('should ngOnInit call', async() => {
+
+    spyOn(component, 'ngOnInit').and.callThrough();
+    component.ngOnInit();
+    expect(component.ngOnInit).toHaveBeenCalled();
+  });
+});
+
+

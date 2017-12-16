@@ -4,6 +4,7 @@ import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
+import {MatSnackBar} from '@angular/material';
 const COMMA = 188;
 
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
@@ -54,20 +55,7 @@ export class ExplorerComponent implements OnInit {
   queryFaculty: Faculty;
   queryProgram: Program;
   queryLevel: string;
-
-  /*levels = [
-   {value: 'A1', viewValue: 'A1'},
-   {value: 'A2', viewValue: 'A2'},
-   {value: 'B1', viewValue: 'B1'},
-   {value: 'B2', viewValue: 'B2'},
-   {value: 'C1', viewValue: 'C1'},
-   {value: 'C2', viewValue: 'C2'}
-   ];
-
-   semesters = [
-   {value: 1, viewValue: 'Autumn/Winter'},
-   {value: 2, viewValue: 'Spring/Summer'}
-   ];*/
+  filterByKeywords: Boolean = true;
 
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
@@ -105,29 +93,36 @@ export class ExplorerComponent implements OnInit {
 
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
-              private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private dialog: MatDialog) {
+              private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private dialog: MatDialog,
+              public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
+
     this.countriesService.getAllCountries().subscribe(countries => {
-    this.countries = countries;
-
-    this.universitiesService.getAllUniversities().subscribe(universities => {
-    console.log(universities);
-      for (let country of this.countries) {
-      country['universities']  = [];
-        for (let university of universities) {
-          if (university.countryId === country.id) {
-            country.universities.push(university);
-            console.log("here");
-          } else {
-          console.log(university);
+      this.countries = countries;
+      this.universitiesService.getAllUniversities().subscribe(universities => {
+        this.facultiesService.getAllFaculties().subscribe(faculties => {
+          for (let country of this.countries) {
+            country['universities'] = [];
+            country['faculties'] = [];
+            for (let university of universities) {
+              if (university.countryId === country.id) {
+                let flag = true;
+                for (let faculty of faculties) {
+                  if (faculty.universityId === university.id) {
+                    flag = false;
+                    country.faculties.push(faculty);
+                  }
+                }
+                if (flag) {
+                  country.universities.push(university);
+                }
+              }
+            }
           }
-        };
-      };
-    });
-
-
+        });
+      });
     });
   }
 
@@ -173,7 +168,7 @@ export class ExplorerComponent implements OnInit {
   exploreCourses() {
     let keywords = '';
 
-    if ((this.keyword.length === 0) || (!this.queryCountry)) {
+    if (!(this.queryFaculty || this.queryUniversity || (this.queryCountry && this.keyword.length > 0))) {
       this.dialog.open(SearchDialogComponent, {
         width: '250px', data: {}
       });
@@ -186,26 +181,53 @@ export class ExplorerComponent implements OnInit {
           keywords += '-' + this.keyword[i].name;
         }
       }
+
       if (this.queryFaculty) {
-        this.coursesService.exploreByFaculty(keywords, this.queryFaculty.id).subscribe(courses => {
-          this.explorerResult.emit(courses);
-          this.explorerStarted = false;
-        });
+        if (this.keyword.length !== 0) {
+          this.coursesService.exploreByFaculty(keywords, this.queryFaculty.id).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+            this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
+              duration: 5000
+            });
+          });
+        } else {
+          this.coursesService.getCoursesByFaculty(this.queryFaculty.id, 0).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+            this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
+              duration: 5000
+            });
+          });
+        }
       } else if (this.queryUniversity) {
-        this.coursesService.exploreByUniversity(keywords, this.queryUniversity.id).subscribe(courses => {
-          this.explorerResult.emit(courses);
-          this.explorerStarted = false;
-        });
-      } else if (this.queryCity) {
-        this.coursesService.exploreByCity(keywords, this.queryCity.id).subscribe(courses => {
-          this.explorerResult.emit(courses);
-          this.explorerStarted = false;
-        });
-      } else if (this.queryCountry) {
-        this.coursesService.exploreByCountry(keywords, this.queryCountry.id).subscribe(courses => {
-          this.explorerResult.emit(courses);
-          this.explorerStarted = false;
-        });
+        if (this.keyword.length !== 0) {
+          this.coursesService.exploreByUniversity(keywords, this.queryFaculty.id).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+            this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
+              duration: 5000
+            });
+          });
+        } else {
+          this.coursesService.getCoursesByUniversity(this.queryUniversity.id, 0).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+            this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
+              duration: 5000
+            });
+          });
+        }
+      }else if (this.queryCountry) {
+        if (this.keyword.length !== 0) {
+          this.coursesService.exploreByCountry(keywords, this.queryCountry.id).subscribe(courses => {
+            this.explorerResult.emit(courses);
+            this.explorerStarted = false;
+            this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
+              duration: 5000
+            });
+          });
+        }
       }
     }
   }

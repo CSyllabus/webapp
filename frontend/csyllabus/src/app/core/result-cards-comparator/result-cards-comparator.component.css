@@ -53,9 +53,13 @@
   }
 }
 
-
-
-
+.container{
+    background-image:url(../../../images/a4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 .example-card { transition: all .2s ease-in-out; }
 .example-card:hover { transform: scale(1.1); }

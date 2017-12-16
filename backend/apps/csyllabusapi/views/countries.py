@@ -31,6 +31,8 @@ class CountriesView(APIView):
             one_country['modified'] = country.modified
             one_country['created'] = country.created
             countriesList.append(one_country)
+
+        countriesList.sort(key=lambda x: x['name'], reverse=False)
         data['currentItemCount'] = countries.count()
         data['items'] = countriesList
         result['data'] = data

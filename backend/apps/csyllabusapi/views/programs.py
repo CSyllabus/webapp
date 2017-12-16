@@ -33,7 +33,6 @@ class ProgramView(APIView):
         data = {}
         programList = []
 
-
         for program_id in program_ids:
             program = Program.objects.filter(id=program_id)[0]
             single_program = {}
@@ -49,8 +48,6 @@ class ProgramView(APIView):
         data['currentItemCount'] = programs.count()
         result['data'] = data
         return Response(result)
-
-        return Response()
 
 
 @permission_classes((permissions.AllowAny,))
@@ -83,5 +80,3 @@ class ProgramUnivView(APIView):
         data['currentItemCount'] = programs.count()
         result['data'] = data
         return Response(result)
-
-        return Response()

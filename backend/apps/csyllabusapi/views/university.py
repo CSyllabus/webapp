@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import parser_classes
-from datetime import datetime
+from django.utils import timezone
 
 try:
     from django.utils import simplejson as json
@@ -39,5 +39,5 @@ class UniversityView(APIView):
         name = request.data['name']
         country = Country.objects.get(id=request.data['country_id'])
         city = City.objects.get(id=request.data['city_id'])
-        University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
+        University.objects.filter(id=id).update(name=name, country=country, city=city, modified=timezone.now())
         return Response()

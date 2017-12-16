@@ -35,9 +35,10 @@ class FacultyView(APIView):
             single_faculty['id'] = faculty.id
             single_faculty['created'] = faculty.created
             single_faculty['modified'] = faculty.modified
-            single_faculty['university_id'] = faculty.university_id
+            single_faculty['universityId'] = faculty.university_id
             single_faculty['city_id'] = faculty.city_id
             facultyList.append(single_faculty)
+            facultyList.sort(key=lambda x: x['name'], reverse=False)
 
         data['items'] = facultyList
         data['currentItemCount'] = faculties.count()
@@ -45,5 +46,30 @@ class FacultyView(APIView):
         return Response(result)
 
 
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class FacultyViewAll(APIView):
 
-        return Response()
+    def get(self, request):
+        faculties = Faculty.objects.all()
+        result = {}
+        data = {}
+        facultyList = []
+        for faculty in faculties:
+
+            single_faculty = {}
+            single_faculty['name'] = faculty.name
+            single_faculty['img'] = faculty.img
+            single_faculty['id'] = faculty.id
+            single_faculty['created'] = faculty.created
+            single_faculty['modified'] = faculty.modified
+            single_faculty['universityId'] = faculty.university_id
+            single_faculty['city_id'] = faculty.city_id
+            facultyList.append(single_faculty)
+
+        facultyList.sort(key=lambda x: x['name'], reverse=False)
+        data['items'] = facultyList
+        data['currentItemCount'] = faculties.count()
+        result['data'] = data
+        return Response(result)
+
