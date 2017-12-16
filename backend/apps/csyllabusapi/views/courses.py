@@ -93,14 +93,52 @@ class CourseView(APIView):
         return Response(result)
 
     def post(self, request, format=json):
-        name = request.data['name']
-        course = Course.objects.create(name=name)
-        print(request.META.get('HTTP_AUTHORIZATION'))
 
-        decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
-        print(decoded_payload)
+        course = Course.objects.create()
+
+        #print(request.META.get('HTTP_AUTHORIZATION'))
+
+        #decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+        #print(decoded_payload)
+
+
+        try:
+            course.name = request.data['name']
+        except:
+            pass
+        try:
+            course.description = request.data['description']
+        except:
+            pass
+        try:
+            course.level = request.data['level']
+        except:
+            pass
+        try:
+            course.english_level = request.data['englishLevel']
+        except:
+            pass
+        try:
+            course.semester = request.data['semester']
+        except:
+            pass
+        try:
+            course.ects = request.data['ects']
+        except:
+            pass
+        try:
+            print request.data['keywords']
+            course.keywords = request.data['keywords']
+        except:
+            pass
+
+
+        course.save()
+
 
         return Response()
+
+
 
     def delete(selfself, request):
         id = request.data['id']
@@ -108,6 +146,17 @@ class CourseView(APIView):
         return Response()
 
     def put(selfself, request, course_id):
+
+        #try:
+         #   decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+         #   university = UserUniversity.objects.filter(user.id = decoded_payload['user_id'])[0].university
+         #   course = CourseUniversity.objects.filter(university.id = university.id)[0].course
+         #   if (course.id == course_id) :
+
+        #except:
+        #    pass
+
+
         try:
             course = Course.objects.filter(id=course_id)[0]
             try:
@@ -280,7 +329,7 @@ class CourseByUniversityView(APIView):
 
                     courses_list.append(course_data)
                 except IndexError:
-                    print "Course found in course_faculty " + course_university.id + " missing from database."
+                    print "Course found in course_university " + course_university.id + " missing from database."
 
             courses_list.sort(key=lambda x: x['name'], reverse=False)
 
@@ -304,3 +353,56 @@ class CourseByUniversityView(APIView):
 
         result['data'] = data
         return Response(result)
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class CoursesAllSimpleView(APIView):
+    def get(self, request, course_id=-1, limit=-1, offset=-1):
+
+        query_pairs = request.META['QUERY_STRING'].split('&')
+
+        for query_pair in query_pairs:
+            query_pair_split = query_pair.split('=')
+            if query_pair_split[0] == 'limit':
+                limit = int(query_pair_split[1])
+            elif query_pair_split[0] == 'offset':
+                offset = int(query_pair_split[1])
+
+
+        courses = Course.objects.all().order_by('name')
+
+        data = {}
+        result = {}
+        courses_list=[]
+        for course in courses:
+
+            course_data = {'id': course.id, 'name': course.name, 'description': course.description,
+                           'ects': course.ects, 'englishLevel': course.english_level,
+                           'semester': course.semester,
+                           'modified': course.modified, 'created': course.created
+
+                           }
+
+            courses_list.append(course_data)
+
+        courses_list.sort(key=lambda x: x['name'], reverse=False)
+
+
+        if limit > 0 and offset >= 0:
+            data['currentItemCount'] = limit
+            data['items'] = courses_list[offset:offset + limit]
+        elif limit > 0:
+            data['currentItemCount'] = limit
+            data['items'] = courses_list[0:limit]
+        elif offset >= 0:
+            count = len(courses_list)
+            data['currentItemCount'] = count
+            data['items'] = courses_list[offset:count]
+        else:
+            data['currentItemCount'] = len(courses_list)
+            data['items'] = courses_list
+
+
+        result['data'] = data
+        return Response(result)
+

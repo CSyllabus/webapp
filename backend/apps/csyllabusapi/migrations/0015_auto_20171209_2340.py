@@ -27,11 +27,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(editable=False)),
             ],
         ),
-        migrations.RenameField(
-            model_name='course',
-            old_name='winsum',
-            new_name='level',
-        ),
+
         migrations.AddField(
             model_name='course',
             name='keywords',

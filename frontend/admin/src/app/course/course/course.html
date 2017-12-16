@@ -5,9 +5,9 @@
     <a [routerLink]="['/course/' + course._id]" style=" display: inline-block;vertical-align: middle;"> Course {{course.id}}</a>
   </div>
 </div>
-<div id="search-component-spinner" *ngIf="!course.id" >
+<!--<div id="search-component-spinner" *ngIf="!course.id" >
     <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
-  </div>
+  </div>-->
 
 <mat-card *ngIf="course">
   <mat-card-title class="intrev-card-title">Course #{{course.id}}
@@ -68,9 +68,13 @@
 
   </div>
   <mat-card-actions style="text-align: center;">
-    <button mat-button (click)="saveCourse(true)">
+    <button mat-button *ngIf="course.id" (click)="saveCourse(true)">
       <mat-icon>save</mat-icon>
       SAVE
+    </button>
+    <button mat-button *ngIf="!course.id" (click)="addCourse(true)">
+      <mat-icon>add</mat-icon>
+      ADD
     </button>
   </mat-card-actions>
 </mat-card>

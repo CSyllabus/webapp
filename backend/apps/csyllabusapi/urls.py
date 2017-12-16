@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^courses/(?P<course_id>[^/]+)', views.CourseView.as_view(), name='courses'),
     url(r'^programs/(?P<program_id>[^/]+)/courses', views.CourseByProgramView.as_view(), name='courses'),
     url(r'^courses', views.CourseView.as_view(), name='courses'),
+    url(r'^simplecourses', views.CoursesAllSimpleView.as_view(), name='courses'),
+
     url(r'^cities/(?P<city_id>[^/]+)/universities', views.UniversitiesView.as_view(), name='universities'),
     url(r'^universities/(?P<university_id>[^/]+)/faculties', views.FacultyView.as_view(), name='faculties'),
     url(r'^universities/(?P<university_id>[^/]+)/courses', views.CourseByUniversityView.as_view(), name='courses'),

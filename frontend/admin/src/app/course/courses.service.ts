@@ -9,15 +9,16 @@ import {Course} from './course';
 
 @Injectable()
 export class CoursesService {
+  simpleCoursesUrl = environment.apiUrl + "simplecoursesUrl/";
   coursesUrl = environment.apiUrl + "courses/";
 
   constructor(private http: Http) {
   }
 
   getAllCourses(limit, offset, orderBy, orderDirection, filter): Observable<Course[]> {
-    /*return this.http.get(this.coursesUrl + '?limit=' + limit + '&offset=' + offset + '&order_by=' + orderBy + '&order_direction=' + orderDirection + '&filter=' + filter)
+    /*return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset + '&order_by=' + orderBy + '&order_direction=' + orderDirection + '&filter=' + filter)
      .map(res => res.json() as Course[]);*/
-    return this.http.get(this.coursesUrl + '?limit=' + limit + '&offset=' + offset)
+    return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset)
       .map(res => res.json().data.items as Course[]);
   }
 
@@ -37,7 +38,7 @@ export class CoursesService {
   }
 
   deleteCourseImage(id: number, img: string): Observable<any> {
-    return this.http.delete(this.coursesUrl + id + '/images/' + img)
+    return this.http.delete(this.simpleCoursesUrl + id + '/images/' + img)
       .map(res => res.json());
   }
 
