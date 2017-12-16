@@ -32,10 +32,10 @@ def explorer(request):
         country_id = request.query_params['country_id']
     except:
         country_id = None
-    try:
-        city_id = request.query_params['city_id']
-    except:
-        city_id = None
+    #try:
+    #    city_id = request.query_params['city_id']
+    #except:
+    #    city_id = None
     try:
         faculty_id = request.query_params['faculty_id']
     except:
@@ -55,8 +55,8 @@ def explorer(request):
         program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
     elif (university_id is not None):
         program_ids = ProgramUniversity.objects.filter(university_id=university_id).values_list('program_id', flat=True)
-    elif (city_id is not None):
-        program_ids = ProgramCity.objects.filter(city_id=city_id).values_list('program_id', flat=True)
+    #elif (city_id is not None):
+    #    program_ids = ProgramCity.objects.filter(city_id=city_id).values_list('program_id', flat=True)
     elif(country_id is not None):
         program_ids = ProgramCountry.objects.filter(country_id=country_id).values_list('program_id', flat=True)
 

@@ -82,6 +82,39 @@ export class CourseComponent implements OnInit {
     }
   }
 
+   addCourse(showSameCourse) {
+    self.course.keywords = [];
+
+    self.keywords.forEach(function (keyword) {
+      if (!keyword.remove) {
+        self.course.keywords.push(keyword.value);
+      }
+    });
+
+
+    /*if (self.task !== 'edit') self.course.id = undefined;
+    if (self.course.id) {
+      this.coursesService.courseExisting(self.course.id, self.course).subscribe(res => {
+        alert("Succesfully saved :)");
+        self.fetchCourseData(self.course_id);
+      }, error => alert(error));
+
+    } else {*/
+      this.coursesService.courseNew(self.course).subscribe(res => {
+        self.course.id = res.id;
+        self.course_id = res.id;
+
+
+        if (showSameCourse) {
+          this.router.navigate(['course/edit/' + res.id]);
+
+        } else {
+          this.router.navigate(['courses']);
+        }
+      }, error => alert(error));
+    //}
+  }
+
   fetchCourseData(course_id) {
     self.keywords = [];
     self.coursesService.getCourse(course_id).subscribe(course => {
