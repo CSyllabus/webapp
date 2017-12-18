@@ -100,7 +100,7 @@ fixtures.append(
 #appending courses fixtures
 course_id = 693
 course_program_id = 2424
-for course in polimi_courses:
+for course in stanford_courses:
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -129,4 +129,4 @@ for course in polimi_courses:
     )
     course_id = course_id + 1
 
-json.dump(fixtures,polimi_fixtures_json)
+json.dump(fixtures,stanford_fixtures_json)
