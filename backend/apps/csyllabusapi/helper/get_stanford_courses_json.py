@@ -28,10 +28,11 @@ for i in range(len(descriptions)):
     course = {
         'id': course_id,
         'name': course_name,
-        'ects': course_credits,
+        'ects': None,
         'semester': None,
         'description': course_description
     }
+    print(course)
     if i < len(descriptions)-1:
         courseList.append(json.dumps(course) + ",")
     else:
