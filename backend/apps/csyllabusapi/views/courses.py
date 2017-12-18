@@ -97,8 +97,8 @@ class CourseView(APIView):
         course = Course.objects.create(name=name)
         print(request.META.get('HTTP_AUTHORIZATION'))
 
-        decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
-        print(decoded_payload)
+        #decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+        #print(decoded_payload)
 
         return Response()
 

@@ -61,7 +61,7 @@ class ExplorerTestCase(TestCase):
         city1 = City.objects.create(name='Zagreb', country=country1)
         university1 = University.objects.create(name='University of Zagreb', country=country1, city=city1)
         program1 = Program.objects.create(name='Computer science and engineering')
-        course1 = Course.objects.create(name="Java")
+        course1 = Course.objects.create(name="Java", english_level=None)
         ProgramCountry.objects.create(program=program1, country=country1)
         ProgramCity.objects.create(program=program1, city=city1)
         ProgramUniversity.objects.create(program=program1, university=university1)

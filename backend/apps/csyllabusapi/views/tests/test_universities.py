@@ -42,3 +42,21 @@ class UniversitiesViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(arrUni, ["Politecnico di Milano", "Universita degli studi di Milano"])
+
+class UniversitiesViewCountryTestCase(TestCase):
+    def test_get(self):
+        country1 = Country.objects.create(name='Italy')
+        city1 = City.objects.create(name='Milano', country=country1)
+        University.objects.create(name='Politecnico di Milano', country=country1, city=city1)
+        University.objects.create(name='Universita degli studi di Milano', country=country1, city=city1)
+
+        c = Client()
+        response = c.get('/csyllabusapi/countries/' + str(country1.id) + '/universities')
+
+        arrUni = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrUni.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrUni, ["Politecnico di Milano", "Universita degli studi di Milano"])

@@ -1,8 +1,9 @@
 from django.test import TestCase, Client
 from django.core.exceptions import ObjectDoesNotExist
 import json
+from django.utils import timezone
 from ...models import Country, City, University, Course, Program, CourseProgram, ProgramCountry, ProgramCity, \
-    ProgramUniversity, Faculty, ProgramFaculty
+    ProgramUniversity, Faculty, ProgramFaculty, CourseFaculty, CourseUniversity
 
 
 class CourseViewTestCase(TestCase):
@@ -87,21 +88,21 @@ class CourseViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(arrCourses, ["Data bases 2"])
 
-
-    def post(self):
+    def test_post(self):
         course1 = Course.objects.create(name="Data bases 2")
 
         c = Client()
         course = {
                   'id': course1.id + 1,
                   'name': 'Recommender systems',
-                  'Description': None,
+                  'description': None,
                   'ects': 5,
                   'english_level': None,
                   'semester': 1,
-                  'winsum': None,
-                  'created': '2017-12-07',
-                  'modified': '2017-12-07'
+                  'level': None,
+                  'url': None,
+                  'created': str(timezone.now()),
+                  'modified': str(timezone.now())
                   }
         response = c.post('/csyllabusapi/courses', json.dumps(course), 'application/json')
 
@@ -137,7 +138,7 @@ class CourseViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(courseName, None)
 
-    def put(self):
+    def test_put(self):
         course1 = Course.objects.create(name="Data sciences")
 
         c = Client()
@@ -150,8 +151,7 @@ class CourseViewTestCase(TestCase):
                   'ects': 5,
                   'keywords': ''
                   }
-        print(json.dumps(course))
-        response = c.put('/csyllabusapi/courses', json.dumps(course), 'application/json')
+        response = c.put('/csyllabusapi/courses/' + str(course1.id) + '/', json.dumps(course), 'application/json')
 
         courseName = Course.objects.get(id=course1.id).name
 
@@ -171,6 +171,56 @@ class CourseByProgramViewTestCase(TestCase):
 
         c = Client()
         response = c.get('/csyllabusapi/programs/' + str(program1.id) + '/courses')
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Data bases 2", "Recommender systems"])
+
+
+class CourseByFacultyViewTestCase(TestCase):
+    def test_get(self):
+        country1 = Country.objects.create(name='Italy')
+        city1 = City.objects.create(name='Milano', country=country1)
+        university1 = University.objects.create(name='Politecnico di Milano', country=country1, city=city1)
+        faculty1 = Faculty.objects.create(name='Faculty of computer science and engineering', university=university1,
+                                          city=city1)
+
+        course1 = Course.objects.create(name='Data bases 2')
+        course2 = Course.objects.create(name='Recommender systems')
+
+        CourseFaculty.objects.create(course=course1, faculty=faculty1)
+        CourseFaculty.objects.create(course=course2, faculty=faculty1)
+
+        c = Client()
+        response = c.get('/csyllabusapi/faculties/' + str(faculty1.id) + '/courses')
+
+        arrCourses = []
+        for value in response.data.itervalues():
+            for item in value["items"]:
+                arrCourses.append(item["name"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(arrCourses, ["Data bases 2", "Recommender systems"])
+
+
+class CourseByUniversityViewTestCase(TestCase):
+    def test_get(self):
+        country1 = Country.objects.create(name='Italy')
+        city1 = City.objects.create(name='Milano', country=country1)
+        university1 = University.objects.create(name='Politecnico di Milano', country=country1, city=city1)
+
+        course1 = Course.objects.create(name='Data bases 2')
+        course2 = Course.objects.create(name='Recommender systems')
+
+        CourseUniversity.objects.create(course=course1, university=university1)
+        CourseUniversity.objects.create(course=course2, university=university1)
+
+        c = Client()
+        response = c.get('/csyllabusapi/universities/' + str(university1.id) + '/courses')
 
         arrCourses = []
         for value in response.data.itervalues():

@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .. import User, Country, City, University, Faculty, UserFaculty, Course, TeacherCourse
 
+
 class UserTestCase(TestCase):
     def test_inituser(self):
         User.objects.create(username="guber", password="none", first_name="Emanuel", last_name="Guberovic",
@@ -119,3 +120,37 @@ class UserTestCase(TestCase):
         teachercourse1 = TeacherCourse.objects.create(user=user1, course=course1)
 
         self.assertEqual(str(teachercourse1), str(teachercourse1.user) + " " + str(teachercourse1.course))
+
+
+class UserManagerTestCase(TestCase):
+    def test_createuser(self):
+        User.objects.create_user("eguberovic", "csyllabus", email="emanuel-guberovic@csyllabus.com")
+        User.objects.create_user("tbenetti", "csyllabus", email="thomas-benetti@csyllabus.com")
+        User.objects.create_user("fturcinovic", "csyllabus", email="filip-turcinovic@csyllabus.com")
+
+        users = User.objects.filter(username__endswith="vic")
+
+        arrUsers = []
+        for user in users:
+            arrUsers.append(User.objects.get(id=user.id).username)
+
+        self.assertEqual(arrUsers, ["eguberovic", "fturcinovic"])
+
+    def test_withoutusername(self):
+        try:
+            User.objects.create_user(None, None, email="test@csyllabus.com")
+        except ValueError:
+            print("No username")
+
+    def test_createsuperuser(self):
+        User.objects.create_superuser("eguberovic", "csyllabus", email="emanuel-guberovic@csyllabus.com")
+        User.objects.create_superuser("tbenetti", "csyllabus", email="thomas-benetti@csyllabus.com")
+        User.objects.create_superuser("fturcinovic", "csyllabus", email="filip-turcinovic@csyllabus.com")
+
+        users = User.objects.filter(username__endswith="vic")
+
+        arrUsers = []
+        for user in users:
+            arrUsers.append(User.objects.get(id=user.id).username)
+
+        self.assertEqual(arrUsers, ["eguberovic", "fturcinovic"])
