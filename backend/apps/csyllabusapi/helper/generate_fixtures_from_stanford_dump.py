@@ -1,8 +1,8 @@
 import json
 
-polimi_course_json = open("polimi_courses.json")
-polimi_fixtures_json = open("../fixtures/polimi_fixtures_json.json", "w")
-polimi_courses = json.load(polimi_course_json)
+stanford_course_json = open("stanford_courses.json")
+stanford_fixtures_json = open("../fixtures/stanford_fixtures_json.json", "w")
+stanford_courses = json.load(stanford_course_json)
 
 fixtures = []
 
