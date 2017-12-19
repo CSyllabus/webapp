@@ -1,43 +1,44 @@
 import json
 
-polimi_course_json = open("polimi_courses.json")
-polimi_fixtures_json = open("../fixtures/polimi_fixtures_json.json", "w")
-polimi_courses = json.load(polimi_course_json)
+stanford_course_json = open("stanford_courses.json")
+stanford_fixtures_json = open("../fixtures/stanford_fixtures_json.json", "w")
+stanford_courses = json.load(stanford_course_json)
 
 fixtures = []
 
-country_id = 2
+country_id = 6
 fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
     "fields": {
-      "name": "Italy",
-      "img": "https://csyllabus.com/images/italy.jpg",
+      "name": "United States of America",
+      "img": "https://static.thousandwonders.net/Washington.D.C..original.14.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
     }
   }
 )
-city_id = 3
+city_id = 10
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
     "fields": {
-      "name": "Milano",
-       "img": "https://csyllabus.com/images/milan.jpg",
+      "name": "Palo Alto",
+      "img": "https://fr.wikipedia.org/wiki/Palo_Alto#/media/File:Stanford_University_campus_from_above.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": country_id
     }
   }
 )
-university_id = 2
+university_id = 7
 fixtures.append(
   {
     "model": "csyllabusapi.university",
     "pk": university_id,
     "fields": {
-      "name": "Politecnico di Milano",
+      "name": "University of Stanford",
+      "img": "http://www.neucampusplanning.com/wp-content/uploads/2016/08/Stanford-Aerial.jpg",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": country_id,
@@ -47,7 +48,7 @@ fixtures.append(
 )
 
 #appending programs fixtures
-program_id = 36
+program_id = 37
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -97,9 +98,9 @@ fixtures.append(
 )
 
 #appending courses fixtures
-course_id = 605
-course_program_id = 2336
-for course in polimi_courses:
+course_id = 693
+course_program_id = 2424
+for course in stanford_courses:
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -128,4 +129,4 @@ for course in polimi_courses:
     )
     course_id = course_id + 1
 
-json.dump(fixtures,polimi_fixtures_json)
+json.dump(fixtures,stanford_fixtures_json)

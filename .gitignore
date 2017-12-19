@@ -117,3 +117,4 @@ settings.py
 /backend/settings/db.py
 backend/settings/db.py
 backend/settings/db.py
+.DS_Store
