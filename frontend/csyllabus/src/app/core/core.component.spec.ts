@@ -102,4 +102,20 @@ describe('CoreComponent', () => {
     component.changeResultCard(event);
     expect(component.explorerTab ).toEqual(false);
   });
+
+  it('should chooserSelect call with action comparator', () => {
+    spyOn(component, 'chooserSelect').and.callThrough();
+    component.chooserSelect('comparator');
+    expect(component.chooserSelectedExplorer).toEqual(false);
+    expect(component.chooserSelectedComparator).toEqual(true);
+  });
+
+  it('should chooserSelect call with action explorer', () => {
+    spyOn(component, 'chooserSelect').and.callThrough();
+
+    component.chooserSelect('explorer');
+    expect(component.chooserSelectedExplorer).toEqual(true);
+    expect(component.chooserSelectedComparator).toEqual(false);
+  });
+
 });
