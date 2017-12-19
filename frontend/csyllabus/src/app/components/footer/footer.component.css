@@ -1,16 +1,12 @@
 .footer-distributed{
-	background: -webkit-linear-gradient(bottom, rgb(83, 110, 163) ,rgb(47, 75, 131)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom,rgb(83, 110, 163),rgb(47, 75, 131)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom,rgb(83, 110, 163),rgb(47, 75, 131)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, rgb(83, 110, 163), rgb(47, 75, 131)); /* Standard syntax */
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-    font: normal 16px sans-serif;
-    float: right;
-    position: relative;
-	padding: 35px 40px;
+ position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: slategrey;
+  text-align: center;
+
 }
 
 .footer-distributed .footer-left p{
@@ -26,7 +22,7 @@
 	text-align: right;
 }
 .logo{
-	background:white;
+	background:transparent;
 	max-width:30%;
 	margin-left:1px;
 	margin-right:1px;

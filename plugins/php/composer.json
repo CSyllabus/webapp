@@ -1,0 +1,9 @@
+{
+  "require": {
+        "nategood/httpful": "*"
+    }
+	,
+	"config": {
+		"optimize-autoloader": true
+	}
+}

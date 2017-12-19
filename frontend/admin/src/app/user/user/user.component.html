@@ -1,0 +1,83 @@
+<div style="height: 70px;" *ngIf="user">
+  <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
+    <a [routerLink]="['/users']" style=" display: inline-block;vertical-align: middle;">Users</a>
+    <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
+    <a [routerLink]="['/user/' + user.id]" style=" display: inline-block;vertical-align: middle;"> User {{user.id}}</a>
+  </div>
+</div>
+<div id="search-component-spinner" *ngIf="!user ">
+  <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
+</div>
+
+<mat-card *ngIf="user">
+  <mat-card-title class="intrev-card-title">User #{{user.id}}
+    <mat-card-subtitle style="color: white; margin-bottom: 0;">Editing user resource</mat-card-subtitle>
+  </mat-card-title>
+
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        User data
+      </mat-panel-title>
+      <mat-panel-description>
+        Change your provided user data
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="First Name" [(ngModel)]="user.first_name">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" [(ngModel)]="user.last_name">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="user.email" type="email">
+      </mat-form-field>
+    </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Username
+        </mat-panel-title>
+        <mat-panel-description>
+          Change the username used to login
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="user.username">
+      </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Password
+        </mat-panel-title>
+        <mat-panel-description>
+          Change your password used to login
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <p><label>Changing password</label></p>
+        <mat-form-field>
+          <input matInput placeholder="New password" [(ngModel)]="newPassword" type="password" [formControl]="password">
+          <mat-error *ngIf="newPassword2 && (newPassword != newPassword2)">Passwords don't match</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Retype new password" [(ngModel)]="newPassword2" type="password" [formControl]="password2">
+          <mat-error *ngIf="newPassword != newPassword2">Passwords don't match</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+
+
+    <mat-card-actions style="text-align: center;">
+      <button mat-button (click)="saveUser()">
+        <mat-icon>save</mat-icon>
+        SAVE
+      </button>
+    </mat-card-actions>

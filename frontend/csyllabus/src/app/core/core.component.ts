@@ -1,71 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AngularMaterialModule} from './../angular-material/angular-material.module';
 
 @Component({
   selector: 'app-core',
   templateUrl: './core.component.html',
   styleUrls: ['./core.component.css']
 })
-
-/**
- * CoreComponent object displaying a Tab to choose
- * the Comparator object or Explorer Object. Some additionnal
- * graphic components was displayed :
- * - NavBar object to navigate on the csyllabus website
- * - Footer object displayed license
- * <p>
- * @author CSyllabus Team
- */
 export class CoreComponent implements OnInit {
-
-  /**
-   * The {@link any} instance representing the explorer results courses.
-   */
   explorerResult: any;
-  /**
-   * The {@link any} instance representing the comparator results courses.
-   */
   comparatorResult: any;
-  /**
-   * The {@link string} instance representing the backgroundImage.
-   */
   backgroundImage: String = null;
-  /**
-   *  The {@link boolean} instance representing if explorer is chosen or not.
-   */
   explorerTab: boolean;
-
-  /**
-   * The {@link boolean} instance representing if comparator is chosen or not.
-   */
   comparatorTab: boolean;
+  chooserSelectedExplorer: Boolean;
+  chooserSelectedComparator: Boolean;
 
-  /**
-   * @constructor create CoreComponent object.
-   */
+
   constructor() {
   }
 
-  /**
-   * ngOnInit default explorerTab displayed
-   */
+
   ngOnInit() {
     this.explorerTab = true;
     this.comparatorTab = false;
+
+    var str = "<p>We have 586 courses from 4 universities!</p>",
+      i = 0,
+      isTag,
+      text;
+
+
+    (function type() {
+      text = str.slice(0, ++i);
+      if (text === str) return;
+
+      document.getElementById('typewriter').innerHTML = text;
+
+      var char = text.slice(-1);
+      if (char === '<') isTag = true;
+      if (char === '>') isTag = false;
+
+      if (isTag) return type();
+      setTimeout(type, 80);
+    }());
   }
 
-  /**
-   * changeBackgroundImage update the background imahe when
-   * a user change the value of anything fields
-   * @param  {@link event} new event on click
-   */
   changeBackgroundImage($event) {
-    this.backgroundImage = $event;
+    /*this.backgroundImage = $event;*/
   }
 
-  /**
-   * fetchExplorerResult scroll to explorer result
-   * @param  {@link event} new event click
-   */
+
   fetchExplorerResult($event) {
     this.explorerResult = $event;
 
@@ -79,10 +63,6 @@ export class CoreComponent implements OnInit {
 
   }
 
-  /**
-   * fetchComparatorResult scroll to comparator result
-   * @param  {@link event} new event click
-   */
   fetchComparatorResult($event) {
     this.comparatorResult = $event;
 
@@ -93,20 +73,37 @@ export class CoreComponent implements OnInit {
         inline: 'start'
       });
     }, 100);
+
   }
 
-  /**
-   * changeResultCard change tab selection
-   * @param  {@link event} new event click
-   */
   changeResultCard($event: any) {
-    if ($event.index === 1) {
+    if ($event.index == 1) {
       this.explorerTab = false;
       this.comparatorTab = true;
-    } else {
+    }
+    else {
       this.explorerTab = true;
       this.comparatorTab = false;
     }
+
+  }
+
+  chooserSelect(action: string) {
+    if (action === 'explorer') {
+      this.chooserSelectedExplorer = true;
+      this.chooserSelectedComparator = false;
+    } else if (action === 'comparator') {
+      this.chooserSelectedExplorer = false;
+      this.chooserSelectedComparator = true;
+    }
+
+    setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('filters-container')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
 
   }
 }

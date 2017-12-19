@@ -1,29 +1,18 @@
-
 .bgexplorer {
   max-width: 100%;
   width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-height: 45.5em;
-  height: 100vh !important;
-  max-height: 100%;
-  background-color: #0080ff;
+  min-height: 100vh !important;
+
+  /*Background Gradient for Monochromatic Colors*/
+  /*  background: #FC466B;  fallback for old browsers */
+  /*  background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);  Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #3F5EFB, #FC466B);  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-image: url(../../images/comp_cof_overlay.jpg);
   background-size: cover;
   background-position: center;
-}
-
-h1 {
-  font-family: 'Inconsolata';
-  color: white;
-  margin-bottom: 0%;
-  margin-top: 0%;
-  font-weight: bold;
-}
-
-h2 {
-  font-family: 'Roboto Condensed', sans-serif;
-  margin-top: 0%;
+  /*height: 100vh;*/
+  overflow: auto;
 }
 
 .logo {
@@ -31,59 +20,25 @@ h2 {
   margin-top: 10%;
 }
 
-.bgexplorer .container {
-  margin-top: 100px;
+.bgexplorer .bg-container {
   align-self: center;
   background: white;
-  max-width: 80%;
-  margin-bottom: 200px;
+  max-width: 100%;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   background-color: rgba(255, 255, 255, 0.85);
   position: relative;
+  width: 100%;
 }
 
-h2 {
-  color: white;
-  font-size-adjust: 20%;
+.chooser {
+  height: 100%;
+  padding-top: 100px;
 }
 
 .keywords-chip-list {
   width: auto !important;
-}
-
-.variable-background {
-  position:absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  min-height: calc(80vh);
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.bgexplorer h1, .bgexplorer h2, .bgexplorer .logo-img {
-  z-index: 1;
-  position: relative;
-}
-
-.bgexplorer {
-  max-width: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  max-height: 100%;
-   /*Background Gradient for Monochromatic Colors*/
-  background: #FC466B ;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #3F5EFB , #FC466B );  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #3F5EFB , #FC466B ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-image: url(../../images/world.jpg);
-  background-size: cover;
-  background-position: center;
 }
 
 .mat-tab-labels {
@@ -91,7 +46,129 @@ h2 {
   text-align: center;
 }
 
-.bgexplorer {
-  max-height: 100vh;
+#chooser-explorer-card, #chooser-comparator-card {
+  cursor: pointer;
+  height: 300px;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  margin-bottom: 30px;
 }
+
+#chooser-explorer-card {
+  background-image: url(../../images/explorer.jpg);
+}
+
+#chooser-comparator-card {
+  background-image: url(../../images/comparator.jpg);
+}
+
+.filters-containter-comp {
+  min-height: 100vh;
+  background-image: url(../../images/comparator.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.filters-containter-exp {
+  min-height: 100vh;
+  background-image: url(../../images/explorer.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#filters-container {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chooser-explorer-card, #chooser-comparator-card, .chooser-card-text {
+  transition: all .2s ease-in-out;
+}
+
+#chooser-explorer-card:hover, #chooser-comparator-card:hover, .chooser-card-active {
+  transform: scale(1.2);
+}
+
+#chooser-explorer-card:hover .chooser-card-text,
+#chooser-comparator-card:hover .chooser-card-text,
+.chooser-card-active .chooser-card-text {
+
+  background-color: #263b6ee6;
+
+}
+
+.chooser-card-title {
+  font-size: 45px;
+  -webkit-transform: scale(1, 1.15);
+  -ms-transform: scale(1, 1.15);
+  -o-transform: scale(1, 1.15);
+  transform: scale(1, 1.15);
+  margin-bottom: 0px;
+  color: white;
+  line-height: 45px;
+  margin-top: 5px;
+}
+
+.chooser-card-subtitle {
+  font-size: 17.5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: white;
+}
+
+.chooser-card-text {
+  position: absolute;
+  bottom: 0;
+  background-color: #0009;
+  width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  /* For mobile phones: */
+  .chooser-card-title {
+    font-size: 35px;
+    line-height: 35px;
+  }
+}
+
+.variable-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.chooser-heading {
+  font-size: 34px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#explorer-result-component {
+  width: 100%;
+  background-image: url(../../images/a4.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  overflow: auto;
+}
+
 

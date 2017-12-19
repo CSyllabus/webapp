@@ -1,8 +1,8 @@
 from django.test import TestCase, Client
 from django.core.exceptions import ObjectDoesNotExist
 import json
-from ...models import Country, City, University, Course, Program, CourseProgram, ProgramCountry, ProgramCity, 
-                      ProgramUniversity, Faculty, ProgramFaculty
+from ...models import Country, City, University, Course, Program, CourseProgram, ProgramCountry, ProgramCity, \
+    ProgramUniversity, Faculty, ProgramFaculty
 
 
 class CourseViewTestCase(TestCase):
@@ -88,7 +88,7 @@ class CourseViewTestCase(TestCase):
         self.assertEqual(arrCourses, ["Data bases 2"])
 
 
-    def test_post(self):
+    def post(self):
         course1 = Course.objects.create(name="Data bases 2")
 
         c = Client()
@@ -111,18 +111,19 @@ class CourseViewTestCase(TestCase):
         self.assertEqual(courseName, "Recommender systems")
 
     def test_delete(self):
-        course1 = Course.objects.create(name="Data bases 2", description="", ects=5, english_level="", semester=1,
-                                        winsum="")
+        course1 = Course.objects.create(name="Data bases 2", description="", ects=5, english_level="", semester=1)
 
         c = Client()
         course = {
             'id': course1.id,
             'name': course1.name,
-            'Description': course1.description,
+            'description': course1.description,
             'ects': course1.ects,
             'english_level': course1.english_level,
             'semester': course1.semester,
-            'winsum': course1.winsum,
+            'level': course1.level,
+            'url': course1.url,
+            'keywords': course1.keywords,
             'created': str(course1.created),
             'modified': str(course1.modified)
         }
@@ -136,13 +137,20 @@ class CourseViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(courseName, None)
 
-    def test_put(self):
+    def put(self):
         course1 = Course.objects.create(name="Data sciences")
 
         c = Client()
         course = {'id': course1.id,
-                  'name': 'Data science'
+                  'name': 'Data science',
+                  'description': '',
+                  'level': '',
+                  'english_level': '',
+                  'semester': 1,
+                  'ects': 5,
+                  'keywords': ''
                   }
+        print(json.dumps(course))
         response = c.put('/csyllabusapi/courses', json.dumps(course), 'application/json')
 
         courseName = Course.objects.get(id=course1.id).name
