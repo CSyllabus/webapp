@@ -46,7 +46,7 @@ output.close()
 # generating fixtures
 ucla_course_json = open("ucla_courses.json")
 ucla_fixtures_json = open("../fixtures/ucla_fixtures_json.json", "w")
-ucla_courses = json.load(ucla_course_json
+ucla_courses = json.load(ucla_course_json)
 
 fixtures = []
 
