@@ -26,6 +26,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component'
 import {DocumentationComponent} from './components/documentation/documentation.component';
+import { AtpComponent } from './components/atp/atp.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import {DocumentationComponent} from './components/documentation/documentation.c
     ContactComponent,
     NavbarComponent,
     FooterComponent,
+    AtpComponent,
     DocumentationComponent
   ],
   bootstrap: [AppComponent],

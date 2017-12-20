@@ -1,6 +1,7 @@
 import {CoreComponent} from './core/core.component';
 import {CourseComponent} from './components/course/course.component';
 import {AboutComponent} from './components/about/about.component';
+import {AtpComponent} from './components/atp/atp.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {DocumentationComponent} from "./components/documentation/documentation.component";
@@ -30,6 +31,10 @@ export const ROUTES = [
   {
     path: 'documentation',
     component: DocumentationComponent
+  },
+  {
+    path: 'atp',
+    component: AtpComponent
   },
   {
     path: 'not-found',
