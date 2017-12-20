@@ -1,95 +1,88 @@
-import pandas as pd
-import requests
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
 from lxml import html
 import json
 
-# reading file polimi_courses_nodescription and extracting course description from polimi course catalogue website
-df = pd.read_csv('polimi_courses_nodescription.csv', sep=';')
-df = df.loc[df['PSPA'] == 'T2A']
-df = df.loc[df['LINGUA_EROGAZIONE_INSEGN'] == 'EN']
-df = df.drop_duplicates(['C_INSEGN'], keep='first').reset_index()
+# reading file UCLA.xml and extracting courses
+f = open("UCLA.xml","r")
+uclaList = f.read()
+
+tree = html.fromstring(uclaList)
+titles = tree.xpath('//h3/text()')
+attributes = tree.xpath('//p/text()')
+
 courseList = []
-
-for index, row in df.iterrows():
-
-    session = requests.Session()
-    retry = Retry(connect=3, backoff_factor=0.5)
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount('http://', adapter)
-    session.mount('https://', adapter)
-    r = session.get("https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_"
-                    "MANIFESTO=evento&k_corso_la=" + str(row["K_CORSO_LA"]) + "&k_indir=" + str(row["PSPA"])
-                    + "&idItemOfferta=131288&idRiga=216828&codDescr=0" + str(row["C_INSEGN"]) + "&semestre="
-                    + str(row["SEMESTRE_PIANO"]) + "&aa=" + str(row["AA"]) + "&lang=" + str(row["PSPA_LINGUA_OFFERTA"])
-                    + "&jaf_currentWFID=main")
-
-    tree = html.fromstring(r.content)
-    attributes = tree.xpath('//td[@colspan="1"][@rowspan="1"][@width="80%"][@class="ElementInfoCard2 jaf-card-element"]'
-                            '/text()')
+i = 0
+j = 0
+while i < len(titles):
+    course_id = titles[i].split(". ")[0]
+    course_name = titles[i].split(". ")[1]
+    course_credits = attributes[j].split("Units: ")[1]
+    try:
+        course_credits = course_credits.split(" to ")[1]
+    except:
+        pass
+    course_description = attributes[j+1]
 
     course = {
-              'id': attributes[5].strip(),
-              'name': attributes[6].strip().title(),
-              'ects': int(float(attributes[8].strip())),
-              'semester': 1 if attributes[9].strip() == 'First Semester' else 2,
-              'description': attributes[10].strip().replace('\t', '').replace('\n', '')
-              }
+        'id': course_id,
+        'name': course_name,
+        'ects': course_credits,
+        'semester': None,
+        'description': course_description
+    }
+    if i < len(titles)-1:
+        courseList.append(json.dumps(course) + ",")
+    else:
+        courseList.append(json.dumps(course))
+    i = i+1
+    j = j+2
 
-    if course['id'] == str(0) + str(row["C_INSEGN"]):
-        print(course)
-        if index < len(df.index)-1:
-            courseList.append(json.dumps(course) + ",")
-        else:
-            courseList.append(json.dumps(course))
-
-file = open("polimi_courses.json","w")
-file.write("[")
+output = open("ucla_courses.json", "w")
+output.write("[")
 for course in courseList:
-    file.write(course)
-file.write("]")
-file.close()
+    output.write(course)
+output.write("]")
+output.close()
 
 # generating fixtures
-polimi_course_json = open("polimi_courses.json")
-polimi_fixtures_json = open("../fixtures/polimi_fixtures_json.json", "w")
-polimi_courses = json.load(polimi_course_json)
+ucla_course_json = open("ucla_courses.json")
+ucla_fixtures_json = open("../fixtures/ucla_fixtures_json.json", "w")
+ucla_courses = json.load(ucla_course_json
 
 fixtures = []
 
-country_id = 2
+country_id = 6
 fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
     "fields": {
-      "name": "Italy",
-      "img": "https://csyllabus.com/images/italy.jpg",
+      "name": "United States of America",
+      "img": "https://static.thousandwonders.net/Washington.D.C..original.14.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
     }
   }
 )
-city_id = 3
+city_id = 11
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
     "fields": {
-      "name": "Milano",
-       "img": "https://csyllabus.com/images/milan.jpg",
+      "name": "Los Angeles",
+      "img": "http://www.tokkoro.com/picsup/440277-los-angeles-pc-backgrounds-hd-free.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": country_id
     }
   }
 )
-university_id = 2
+university_id = 8
 fixtures.append(
   {
     "model": "csyllabusapi.university",
     "pk": university_id,
     "fields": {
-      "name": "Politecnico di Milano",
+      "name": "University of California, Los Angeles",
+      "img": "http://worldkings.org/Userfiles/Upload/images/Ucla.jpg",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": country_id,
@@ -99,7 +92,7 @@ fixtures.append(
 )
 
 #appending programs fixtures
-program_id = 36
+program_id = 38
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -148,10 +141,10 @@ fixtures.append(
     }
 )
 
-#appending courses fixtures
-course_id = 605
-course_program_id = 2336
-for course in polimi_courses:
+# appending courses fixtures
+course_id = 872
+course_program_id = 2603
+for course in ucla_courses:
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -180,4 +173,4 @@ for course in polimi_courses:
     )
     course_id = course_id + 1
 
-json.dump(fixtures,polimi_fixtures_json)
+json.dump(fixtures, ucla_fixtures_json)

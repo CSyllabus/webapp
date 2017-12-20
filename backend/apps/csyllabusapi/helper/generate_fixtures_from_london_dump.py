@@ -1,89 +1,44 @@
-from lxml import html
 import json
 
-# reading file Stanford.xml and extracting courses
-f = open("Stanford.xml","r")
-stanfordList = f.read()
-
-tree = html.fromstring(stanfordList)
-ids = tree.xpath('//span[@class="courseNumber"]/text()')
-titles = tree.xpath('//span[@class="courseTitle"]/text()')
-descriptions = tree.xpath('//div[@class="courseDescription"]/text()')
-attributes = tree.xpath('//div[@class="courseAttributes"]/text()')
-
-courseList = []
-for i in range(len(descriptions)):
-    course_id = ids[i].split(':')[0]
-    course_name = titles[i].strip()
-    try:
-        course_credits = int(attributes[i].split('|')[1].strip().split("Units:")[1].strip())
-    except:
-        course_credits = None
-    try:
-        course_semester = attributes[i].split('|')[0].strip().split("Terms:")[1].strip()
-    except:
-        course_semester = None
-    course_description = descriptions[i].strip()
-
-    course = {
-        'id': course_id,
-        'name': course_name,
-        'ects': None,
-        'semester': None,
-        'description': course_description
-    }
-    if i < len(descriptions)-1:
-        courseList.append(json.dumps(course) + ",")
-    else:
-        courseList.append(json.dumps(course))
-
-output = open("stanford_courses.json", "w")
-output.write("[")
-for course in courseList:
-    output.write(course)
-output.write("]")
-output.close()
-
-# generating fixtures
-stanford_course_json = open("stanford_courses.json")
-stanford_fixtures_json = open("../fixtures/stanford_fixtures_json.json", "w")
-stanford_courses = json.load(stanford_course_json)
+london_course_json = open("University_of_London.js")
+london_fixtures_json = open("../fixtures/london_fixtures_json.json", "w")
+london_courses = json.load(london_course_json)["results"]
 
 fixtures = []
 
-country_id = 6
+country_id = 7
 fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
     "fields": {
-      "name": "United States of America",
-      "img": "https://static.thousandwonders.net/Washington.D.C..original.14.jpg",
+      "name": "United Kingdom",
+      "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
     }
   }
 )
-city_id = 10
+city_id = 12
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
     "fields": {
-      "name": "Palo Alto",
-      "img": "https://fr.wikipedia.org/wiki/Palo_Alto#/media/File:Stanford_University_campus_from_above.jpg",
+      "name": "London",
+      "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": country_id
     }
   }
 )
-university_id = 7
+university_id = 9
 fixtures.append(
   {
     "model": "csyllabusapi.university",
     "pk": university_id,
     "fields": {
-      "name": "University of Stanford",
-      "img": "http://www.neucampusplanning.com/wp-content/uploads/2016/08/Stanford-Aerial.jpg",
+      "name": "University of London",
+      "img": "",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": country_id,
@@ -93,7 +48,7 @@ fixtures.append(
 )
 
 #appending programs fixtures
-program_id = 37
+program_id = 39
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -142,10 +97,15 @@ fixtures.append(
     }
 )
 
-#appending courses fixtures
-course_id = 693
-course_program_id = 2424
-for course in stanford_courses:
+course_id = 1043
+course_program_id = 2774
+for i in range(len(london_courses)):
+    course_name = london_courses[i]["title"].strip()
+    try:
+        course_description = london_courses[i]["metaData"]["c"].strip()
+    except:
+        course_description = None
+
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -163,10 +123,10 @@ for course in stanford_courses:
             "model": "csyllabusapi.course",
             "pk": course_id,
             "fields": {
-                "name" : course['name'],
-                "description": course['description'],
-                "ects": course['ects'],
-                "semester": course['semester'],
+                "name": course_name,
+                "description": course_description,
+                "ects": None,
+                "semester": None,
                 "created": "2017-10-30T15:07:40.122Z",
                 "modified": "2017-10-30T15:07:41.673Z"
             }
@@ -174,4 +134,4 @@ for course in stanford_courses:
     )
     course_id = course_id + 1
 
-json.dump(fixtures,stanford_fixtures_json)
+json.dump(fixtures, london_fixtures_json)
