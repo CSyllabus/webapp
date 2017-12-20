@@ -108,6 +108,7 @@ fixtures.append(
 course_id = 605
 course_program_id = 2336
 for index, row in df.iterrows():
+    print("Course " + str(index + 1) + " of " + str(len(df)))
     session = requests.Session()
     retry = Retry(connect=3, backoff_factor=0.5)
     adapter = HTTPAdapter(max_retries=retry)
@@ -127,7 +128,6 @@ for index, row in df.iterrows():
     course_credits = int(float(attributes[8].strip()))
     course_semester = 1 if attributes[9].strip() == 'First Semester' else 2
     course_description = attributes[10].strip().replace('\t', '').replace('\n', '')
-    print(course_name)
 
     fixtures.append(
         {
