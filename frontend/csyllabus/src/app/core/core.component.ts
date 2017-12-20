@@ -4,7 +4,7 @@ import {AngularMaterialModule} from './../angular-material/angular-material.modu
 @Component({
   selector: 'app-core',
   templateUrl: './core.component.html',
-  styleUrls: ['./core.component.css']
+  styleUrls: ['./core.component.css', '../components/documentation/documentation.component.css']
 })
 export class CoreComponent implements OnInit {
   explorerResult: any;
