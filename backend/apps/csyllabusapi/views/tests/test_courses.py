@@ -144,12 +144,12 @@ class CourseViewTestCase(TestCase):
         c = Client()
         course = {'id': course1.id,
                   'name': 'Data science',
-                  'description': '',
-                  'level': '',
-                  'english_level': '',
+                  'description': 'Data science course',
+                  'level': '1',
+                  'englishLevel': '1',
                   'semester': 1,
                   'ects': 5,
-                  'keywords': ''
+                  'keywords': 'data'
                   }
         response = c.put('/csyllabusapi/courses/' + str(course1.id) + '/', json.dumps(course), 'application/json')
 
@@ -157,6 +157,28 @@ class CourseViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(courseName, "Data science")
+
+    def test_putnoattributes(self):
+        course1 = Course.objects.create(name="Data science")
+
+        c = Client()
+        course = {'id': course1.id
+                  }
+        response = c.put('/csyllabusapi/courses/' + str(course1.id) + '/', json.dumps(course), 'application/json')
+
+        courseName = Course.objects.get(id=course1.id).name
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(courseName, "Data science")
+
+    def test_putindexerror(self):
+
+        c = Client()
+        course = {'id': 0
+                  }
+        response = c.put('/csyllabusapi/courses/0/', json.dumps(course), 'application/json')
+
+        self.assertEqual(response.status_code, 200)
 
 
 class CourseByProgramViewTestCase(TestCase):
