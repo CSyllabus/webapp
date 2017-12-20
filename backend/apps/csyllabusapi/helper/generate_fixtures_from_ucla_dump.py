@@ -1,6 +1,7 @@
 from lxml import html
 import json
 
+ucla_fixtures_json = open("../fixtures/ucla_fixtures_json.json", "w")
 # reading file UCLA.xml and extracting courses
 f = open("UCLA.xml","r")
 uclaList = f.read()
@@ -8,45 +9,6 @@ uclaList = f.read()
 tree = html.fromstring(uclaList)
 titles = tree.xpath('//h3/text()')
 attributes = tree.xpath('//p/text()')
-
-courseList = []
-i = 0
-j = 0
-while i < len(titles):
-    course_id = titles[i].split(". ")[0]
-    course_name = titles[i].split(". ")[1]
-    course_credits = attributes[j].split("Units: ")[1]
-    try:
-        course_credits = course_credits.split(" to ")[1]
-    except:
-        pass
-    course_description = attributes[j+1]
-
-    course = {
-        'id': course_id,
-        'name': course_name,
-        'ects': course_credits,
-        'semester': None,
-        'description': course_description
-    }
-    if i < len(titles)-1:
-        courseList.append(json.dumps(course) + ",")
-    else:
-        courseList.append(json.dumps(course))
-    i = i+1
-    j = j+2
-
-output = open("ucla_courses.json", "w")
-output.write("[")
-for course in courseList:
-    output.write(course)
-output.write("]")
-output.close()
-
-# generating fixtures
-ucla_course_json = open("ucla_courses.json")
-ucla_fixtures_json = open("../fixtures/ucla_fixtures_json.json", "w")
-ucla_courses = json.load(ucla_course_json)
 
 fixtures = []
 
@@ -142,9 +104,19 @@ fixtures.append(
 )
 
 # appending courses fixtures
+i = 0
+j = 0
 course_id = 872
 course_program_id = 2603
-for course in ucla_courses:
+while i < len(titles):
+    course_name = titles[i].split(". ")[1]
+    course_credits = attributes[j].split("Units: ")[1]
+    try:
+        course_credits = course_credits.split(" to ")[1]
+    except:
+        pass
+    course_description = attributes[j+1]
+
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -162,15 +134,17 @@ for course in ucla_courses:
             "model": "csyllabusapi.course",
             "pk": course_id,
             "fields": {
-                "name" : course['name'],
-                "description": course['description'],
-                "ects": course['ects'],
-                "semester": course['semester'],
+                "name" : course_name,
+                "description": course_description,
+                "ects": course_credits,
+                "semester": None,
                 "created": "2017-10-30T15:07:40.122Z",
                 "modified": "2017-10-30T15:07:41.673Z"
             }
         }
     )
+    i = i + 1
+    j = j + 2
     course_id = course_id + 1
 
 json.dump(fixtures, ucla_fixtures_json)

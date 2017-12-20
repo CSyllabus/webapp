@@ -1,6 +1,7 @@
 from lxml import html
 import json
 
+stanford_fixtures_json = open("../fixtures/stanford_fixtures_json.json", "w")
 # reading file Stanford.xml and extracting courses
 f = open("Stanford.xml","r")
 stanfordList = f.read()
@@ -11,44 +12,7 @@ titles = tree.xpath('//span[@class="courseTitle"]/text()')
 descriptions = tree.xpath('//div[@class="courseDescription"]/text()')
 attributes = tree.xpath('//div[@class="courseAttributes"]/text()')
 
-courseList = []
-for i in range(len(descriptions)):
-    course_id = ids[i].split(':')[0]
-    course_name = titles[i].strip()
-    try:
-        course_credits = int(attributes[i].split('|')[1].strip().split("Units:")[1].strip())
-    except:
-        course_credits = None
-    try:
-        course_semester = attributes[i].split('|')[0].strip().split("Terms:")[1].strip()
-    except:
-        course_semester = None
-    course_description = descriptions[i].strip()
-
-    course = {
-        'id': course_id,
-        'name': course_name,
-        'ects': None,
-        'semester': None,
-        'description': course_description
-    }
-    if i < len(descriptions)-1:
-        courseList.append(json.dumps(course) + ",")
-    else:
-        courseList.append(json.dumps(course))
-
-output = open("stanford_courses.json", "w")
-output.write("[")
-for course in courseList:
-    output.write(course)
-output.write("]")
-output.close()
-
-# generating fixtures
-stanford_course_json = open("stanford_courses.json")
-stanford_fixtures_json = open("../fixtures/stanford_fixtures_json.json", "w")
-stanford_courses = json.load(stanford_course_json)
-
+# generate fixtures
 fixtures = []
 
 country_id = 6
@@ -92,7 +56,7 @@ fixtures.append(
   }
 )
 
-#appending programs fixtures
+# appending programs fixtures
 program_id = 37
 fixtures.append(
     {
@@ -142,10 +106,24 @@ fixtures.append(
     }
 )
 
-#appending courses fixtures
+# appending courses fixtures
 course_id = 693
 course_program_id = 2424
-for course in stanford_courses:
+for i in range(len(descriptions)):
+    course_name = titles[i].strip()
+    try:
+        course_credits = int(attributes[i].split('|')[1].strip().split("Units:")[1].split("-")[1].strip())
+    except:
+        try:
+            course_credits = int(attributes[i].split('|')[1].strip().split("Units:")[1].strip())
+        except:
+            course_credits = None
+    try:
+        course_semester = attributes[i].split('|')[0].strip().split("Terms:")[1].strip()
+    except:
+        course_semester = None
+    course_description = descriptions[i].strip()
+
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -163,10 +141,10 @@ for course in stanford_courses:
             "model": "csyllabusapi.course",
             "pk": course_id,
             "fields": {
-                "name" : course['name'],
-                "description": course['description'],
-                "ects": course['ects'],
-                "semester": course['semester'],
+                "name": course_name,
+                "description": course_description,
+                "ects": course_credits,
+                "semester": None,
                 "created": "2017-10-30T15:07:40.122Z",
                 "modified": "2017-10-30T15:07:41.673Z"
             }
