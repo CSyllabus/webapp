@@ -18,6 +18,10 @@ import { UserComponent } from './user/user/user.component';
 import { UsersComponent } from './user/users/users.component';
 import { LoginComponent } from './login/login.component';
 
+import { FacultiesService } from './services/faculties.service';
+import { UniversitiesService } from './services/universities.service';
+import { CountriesService } from './services/countries.service';
+
 
 const ROUTES = [
   {
@@ -73,7 +77,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-   providers: [AuthService, CoursesService, UsersService, DatePipe],
+   providers: [AuthService, CoursesService, FacultiesService, UniversitiesService, CountriesService, UsersService, DatePipe],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

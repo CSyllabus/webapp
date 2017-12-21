@@ -1,7 +1,14 @@
+from time import timezone
+
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 
 from ..models import User
+from ..models import UserFacultyPost
+from ..models import AdminFaculty
+from ..models import AdminUniversity
+from ..models import Faculty
+from ..models import University
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
@@ -43,6 +50,8 @@ class UserViewSelf(APIView):
         result = {}
         users_list = []
 
+        print request.data['username']
+
         try:
             decoded_payload = utils.jwt_decode_handler(
                 request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
@@ -71,6 +80,8 @@ class UserViewSelf(APIView):
                 pass
 
             user.save()
+
+
 
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
                          'username': user.username, 'email': user.email}
@@ -178,12 +189,34 @@ class UserView(APIView):
 
             user.save()
 
+            try:
+                faculty_id = request.data['faculty']
+                faculty = Faculty.objects.filter(id=faculty_id)
+
+                AdminFaculty.objects.create(faculty=faculty[0], user=user)
+            except:
+                pass
+
+
+            try:
+                university_id = request.data['university']
+                university = University.objects.filter(id=university_id)
+
+                AdminUniversity.objects.create(university=university[0], user=user)
+            except:
+                pass
+
+
+
+
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
                          'username': user.username, 'email': user.email}
             users_list.append(user_data)
             data['currentItemCount'] = 1
         except (IndexError, AttributeError) as e:
             data['currentItemCount'] = 0
+
+
 
         data['items'] = users_list
         result['data'] = data

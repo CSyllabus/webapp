@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from .faculty import Faculty
+from .university import University
 from .course import Course
 
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
@@ -101,10 +102,11 @@ class AdminFaculty(models.Model):
         return str(self.user) + " " + str(self.faculty)
 
 
+
 class AdminUniversity(models.Model):
     created = models.DateTimeField(editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    university = models.ForeignKey(University, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
@@ -114,4 +116,4 @@ class AdminUniversity(models.Model):
         return super(AdminUniversity, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.user) + " " + str(self.faculty)
+        return str(self.user) + " " + str(self.university)
