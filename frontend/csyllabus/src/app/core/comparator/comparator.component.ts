@@ -2,8 +2,10 @@ import {Component, OnInit, Output, EventEmitter, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/startWith';
+import {startWith} from 'rxjs/operators/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
+import {map} from 'rxjs/operators/map';
+
 const COMMA = 188;
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
 import {CountriesService} from '../../services/countries.service';
@@ -75,6 +77,7 @@ export class ComparatorComponent implements OnInit {
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
               private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private programsService: ProgramsService,
               private dialog: MatDialog, public snackBar: MatSnackBar) {
+
   }
 
   ngOnInit() {

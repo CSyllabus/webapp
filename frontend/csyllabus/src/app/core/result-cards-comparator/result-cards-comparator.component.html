@@ -7,7 +7,7 @@
     <div *ngFor="let course of courses" class="col-md-12"
          style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px">
       <div class="col-md-6">
-        <div *ngFor="let coursetest of course; let first = first;">
+        <div *ngFor="let coursetest of course; let first = first;" style="margin-top:10em;">
           <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
             <mat-card-title>
               {{coursetest.name}}
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div *ngFor="let coursetest of course; let first = first;">
+        <div *ngFor="let coursetest of course; let first = first;" >
           <mat-card *ngIf="!first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
             <mat-card-title>
               <span style="float:left"><b> {{coursetest.result * 100 | number : '1.2-2'}} </b></span>
