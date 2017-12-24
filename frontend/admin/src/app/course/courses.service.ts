@@ -11,6 +11,8 @@ import {Course} from './course';
 export class CoursesService {
   simpleCoursesUrl = environment.apiUrl + "simplecoursesUrl/";
   coursesUrl = environment.apiUrl + "courses/";
+  usersUrl = environment.apiUrl + "users/";
+
 
   constructor(private http: Http) {
   }
@@ -19,6 +21,11 @@ export class CoursesService {
     /*return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset + '&order_by=' + orderBy + '&order_direction=' + orderDirection + '&filter=' + filter)
      .map(res => res.json() as Course[]);*/
     return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset)
+      .map(res => res.json().data.items as Course[]);
+  }
+
+  getAllCoursesByUser(user_id, limit, offset, orderBy, orderDirection, filter):Observable<Course[]> {
+    return this.http.get(this.usersUrl +user_id+'/courses'+'?limit=' + limit + '&offset=' + offset)
       .map(res => res.json().data.items as Course[]);
   }
 

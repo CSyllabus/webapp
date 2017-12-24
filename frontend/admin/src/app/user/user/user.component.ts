@@ -26,6 +26,7 @@ export class UserComponent implements OnInit {
   user: User;
   newPassword: string;
   newPassword2: string;
+  selected: string = 'Select University/Faculty';
   user_id: number;
   task: string;
   countries: Country[];
@@ -54,6 +55,7 @@ export class UserComponent implements OnInit {
       if (this.task === 'edit' && this.user_id) {
         this.usersService.getUser(this.user_id).subscribe(user => {
           this.user = user;
+          console.log(user.facultyId);
         });
       } else if (this.task === 'self') {
         this.usersService.getSelf().subscribe(user => {
@@ -64,6 +66,8 @@ export class UserComponent implements OnInit {
       }
 
     });
+
+
 
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
@@ -79,6 +83,9 @@ export class UserComponent implements OnInit {
                   if (faculty.universityId === university.id) {
                     flag = false;
                     country.faculties.push(faculty);
+                  }
+                  if(faculty.id===this.user.facultyId){
+                    this.selected=faculty.name;
                   }
                 }
                 if (flag) {

@@ -100,7 +100,7 @@ export class CourseDataSource extends DataSource<Course> {
 
   fetchData() {
     let offset = this._paginator.pageIndex * this._paginator.pageSize;
-    this.coursesService.getAllCourses(this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
+    this.coursesService.getAllCoursesByUser(1, this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
       this.data.next(courses);
     });
   }

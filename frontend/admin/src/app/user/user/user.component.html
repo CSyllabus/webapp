@@ -38,8 +38,9 @@
       </mat-form-field>
       <br>
       <mat-form-field class="input">
-          <mat-select required placeholder="Select University/Faculty" [formControl]="pokemonControl">
+          <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+
               <mat-option *ngFor="let university of country.universities" [value]="university"
                           (click)="user.university = university.id;">
                 {{university.name}}
