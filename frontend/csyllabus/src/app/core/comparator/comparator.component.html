@@ -4,7 +4,7 @@
     <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
 
       <div class="forms-group">
-        <mat-form-field >
+        <mat-form-field class="input">
           <mat-select required placeholder="Select courses from" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
               <mat-option *ngFor="let university of country.universities" [value]="university"
@@ -20,23 +20,19 @@
         </mat-form-field>
 
         <div *ngIf="queryHomeUniversity || queryHomeFaculty">
-          <mat-form-field class="input" >
-
-            <input *ngIf="listCourses.length == 0" placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
-                   [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse" (ngModelChange)="addCourseToList(queryHomeCourse)"
+          <mat-form-field class="input" style="width:80%">
+            <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
+                   [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
                    required>
-
-
-            <input *ngIf="listCourses.length > 0" placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
-                  required="false" [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse" (ngModelChange)="addCourseToList(queryHomeCourse)"
-                   >
             <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displaySelect">
-              <mat-option *ngFor="let course of filteredHomeCourses" [value]="course" >
+              <mat-option *ngFor="let course of filteredHomeCourses" [value]="course">
                 {{ course.name }}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-
+          <button mat-icon-button (click)="addCourseToList(queryHomeCourse)">
+            <mat-icon matTooltip="Add to comparison list">add</mat-icon>
+          </button>
           <mat-chip-list>
             <mat-chip *ngFor="let course of listCourses" style="height: 30px;">
               {{course.name}}
