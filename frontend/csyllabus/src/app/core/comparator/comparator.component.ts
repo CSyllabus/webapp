@@ -265,6 +265,7 @@ export class ComparatorComponent implements OnInit {
     if (course.id && (this.listCourses.indexOf(course) == -1)) {
       this.listCourses.push(course);
     }
+
   }
 
 }
