@@ -81,6 +81,8 @@ export class ComparatorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filteredHomeCourses = new Array<Course>();
+    this.queryHomeCourse = new Course;
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
