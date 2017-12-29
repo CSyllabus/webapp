@@ -17,12 +17,12 @@ export class CoursesService {
   constructor(private http: Http) {
   }
 
-  getAllCourses(limit, offset, orderBy, orderDirection, filter): Observable<Course[]> {
-    /*return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset + '&order_by=' + orderBy + '&order_direction=' + orderDirection + '&filter=' + filter)
-     .map(res => res.json() as Course[]);*/
+  /*getAllCourses(limit, offset, orderBy, orderDirection, filter): Observable<Course[]> {
+    return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset + '&order_by=' + orderBy + '&order_direction=' + orderDirection + '&filter=' + filter)
+     .map(res => res.json() as Course[]);
     return this.http.get(this.simpleCoursesUrl + '?limit=' + limit + '&offset=' + offset)
       .map(res => res.json().data.items as Course[]);
-  }
+  }*/
 
   getAllCoursesByUser(user_id, limit, offset, orderBy, orderDirection, filter):Observable<Course[]> {
     return this.http.get(this.usersUrl +user_id+'/courses'+'?limit=' + limit + '&offset=' + offset)
@@ -40,8 +40,10 @@ export class CoursesService {
   }
 
   deleteCourse(id: number): Observable<any> {
+    console.log(this.coursesUrl+id);
     return this.http.delete(this.coursesUrl + id)
       .map(res => res.json());
+
   }
 
   deleteCourseImage(id: number, img: string): Observable<any> {
@@ -55,8 +57,8 @@ export class CoursesService {
   }
 
   courseNew(data): Observable<any> {
-    return this.http.post(this.coursesUrl, data)
-      .map(res => res.json()).catch(this.handleError);
+    return this.http.post(this.coursesUrl,data)
+      .map(res => res).catch(this.handleError);
   }
 
 

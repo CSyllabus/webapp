@@ -65,7 +65,7 @@
   </mat-paginator>
 
   <mat-card-actions style="text-align: center;">
-    <button [routerLink]="['/course/add/']" mat-button>
+    <button (click)="addCourse()" mat-button>
       <mat-icon>add</mat-icon>
       NEW COURSE
     </button>

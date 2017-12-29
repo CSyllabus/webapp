@@ -5,6 +5,7 @@ import {UsersService} from '../../user/users.service';
 import {Course} from '../course';
 import {environment} from '../../../environments/environment';
 import {CdkTable, DataSource} from '@angular/cdk/table'
+import {ActivatedRoute, Router} from '@angular/router';
 import {CdkTableModule} from '@angular/cdk/table';
 import {Http, Response} from '@angular/http';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -26,6 +27,9 @@ declare let window: any;
 })
 export class CoursesComponent implements OnInit {
 
+  newCourse: Course;
+  proba: number;
+
   courses: Course[];
   displayedColumns = ['id', 'modified', 'name', 'actions'];
   dataSource: CourseDataSource | null;
@@ -37,11 +41,13 @@ export class CoursesComponent implements OnInit {
   filteredCourses: Course[] = [];
   totalItems: number;
   searchString: String = "";
+  user_id:String;
 
-  constructor(http: Http, private coursesService: CoursesService, private usersService: UsersService) {
+  constructor(http: Http, private coursesService: CoursesService, private usersService: UsersService, private router: Router) {
   }
 
   ngOnInit() {
+    this.newCourse = new Course();
     this.coursesService.getCoursesCount().subscribe(count => {
       this.totalItems = count;
     });
@@ -52,8 +58,18 @@ export class CoursesComponent implements OnInit {
 
   deleteCourse(course) {
     if (confirm('You sure you want to delete this course?')) {
-      this.dataSource.deleteCourse(course._id);
+      this.dataSource.deleteCourse(course.id);
+
+      this.dataSource = new CourseDataSource(this.coursesService, this.sort, this.paginator);
     }
+
+  }
+
+  addCourse() {
+
+    this.router.navigate(['course/add/']);
+
+
   }
 
 }
@@ -104,6 +120,8 @@ export class CourseDataSource extends DataSource<Course> {
       this.data.next(courses);
     });
   }
+
+
 
   deleteCourse(courseId) {
     this.coursesService.deleteCourse(courseId).subscribe(complete => {

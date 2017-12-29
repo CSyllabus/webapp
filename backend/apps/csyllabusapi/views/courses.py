@@ -89,6 +89,7 @@ class CourseView(APIView):
             data['currentItemCount'] = len(courses_list)
             data['items'] = courses_list
 
+
         result['data'] = data
         return Response(result)
 
@@ -101,6 +102,10 @@ class CourseView(APIView):
         #decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
         #print(decoded_payload)
 
+
+
+        data = {}
+        result = {}
 
         try:
             course.name = request.data['name']
@@ -132,17 +137,56 @@ class CourseView(APIView):
         except:
             pass
 
-
         course.save()
 
 
-        return Response()
+        try:
+            faculty_id = request.data['faculty']
+            faculty = Faculty.objects.filter(id=faculty_id)
+
+            CourseFaculty.objects.create(faculty=faculty[0], course=course)
+        except:
+            faculty_id=0
+
+        try:
+            university_id = request.data['university']
+            university = University.objects.filter(id=university_id)
+
+            CourseUniversity.objects.create(university=university[0], course=course)
+        except:
+            university_id=0
 
 
 
-    def delete(selfself, request):
-        id = request.data['id']
-        Course.objects.filter(id=id).delete()
+
+        course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
+                       'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
+                       'modified': course.modified, 'created': course.created}
+
+        if(university_id>0):
+            course_data['university']=university[0].name
+
+        if (faculty_id>0):
+            course_data['faculty'] = faculty[0].name
+
+        courses_list = []
+
+        courses_list.append(course_data)
+
+
+        data['currentItemCount'] = len(courses_list)
+        data['items'] = courses_list
+
+        result['data'] = data
+
+        print result
+        return Response(result)
+
+
+    def delete(selfself, request, course_id):
+
+        print course_id
+        Course.objects.filter(id=course_id).delete()
         return Response()
 
     def put(selfself, request, course_id):
@@ -191,6 +235,24 @@ class CourseView(APIView):
             course.save()
         except IndexError:
             pass
+
+        try:
+            faculty_id = request.data['faculty']
+            faculty = Faculty.objects.filter(id=faculty_id)
+
+            CourseFaculty.objects.create(faculty=faculty[0], course=course)
+        except:
+            pass
+
+        try:
+            university_id = request.data['university']
+            university = University.objects.filter(id=university_id)
+
+            CourseUniversity.objects.create(university=university[0], course=course)
+        except:
+            pass
+
+
 
         return Response()
 

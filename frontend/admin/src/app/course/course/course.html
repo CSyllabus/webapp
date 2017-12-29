@@ -16,6 +16,22 @@
 
 
   <div>
+    <mat-form-field class="input">
+          <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
+            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+
+              <mat-option *ngFor="let university of country.universities" [value]="university"
+                          (click)="course.university = university.id;">
+                {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="course.faculty = faculty.id;">
+                {{faculty.name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+    </mat-form-field>
+    <br>
     <mat-form-field >
       <input matInput placeholder="Name" [(ngModel)]="course.name">
     </mat-form-field>
@@ -72,7 +88,7 @@
       <mat-icon>save</mat-icon>
       SAVE
     </button>
-    <button mat-button *ngIf="!course.id" (click)="addCourse(true)">
+    <button mat-button *ngIf="!course.id" (click)="addCourse()">
       <mat-icon>add</mat-icon>
       ADD
     </button>

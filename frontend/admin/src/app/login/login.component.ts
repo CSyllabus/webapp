@@ -62,8 +62,10 @@ export class LoginComponent implements OnInit {
     let data = {}
     data['username'] = this.username;
     data['password'] = this.password;
+
     this.authService.submitLogIn(data).subscribe(response => {
       this.token.emit(response.token);
-    });
+
+    }, error => alert('Wrong password.'));
   }
 }
