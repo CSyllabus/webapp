@@ -19,7 +19,7 @@
           </mat-select>
         </mat-form-field>
 
-        <div *ngIf="queryHomeUniversity || queryHomeFaculty">
+        <div *ngIf="(queryHomeUniversity || queryHomeFaculty) && filteredHomeCourses.length > 0">
           <mat-form-field class="input" style="width:80%">
             <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
                    [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse" (ngModelChange)="addCourseToList(queryHomeCourse)"
@@ -43,6 +43,9 @@
         </div>
       </div>
 
+            <div *ngIf="(queryHomeUniversity || queryHomeFaculty) &&  filteredHomeCourses.length == 0 && !loadingCourses">
+            <p>Sorry, we currently don't have any course for this faculty in our database.</p>
+        </div>
       <div class="forms-group" style="margin-top: 10px;">
         <mat-form-field class="input">
           <mat-select required placeholder="Compare with courses from" [formControl]="pokemonControl">

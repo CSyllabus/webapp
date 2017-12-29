@@ -67,7 +67,7 @@ export class ComparatorComponent implements OnInit {
   queryProgram: Program;
   queryHomeProgram: Program;
   queryLevel: string;
-
+  loadingCourses: boolean;
   queryHomeCourse: Course;
   listCourses: any = [];
   listCoursesIDs: any = [0, 0, 0, 0, 0];
@@ -110,7 +110,7 @@ export class ComparatorComponent implements OnInit {
       });
     });
 
-        this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
+    this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
       .pipe(
         startWith({} as Course),
         map(course => course ),
@@ -169,22 +169,37 @@ export class ComparatorComponent implements OnInit {
   }
 
   filterCoursesByHomeProgram() {
+    this.loadingCourses = true;
     this.coursesService.getCoursesByProgram(1).subscribe(courses => {
       this.filteredHomeCourses = courses;
+      this.loadingCourses = false;
     });
   }
 
   filterCoursesByHomeFaculty() {
+
+    this.loadingCourses = true;
     this.coursesService.getCoursesByFaculty(this.queryHomeFaculty.id, 0).subscribe(courses => {
       this.listCourses = [];
+      this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+      this.loadingCourses = false;
+
     });
   }
 
   filterCoursesByHomeUniversity() {
+
+
+    console.log(this.listCourses);
+    this.loadingCourses = true;
+
     this.coursesService.getCoursesByUniversity(this.queryHomeUniversity.id, 0).subscribe(courses => {
       this.listCourses = [];
+      this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+      this.loadingCourses = false;
+
     });
   }
 
@@ -261,7 +276,7 @@ export class ComparatorComponent implements OnInit {
         }
       }
     } else {
-       this.dialog.open(SearchDialogComponent, {
+      this.dialog.open(SearchDialogComponent, {
         width: '250px', data: {}
       });
     }
@@ -275,17 +290,14 @@ export class ComparatorComponent implements OnInit {
     if (course.id && (this.listCourses.indexOf(course) == -1)) {
       this.listCourses.push(course);
     }
-   /* this.homeCoursesControl.reset();
-    this.homeCoursesControl.markAsUntouched();
-*/
   }
 
-    filter(name: string): Course[] {
+  filter(name: string): Course[] {
     return this.filteredHomeCourses.filter(option =>
       option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
-   displayFn(course: Course): String {
-      return course.name;  }
+  displayFn(course: Course): String {
+    return course.name;  }
 
 }
