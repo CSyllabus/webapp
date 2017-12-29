@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
 import {map} from 'rxjs/operators/map';
+import {Observable} from 'rxjs/Observable';
 
 const COMMA = 188;
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
@@ -46,7 +47,7 @@ export class ComparatorComponent implements OnInit {
   filteredHomeFaculties: Faculty[];
   filteredHomePrograms: Program[];
   filteredHomeCourses: Course[];
-
+  filteredHomeCoursesAutocomplete: Observable<Course[]>;
   coursesControl: FormControl = new FormControl();
   citiesControl: FormControl = new FormControl();
   universitiesControl: FormControl = new FormControl();
@@ -108,6 +109,13 @@ export class ComparatorComponent implements OnInit {
         });
       });
     });
+
+        this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
+      .pipe(
+        startWith({} as Course),
+        map(course => course ),
+        map(name => name ? this.filter(name.toString()) : this.filteredHomeCourses.slice())
+      );
   }
 
   filterCitiesByCountry() {
@@ -267,9 +275,17 @@ export class ComparatorComponent implements OnInit {
     if (course.id && (this.listCourses.indexOf(course) == -1)) {
       this.listCourses.push(course);
     }
-    this.homeCoursesControl.reset();
+   /* this.homeCoursesControl.reset();
     this.homeCoursesControl.markAsUntouched();
-
+*/
   }
+
+    filter(name: string): Course[] {
+    return this.filteredHomeCourses.filter(option =>
+      option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+  }
+
+   displayFn(course: Course): String {
+      return course.name;  }
 
 }

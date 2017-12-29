@@ -25,8 +25,8 @@
                    [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse" (ngModelChange)="addCourseToList(queryHomeCourse)"
                    required>
 
-            <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displaySelect">
-              <mat-option *ngFor="let course of filteredHomeCourses" [value]="course">
+            <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let course of filteredHomeCoursesAutocomplete | async" [value]="course">
                 {{ course.name }}
               </mat-option>
             </mat-autocomplete>
