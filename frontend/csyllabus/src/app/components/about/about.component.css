@@ -386,7 +386,7 @@ p {
 -------------------------- */
 
 .wellcome_area {
-    background-image: url(img/bg-img/welcome-bg.png);
+    background-image: url(../../../images/fer.jpg);
     height: 900px;
     position: relative;
     z-index: 1;
@@ -495,7 +495,7 @@ p {
     left: -12px;
     z-index: -1;
     color: #fff;
-    opacity: .1;
+    opacity: .3;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
 }
 
