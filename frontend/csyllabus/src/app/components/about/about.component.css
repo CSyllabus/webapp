@@ -716,8 +716,7 @@ p {
     background: -webkit-gradient(linear, right top, left top, from(#7873ed), to(#a865e1));
     background: -o-linear-gradient(right, #7873ed, #a865e1);
     background: linear-gradient(to left, #7873ed, #a865e1);
-    padding: 180px 0 80px 0;
-    top: -100px;
+    padding: 80px 0 80px 0;
 }
 
 
