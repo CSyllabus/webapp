@@ -42,6 +42,10 @@ let config = new AuthServiceConfig([
   }
 ]);
 
+export function provideConfig(){
+  return config;
+}
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +56,7 @@ let config = new AuthServiceConfig([
     RouterModule.forRoot(ROUTES),
     FormsModule,
     ReactiveFormsModule,
-    SocialLoginModule.initialize(config)
+    SocialLoginModule
   ],
   providers: [
     CountriesService,
@@ -61,6 +65,10 @@ let config = new AuthServiceConfig([
     FacultiesService,
     ProgramsService,
     UniversitiesService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
    ],
   declarations: [
     AppComponent,
