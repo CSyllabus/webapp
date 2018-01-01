@@ -1,4 +1,13 @@
-
+<div class="sharepart">
+  <h3>Share this Syllabus with your friends:</h3>
+<share-buttons  [defaultStyle] 
+[pinterest]="false"
+[stumbleUpOn]="false"
+[reddit]="false"
+[tumblr]="false"></share-buttons>
+</div> 
+<div class ="comentspart">
+    <h3>Comment this Syllabus:</h3>
 <div class="jumbotron bg-transparent text-center">
   <!-- The following is shown if the user is not logged ing -->
   <div *ngIf="!user" class="card text-center">
@@ -30,6 +39,4 @@
     </div>
   </div>
 </div>
-<p>
-  social works!
-</p>
+</div>

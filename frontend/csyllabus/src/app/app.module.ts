@@ -29,7 +29,7 @@ import {DocumentationComponent} from './components/documentation/documentation.c
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
 import { SocialComponent } from './components/social/social.component';
-
+import {ShareButtonsModule} from 'ngx-sharebuttons';
 let config = new AuthServiceConfig([
   //I dont understand wath is a provider hehe, I puted the same as in the demo//
   {
@@ -56,7 +56,8 @@ export function provideConfig(){
     RouterModule.forRoot(ROUTES),
     FormsModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+   ShareButtonsModule.forRoot(),
   ],
   providers: [
     CountriesService,
