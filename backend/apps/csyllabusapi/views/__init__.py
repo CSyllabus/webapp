@@ -10,3 +10,4 @@ from .courses import *
 from .programs import *
 from .comparator import *
 from .users import *
+from .comments import *
