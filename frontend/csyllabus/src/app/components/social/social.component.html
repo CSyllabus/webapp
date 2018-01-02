@@ -31,6 +31,15 @@
     <h6 class="card-header">
       Comments Available
     </h6>
+    <div class="commentscontainer" *ngIf="comments">
+      <div *ngFor="let comment of comments; let i = index" class="comment" [hidden]="i >= 12*page">
+              <p >{{ comment.content }}</p>
+      </div>
+    <div class="">
+
+    </div>
+
+    </div>
     <div class="card-block"></div>
     <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
     <div class="card-block">
