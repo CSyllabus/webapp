@@ -1,3 +1,4 @@
+
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
@@ -7,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import {environment} from '../../environments/environment';
 
 import {Course} from '../classes/course';
+import { Comment } from '../classes/comment';
 
 
 @Injectable()
@@ -88,6 +90,17 @@ export class CoursesService {
   compareByCountry(courseId, countryId): Observable<any[]> {
     return this.http.get(this.comparatorUrl + '?course=' + courseId + '&country_id=' + countryId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
+  }
+
+  getAllCommentsByCourse(courseId):Observable<Comment[]>{
+    return this.http.get(this.coursesUrl + courseId + '/comments/')
+    .map(res => res.json().data.items as Comment[]).catch(this.handleError);
+  }
+  insertAnewComment(courseId, newUserName, newComment): void{
+    this.http.post(this.coursesUrl + courseId + '/comments/',{
+      author: newUserName,
+      content: newComment,  
+    })
   }
 
   private handleError(error: any) {
