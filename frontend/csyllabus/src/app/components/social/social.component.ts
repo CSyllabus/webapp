@@ -21,6 +21,8 @@ export class SocialComponent implements OnInit {
    }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    console.log(this.user);
+    console.log(this.loggedIn);
   }
 
   signInWithFB(): void {
@@ -29,17 +31,26 @@ export class SocialComponent implements OnInit {
 
   signOut(): void {
     this.authService.signOut();
+    this.user = null;
+    this.loggedIn = null;
+    console.log(this.user);
+    console.log(this.loggedIn);
   }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
+      console.log(this.user);
       this.loggedIn = (user != null);
+      console.log(this.loggedIn);
+
     })
 
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
       this.comments=res;
     })
+    console.log(this.comments)
+    
   }
 
 }
