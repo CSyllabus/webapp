@@ -36,6 +36,9 @@ export class SocialComponent implements OnInit {
     console.log(this.user);
     console.log(this.loggedIn);
   }
+  newComment(user,comment): void{
+    this.coursesService.insertAnewComment(this.courseId,user,comment)
+  }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {

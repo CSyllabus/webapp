@@ -10,7 +10,7 @@
 </share-buttons>
 </div>
 
-<div class ="comentspart">
+<div class ="commentspart">
     <h3>Comment this Syllabus:</h3>
 <ng-container *ngIf="user;then content else other_content">here is ignored</ng-container>
     
@@ -23,7 +23,23 @@
             <div *ngFor="let comment of comments; let i = index" class="comment" [hidden]="i >= 12*page">
                     <p >{{comment.author}}: {{ comment.content }}</p>
             </div>
-          </div>
+        </div>
+        <div class="newcomment">
+            <form class="newcommentform">
+                
+                  <mat-form-field class="comment">
+                    <input matInput #message maxlength="256" [value]="comment" placeholder="Leave a comment">
+                    <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                  </mat-form-field>
+                  
+                  <button class="submit" mat-raised-button color="primary" (click)="newComment(comment)"
+                   >Submit
+                  </button>   
+
+            </form>
+                           
+        </div>  
         <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
         <div class="card-block">
           <h4 class="card-title">{{ user.name }}</h4>
