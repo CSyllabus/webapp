@@ -93,13 +93,14 @@ export class CoursesService {
   }
 
   getAllCommentsByCourse(courseId):Observable<Comment[]>{
+    console.log('aaaaaaaaaa');
     return this.http.get(this.coursesUrl + courseId + '/comments/')
     .map(res => res.json().data.items as Comment[]).catch(this.handleError);
   }
   insertAnewComment(courseId, newUserName, newComment): void{
     this.http.post(this.coursesUrl + courseId + '/comments/',{
       author: newUserName,
-      content: newComment,  
+      content: newComment,
     })
   }
 

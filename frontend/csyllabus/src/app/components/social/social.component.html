@@ -1,14 +1,14 @@
 <div class="sharepart">
   <h3>Share this Syllabus with your friends:</h3>
-<share-buttons  [defaultStyle] 
+<share-buttons  [defaultStyle]
 [pinterest]="false"
 [stumbleUpOn]="false"
 [reddit]="false"
 [tumblr]="false"
 >
-<!-- [title]="title" [description]="description" [image]="image"--> 
+<!-- [title]="title" [description]="description" [image]="image"-->
 </share-buttons>
-</div> 
+</div>
 <div class ="comentspart">
     <h3>Comment this Syllabus:</h3>
 <div class="jumbotron bg-transparent text-center">
@@ -33,7 +33,7 @@
     </h6>
     <div class="commentscontainer" *ngIf="comments">
       <div *ngFor="let comment of comments; let i = index" class="comment" [hidden]="i >= 12*page">
-              <p >{{ comment.content }}</p>
+              <p >{{comment.author}}: {{ comment.content }}</p>
       </div>
     <div class="">
 

@@ -17,7 +17,7 @@ export class SocialComponent implements OnInit {
   @Input() courseId: number;
 
   constructor(private authService: AuthService,private coursesService: CoursesService) {
-    this.comments=this.coursesService.getAllCommentsByCourse( this.courseId);
+
    }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
@@ -35,6 +35,10 @@ export class SocialComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
+    })
+
+    this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
+      this.comments=res;
     })
   }
 
