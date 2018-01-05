@@ -16,6 +16,12 @@ pip install django
 1. Follow [frontend/README.md](frontend/README.md)
 
 
+## Backend run
+```
+Position in root of the project and run
+python manage.py runserver
+```
+
 ## Instalation guide for the backend:
 ```
 install PostgreSQL 9.6x (https://www.postgresql.org/download/)
