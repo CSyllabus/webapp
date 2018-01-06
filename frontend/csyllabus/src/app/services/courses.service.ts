@@ -18,6 +18,7 @@ export class CoursesService {
   coursesByProgramUrl = environment.apiUrl + 'programs/';
   coursesByFacultiesUrl = environment.apiUrl + 'faculties/';
   coursesByUniversitiesUrl = environment.apiUrl + 'universities/';
+  commentsUrl = environment.apiUrl + 'comments/';
   explorerUrl = environment.apiUrl + 'explorer';
   comparatorUrl = environment.apiUrl + 'comparator';
 
@@ -97,12 +98,30 @@ export class CoursesService {
     return this.http.get(this.coursesUrl + courseId + '/comments/')
     .map(res => res.json().data.items as Comment[]).catch(this.handleError);
   }
-  insertAnewComment(courseId, newUserName, newComment): void{
-    this.http.post(this.coursesUrl + courseId + '/comments/',{
+  /*insertAnewComment(courseId, newUserName, newComment) {
+    return this.http.post(this.coursesUrl + courseId + '/comments/',{
       author: newUserName,
       content: newComment,
+      show: 1
     })
+  }*/
+
+
+  insertAnewComment(courseId, data): Observable<any> {
+
+    return this.http.post(this.coursesUrl + courseId + '/comments/', data)
+      .map(res => res.json()).catch(this.handleError);
+
   }
+
+  deleteComment(commentId): Observable<any> {
+
+    return this.http.delete(this.commentsUrl + commentId)
+      .map(res => res.json()).catch(this.handleError);
+
+  }
+
+
 
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :

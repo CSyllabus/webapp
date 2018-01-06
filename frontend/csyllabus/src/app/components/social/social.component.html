@@ -13,33 +13,25 @@
 <div class ="commentspart">
     <h3>Comment this Syllabus:</h3>
 <ng-container *ngIf="user;then content else other_content">here is ignored</ng-container>
-    
+
 <!-- The following is shown if the user is logged ing -->
     <ng-template  #content>
         <h6 class="card-header">
             Comments Available
         </h6>
         <div class="commentscontainer" *ngIf="comments">
-            <div *ngFor="let comment of comments; let i = index" class="comment" [hidden]="i >= 12*page">
-                    <p >{{comment.author}}: {{ comment.content }}</p>
+            <div *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page">
+              <p>{{comment.author}}: {{ comment.content }}</p>
+              <p (click)="deleteComment(comment.id)">DELETE</p>
             </div>
         </div>
         <div class="newcomment">
-            <form class="newcommentform">
-                
-                  <mat-form-field class="comment">
-                    <input matInput #message maxlength="256" [value]="comment" placeholder="Leave a comment">
-                    <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                  </mat-form-field>
-                  
-                  <button class="submit" mat-raised-button color="primary" (click)="newComment(comment)"
-                   >Submit
-                  </button>   
 
-            </form>
-                           
-        </div>  
+          <input [(ngModel)]="val">
+
+          <button (click)="newComment(user.name)">aa</button>
+
+        </div>
         <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
         <div class="card-block">
           <h4 class="card-title">{{ user.name }}</h4>
@@ -49,7 +41,7 @@
           <button class="btn btn-danger" (click)="signOut()">Sign out</button>
         </div>
     </ng-template>
-<!-- The following is shown if the user is not logged ing -->    
+<!-- The following is shown if the user is not logged ing -->
     <ng-template #other_content>
         <h6 class="card-header">
             Comments not Available
@@ -64,4 +56,3 @@
           </div>
     </ng-template>
 
- 

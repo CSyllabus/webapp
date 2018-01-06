@@ -11,6 +11,7 @@ import { SocialUser } from "angular4-social-login";
   styleUrls: ['./social.component.css']
 })
 export class SocialComponent implements OnInit {
+  private val:string;
   private comments: any = [];
   private user: SocialUser;
   private loggedIn: boolean;
@@ -29,6 +30,7 @@ export class SocialComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
+
   signOut(): void {
     this.authService.signOut();
     this.user = null;
@@ -36,9 +38,36 @@ export class SocialComponent implements OnInit {
     console.log(this.user);
     console.log(this.loggedIn);
   }
-  newComment(user,comment): void{
-    this.coursesService.insertAnewComment(this.courseId,user,comment)
+
+  newComment(user){
+
+    this.coursesService.insertAnewComment(this.courseId, {author: user,content: this.val}).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+    this.refreshComments();
   }
+
+  deleteComment(commentId){
+    this.coursesService.deleteComment(commentId).subscribe(
+
+      );
+    this.refreshComments();
+  }
+
+  refreshComments(){
+    alert('refreshing');
+    this.comments=[];
+    this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
+      this.comments=res;
+    })
+  }
+
+
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
@@ -53,7 +82,7 @@ export class SocialComponent implements OnInit {
       this.comments=res;
     })
     console.log(this.comments)
-    
+
   }
 
 }
