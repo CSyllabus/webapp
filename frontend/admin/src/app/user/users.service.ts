@@ -18,7 +18,7 @@ export class UsersService {
    * @returns {Observable<R>}
    */
   getAllUsers(limit, offset, orderBy, orderDirection, filter): Observable<User[]> {
-    return this.http.get(this.usersUrl + '?limit=' + limit + '&offset=' + offset)
+    return this.http.get(this.usersUrl + '?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection)
       .map(res => res.json().data.items as User[]);
   }
 

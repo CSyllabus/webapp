@@ -31,6 +31,8 @@ except ImportError:
 @parser_classes((JSONParser,))
 class CourseView(APIView):
     def get(self, request, course_id=-1, limit=-1, offset=-1):
+
+
         query_pairs = request.META['QUERY_STRING'].split('&')
 
         for query_pair in query_pairs:
@@ -263,6 +265,8 @@ class CourseByProgramView(APIView):
     def get(self, request, program_id):
 
         course_programs = CourseProgram.objects.filter(program_id=program_id)
+
+
 
         course_ids = []
         for i in course_programs:

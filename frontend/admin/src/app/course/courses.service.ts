@@ -25,7 +25,7 @@ export class CoursesService {
   }*/
 
   getAllCoursesByUser(user_id, limit, offset, orderBy, orderDirection, filter):Observable<Course[]> {
-    return this.http.get(this.usersUrl +user_id+'/courses'+'?limit=' + limit + '&offset=' + offset)
+    return this.http.get(this.usersUrl +user_id+'/courses'+'?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection)
       .map(res => res.json().data.items as Course[]);
   }
 
@@ -40,11 +40,11 @@ export class CoursesService {
   }
 
   deleteCourse(id: number): Observable<any> {
-    console.log(this.coursesUrl+id);
     return this.http.delete(this.coursesUrl + id)
-      .map(res => res.json());
+      .map(res => res);
 
   }
+
 
   deleteCourseImage(id: number, img: string): Observable<any> {
     return this.http.delete(this.simpleCoursesUrl + id + '/images/' + img)

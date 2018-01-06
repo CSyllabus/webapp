@@ -103,41 +103,45 @@ export class UserComponent implements OnInit {
 
   saveUser() {
 
-    let err=false;
+      let err=false;
 
-    if (this.newPassword && (this.newPassword === this.newPassword2)) {
-      this.user['newPassword'] = this.newPassword;
-    }
-    else if (this.newPassword && (this.newPassword !== this.newPassword2)){
-      alert('Passwords do not match!');
-      err=true;
-    }
+      if (this.newPassword && (this.newPassword === this.newPassword2)) {
+        this.user['newPassword'] = this.newPassword;
+      }
+      else if (this.newPassword && (this.newPassword !== this.newPassword2)){
+        alert('Passwords do not match!');
+        err=true;
+      }
+      else if (!this.email.value){
+        alert('Please enter e-mail address');
+        err=true;
+      }
 
-    if(!err){
+      if(!err){
 
-      if (this.task === 'edit' && this.user_id) {
-        this.usersService.putUser(this.user_id, this.user).subscribe(res => {
-          alert("Succesfully saved edit");
-          this.usersService.getUser(this.user_id).subscribe(user => {
-            this.user = user;
-          });
-        }, error => alert(error));
-      } else if (this.task === 'self') {
-        this.usersService.putSelf(this.user).subscribe(res => {
-          alert("Succesfully saved :)");
-          this.usersService.getSelf().subscribe(user => {
-            this.user = user;
-          });
-        }, error => alert(error));
-      } else if (this.task === 'add' && this.user['newPassword']) {
-        this.usersService.postUser(this.user).subscribe(res => {
-          alert("Succesfully saved add :)");
-        }, error => alert(error));
+        if (this.task === 'edit' && this.user_id) {
+          this.usersService.putUser(this.user_id, this.user).subscribe(res => {
+            alert("Succesfully saved edit");
+            this.usersService.getUser(this.user_id).subscribe(user => {
+              this.user = user;
+            });
+          }, error => alert(error));
+        } else if (this.task === 'self') {
+          this.usersService.putSelf(this.user).subscribe(res => {
+            alert("Succesfully saved :)");
+            this.usersService.getSelf().subscribe(user => {
+              this.user = user;
+            });
+          }, error => alert(error));
+        } else if (this.task === 'add' && this.user['newPassword']) {
+          this.usersService.postUser(this.user).subscribe(res => {
+            alert("Succesfully saved add :)");
+          }, error => alert(error));
+        }
       }
     }
 
 
-  }
 
 
 }

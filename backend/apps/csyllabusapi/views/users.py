@@ -105,6 +105,8 @@ class UserView(APIView):
     def get(self, request, user_id=-1, limit=-1, offset=-1):
         query_pairs = request.META['QUERY_STRING'].split('&')
 
+        sortby = 'username'
+        sortdirection = 'asc'
 
         for query_pair in query_pairs:
             query_pair_split = query_pair.split('=')
@@ -112,6 +114,10 @@ class UserView(APIView):
                 limit = int(query_pair_split[1])
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
+            elif query_pair_split[0] == 'sortby' and query_pair_split[1]!= 'undefined':
+                sortby = query_pair_split[1]
+            elif query_pair_split[0] == 'sortdirection' and query_pair_split[1]!= '':
+                sortdirection = query_pair_split[1]
 
         facultyId = 0
         if user_id >= 0:
@@ -133,7 +139,7 @@ class UserView(APIView):
                 pass
 
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
-                         'username': user.username, 'email': user.email,
+                         'username': user.username, 'email': user.email, 'modified': user.modified,
                          'facultyId':facultyId}
 
            # try:
@@ -151,6 +157,24 @@ class UserView(APIView):
            #     pass
 
             users_list.append(user_data)
+
+        if sortby == 'id':
+            if sortdirection == 'asc':
+                users_list.sort(key=lambda x: x['id'], reverse=False)
+            else:
+                users_list.sort(key=lambda x: x['id'], reverse=True)
+        elif sortby == 'modified':
+            if sortdirection == 'asc':
+                users_list.sort(key=lambda x: x['modified'], reverse=False)
+            else:
+                users_list.sort(key=lambda x: x['modified'], reverse=True)
+
+        else:
+            if sortdirection == 'asc':
+                users_list.sort(key=lambda x: x['username'], reverse=False)
+            else:
+                users_list.sort(key=lambda x: x['username'], reverse=True)
+
 
         if limit > 0 and offset >= 0:
             data['currentItemCount'] = limit
@@ -244,16 +268,16 @@ class UserView(APIView):
         result = {}
         users_list = []
 
+        print request.data
+        print request.data['email']
+
         try:
             #decoded_payload = utils.jwt_decode_handler(
             #    request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
             #user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
-            user = User.objects.create()
-            try:
-                user.username = request.data['username']
-            except:
-                pass
+            user = User.objects.create(username=request.data['username'], email=request.data['email'])
+
             try:
                 user.first_name = request.data['first_name']
             except:
@@ -262,10 +286,7 @@ class UserView(APIView):
                 user.last_name = request.data['last_name']
             except:
                 pass
-            try:
-                user.email = request.data['email']
-            except:
-                pass
+
             try:
                 user.set_password(request.data['newPassword'])
             except:
@@ -275,9 +296,12 @@ class UserView(APIView):
 
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
                          'username': user.username, 'email': user.email}
+
+            print user.email
             users_list.append(user_data)
             data['currentItemCount'] = 1
         except (IndexError, AttributeError) as e:
+
             data['currentItemCount'] = 0
 
         data['items'] = users_list
@@ -294,7 +318,12 @@ class UserView(APIView):
 @parser_classes((JSONParser,))
 class UserViewCourse(APIView):
     def get(self, request, user_id=-1, limit=-1, offset=-1):
+
         query_pairs = request.META['QUERY_STRING'].split('&')
+
+        sortby = 'name'
+        sortdirection = 'asc'
+
 
 
         for query_pair in query_pairs:
@@ -303,6 +332,12 @@ class UserViewCourse(APIView):
                 limit = int(query_pair_split[1])
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
+            elif query_pair_split[0] == 'sortby' and query_pair_split[1]!= 'undefined':
+                sortby = query_pair_split[1]
+            elif query_pair_split[0] == 'sortdirection' and query_pair_split[1]!= '':
+                sortdirection = query_pair_split[1]
+
+        #print sortby, sortdirection
 
         try:
             adminfaculty = AdminFaculty.objects.filter(user_id=user_id)[0]
@@ -327,7 +362,25 @@ class UserViewCourse(APIView):
 
                 courses_list.append(course_data)
 
-            courses_list.sort(key=lambda x: x['name'], reverse=False)
+
+
+            if sortby == 'id':
+                if sortdirection == 'asc':
+                    courses_list.sort(key=lambda x: x['id'], reverse=False)
+                else:
+                    courses_list.sort(key=lambda x: x['id'], reverse=True)
+            elif sortby=='modified':
+                if sortdirection == 'asc':
+                    courses_list.sort(key=lambda x: x['modified'], reverse=False)
+                else:
+                    courses_list.sort(key=lambda x: x['modified'], reverse=True)
+
+            else:
+                if sortdirection == 'asc':
+                    courses_list.sort(key=lambda x: x['name'], reverse=False)
+                else:
+                    courses_list.sort(key=lambda x: x['name'], reverse=True)
+
 
             if limit > 0 and offset >= 0:
                 data['currentItemCount'] = limit
@@ -372,7 +425,22 @@ class UserViewCourse(APIView):
 
                 courses_list.append(course_data)
 
-            courses_list.sort(key=lambda x: x['name'], reverse=False)
+            if sortby == 'id':
+                if sortdirection == 'asc':
+                    courses_list.sort(key=lambda x: x['id'], reverse=False)
+                else:
+                    courses_list.sort(key=lambda x: x['id'], reverse=True)
+            elif sortby=='modified':
+                if sortdirection == 'asc':
+                    courses_list.sort(key=lambda x: x['modified'], reverse=False)
+                else:
+                    courses_list.sort(key=lambda x: x['modified'], reverse=True)
+
+            else:
+                if sortdirection == 'asc':
+                    courses_list.sort(key=lambda x: x['name'], reverse=False)
+                else:
+                    courses_list.sort(key=lambda x: x['name'], reverse=True)
 
             if limit > 0 and offset >= 0:
                 data['currentItemCount'] = limit

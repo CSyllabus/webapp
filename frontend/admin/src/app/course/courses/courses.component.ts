@@ -115,7 +115,9 @@ export class CourseDataSource extends DataSource<Course> {
   }
 
   fetchData() {
+
     let offset = this._paginator.pageIndex * this._paginator.pageSize;
+    let sort = 'id'
     this.coursesService.getAllCoursesByUser(1, this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
       this.data.next(courses);
     });
@@ -124,7 +126,9 @@ export class CourseDataSource extends DataSource<Course> {
 
 
   deleteCourse(courseId) {
+
     this.coursesService.deleteCourse(courseId).subscribe(complete => {
+      alert('Course is deleted!');
       this.fetchData();
     });
   }
