@@ -11,6 +11,10 @@ urlpatterns = [
     url(r'^city', views.CityView.as_view(), name='city'),
     url(r'^country', views.CountryView.as_view(), name='country'),
     url(r'^university', views.UniversityView.as_view(), name='university'),
+    url(r'^comments/(?P<comment_id>[^/]+)', views.CommentsView.as_view(), name='comments'),
+    url(r'^comments', views.CommentsView.as_view(), name='comments'),
+
+    url(r'^courses/(?P<course_id>[^/]+)/comments', views.CommentsByCourseView.as_view(), name='comments'),
     url(r'^courses/(?P<course_id>[^/]+)', views.CourseView.as_view(), name='courses'),
     url(r'^programs/(?P<program_id>[^/]+)/courses', views.CourseByProgramView.as_view(), name='courses'),
     url(r'^courses', views.CourseView.as_view(), name='courses'),
