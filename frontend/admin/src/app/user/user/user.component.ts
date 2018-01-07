@@ -112,10 +112,10 @@ export class UserComponent implements OnInit {
         alert('Passwords do not match!');
         err=true;
       }
-      else if (!this.email.value){
+      /*else if (!this.email.value){
         alert('Please enter e-mail address');
         err=true;
-      }
+      }*/
 
       if(!err){
 
