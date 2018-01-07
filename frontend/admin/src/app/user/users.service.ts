@@ -47,6 +47,7 @@ export class UsersService {
    * @returns {Observable<R>}
    */
   getSelf(): Observable<User> {
+
     let headers = new Headers();
     let authToken = localStorage.getItem("auth_token");
     headers.append('Content-Type', 'application/json');
@@ -58,6 +59,7 @@ export class UsersService {
   }
 
   putUser(id: number, data): Observable<User> {
+    alert(data);
     return this.http.put(this.usersUrl + id, data)
       .map(res => res).catch(this.handleError);
   }

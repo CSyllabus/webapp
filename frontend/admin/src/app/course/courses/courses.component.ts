@@ -52,6 +52,8 @@ export class CoursesComponent implements OnInit {
       this.totalItems = count;
     });
 
+
+
     this.dataSource = new CourseDataSource(this.coursesService, this.sort, this.paginator);
   }
 
@@ -117,19 +119,21 @@ export class CourseDataSource extends DataSource<Course> {
   fetchData() {
 
     let offset = this._paginator.pageIndex * this._paginator.pageSize;
-    let sort = 'id'
-    this.coursesService.getAllCoursesByUser(1, this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
+    this.coursesService.getAllCoursesByUser(this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
       this.data.next(courses);
     });
   }
 
-
-
   deleteCourse(courseId) {
-
     this.coursesService.deleteCourse(courseId).subscribe(complete => {
-      alert('Course is deleted!');
-      this.fetchData();
+      let offset = this._paginator.pageIndex * this._paginator.pageSize;
+
+      this.coursesService.getAllCoursesByUser(this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
+
+        this.data.next(courses);
+      });
     });
+    this.fetchData();
   }
+
 }

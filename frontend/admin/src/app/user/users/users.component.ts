@@ -106,6 +106,7 @@ export class UserDataSource extends DataSource<User> {
   deleteUser(userId) {
     this.usersService.deleteUser(userId).subscribe(complete => {
       let offset = this._paginator.pageIndex * this._paginator.pageSize;
+
       this.usersService.getAllUsers(this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(users => {
         this.data.next(users);
       });

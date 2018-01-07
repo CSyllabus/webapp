@@ -10,6 +10,7 @@ from ..models import AdminUniversity
 from ..models import Faculty
 from ..models import University
 from ..models import CourseFaculty
+from ..models import CourseUniversity
 from ..models import Course
 
 from rest_framework.decorators import api_view, permission_classes
@@ -120,6 +121,8 @@ class UserView(APIView):
                 sortdirection = query_pair_split[1]
 
         facultyId = 0
+        universityId=0
+
         if user_id >= 0:
             users = User.objects.filter(id=user_id)
 
@@ -138,9 +141,16 @@ class UserView(APIView):
             except:
                 pass
 
+            try:
+                adminuniversity = AdminUniversity.objects.filter(user_id=user.id)[0]
+                #facultyId=Faculty.objects.filter(id=adminfaculty.faculty_id)[0]
+                universityId=adminuniversity.university_id
+            except:
+                pass
+
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
                          'username': user.username, 'email': user.email, 'modified': user.modified,
-                         'facultyId':facultyId}
+                         'facultyId':facultyId, 'universityId':universityId}
 
            # try:
             #    user_faculty = UserFaculty.objects.filter(user_id=user.id).select_related('faculty')[0]
@@ -199,6 +209,8 @@ class UserView(APIView):
         result = {}
         users_list = []
 
+        print request.data
+
         try:
             #decoded_payload = utils.jwt_decode_handler(
             #    request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
@@ -233,20 +245,20 @@ class UserView(APIView):
                 faculty = Faculty.objects.filter(id=faculty_id)
 
                 AdminFaculty.objects.create(faculty=faculty[0], user=user)
+                AdminUniversity.objects.filter(user=user).delete()
+
             except:
                 pass
-
 
             try:
                 university_id = request.data['university']
                 university = University.objects.filter(id=university_id)
 
                 AdminUniversity.objects.create(university=university[0], user=user)
+                AdminFaculty.objects.filter(user=user).delete()
+
             except:
                 pass
-
-
-
 
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
                          'username': user.username, 'email': user.email}
@@ -269,7 +281,9 @@ class UserView(APIView):
         users_list = []
 
         print request.data
-        print request.data['email']
+
+        print 'aaaaaaaa'
+
 
         try:
             #decoded_payload = utils.jwt_decode_handler(
@@ -317,91 +331,24 @@ class UserView(APIView):
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class UserViewCourse(APIView):
-    def get(self, request, user_id=-1, limit=-1, offset=-1):
+    def get(self, request, limit=-1, offset=-1):
+
+        #user = User.objects.filter(id=user_id)[0]
 
         query_pairs = request.META['QUERY_STRING'].split('&')
+
+        faculty_id=0
+        university_id=0
 
         sortby = 'name'
         sortdirection = 'asc'
 
-
-
-        for query_pair in query_pairs:
-            query_pair_split = query_pair.split('=')
-            if query_pair_split[0] == 'limit':
-                limit = int(query_pair_split[1])
-            elif query_pair_split[0] == 'offset':
-                offset = int(query_pair_split[1])
-            elif query_pair_split[0] == 'sortby' and query_pair_split[1]!= 'undefined':
-                sortby = query_pair_split[1]
-            elif query_pair_split[0] == 'sortdirection' and query_pair_split[1]!= '':
-                sortdirection = query_pair_split[1]
-
-        #print sortby, sortdirection
-
         try:
-            adminfaculty = AdminFaculty.objects.filter(user_id=user_id)[0]
-            # facultyId=Faculty.objects.filter(id=adminfaculty.faculty_id)[0]
-            faculty_id = adminfaculty.faculty_id
+            decoded_payload = utils.jwt_decode_handler(
+                request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+            user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
-            course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id).select_related(
-                'course').prefetch_related('faculty__university__country')
-            data = {}
-            result = {}
-
-
-            courses_list = []
-            for course_faculty in course_faculties:
-                course=course_faculty.course
-
-                course_data = {'id': course.id, 'name': course.name, 'description': course.description,
-                                'ects': course.ects, 'englishLevel': course.english_level,
-                                'semester': course.semester,
-                                   'modified': course.modified, 'created': course.created
-                                }
-
-                courses_list.append(course_data)
-
-
-
-            if sortby == 'id':
-                if sortdirection == 'asc':
-                    courses_list.sort(key=lambda x: x['id'], reverse=False)
-                else:
-                    courses_list.sort(key=lambda x: x['id'], reverse=True)
-            elif sortby=='modified':
-                if sortdirection == 'asc':
-                    courses_list.sort(key=lambda x: x['modified'], reverse=False)
-                else:
-                    courses_list.sort(key=lambda x: x['modified'], reverse=True)
-
-            else:
-                if sortdirection == 'asc':
-                    courses_list.sort(key=lambda x: x['name'], reverse=False)
-                else:
-                    courses_list.sort(key=lambda x: x['name'], reverse=True)
-
-
-            if limit > 0 and offset >= 0:
-                data['currentItemCount'] = limit
-                data['items'] = courses_list[offset:offset + limit]
-            elif limit > 0:
-                data['currentItemCount'] = limit
-                data['items'] = courses_list[0:limit]
-            elif offset >= 0:
-                count = len(courses_list)
-                data['currentItemCount'] = count
-                data['items'] = courses_list[offset:count]
-            else:
-                data['currentItemCount'] = len(courses_list)
-                data['items'] = courses_list
-
-            result['data'] = data
-            return Response(result)
-
-
-        except:
-            query_pairs = request.META['QUERY_STRING'].split('&')
+            print user.is_admin
 
             for query_pair in query_pairs:
                 query_pair_split = query_pair.split('=')
@@ -409,21 +356,71 @@ class UserViewCourse(APIView):
                     limit = int(query_pair_split[1])
                 elif query_pair_split[0] == 'offset':
                     offset = int(query_pair_split[1])
+                elif query_pair_split[0] == 'sortby' and query_pair_split[1]!= 'undefined':
+                    sortby = query_pair_split[1]
+                elif query_pair_split[0] == 'sortdirection' and query_pair_split[1]!= '':
+                    sortdirection = query_pair_split[1]
 
-            courses = Course.objects.all().order_by('name')
+            if(user.is_admin==False):
+                try:
+                    adminfaculty = AdminFaculty.objects.filter(user_id=user.id)[0]
+                    faculty_id = adminfaculty.faculty_id
 
-            data = {}
-            result = {}
-            courses_list = []
-            for course in courses:
-                course_data = {'id': course.id, 'name': course.name, 'description': course.description,
-                               'ects': course.ects, 'englishLevel': course.english_level,
-                               'semester': course.semester,
-                               'modified': course.modified, 'created': course.created
+                    courses = CourseFaculty.objects.filter(faculty_id=faculty_id)
+                except:
+                    pass
 
-                               }
+                try:
+                    adminuniversity = AdminUniversity.objects.filter(user_id=user.id)[0]
+                    university_id = adminuniversity.university_id
 
-                courses_list.append(course_data)
+                    courses = CourseUniversity.objects.filter(university_id=university_id)
+                except:
+                    pass
+
+                print faculty_id
+                print university_id
+
+                data = {}
+                result = {}
+
+                courses_list = []
+
+                for one_course in courses:
+                    course = one_course.course
+
+                    course_data = {'id': course.id, 'name': course.name, 'description': course.description,
+                                   'ects': course.ects, 'englishLevel': course.english_level,
+                                   'semester': course.semester,
+                                   'modified': course.modified, 'created': course.created
+                                   }
+
+                    courses_list.append(course_data)
+
+                    print course.id
+
+            #print courses_list
+
+
+
+            else:
+
+                courses = Course.objects.all().order_by('name')
+
+                data = {}
+                result = {}
+                courses_list = []
+                for course in courses:
+                    course_data = {'id': course.id, 'name': course.name, 'description': course.description,
+                                   'ects': course.ects, 'englishLevel': course.english_level,
+                                   'semester': course.semester,
+                                   'modified': course.modified, 'created': course.created
+
+                                   }
+
+                    courses_list.append(course_data)
+
+            print len(courses_list)
 
             if sortby == 'id':
                 if sortdirection == 'asc':
@@ -456,6 +453,11 @@ class UserViewCourse(APIView):
                 data['currentItemCount'] = len(courses_list)
                 data['items'] = courses_list
 
+
             result['data'] = data
+            return Response(result)
+
+        except:
+            result['data'] = []
             return Response(result)
 

@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/observable/throw';
 import {environment} from '../../environments/environment';
 import {Course} from './course';
@@ -24,13 +25,26 @@ export class CoursesService {
       .map(res => res.json().data.items as Course[]);
   }*/
 
-  getAllCoursesByUser(user_id, limit, offset, orderBy, orderDirection, filter):Observable<Course[]> {
-    return this.http.get(this.usersUrl +user_id+'/courses'+'?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection)
+  getAllCoursesByUser(limit, offset, orderBy, orderDirection, filter):Observable<Course[]> {
+
+    const headers = new Headers();
+    const authToken = localStorage.getItem('auth_token');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(this.usersUrl + 'courses?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection, options)
       .map(res => res.json().data.items as Course[]);
   }
 
   getCoursesCount(): Observable<number> {
-    return this.http.get(this.simpleCoursesUrl)
+    const headers = new Headers();
+    const authToken = localStorage.getItem('auth_token');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(this.usersUrl + 'courses', options)
       .map(res => res.json().data.currentItemCount as number);
   }
 

@@ -17,7 +17,7 @@
       <input matInput #filter placeholder="Filter resources">
     </mat-form-field>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort (sortChange)="console.log('eat shit')" style="margin-top: 50px;">
+  <mat-table #table [dataSource]="dataSource" matSort (sortChange)="console.log('sort')" style="margin-top: 50px;">
 
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>

@@ -55,7 +55,6 @@ export class UserComponent implements OnInit {
       if (this.task === 'edit' && this.user_id) {
         this.usersService.getUser(this.user_id).subscribe(user => {
           this.user = user;
-          console.log(user.facultyId);
         });
       } else if (this.task === 'self') {
         this.usersService.getSelf().subscribe(user => {
@@ -90,7 +89,10 @@ export class UserComponent implements OnInit {
                 }
                 if (flag) {
                   country.universities.push(university);
-                  console.log(university);
+                  if(university.id===this.user.universityId){
+                    this.selected=university.name;
+                  }
+                  //console.log(university);
                 }
               }
             }

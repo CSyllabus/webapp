@@ -147,11 +147,13 @@ export class CourseComponent implements OnInit {
       self.course = course;
 
       //alert(course);
-
+      if (course.keywords) {
       course.keywords.forEach(function (el) {
         let keyword = {value: el, remove: false};
         self.keywords.push(keyword);
       });
+      }
+
     });
   }
 
