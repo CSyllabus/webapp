@@ -1,9 +1,9 @@
-import { CoursesService } from './../../services/courses.service';
-import { Comment } from './../../classes/comment';
-import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from "angular4-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
-import { SocialUser } from "angular4-social-login";
+import {CoursesService} from './../../services/courses.service';
+import {Comment} from './../../classes/comment';
+import {Component, OnInit, Input} from '@angular/core';
+import {AuthService} from "angular4-social-login";
+import {FacebookLoginProvider, GoogleLoginProvider} from "angular4-social-login";
+import {SocialUser} from "angular4-social-login";
 
 @Component({
   selector: 'app-social',
@@ -11,15 +11,16 @@ import { SocialUser } from "angular4-social-login";
   styleUrls: ['./social.component.css']
 })
 export class SocialComponent implements OnInit {
-  private val:string;
+  private val: string;
   private comments: any = [];
   private user: SocialUser;
   private loggedIn: boolean;
   @Input() courseId: number;
 
-  constructor(private authService: AuthService,private coursesService: CoursesService) {
+  constructor(private authService: AuthService, private coursesService: CoursesService) {
 
-   }
+  }
+
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     console.log(this.user);
@@ -39,49 +40,47 @@ export class SocialComponent implements OnInit {
     console.log(this.loggedIn);
   }
 
-  newComment(user){
+  newComment(user) {
 
-    this.coursesService.insertAnewComment(this.courseId, {author: user,content: this.val}).subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.log("Error occured");
-        }
-      );
-    this.refreshComments();
+    this.coursesService.insertAnewComment(this.courseId, {author: user, content: this.val}).subscribe(
+      res => {
+        this.refreshComments();
+      },
+      err => {
+        this.refreshComments();
+      }
+    );
+
   }
 
-  deleteComment(commentId){
+  deleteComment(commentId) {
     this.coursesService.deleteComment(commentId).subscribe(
-
-      );
-    this.refreshComments();
+      res => {
+        this.refreshComments();
+      },
+      err => {
+        this.refreshComments();
+      }
+    )
   }
 
-  refreshComments(){
-    alert('refreshing');
-    this.comments=[];
+  refreshComments() {
+    this.comments = [];
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
-      this.comments=res;
-    })
+      this.comments = res;
+    });
   }
-
 
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
-      console.log(this.user);
       this.loggedIn = (user != null);
-      console.log(this.loggedIn);
-
     })
 
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
-      this.comments=res;
+      this.comments = res;
     })
-    console.log(this.comments)
 
   }
 

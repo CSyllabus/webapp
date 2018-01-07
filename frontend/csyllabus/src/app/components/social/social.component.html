@@ -1,58 +1,52 @@
 <div class="sharepart">
   <h3>Share this Syllabus with your friends:</h3>
-<share-buttons  [defaultStyle]
-[pinterest]="false"
-[stumbleUpOn]="false"
-[reddit]="false"
-[tumblr]="false"
->
-<!-- [title]="title" [description]="description" [image]="image"-->
-</share-buttons>
+  <share-buttons [defaultStyle]
+                 [pinterest]="false"
+                 [stumbleUpOn]="false"
+                 [reddit]="false"
+                 [tumblr]="false"
+  >
+
+  </share-buttons>
 </div>
 
-<div class ="commentspart">
-    <h3>Comment this Syllabus:</h3>
-<ng-container *ngIf="user;then content else other_content">here is ignored</ng-container>
+<div class="commentspart">
+  <h3>Comment this Syllabus:</h3>
 
-<!-- The following is shown if the user is logged ing -->
-    <ng-template  #content>
-        <h6 class="card-header">
-            Comments Available
-        </h6>
-        <div class="commentscontainer" *ngIf="comments">
-            <div *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page">
-              <p>{{comment.author}}: {{ comment.content }}</p>
-              <p (click)="deleteComment(comment.id)">DELETE</p>
-            </div>
-        </div>
-        <div class="newcomment">
+  <div class="commentscontainer" *ngIf="comments">
+    <div *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page">
+      <p>{{comment.author}}: {{ comment.content }}</p>
+      <p (click)="deleteComment(comment.id)">DELETE</p>
+    </div>
+  </div>
+  <!-- The following is shown if the user is logged ing -->
+  <div *ngIf="user">
 
-          <input [(ngModel)]="val">
+    <div class="newcomment">
 
-          <button (click)="newComment(user.name)">aa</button>
+      <input [(ngModel)]="val">
 
-        </div>
-        <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
-        <div class="card-block">
-          <h4 class="card-title">{{ user.name }}</h4>
-          <p class="card-text">{{ user.email }}</p>
-        </div>
-        <div class="card-block">
-          <button class="btn btn-danger" (click)="signOut()">Sign out</button>
-        </div>
-    </ng-template>
-<!-- The following is shown if the user is not logged ing -->
-    <ng-template #other_content>
-        <h6 class="card-header">
-            Comments not Available
-          </h6>
-          <div class="card-block">
-            <h4 class="card-title">Not signed in yet</h4>
-            <p class="card-text">Sign in with</p>
-          </div>
-          <div class="card-block">
-            <button class="Googlebutton" (click)="signInWithGoogle()"></button>
-            <button class="Facebookbutton" (click)="signInWithFB()"></button>
-          </div>
-    </ng-template>
+      <button (click)="newComment(user.name)">aa</button>
+
+    </div>
+    <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+    <div class="card-block">
+      <h4 class="card-title">{{ user.name }}</h4>
+      <p class="card-text">{{ user.email }}</p>
+    </div>
+    <div class="card-block">
+      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+    </div>
+  </div>
+  <!-- The following is shown if the user is not logged ing -->
+  <div *ngIf="!user">
+    <div class="card-block">
+      <h4 class="card-title">Not signed in yet</h4>
+      <p class="card-text">Sign in with</p>
+    </div>
+    <div class="card-block">
+      <button class="Googlebutton" (click)="signInWithGoogle()"></button>
+      <button class="Facebookbutton" (click)="signInWithFB()"></button>
+    </div>
+  </div>
 

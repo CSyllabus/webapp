@@ -3,14 +3,14 @@
   }
 .commentspart{
   width: 100%;
-}  
+}
 .newcomment{
   width: 100%;
   margin: 30px;
-} 
+}
 .newcommentform{
   width: 100%;
-} 
+}
 .comment{
   width: 80%;
   float: left;
@@ -23,11 +23,11 @@
   :host {
     height: 100%;
   }
-  
+
   .photo {
     object-fit: contain;
   }
-  
+
   .card {
     width: 20rem;
     margin: 0 auto;
@@ -35,10 +35,10 @@
   .Facebookbutton{
     height: 40px;
     width: 40px;
-    background-image: url('Facebookicon.svg');
+    background-image: url('Facebookicon.svg.png');
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
-    background-position: center center;  
+    background-position: center center;
   }
   button:hover{
     background-color: rgba(0, 0, 255, 0.241);
@@ -49,5 +49,5 @@
     background-image: url('Google-plus-icon.png');
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
-    background-position: center center;  
+    background-position: center center;
   }

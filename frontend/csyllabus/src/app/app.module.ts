@@ -31,14 +31,14 @@ import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-logi
 import { SocialComponent } from './components/social/social.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 let config = new AuthServiceConfig([
- 
+
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com") 
+    provider: new GoogleLoginProvider("624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com")
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("1719887741366175")
+    provider: new FacebookLoginProvider("1924326714550299")
   }
 ]);
 
