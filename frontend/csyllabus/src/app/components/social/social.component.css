@@ -1,0 +1,61 @@
+.bg-transparent {
+    background-color: transparent;
+  }
+.commentspart{
+  width: 100%;
+}
+.newcomment{
+  width: 100%;
+  margin: 30px;
+}
+.newcommentform{
+  width: 100%;
+}
+.comment{
+  width: 80%;
+  float: left;
+  padding:30px;
+}
+.submit{
+  float: left;
+  margin-top:40px;
+}
+  :host {
+    height: 100%;
+  }
+
+  .photo {
+    object-fit: contain;
+  }
+
+  .card {
+    width: 20rem;
+    margin: 0 auto;
+  }
+  .Facebookbutton{
+    height: 40px;
+    width: 40px;
+    background-image: url('Facebookicon.svg.png');
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  button:hover{
+    background-color: rgba(0, 0, 255, 0.241);
+  }
+  .Googlebutton{
+    height: 40px;
+    width: 40px;
+    background-image: url('Google-plus-icon.png');
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+
+  .sharepart, .commentspart {
+    text-align: left;
+  }
+
+  .example-full-width{
+    width: 500px;
+  }
