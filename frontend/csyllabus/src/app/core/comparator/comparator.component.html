@@ -18,7 +18,7 @@
             </mat-optgroup>
           </mat-select>
         </mat-form-field>
-
+        <mat-spinner style="margin:auto;" *ngIf="loadingCourses"></mat-spinner>
         <div *ngIf="(queryHomeUniversity || queryHomeFaculty) && filteredHomeCourses.length > 0 ">
           <mat-form-field *ngIf="listCourses.length == 0" class="input" style="width:80%">
             <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
