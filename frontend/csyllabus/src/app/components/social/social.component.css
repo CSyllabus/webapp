@@ -1,7 +1,25 @@
 .bg-transparent {
     background-color: transparent;
   }
-  
+.commentspart{
+  width: 100%;
+}  
+.newcomment{
+  width: 100%;
+  margin: 30px;
+} 
+.newcommentform{
+  width: 100%;
+} 
+.comment{
+  width: 80%;
+  float: left;
+  padding:30px;
+}
+.submit{
+  float: left;
+  margin-top:40px;
+}
   :host {
     height: 100%;
   }
