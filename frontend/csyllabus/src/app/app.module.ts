@@ -1,34 +1,34 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {FormsModule, FormControl, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 
 
-import { CoreModule } from './core/core.module';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { AppComponent } from './app.component';
-import { CoreComponent} from './core/core.component';
-import { CourseComponent } from './components/course/course.component';
+import {CoreModule} from './core/core.module';
+import {AngularMaterialModule} from './angular-material/angular-material.module';
+import {AppComponent} from './app.component';
+import {CoreComponent} from './core/core.component';
+import {CourseComponent} from './components/course/course.component';
 
-import { CountriesService } from './services/countries.service';
-import { CitiesService } from './services/cities.service';
-import { CoursesService } from './services/courses.service';
-import { FacultiesService } from './services/faculties.service';
-import { ProgramsService } from './services//programs.service';
-import { UniversitiesService } from './services/universities.service';
+import {CountriesService} from './services/countries.service';
+import {CitiesService} from './services/cities.service';
+import {CoursesService} from './services/courses.service';
+import {FacultiesService} from './services/faculties.service';
+import {ProgramsService} from './services//programs.service';
+import {UniversitiesService} from './services/universities.service';
 import {ROUTES} from './app.routes';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { FooterComponent } from './components/footer/footer.component'
+import {NotFoundComponent} from './components/not-found/not-found.component';
+import {AboutComponent} from './components/about/about.component';
+import {ContactComponent} from './components/contact/contact.component';
+import {FooterComponent} from './components/footer/footer.component'
 import {DocumentationComponent} from './components/documentation/documentation.component';
-import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
-import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
-import { SocialComponent } from './components/social/social.component';
+import {SocialLoginModule, AuthServiceConfig} from "angular4-social-login";
+import {GoogleLoginProvider, FacebookLoginProvider} from "angular4-social-login";
+import {SocialComponent} from './components/social/social.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 let config = new AuthServiceConfig([
 
@@ -42,7 +42,7 @@ let config = new AuthServiceConfig([
   }
 ]);
 
-export function provideConfig(){
+export function provideConfig() {
   return config;
 }
 
@@ -57,7 +57,7 @@ export function provideConfig(){
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
-   ShareButtonsModule.forRoot(),
+    ShareButtonsModule.forRoot(),
   ],
   providers: [
     CountriesService,
@@ -70,7 +70,7 @@ export function provideConfig(){
       provide: AuthServiceConfig,
       useFactory: provideConfig
     }
-   ],
+  ],
   declarations: [
     AppComponent,
     CourseComponent,
@@ -85,4 +85,5 @@ export function provideConfig(){
   bootstrap: [AppComponent],
 })
 
-export class AppModule { }
+export class AppModule {
+}

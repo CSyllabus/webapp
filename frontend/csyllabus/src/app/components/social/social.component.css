@@ -51,3 +51,11 @@
     background-repeat:   no-repeat;
     background-position: center center;
   }
+
+  .sharepart, .commentspart {
+    text-align: left;
+  }
+
+  .example-full-width{
+    width: 500px;
+  }

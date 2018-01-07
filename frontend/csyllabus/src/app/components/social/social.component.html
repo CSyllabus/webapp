@@ -11,37 +11,25 @@
 </div>
 
 <div class="commentspart">
-  <h3>Comment this Syllabus:</h3>
-
-  <div class="commentscontainer" *ngIf="comments">
-    <div *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page">
-      <p>{{comment.author}}: {{ comment.content }}</p>
-      <p (click)="deleteComment(comment.id)">DELETE</p>
-    </div>
-  </div>
   <!-- The following is shown if the user is logged ing -->
   <div *ngIf="user">
-
-    <div class="newcomment">
-
-      <input [(ngModel)]="val">
-
-      <button (click)="newComment(user.name)">aa</button>
-
+    <div style="display: inline-block;">
+      <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}" style="height: 100px;">
     </div>
-    <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
-    <div class="card-block">
-      <h4 class="card-title">{{ user.name }}</h4>
-      <p class="card-text">{{ user.email }}</p>
+    <div style="display: inline-block;">
+      <div class="card-block">
+        <h4 class="card-title">{{ user.name }}</h4>
+        <p class="card-text">{{ user.email }}</p>
+      </div>
+        <button  (click)="signOut()">Sign out</button>
     </div>
-    <div class="card-block">
-      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
-    </div>
+
   </div>
   <!-- The following is shown if the user is not logged ing -->
+
   <div *ngIf="!user">
     <div class="card-block">
-      <h4 class="card-title">Not signed in yet</h4>
+      <h4 class="card-title">To comment please sign in</h4>
       <p class="card-text">Sign in with</p>
     </div>
     <div class="card-block">
@@ -50,3 +38,25 @@
     </div>
   </div>
 
+  <div *ngIf="user">
+      <h3>Comment this Syllabus:</h3>
+    <mat-form-field class="example-full-width">
+      <input matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button (click)="newComment(user.name)">
+      POST
+    </button>
+  </div>
+
+  <div class="commentscontainer" *ngIf="comments">
+    <mat-card *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page" style="border: 1px solid #a4a4a4; padding: 10px;
+margin: 10px 0;">
+      <button mat-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
+    DELETE</button>
+      <p>{{comment.author}}: {{ comment.content }}</p>
+
+    </mat-card>
+  </div>
+
+</div>
