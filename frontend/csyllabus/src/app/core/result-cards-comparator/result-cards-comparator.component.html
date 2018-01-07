@@ -32,7 +32,7 @@
         <div *ngFor="let coursetest of course; let first = first;" >
           <mat-card *ngIf="!first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
             <mat-card-title>
-              <span style="float:left"><b> {{coursetest.result * 100 | number : '1.2-2'}} </b></span>
+                <span style="float:left; font-size: 20px;"><b>  {{coursetest.result * 100 | number : '1.2-2'}}/100 </b></span>
               {{coursetest.name}}
             </mat-card-title>
             <mat-card-subtitle *ngIf="!first">
