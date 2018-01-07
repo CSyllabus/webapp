@@ -195,7 +195,7 @@ p {
 
 .section-heading > h2 {
     font-weight: 300;
-    color: #5b32b4;
+    color: #2B5A96;
     font-size: 48px;
     margin: 0;
 }
@@ -209,7 +209,7 @@ p {
 .line-shape {
     width: 80px;
     height: 2px;
-    background-color: #fb397d;
+    background-color: #2B5A96;
     margin-top: 15px;
 }
 
@@ -509,12 +509,12 @@ p {
 
 .single-icon > i {
     font-size: 36px;
-    color: #fb397d;
+    color: #39a288;
 }
 
 .single-special > h4 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #2B5A96;
 }
 
 .single-icon {
@@ -523,12 +523,12 @@ p {
 
 .single-special > h4 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #2B5A96;
     margin-bottom: 15px;
 }
 
 .single-special {
-    border: 1px solid #eff2f6;
+    border: 1px solid #2B5A96;
     padding: 40px;
     border-radius: 40px 40px 40px 0px;
     -webkit-transition-duration: 800ms;
@@ -538,7 +538,7 @@ p {
 }
 
 .special_description_content > h2 {
-    color: #5b32b4;
+    color: #2B5A96;
     font-size: 48px;
     margin-bottom: 30px;
 }
@@ -588,7 +588,7 @@ p {
 }
 
 .app-download-btn a i {
-    color: #47425d;
+    color: #39a288;
     font-size: 24px;
     margin-right: 15px;
     -webkit-transition-duration: 500ms;
@@ -633,7 +633,7 @@ p {
 }
 
 .single-feature > i {
-    color: #fb397d;
+    color: #2B5A96;
     font-size: 30px;
     display: inline-block;
     float: left;
@@ -642,7 +642,7 @@ p {
 
 .single-feature > h5 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #2B5A96;
 }
 
 .single-feature > p {
@@ -710,12 +710,7 @@ p {
 .cool_facts_area {
     position: relative;
     z-index: auto;
-    background: #a865e1;
-    background: -webkit-linear-gradient(to left, #7873ed, #a865e1);
-    background: -webkit-linear-gradient(right, #7873ed, #a865e1);
-    background: -webkit-gradient(linear, right top, left top, from(#7873ed), to(#a865e1));
-    background: -o-linear-gradient(right, #7873ed, #a865e1);
-    background: linear-gradient(to left, #7873ed, #a865e1);
+    background: #2B5A96;
     padding: 80px 0 80px 0;
 }
 
@@ -882,14 +877,14 @@ p {
 -------------------------- */
 
 .clients-feedback-area .client-name > h5 {
-    color: #5b32b4;
+    color: #2B5A96;
     font-size: 22px;
     margin-top: 5px;
 }
 
 .clients-feedback-area .star-icon > i {
     font-size: 18px;
-    color: #f1b922;
+    color: #2B5A96;
 }
 
 .clients-feedback-area .client-description > p {
@@ -995,12 +990,7 @@ p {
 -------------------------- */
 
 .our-monthly-membership {
-    background: #a865e1;
-    background: -webkit-linear-gradient(to left, #7873ed, #a865e1);
-    background: -webkit-linear-gradient(right, #7873ed, #a865e1);
-    background: -webkit-gradient(linear, right top, left top, from(#7873ed), to(#a865e1));
-    background: -o-linear-gradient(right, #7873ed, #a865e1);
-    background: linear-gradient(to left, #7873ed, #a865e1);
+    background: #2B5A96;
 }
 
 .membership-description > h2 {
@@ -1020,13 +1010,13 @@ p {
     display: inline-block;
     text-align: center;
     line-height: 45px;
-    color: #fb397d;
+    color: #39a288;
     font-weight: 500;
     border-radius: 23px 23px 23px 0;
 }
 
 .get-started-button > a:hover {
-    background: #5b32b4;
+    background: #39a288;
     color: #fff;
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;
@@ -1054,11 +1044,11 @@ p {
 
 .member-text > h4 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #2B5A96;
 }
 
 .member-text > p {
-    color: #b5aec4;
+    color: #2B5A96;
     margin-bottom: 0;
 }
 
