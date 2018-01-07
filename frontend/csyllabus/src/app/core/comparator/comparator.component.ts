@@ -199,7 +199,6 @@ export class ComparatorComponent implements OnInit {
       this.listCourses = [];
       this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
-
       this.loadingCourses = false;
 
     });
@@ -291,6 +290,7 @@ export class ComparatorComponent implements OnInit {
   addCourseToList(course) {
     if (course.id && (this.listCourses.indexOf(course) == -1)) {
       this.listCourses.push(course);
+
     }
   }
 
@@ -303,7 +303,7 @@ export class ComparatorComponent implements OnInit {
     if(course)
     return course.name;
     else
-      return "Select a course";
+      return "";
 }
 
 
