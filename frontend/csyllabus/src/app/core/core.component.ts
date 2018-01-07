@@ -106,4 +106,17 @@ export class CoreComponent implements OnInit {
     }, 100);
 
   }
+
+
+  getStarted(action: string) {
+
+    setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('start')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
+
+  }
 }
