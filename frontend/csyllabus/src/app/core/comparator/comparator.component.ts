@@ -83,6 +83,7 @@ export class ComparatorComponent implements OnInit {
 
   ngOnInit() {
     this.filteredHomeCourses = new Array<Course>();
+    this.filteredHomeCoursesAutocomplete = new Observable<Course[]>();
     this.queryHomeCourse = new Course;
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
@@ -110,10 +111,10 @@ export class ComparatorComponent implements OnInit {
       });
     });
 
+
     this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
       .pipe(
-        startWith({} as Course),
-        map(course => course ),
+        startWith(''),
         map(name => name ? this.filter(name.toString()) : this.filteredHomeCourses.slice())
       );
   }
@@ -198,6 +199,7 @@ export class ComparatorComponent implements OnInit {
       this.listCourses = [];
       this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+
       this.loadingCourses = false;
 
     });
@@ -298,6 +300,11 @@ export class ComparatorComponent implements OnInit {
   }
 
   displayFn(course: Course): String {
-    return course.name;  }
+    if(course)
+    return course.name;
+    else
+      return "Select a course";
+}
+
 
 }
