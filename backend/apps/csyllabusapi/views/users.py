@@ -37,8 +37,26 @@ class UserViewSelf(APIView):
             decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
             user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
+            facultyId=0
+            universityId=0
+
+            try:
+                adminfaculty = AdminFaculty.objects.filter(user_id=user.id)[0]
+                #facultyId=Faculty.objects.filter(id=adminfaculty.faculty_id)[0]
+                facultyId=adminfaculty.faculty_id
+            except:
+                pass
+
+            try:
+                adminuniversity = AdminUniversity.objects.filter(user_id=user.id)[0]
+                #facultyId=Faculty.objects.filter(id=adminfaculty.faculty_id)[0]
+                universityId=adminuniversity.university_id
+            except:
+                pass
+
             user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
-                         'username': user.username, 'email': user.email}
+                         'username': user.username, 'email': user.email, 'universityId': universityId,
+                         'facultyId':facultyId}
             users_list.append(user_data)
             data['currentItemCount'] = 1
         except (IndexError, AttributeError) as e:
@@ -56,6 +74,9 @@ class UserViewSelf(APIView):
         users_list = []
 
         print request.data['username']
+
+        faculty_id=0
+        university_id=0
 
         try:
             decoded_payload = utils.jwt_decode_handler(
@@ -81,6 +102,26 @@ class UserViewSelf(APIView):
             try:
                 new_password = request.data['newPassword']
                 user.set_password(new_password)
+            except:
+                pass
+
+            try:
+                faculty_id = request.data['faculty']
+                faculty = Faculty.objects.filter(id=faculty_id)
+
+                AdminFaculty.objects.create(faculty=faculty[0], user=user)
+                AdminUniversity.objects.filter(user=user).delete()
+
+            except:
+                pass
+
+            try:
+                university_id = request.data['university']
+                university = University.objects.filter(id=university_id)
+
+                AdminUniversity.objects.create(university=university[0], user=user)
+                AdminFaculty.objects.filter(user=user).delete()
+
             except:
                 pass
 
