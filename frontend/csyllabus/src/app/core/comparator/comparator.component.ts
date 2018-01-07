@@ -2,8 +2,11 @@ import {Component, OnInit, Output, EventEmitter, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/startWith';
+import {startWith} from 'rxjs/operators/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
+import {map} from 'rxjs/operators/map';
+import {Observable} from 'rxjs/Observable';
+
 const COMMA = 188;
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
 import {CountriesService} from '../../services/countries.service';
@@ -44,7 +47,7 @@ export class ComparatorComponent implements OnInit {
   filteredHomeFaculties: Faculty[];
   filteredHomePrograms: Program[];
   filteredHomeCourses: Course[];
-
+  filteredHomeCoursesAutocomplete: Observable<Course[]>;
   coursesControl: FormControl = new FormControl();
   citiesControl: FormControl = new FormControl();
   universitiesControl: FormControl = new FormControl();
@@ -64,7 +67,7 @@ export class ComparatorComponent implements OnInit {
   queryProgram: Program;
   queryHomeProgram: Program;
   queryLevel: string;
-
+  loadingCourses: boolean;
   queryHomeCourse: Course;
   listCourses: any = [];
   listCoursesIDs: any = [0, 0, 0, 0, 0];
@@ -75,9 +78,13 @@ export class ComparatorComponent implements OnInit {
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
               private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private programsService: ProgramsService,
               private dialog: MatDialog, public snackBar: MatSnackBar) {
+
   }
 
   ngOnInit() {
+    this.filteredHomeCourses = new Array<Course>();
+    this.filteredHomeCoursesAutocomplete = new Observable<Course[]>();
+    this.queryHomeCourse = new Course;
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
@@ -103,6 +110,13 @@ export class ComparatorComponent implements OnInit {
         });
       });
     });
+
+
+    this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(name => name ? this.filter(name.toString()) : this.filteredHomeCourses.slice())
+      );
   }
 
   filterCitiesByCountry() {
@@ -156,22 +170,37 @@ export class ComparatorComponent implements OnInit {
   }
 
   filterCoursesByHomeProgram() {
+    this.loadingCourses = true;
     this.coursesService.getCoursesByProgram(1).subscribe(courses => {
       this.filteredHomeCourses = courses;
+      this.loadingCourses = false;
     });
   }
 
   filterCoursesByHomeFaculty() {
+
+    this.loadingCourses = true;
     this.coursesService.getCoursesByFaculty(this.queryHomeFaculty.id, 0).subscribe(courses => {
       this.listCourses = [];
+      this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+      this.loadingCourses = false;
+
     });
   }
 
   filterCoursesByHomeUniversity() {
+
+
+    console.log(this.listCourses);
+    this.loadingCourses = true;
+
     this.coursesService.getCoursesByUniversity(this.queryHomeUniversity.id, 0).subscribe(courses => {
       this.listCourses = [];
+      this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+      this.loadingCourses = false;
+
     });
   }
 
@@ -248,7 +277,7 @@ export class ComparatorComponent implements OnInit {
         }
       }
     } else {
-       this.dialog.open(SearchDialogComponent, {
+      this.dialog.open(SearchDialogComponent, {
         width: '250px', data: {}
       });
     }
@@ -261,7 +290,21 @@ export class ComparatorComponent implements OnInit {
   addCourseToList(course) {
     if (course.id && (this.listCourses.indexOf(course) == -1)) {
       this.listCourses.push(course);
+
     }
   }
+
+  filter(name: string): Course[] {
+    return this.filteredHomeCourses.filter(option =>
+      option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+  }
+
+  displayFn(course: Course): String {
+    if(course)
+    return course.name;
+    else
+      return "";
+}
+
 
 }

@@ -1,10 +1,13 @@
+
+
+
 <form (keyup.enter)="exploreCourses()" style="position: relative; overflow: auto;">
   <div>
     <p class="custom-card-title">Explore courses from a university</p>
     <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
       <br>
       <div class="forms-group">
-        <mat-form-field class="input">
+        <mat-form-field class="input" >
           <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
               <mat-option [value]="country"
