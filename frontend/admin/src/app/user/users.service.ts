@@ -72,9 +72,21 @@ export class UsersService {
     headers.append('Authorization', `JWT ${authToken}`);
     let options = new RequestOptions({headers: headers});
 
-    console.log('aaa');
 
     return this.http.get(this.usersUrl +'check', options)
+      .map(res => res.json().data.admin as boolean);
+
+  }
+
+
+  checkUserCourse(courseId):Observable<any>{
+    let headers = new Headers();
+    let authToken = localStorage.getItem("auth_token");
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(this.usersUrl +'check/'+courseId, options)
       .map(res => res.json().data.admin as boolean);
 
   }

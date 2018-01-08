@@ -526,7 +526,71 @@ class UserCheckView(APIView):
             data['admin']=user.is_admin
             result['data'] = data
 
-            #print result
+            return Response(result)
+
+
+        except:
+            result['data'] = []
+            return Response(result)
+
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class UserCheckCourseView(APIView):
+    def get(self, request, course_id=-1):
+
+        data = {}
+        result = {}
+
+        try:
+            decoded_payload = utils.jwt_decode_handler(
+                request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+            user = User.objects.filter(id=decoded_payload['user_id'])[0]
+
+            allow_access=False
+
+            if(user.is_admin):
+                allow_access=True
+
+            else:
+                faculty_id=0
+                university_id=0
+
+                try:
+                    coursefaculty = CourseFaculty.objects.filter(course_id=course_id)[0]
+                    faculty_id = coursefaculty.faculty_id
+                except:
+                    pass
+
+                try:
+                    courseuniversity = CourseUniversity.objects.filter(course_id=course_id)[0]
+                    university_id = courseuniversity.university_id
+                except:
+                    pass
+
+                if (faculty_id>0):
+                    try:
+                        adminfaculty = AdminFaculty.objects.filter(user_id=user.id)[0]
+
+                        if(adminfaculty.faculty_id==faculty_id):
+                            allow_access=True
+                    except:
+                        pass
+
+
+                if (university_id>0):
+                    try:
+                        adminuniversity = AdminUniversity.objects.filter(user_id=user.id)[0]
+
+                        if(adminuniversity.university_id==university_id):
+                            allow_access=True
+
+                    except:
+                        pass
+
+            data['admin'] = allow_access
+            result['data'] = data
+
             return Response(result)
 
 

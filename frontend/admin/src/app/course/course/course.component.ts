@@ -33,6 +33,7 @@ export class CourseComponent implements OnInit {
   keywords: any = [];
   keywordInput: string = "";
   countries: Country[];
+  allow_access: boolean;
   universities: University[];
   faculties: Faculty[];
   selected: string = 'Select University/Faculty';
@@ -45,6 +46,9 @@ export class CourseComponent implements OnInit {
   ngOnInit() {
     self = this;
     this.course = new Course();
+
+
+
     this.route.params.subscribe(params => {
       self.course_id = +params['id'];
       self.task = params['task'];
@@ -142,6 +146,12 @@ export class CourseComponent implements OnInit {
   }
 
   fetchCourseData(course_id) {
+
+    this.usersService.checkUserCourse(course_id).subscribe(res => {
+        this.allow_access=res;
+
+    });
+
     self.keywords = [];
     self.coursesService.getCourse(course_id).subscribe(course => {
       self.course = course;

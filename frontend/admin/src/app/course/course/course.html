@@ -84,7 +84,7 @@
 
   </div>
   <mat-card-actions style="text-align: center;">
-    <button mat-button *ngIf="course.id" (click)="saveCourse(true)">
+    <button [disabled]="!allow_access" mat-button *ngIf="course.id" (click)="saveCourse(true)">
       <mat-icon>save</mat-icon>
       SAVE
     </button>

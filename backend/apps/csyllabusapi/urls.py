@@ -31,6 +31,7 @@ urlpatterns = [
 
     url(r'^users/self', views.UserViewSelf.as_view(), name='user'),
     url(r'^users/courses', views.UserViewCourse.as_view(), name='user'),
+    url(r'^users/check/(?P<course_id>[^/]+)', views.UserCheckCourseView.as_view(), name='user'),
     url(r'^users/check', views.UserCheckView.as_view(), name='user'),
 
     url(r'^users/(?P<user_id>[^/]+)', views.UserView.as_view(), name='user'),

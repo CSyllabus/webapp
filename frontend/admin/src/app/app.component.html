@@ -38,7 +38,7 @@
               <mat-icon style="margin-right: 32px">book</mat-icon>
               <span style="position: absolute;line-height: 24px;">Courses</span>
             </a>
-            <a class="sidebar-link" [routerLink]="['users']" [routerLinkActive]="['active']">
+            <a *ngIf="isadmin" class="sidebar-link" [routerLink]="['users']" [routerLinkActive]="['active']">
               <mat-icon style="margin-right: 32px">supervisor_account</mat-icon>
               <span style="position: absolute;line-height: 24px;">Users</span>
             </a>
