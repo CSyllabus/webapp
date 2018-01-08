@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularMaterialModule} from './../angular-material/angular-material.module';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-core',
@@ -12,11 +13,12 @@ export class CoreComponent implements OnInit {
   backgroundImage: String = null;
   explorerTab: boolean;
   comparatorTab: boolean;
+  getStart:boolean = false;
   chooserSelectedExplorer: Boolean;
   chooserSelectedComparator: Boolean;
 
 
-  constructor() {
+  constructor(private router: Router, private route: ActivatedRoute) {
   }
 
 
@@ -24,25 +26,6 @@ export class CoreComponent implements OnInit {
     this.explorerTab = true;
     this.comparatorTab = false;
 
-    var str = "<p>We have 586 courses from 4 universities!</p>",
-      i = 0,
-      isTag,
-      text;
-
-
-    (function type() {
-      text = str.slice(0, ++i);
-      if (text === str) return;
-
-      document.getElementById('typewriter').innerHTML = text;
-
-      var char = text.slice(-1);
-      if (char === '<') isTag = true;
-      if (char === '>') isTag = false;
-
-      if (isTag) return type();
-      setTimeout(type, 80);
-    }());
   }
 
   changeBackgroundImage($event) {
@@ -110,6 +93,8 @@ export class CoreComponent implements OnInit {
 
   getStarted(action: string) {
 
+    this.getStart=true;
+
     setTimeout(function () {
       (<HTMLInputElement>document.getElementById('start')).scrollIntoView({
         behavior: 'smooth',
@@ -118,5 +103,33 @@ export class CoreComponent implements OnInit {
       });
     }, 100);
 
+
+
+
+
+
+  }
+
+  startString()
+  {
+
+    var str = "<p>We have 586 courses from 4 universities!</p>",
+      i = 0,
+      isTag,
+      text;
+
+    (function type() {
+      text = str.slice(0, ++i);
+      if (text === str) return;
+
+      document.getElementById('typewriter').innerHTML = text;
+
+      var char = text.slice(-1);
+      if (char === '<') isTag = true;
+      if (char === '>') isTag = false;
+
+      if (isTag) return type();
+      setTimeout(type, 80);
+    }());
   }
 }
