@@ -19,6 +19,7 @@ export class SocialComponent implements OnInit {
   @Input() university: string;
   @Input() country: string;
   @Input() description: string;
+  private url: string;
 
   constructor(private authService: AuthService, private coursesService: CoursesService) {
 
@@ -80,6 +81,7 @@ export class SocialComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     })
+    this.url = "https://csyllabus.com/demo/course/"+this.courseId;
 
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
       this.comments = res;
