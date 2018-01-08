@@ -18,7 +18,14 @@ export class UsersService {
    * @returns {Observable<R>}
    */
   getAllUsers(limit, offset, orderBy, orderDirection, filter): Observable<User[]> {
-    return this.http.get(this.usersUrl + '?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection)
+
+    let headers = new Headers();
+    let authToken = localStorage.getItem("auth_token");
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(this.usersUrl + '?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection, options)
       .map(res => res.json().data.items as User[]);
   }
 
@@ -58,9 +65,28 @@ export class UsersService {
       .map(res => res.json().data.items[0] as User);
   }
 
+  checkUser():Observable<any>{
+    let headers = new Headers();
+    let authToken = localStorage.getItem("auth_token");
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    let options = new RequestOptions({headers: headers});
+
+    console.log('aaa');
+
+    return this.http.get(this.usersUrl +'check', options)
+      .map(res => res.json().data.admin as boolean);
+
+  }
+
   putUser(id: number, data): Observable<User> {
-    alert(data);
-    return this.http.put(this.usersUrl + id, data)
+    let headers = new Headers();
+    let authToken = localStorage.getItem("auth_token");
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.put(this.usersUrl + id, data, options)
       .map(res => res).catch(this.handleError);
   }
 

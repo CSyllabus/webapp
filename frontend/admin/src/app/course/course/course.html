@@ -21,11 +21,11 @@
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
 
               <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (click)="course.university = university.id;">
+                          (click)="course.university = university.id; course.faculty = 0">
                 {{university.name}}
               </mat-option>
               <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (click)="course.faculty = faculty.id;">
+                          (click)="course.faculty = faculty.id; course.university = 0">
                 {{faculty.name}}
               </mat-option>
             </mat-optgroup>

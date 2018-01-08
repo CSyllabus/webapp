@@ -71,7 +71,14 @@ export class CoursesService {
   }
 
   courseNew(data): Observable<any> {
-    return this.http.post(this.coursesUrl,data)
+
+    let headers = new Headers();
+    let authToken = localStorage.getItem("auth_token");
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.post(this.coursesUrl, data, options)
       .map(res => res).catch(this.handleError);
   }
 

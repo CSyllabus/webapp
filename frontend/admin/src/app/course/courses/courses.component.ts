@@ -47,6 +47,7 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.newCourse = new Course();
     this.coursesService.getCoursesCount().subscribe(count => {
       this.totalItems = count;
@@ -68,10 +69,7 @@ export class CoursesComponent implements OnInit {
   }
 
   addCourse() {
-
     this.router.navigate(['course/add/']);
-
-
   }
 
 }

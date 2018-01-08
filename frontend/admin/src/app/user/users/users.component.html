@@ -45,7 +45,7 @@
         <a mat-icon-button [routerLink]="['/user/edit/' + row.id]">
           <mat-icon>edit</mat-icon>
         </a>
-        <button mat-icon-button (click)="deleteUser(row)" style="color: red;">
+        <button *ngIf="isadmin" mat-icon-button (click)="deleteUser(row)" style="color: red;">
           <mat-icon>clear</mat-icon>
         </button>
       </mat-cell>

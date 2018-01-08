@@ -75,9 +75,6 @@ class UserViewSelf(APIView):
 
         print request.data['username']
 
-        faculty_id=0
-        university_id=0
-
         try:
             decoded_payload = utils.jwt_decode_handler(
                 request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
@@ -164,15 +161,17 @@ class UserView(APIView):
         facultyId = 0
         universityId=0
 
+        data = {}
+        result = {}
+        users_list = []
+
         if user_id >= 0:
             users = User.objects.filter(id=user_id)
 
         else:
             users = User.objects.all().order_by('username')
 
-        data = {}
-        result = {}
-        users_list = []
+
         for user in users:
 
             try:
@@ -253,58 +252,65 @@ class UserView(APIView):
         print request.data
 
         try:
-            #decoded_payload = utils.jwt_decode_handler(
-            #    request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
-            user = User.objects.filter(id=user_id)[0]
+            decoded_payload = utils.jwt_decode_handler(
+                request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+            user_isadmin = User.objects.filter(id=decoded_payload['user_id'])[0].is_admin
 
-            try:
-                user.username = request.data['username']
-            except:
-                pass
-            try:
-                user.first_name = request.data['first_name']
-            except:
-                pass
-            try:
-                user.last_name = request.data['last_name']
-            except:
-                pass
-            try:
-                user.email = request.data['email']
-            except:
-                pass
-            try:
-                new_password = request.data['newPassword']
-                user.set_password(new_password)
-            except:
-                pass
+            print user_isadmin
 
-            user.save()
+            if(user_isadmin):
+                user = User.objects.filter(id=user_id)[0]
 
-            try:
-                faculty_id = request.data['faculty']
-                faculty = Faculty.objects.filter(id=faculty_id)
+                try:
+                    user.username = request.data['username']
+                except:
+                    pass
+                try:
+                    user.first_name = request.data['first_name']
+                except:
+                    pass
+                try:
+                    user.last_name = request.data['last_name']
+                except:
+                    pass
+                try:
+                    user.email = request.data['email']
+                except:
+                    pass
+                try:
+                    new_password = request.data['newPassword']
+                    user.set_password(new_password)
+                except:
+                    pass
 
-                AdminFaculty.objects.create(faculty=faculty[0], user=user)
-                AdminUniversity.objects.filter(user=user).delete()
+                user.save()
 
-            except:
-                pass
+                try:
+                    faculty_id = request.data['faculty']
+                    faculty = Faculty.objects.filter(id=faculty_id)
 
-            try:
-                university_id = request.data['university']
-                university = University.objects.filter(id=university_id)
+                    AdminFaculty.objects.create(faculty=faculty[0], user=user)
+                    AdminUniversity.objects.filter(user=user).delete()
 
-                AdminUniversity.objects.create(university=university[0], user=user)
-                AdminFaculty.objects.filter(user=user).delete()
+                except:
+                    pass
 
-            except:
-                pass
+                try:
+                    university_id = request.data['university']
+                    university = University.objects.filter(id=university_id)
 
-            user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
-                         'username': user.username, 'email': user.email}
-            users_list.append(user_data)
-            data['currentItemCount'] = 1
+                    AdminUniversity.objects.create(university=university[0], user=user)
+                    AdminFaculty.objects.filter(user=user).delete()
+
+                except:
+                    pass
+
+                user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
+                             'username': user.username, 'email': user.email}
+                users_list.append(user_data)
+                data['currentItemCount'] = 1
+            else:
+                data['currentItemCount']=0
         except (IndexError, AttributeError) as e:
             data['currentItemCount'] = 0
 
@@ -389,7 +395,7 @@ class UserViewCourse(APIView):
                 request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
             user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
-            print user.is_admin
+            #print user.is_admin
 
             for query_pair in query_pairs:
                 query_pair_split = query_pair.split('=')
@@ -419,8 +425,8 @@ class UserViewCourse(APIView):
                 except:
                     pass
 
-                print faculty_id
-                print university_id
+                #print faculty_id
+                #print university_id
 
                 data = {}
                 result = {}
@@ -438,7 +444,7 @@ class UserViewCourse(APIView):
 
                     courses_list.append(course_data)
 
-                    print course.id
+                    #print course.id
 
             #print courses_list
 
@@ -461,7 +467,7 @@ class UserViewCourse(APIView):
 
                     courses_list.append(course_data)
 
-            print len(courses_list)
+            #print len(courses_list)
 
             if sortby == 'id':
                 if sortdirection == 'asc':
@@ -497,6 +503,32 @@ class UserViewCourse(APIView):
 
             result['data'] = data
             return Response(result)
+
+        except:
+            result['data'] = []
+            return Response(result)
+
+
+
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class UserCheckView(APIView):
+    def get(self, request):
+
+        data = {}
+        result = {}
+
+        try:
+            decoded_payload = utils.jwt_decode_handler(
+                request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+            user = User.objects.filter(id=decoded_payload['user_id'])[0]
+
+            data['admin']=user.is_admin
+            result['data'] = data
+
+            #print result
+            return Response(result)
+
 
         except:
             result['data'] = []

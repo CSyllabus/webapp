@@ -13,6 +13,11 @@ from ..models import CourseUniversity
 from ..models import ProgramCity
 from ..models import ProgramCountry
 from ..models import ProgramUniversity
+from ..models import AdminUniversity
+from ..models import AdminFaculty
+
+from django.http import HttpResponse
+
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
@@ -97,92 +102,136 @@ class CourseView(APIView):
 
     def post(self, request, format=json):
 
-        course = Course.objects.create()
-
-        #print(request.META.get('HTTP_AUTHORIZATION'))
-
-        #decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
-        #print(decoded_payload)
-
 
 
         data = {}
         result = {}
 
-        try:
-            course.name = request.data['name']
-        except:
-            pass
-        try:
-            course.description = request.data['description']
-        except:
-            pass
-        try:
-            course.level = request.data['level']
-        except:
-            pass
-        try:
-            course.english_level = request.data['englishLevel']
-        except:
-            pass
-        try:
-            course.semester = request.data['semester']
-        except:
-            pass
-        try:
-            course.ects = request.data['ects']
-        except:
-            pass
-        try:
-            print request.data['keywords']
-            course.keywords = request.data['keywords']
-        except:
-            pass
-
-        course.save()
-
+        print request.data
 
         try:
-            faculty_id = request.data['faculty']
-            faculty = Faculty.objects.filter(id=faculty_id)
+            decoded_payload = utils.jwt_decode_handler(
+                request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+            user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
-            CourseFaculty.objects.create(faculty=faculty[0], course=course)
-        except:
+
+
+            allow_access=False
+
+
             faculty_id=0
-
-        try:
-            university_id = request.data['university']
-            university = University.objects.filter(id=university_id)
-
-            CourseUniversity.objects.create(university=university[0], course=course)
-        except:
             university_id=0
 
+            print user
+
+            try:
+                faculty_id = request.data['faculty']
+            except:
+                pass
+
+            try:
+                university_id = request.data['university']
+            except:
+                pass
 
 
 
-        course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                       'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
-                       'modified': course.modified, 'created': course.created}
+            if (faculty_id>0):
+                try:
+                    adminfaculty = AdminFaculty.objects.filter(user_id=user.id)[0]
 
-        if(university_id>0):
-            course_data['university']=university[0].name
-
-        if (faculty_id>0):
-            course_data['faculty'] = faculty[0].name
-
-        courses_list = []
-
-        courses_list.append(course_data)
+                    if(adminfaculty.faculty_id==faculty_id):
+                        allow_access=True
+                except:
+                    pass
 
 
-        data['currentItemCount'] = len(courses_list)
-        data['items'] = courses_list
+            if (university_id>0):
+                try:
+                    adminuniversity = AdminUniversity.objects.filter(user_id=user.id)[0]
 
-        result['data'] = data
+                    if(adminuniversity.university_id==university_id):
+                        allow_access=True
 
-        print result
-        return Response(result)
+                except:
+                    pass
+
+            print allow_access
+
+            if(user.is_admin or allow_access):
+
+                course = Course.objects.create()
+
+                print course.id
+
+                try:
+                    course.name = request.data['name']
+                except:
+                    pass
+                try:
+                    course.description = request.data['description']
+                except:
+                    pass
+                try:
+                    course.level = request.data['level']
+                except:
+                    pass
+                try:
+                    course.english_level = request.data['englishLevel']
+                except:
+                    pass
+                try:
+                    course.semester = request.data['semester']
+                except:
+                    pass
+                try:
+                    course.ects = request.data['ects']
+                except:
+                    pass
+                try:
+                    print request.data['keywords']
+                    course.keywords = request.data['keywords']
+                except:
+                    pass
+
+                course.save()
+
+                course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
+                               'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
+                               'modified': course.modified, 'created': course.created}
+
+                if( faculty_id>0):
+                    faculty = Faculty.objects.filter(id=faculty_id)
+                    CourseFaculty.objects.create(faculty=faculty[0], course=course)
+                    course_data['faculty'] = faculty[0].name
+
+                elif (university_id > 0):
+                    university = University.objects.filter(id=university_id)
+                    CourseUniversity.objects.create(university=university[0], course=course)
+                    course_data['university']=university[0].name
+
+
+
+
+                courses_list = []
+
+                courses_list.append(course_data)
+
+
+                data['currentItemCount'] = len(courses_list)
+                data['items'] = courses_list
+
+                result['data'] = data
+
+                return Response(result)
+
+            else:
+                result['data'] = []
+                return HttpResponse('Unauthorized', status=401)
+        except:
+
+            result['data'] = []
+            return Response(result)
 
 
     def delete(selfself, request, course_id):

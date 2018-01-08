@@ -28,6 +28,7 @@ export class UserComponent implements OnInit {
   newPassword2: string;
   selected: string = 'Select University/Faculty';
   user_id: number;
+  isadmin: boolean;
   task: string;
   countries: Country[];
   universities: University[];
@@ -51,6 +52,11 @@ export class UserComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.user_id = +params['id'];
       this.task = params['task'];
+
+      this.usersService.checkUser().subscribe(res => {
+          this.isadmin=res;
+
+        });
 
       if (this.task === 'edit' && this.user_id) {
         this.usersService.getUser(this.user_id).subscribe(user => {
@@ -123,7 +129,7 @@ export class UserComponent implements OnInit {
 
         if (this.task === 'edit' && this.user_id) {
           this.usersService.putUser(this.user_id, this.user).subscribe(res => {
-            alert("Succesfully saved edit");
+            alert(res);
             this.usersService.getUser(this.user_id).subscribe(user => {
               this.user = user;
             });

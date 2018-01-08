@@ -26,6 +26,7 @@ declare let window: any;
 export class UsersComponent implements OnInit {
 
   users: User[];
+  isadmin: boolean;
   displayedColumns = ['id', 'modified', 'username', 'actions'];
   dataSource: UserDataSource | null;
 
@@ -41,6 +42,11 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.usersService.checkUser().subscribe(res => {
+          this.isadmin=res;
+    });
+
     this.usersService.getUsersCount().subscribe(count => {
       this.totalItems = count;
     });

@@ -92,7 +92,7 @@
 
 
     <mat-card-actions style="text-align: center;">
-      <button mat-button (click)="saveUser()">
+      <button [disabled]="!isadmin" mat-button (click)="saveUser()">
         <mat-icon>save</mat-icon>
         SAVE
       </button>
