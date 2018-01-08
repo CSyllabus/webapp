@@ -1,3 +1,4 @@
+
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
@@ -7,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import {environment} from '../../environments/environment';
 
 import {Course} from '../classes/course';
+import { Comment } from '../classes/comment';
 
 
 @Injectable()
@@ -16,6 +18,7 @@ export class CoursesService {
   coursesByProgramUrl = environment.apiUrl + 'programs/';
   coursesByFacultiesUrl = environment.apiUrl + 'faculties/';
   coursesByUniversitiesUrl = environment.apiUrl + 'universities/';
+  commentsUrl = environment.apiUrl + 'comments/';
   explorerUrl = environment.apiUrl + 'explorer';
   comparatorUrl = environment.apiUrl + 'comparator';
 
@@ -89,6 +92,35 @@ export class CoursesService {
     return this.http.get(this.comparatorUrl + '?course=' + courseId + '&country_id=' + countryId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
   }
+
+  getAllCommentsByCourse(courseId):Observable<Comment[]>{
+    return this.http.get(this.coursesUrl + courseId + '/comments/')
+    .map(res => res.json().data.items as Comment[]).catch(this.handleError);
+  }
+  /*insertAnewComment(courseId, newUserName, newComment) {
+    return this.http.post(this.coursesUrl + courseId + '/comments/',{
+      author: newUserName,
+      content: newComment,
+      show: 1
+    })
+  }*/
+
+
+  insertAnewComment(courseId, data): Observable<any> {
+
+    return this.http.post(this.coursesUrl + courseId + '/comments/', data)
+      .map(res => res.json()).catch(this.handleError);
+
+  }
+
+  deleteComment(commentId): Observable<any> {
+
+    return this.http.delete(this.commentsUrl + commentId)
+      .map(res => res.json()).catch(this.handleError);
+
+  }
+
+
 
   private handleError(error: any) {
     const errMsg = (error.message) ? error.message :

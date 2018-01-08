@@ -65,3 +65,10 @@
   border: 1px rgba(0, 0, 0, 0.07) solid;
   padding: 10px;
 }
+
+.mat-form-field {
+  width: 100% !important;
+}
+.input{
+  max-width: inherit !important;
+}

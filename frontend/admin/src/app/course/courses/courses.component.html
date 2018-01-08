@@ -20,8 +20,8 @@
   <mat-table #table [dataSource]="dataSource" matSort (sortChange)="console.log('sort')" style="margin-top: 50px;">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.id}}</mat-cell>
+      <mat-header-cell (click)="alert('aaa');" *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.id}}</mat-cell>
     </ng-container>
 
     &lt;!&ndash; Created &ndash;&gt;

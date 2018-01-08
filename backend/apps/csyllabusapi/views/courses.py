@@ -13,10 +13,13 @@ from ..models import CourseUniversity
 from ..models import ProgramCity
 from ..models import ProgramCountry
 from ..models import ProgramUniversity
+
 from ..models import AdminUniversity
 from ..models import AdminFaculty
 
 from django.http import HttpResponse
+
+from ..models import UserCoursePost
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -469,6 +472,7 @@ class CourseByUniversityView(APIView):
         result['data'] = data
         return Response(result)
 
+
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CoursesAllSimpleView(APIView):
@@ -518,6 +522,53 @@ class CoursesAllSimpleView(APIView):
             data['items'] = courses_list
 
 
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+class CommentsByCourseView(APIView):
+    def get(self, request, course_id):
+        usercoursepost = UserCoursePost.objects.filter(course_id=course_id)
+        data = {}
+        result = {}
+
+        try:
+
+            comments_list = []
+
+            for comment in usercoursepost:
+                try:
+
+                    comment_data = {'id': comment.id, 'author':comment.author, 'content': comment.content, 'show': comment.show, 'modified': comment.modified}
+
+
+                    comments_list.append(comment_data)
+
+                    data['currentItemCount'] = len(comments_list)
+                    data['items'] = comments_list
+
+
+                except:
+                    pass
+
+        except IndexError:
+            data['currentItemCount'] = 0
+            data['items'] = []
+
         result['data'] = data
         return Response(result)
+
+    def post(self, request, course_id, format=json):
+
+        author = request.data['author']
+        content = request.data['content']
+        course = Course.objects.filter(id = course_id)[0]
+        try:
+            show = request.data['show']
+        except:
+            show = 1
+
+        usercoursepost = UserCoursePost.objects.create(course=course, author = author, content = content, show=show)
+        #course = Course.objects.create(name=name)
+        #print course_id, author, content
+
+        return Response()
 

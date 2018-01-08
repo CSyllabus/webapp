@@ -171,4 +171,10 @@
   overflow: auto;
 }
 
+.mat-form-field {
+  width: 100% !important;
+}
+.input{
+  max-width: inherit !important;
+}
 

@@ -13,6 +13,7 @@ class UserCoursePost(models.Model):
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    show = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''

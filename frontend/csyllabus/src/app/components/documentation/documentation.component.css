@@ -3907,6 +3907,17 @@
 		position: relative;
 		text-align: center;
 	}
+	#landing-page {
+		background-image: url("../../../images/fer.jpg");
+
+		background-attachment: fixed;
+		background-position: center center;
+		background-size: cover;
+		color: #fff;
+		padding: 16em 3em;
+		position: relative;
+		text-align: center;
+	}
 
 		#banner h1 {
 			color: inherit;

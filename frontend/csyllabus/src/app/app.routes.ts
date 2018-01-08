@@ -28,7 +28,7 @@ export const ROUTES = [
     component: ContactComponent
   },
   {
-    path: 'documentation',
+    path: 'connect',
     component: DocumentationComponent
   },
   {

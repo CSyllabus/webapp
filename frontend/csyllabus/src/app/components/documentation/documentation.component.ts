@@ -10,5 +10,15 @@ export class DocumentationComponent{
   constructor() { }
 
 
+  getStarted(action: string) {
 
+    setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('one')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
+
+  }
 }
