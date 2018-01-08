@@ -43,7 +43,7 @@ class CommentsView(APIView):
 
         if comment_id >= 0:
             usercourseposts = UserCoursePost.objects.filter(id=comment_id)
-            print usercourseposts
+
         else:
             usercourseposts = UserCoursePost.objects.all().order_by('id')
 
@@ -55,7 +55,7 @@ class CommentsView(APIView):
             comments_list = []
 
             for comment in usercourseposts:
-                print comment.author
+
                 try:
 
                     comment_data = {'id': comment.id, 'course': comment.course_id, 'author':comment.author, 'content': comment.content, 'show': comment.show, 'modified': comment.modified}

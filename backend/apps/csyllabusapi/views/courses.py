@@ -321,7 +321,6 @@ class CommentsByCourseView(APIView):
             comments_list = []
 
             for comment in usercoursepost:
-                print comment.author
                 try:
 
                     comment_data = {'id': comment.id, 'author':comment.author, 'content': comment.content, 'show': comment.show, 'modified': comment.modified}
@@ -337,7 +336,6 @@ class CommentsByCourseView(APIView):
                     pass
 
         except IndexError:
-            print course_id
             data['currentItemCount'] = 0
             data['items'] = []
 
@@ -355,8 +353,6 @@ class CommentsByCourseView(APIView):
         except:
             show = 1
 
-
-        print author
         usercoursepost = UserCoursePost.objects.create(course=course, author = author, content = content, show=show)
         #course = Course.objects.create(name=name)
         #print course_id, author, content

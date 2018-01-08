@@ -1,4 +1,4 @@
-<div class="sharepart">
+<div class="sharepart col-md-6">
   <h3>Share this Syllabus with your friends:</h3>
   <share-buttons [defaultStyle]
                  [pinterest]="false"
@@ -9,8 +9,10 @@
 
   </share-buttons>
 </div>
+<div class="col-md-6">
 
-<div class="commentspart">
+</div>
+<div class="commentspart ">
   <!-- The following is shown if the user is logged ing -->
   <div *ngIf="user">
     <div style="display: inline-block;">
@@ -38,25 +40,28 @@
     </div>
   </div>
 
-  <div *ngIf="user">
+
+
+
+
+</div>
+ <div *ngIf="user" class="col-md-12" style="text-align: left;">
       <h3>Comment this Syllabus:</h3>
     <mat-form-field class="example-full-width">
       <input matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
     </mat-form-field>
-    <button mat-raised-button (click)="newComment(user.name)">
-      POST
+    <button mat-icon-button (click)="newComment(user.name)">
+      <mat-icon>send</mat-icon>
     </button>
+
   </div>
-
-  <div class="commentscontainer" *ngIf="comments">
+<div class="commentscontainer col-md-12" *ngIf="comments" style="text-align: left;">
     <mat-card *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page" style="border: 1px solid #a4a4a4; padding: 10px;
-margin: 10px 0;">
-      <button mat-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
-    DELETE</button>
+">
+      <button mat-icon-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
+    <mat-icon>delete</mat-icon></button>
       <p>{{comment.author}}: {{ comment.content }}</p>
-
+        <i>{{comment.modified | date}}</i>
     </mat-card>
   </div>
-
-</div>
