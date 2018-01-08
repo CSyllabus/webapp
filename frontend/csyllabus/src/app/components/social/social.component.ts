@@ -4,7 +4,6 @@ import {Component, OnInit, Input} from '@angular/core';
 import {AuthService} from "angular4-social-login";
 import {FacebookLoginProvider, GoogleLoginProvider} from "angular4-social-login";
 import {SocialUser} from "angular4-social-login";
-
 @Component({
   selector: 'app-social',
   templateUrl: './social.component.html',
@@ -16,6 +15,10 @@ export class SocialComponent implements OnInit {
   private user: SocialUser;
   private loggedIn: boolean;
   @Input() courseId: number;
+  @Input() title: string;
+  @Input() university: string;
+  @Input() country: string;
+  @Input() description: string;
 
   constructor(private authService: AuthService, private coursesService: CoursesService) {
 
