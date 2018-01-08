@@ -15,6 +15,7 @@ urlpatterns = [
         '^auth/logout/$', logout_then_login, name='logout'),
     url('^$', index, name='index'),
     url(r'^csyllabusapi/', include('csyllabusapi.urls')),
+url(r'^/', include('csyllabusapi.urls')),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
 ]

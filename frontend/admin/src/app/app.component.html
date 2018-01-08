@@ -14,7 +14,7 @@
             <mat-icon>notifications_off</mat-icon>
             <span>Turn of notifications</span>
           </button>
-          <button mat-menu-item [routerLink]="['user/'+selfUser.id]">
+          <button mat-menu-item [routerLink]="['user/self']">
             <mat-icon>account_circle</mat-icon>
             <span> {{selfUser.username}}</span>
           </button>
@@ -37,6 +37,10 @@
             <a class="sidebar-link" [routerLink]="['courses']" [routerLinkActive]="['active']">
               <mat-icon style="margin-right: 32px">book</mat-icon>
               <span style="position: absolute;line-height: 24px;">Courses</span>
+            </a>
+            <a *ngIf="isadmin" class="sidebar-link" [routerLink]="['users']" [routerLinkActive]="['active']">
+              <mat-icon style="margin-right: 32px">supervisor_account</mat-icon>
+              <span style="position: absolute;line-height: 24px;">Users</span>
             </a>
             <div class="mdl-layout-spacer"></div>
             <a class="sidebar-link" href="" style="position: absolute; bottom: 0;">

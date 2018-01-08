@@ -18,6 +18,8 @@ urlpatterns = [
     url(r'^courses/(?P<course_id>[^/]+)', views.CourseView.as_view(), name='courses'),
     url(r'^programs/(?P<program_id>[^/]+)/courses', views.CourseByProgramView.as_view(), name='courses'),
     url(r'^courses', views.CourseView.as_view(), name='courses'),
+    url(r'^simplecourses', views.CoursesAllSimpleView.as_view(), name='courses'),
+
     url(r'^cities/(?P<city_id>[^/]+)/universities', views.UniversitiesView.as_view(), name='universities'),
     url(r'^universities/(?P<university_id>[^/]+)/faculties', views.FacultyView.as_view(), name='faculties'),
     url(r'^universities/(?P<university_id>[^/]+)/courses', views.CourseByUniversityView.as_view(), name='courses'),
@@ -32,6 +34,14 @@ urlpatterns = [
     url(r'^comparator', views.comparator, name='comparator'),
 
     url(r'^users/self', views.UserViewSelf.as_view(), name='user'),
+    url(r'^users/courses', views.UserViewCourse.as_view(), name='user'),
+    url(r'^users/check/(?P<course_id>[^/]+)', views.UserCheckCourseView.as_view(), name='user'),
+    url(r'^users/check', views.UserCheckView.as_view(), name='user'),
+
+    url(r'^users/(?P<user_id>[^/]+)', views.UserView.as_view(), name='user'),
+    url(r'^users/', views.UserView.as_view(), name='user'),
+
+
 
 ]
 

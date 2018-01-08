@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   selfUser: User;
   token: string;
+  isadmin: boolean;
 
   constructor(private snackBar: MatSnackBar, private usersService: UsersService) { }
 
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
       'Nice to see you again.',
       'Is that a new haircut?'
     ];
+
+
     let random_message = Math.floor(messages.length * Math.random());
 
    /* let snackBarRef = this.snackBar.open(messages[random_message], 'Close', {
@@ -43,6 +46,10 @@ export class AppComponent implements OnInit {
     localStorage.setItem("auth_token", token);
     this.usersService.getSelf().subscribe(user => {
       this.selfUser = user;
+    });
+
+    this.usersService.checkUser().subscribe(res => {
+       this.isadmin=res;
     });
   }
 

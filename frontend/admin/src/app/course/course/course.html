@@ -5,9 +5,9 @@
     <a [routerLink]="['/course/' + course._id]" style=" display: inline-block;vertical-align: middle;"> Course {{course.id}}</a>
   </div>
 </div>
-<div id="search-component-spinner" *ngIf="!course.id" >
+<!--<div id="search-component-spinner" *ngIf="!course.id" >
     <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
-  </div>
+  </div>-->
 
 <mat-card *ngIf="course">
   <mat-card-title class="intrev-card-title">Course #{{course.id}}
@@ -16,6 +16,22 @@
 
 
   <div>
+    <mat-form-field class="input">
+          <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
+            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+
+              <mat-option *ngFor="let university of country.universities" [value]="university"
+                          (click)="course.university = university.id; course.faculty = 0">
+                {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="course.faculty = faculty.id; course.university = 0">
+                {{faculty.name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+    </mat-form-field>
+    <br>
     <mat-form-field >
       <input matInput placeholder="Name" [(ngModel)]="course.name">
     </mat-form-field>
@@ -46,7 +62,7 @@
 -->
 
     <mat-form-field style="width: 100%;">
-  <textarea matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
+  <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
     </mat-form-field>
 
 
@@ -68,9 +84,13 @@
 
   </div>
   <mat-card-actions style="text-align: center;">
-    <button mat-button (click)="saveCourse(true)">
+    <button [disabled]="!allow_access" mat-button *ngIf="course.id" (click)="saveCourse(true)">
       <mat-icon>save</mat-icon>
       SAVE
+    </button>
+    <button mat-button *ngIf="!course.id" (click)="addCourse()">
+      <mat-icon>add</mat-icon>
+      ADD
     </button>
   </mat-card-actions>
 </mat-card>

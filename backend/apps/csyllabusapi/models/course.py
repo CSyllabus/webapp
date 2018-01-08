@@ -16,6 +16,7 @@ class Course(models.Model):
     semester = models.CharField(max_length=255, blank=True, null=True)
     level = models.CharField(max_length=255, blank=True, null=True)
     url = models.CharField(max_length=255, blank=True, null=True)
+    sync_id = models.CharField(max_length=255, blank=True, null=True)
     keywords = models.TextField()
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()

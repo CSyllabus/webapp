@@ -1,5 +1,5 @@
-from .user import User, UserFaculty, TeacherCourse
-from .user_post import UserCoursePost, UserFacultyPost
+from .user import User, AdminFaculty, AdminUniversity
+from .user_post import UserCoursePost, UserFacultyPost, UserUniversityPost
 from .country import Country
 from .city import City
 from .course import Course
@@ -14,4 +14,3 @@ from .program import ProgramCity
 from .program import ProgramCountry
 from .university import University
 from .course_result import CourseResult
-

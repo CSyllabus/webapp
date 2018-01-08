@@ -1,14 +1,14 @@
 <div style="height: 70px;">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <a [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">Courses</a>
+    <a [routerLink]="['/users']" style=" display: inline-block;vertical-align: middle;">Users</a>
   </div>
 </div>
 <div id="search-component-spinner" *ngIf="!(totalItems > 0)" >
     <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
   </div>
 <mat-card >
-  <mat-card-title class="intrev-card-title">Courses in the database
-    <mat-card-subtitle style="color: white; margin-bottom: 0;">Courses resource</mat-card-subtitle>
+  <mat-card-title class="intrev-card-title">Users in the database
+    <mat-card-subtitle style="color: white; margin-bottom: 0;">Users resource</mat-card-subtitle>
   </mat-card-title>
   <div class="example-header" style="display:none">
     <mat-form-field floatPlaceholder="never" style="    position: absolute;
@@ -17,11 +17,11 @@
       <input matInput #filter placeholder="Filter resources">
     </mat-form-field>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort (sortChange)="console.log('sort')" style="margin-top: 50px;">
+  <mat-table #table [dataSource]="dataSource" matSort (sortChange)="console.log('eat shit')" style="margin-top: 50px;">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell (click)="alert('aaa');" *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
-      <mat-cell *matCellDef="let row" > {{row.id}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}}</mat-cell>
     </ng-container>
 
     &lt;!&ndash; Created &ndash;&gt;
@@ -32,19 +32,20 @@
 
 
     &lt;!&ndash; Title &ndash;&gt;
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Username</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.username}}</mat-cell>
     </ng-container>
 
     &lt;!&ndash; Actions &ndash;&gt;
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <a mat-icon-button [routerLink]="['/course/edit/' + row.id]">
+
+        <a mat-icon-button [routerLink]="['/user/edit/' + row.id]">
           <mat-icon>edit</mat-icon>
         </a>
-        <button mat-icon-button (click)="deleteCourse(row)" style="color: red;">
+        <button *ngIf="isadmin" mat-icon-button (click)="deleteUser(row)" style="color: red;">
           <mat-icon>clear</mat-icon>
         </button>
       </mat-cell>
@@ -62,9 +63,9 @@
   </mat-paginator>
 
   <mat-card-actions style="text-align: center;">
-    <button (click)="addCourse()" mat-button>
+    <button [routerLink]="['/user/add/']" mat-button>
       <mat-icon>add</mat-icon>
-      NEW COURSE
+      NEW USER
     </button>
   </mat-card-actions>
 </mat-card>

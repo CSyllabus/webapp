@@ -34,8 +34,24 @@
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Email" [(ngModel)]="user.email" type="email">
+        <input matInput required placeholder="Email" [(ngModel)]="user.email" type="email">
       </mat-form-field>
+      <br>
+      <mat-form-field class="input">
+          <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
+            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+
+              <mat-option *ngFor="let university of country.universities" [value]="university"
+                          (click)="user.university = university.id;">
+                {{university.name}}
+              </mat-option>
+              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                          (click)="user.faculty = faculty.id;">
+                {{faculty.name}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
     </div>
     </mat-expansion-panel>
     <mat-expansion-panel>
@@ -76,7 +92,7 @@
 
 
     <mat-card-actions style="text-align: center;">
-      <button mat-button (click)="saveUser()">
+      <button [disabled]="!isadmin" mat-button (click)="saveUser()">
         <mat-icon>save</mat-icon>
         SAVE
       </button>
