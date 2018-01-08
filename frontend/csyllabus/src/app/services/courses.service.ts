@@ -94,7 +94,6 @@ export class CoursesService {
   }
 
   getAllCommentsByCourse(courseId):Observable<Comment[]>{
-    console.log('aaaaaaaaaa');
     return this.http.get(this.coursesUrl + courseId + '/comments/')
     .map(res => res.json().data.items as Comment[]).catch(this.handleError);
   }
