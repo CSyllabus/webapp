@@ -69,7 +69,7 @@ describe('CoreComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+ /* it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
@@ -101,5 +101,5 @@ describe('CoreComponent', () => {
     spyOn(component, 'changeResultCard').and.callThrough();
     component.changeResultCard(event);
     expect(component.explorerTab ).toEqual(false);
-  });
+  });*/
 });

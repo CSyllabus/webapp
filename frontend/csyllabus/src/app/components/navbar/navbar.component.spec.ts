@@ -4,7 +4,7 @@ import { MatMenuModule } from '@angular/material';
 
 import { NavbarComponent } from './navbar.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RouterTestingModule} from "@angular/router/testing";
+import {RouterTestingModule} from '@angular/router/testing';
 
 
 describe('NavbarComponent', () => {
@@ -14,23 +14,23 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      //declarations: [ NavbarComponent ],
-      //imports: [ MatMenuModule,  RouterTestingModule.withRoutes([]) ],
-      //providers: [ ActivatedRoute ]
+      declarations: [ NavbarComponent ],
+      imports: [ MatMenuModule,  RouterTestingModule.withRoutes([]) ],
+      providers: [ ActivatedRoute ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    // fixture = TestBed.createComponent(NavbarComponent);
-    // component = fixture.componentInstance;
-    // element = fixture.debugElement.query(By.css('a'));
-    // fixture.detectChanges();
+    fixture = TestBed.createComponent(NavbarComponent);
+    component = fixture.componentInstance;
+    element = fixture.debugElement.query(By.css('a'));
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    //expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 
   /*it('should myFunction call topnav', () => {
     const x = document.getElementById('myTopnav');
