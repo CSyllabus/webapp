@@ -45,10 +45,6 @@ import {environment} from "../../../environments/environment";
 class TestModule { }
 
 describe('ExplorerComponent', () => {
-  // let mockBackend: MockBackend;
-  // let serviceCountries: CountriesService;
-  // let serviceUniversities: UniversitiesService;
-  // let serviceFaculties: FacultiesService;
   let component: ExplorerComponent;
   let fixture: ComponentFixture<ExplorerComponent>;
   let universitiesService: UniversitiesService;
@@ -276,42 +272,6 @@ describe('ExplorerComponent', () => {
     component.exploreCourses();
     expect(component.exploreCourses).toHaveBeenCalled();
   });
-
-  /*it('should getCoursesByFaculty', async(() => {
-    const response: Course[] = [];
-    component.explorerStarted = true;
-    component.keyword = [keywords, keywords];
-    component.queryCountry = queryCountry;
-    component.queryFaculty = faculty;
-    component.queryCity = city;
-    component.queryUniversity = university;
-    component.queryProgram = program;
-    spyOn(coursesService, 'getCoursesByFaculty').and.returnValue(of(response));
-
-    component.exploreCourses();
-
-    fixture.detectChanges();
-
-    expect(coursesService.getCoursesByFaculty).toHaveBeenCalled();
-  }));*/
-
-  /* it('should exploreByUniversity', async(() => {
-    const response: Course[] = [];
-    component.explorerStarted = true;
-    component.keyword = [keywords, keywords];
-    component.queryCountry = queryCountry;
-    component.queryFaculty = null;
-    component.queryCity = city;
-    component.queryUniversity = university;
-    component.queryProgram = program;
-    spyOn(coursesService, 'exploreByUniversity').and.returnValue(of(response));
-
-    component.exploreCourses();
-
-    fixture.detectChanges();
-
-    expect(coursesService.exploreByUniversity).toHaveBeenCalled();
-  }));*/
 
   it('should exploreByCountry', async(() => {
     const response: Course[] = [];

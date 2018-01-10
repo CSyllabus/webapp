@@ -65,14 +65,4 @@ describe('ResultCardsComparatorComponent', () => {
     component.courses = [courseTest];
   });
 
- /* it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should openDialog call with course id 0', () => {
-    spyOn(component, 'openDialog').and.callThrough();
-    component.openDialog(0);
-    expect(component.openDialog).toHaveBeenCalled();
-  }); */
-
 });

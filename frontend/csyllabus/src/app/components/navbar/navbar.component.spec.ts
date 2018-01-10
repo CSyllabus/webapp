@@ -28,25 +28,6 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-
-  /*it('should myFunction call topnav', () => {
-    const x = document.getElementById('myTopnav');
-    spyOn(component, 'myFunction').and.callThrough();
-    component.myFunction();
-    expect(x.className).toEqual('topnav responsive');
-  });
-
-  it('should myFunction call topnav responsive', () => {
-    const x = document.getElementById('myTopnav');
-    x.className = 'test';
-    spyOn(component, 'myFunction').and.callThrough();
-    component.myFunction();
-    expect(x.className).toEqual('topnav');
-  });*/
-
 });
 
 

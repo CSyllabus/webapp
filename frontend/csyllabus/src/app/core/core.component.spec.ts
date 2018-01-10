@@ -69,37 +69,4 @@ describe('CoreComponent', () => {
     fixture.detectChanges();
   });
 
- /* it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should fetchExplorerResult call', () => {
-
-    spyOn(component, 'fetchExplorerResult').and.callThrough();
-    component.fetchExplorerResult({ srcElement: { value: 'test' } });
-    expect(component.fetchExplorerResult).toHaveBeenCalled();
-  });
-
-  it('should fetchComparatorResult call', () => {
-
-    spyOn(component, 'fetchComparatorResult').and.callThrough();
-    component.fetchComparatorResult({ srcElement: { value: 'test' } });
-    expect(component.fetchComparatorResult).toHaveBeenCalled();
-  });
-
-  it('should changeResultCard call with event index different to 1', () => {
-
-    const event = {index: 0};
-    spyOn(component, 'changeResultCard').and.callThrough();
-    component.changeResultCard(event);
-    expect(component.explorerTab ).toEqual(true);
-  });
-
-  it('should changeResultCard call with event index different to 0', () => {
-
-    const event = {index: 1};
-    spyOn(component, 'changeResultCard').and.callThrough();
-    component.changeResultCard(event);
-    expect(component.explorerTab ).toEqual(false);
-  });*/
 });
