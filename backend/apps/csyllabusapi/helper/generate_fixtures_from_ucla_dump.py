@@ -1,18 +1,15 @@
 from lxml import html
 import json
 
-stanford_fixtures_json = open("../fixtures/stanford_fixtures_json.json", "w")
-# reading file Stanford.xml and extracting courses
-f = open("Stanford.xml","r")
-stanfordList = f.read()
+ucla_fixtures_json = open("../fixtures/ucla_fixtures_json.json", "w")
+# reading file UCLA.xml and extracting courses
+f = open("UCLA.xml","r")
+uclaList = f.read()
 
-tree = html.fromstring(stanfordList)
-ids = tree.xpath('//span[@class="courseNumber"]/text()')
-titles = tree.xpath('//span[@class="courseTitle"]/text()')
-descriptions = tree.xpath('//div[@class="courseDescription"]/text()')
-attributes = tree.xpath('//div[@class="courseAttributes"]/text()')
+tree = html.fromstring(uclaList)
+titles = tree.xpath('//h3/text()')
+attributes = tree.xpath('//p/text()')
 
-# generate fixtures
 fixtures = []
 
 country_id = 6
@@ -27,27 +24,27 @@ fixtures.append({
     }
   }
 )
-city_id = 10
+city_id = 11
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
     "fields": {
-      "name": "Palo Alto",
-      "img": "https://fr.wikipedia.org/wiki/Palo_Alto#/media/File:Stanford_University_campus_from_above.jpg",
+      "name": "Los Angeles",
+      "img": "http://www.tokkoro.com/picsup/440277-los-angeles-pc-backgrounds-hd-free.jpg",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
       "country": country_id
     }
   }
 )
-university_id = 7
+university_id = 8
 fixtures.append(
   {
     "model": "csyllabusapi.university",
     "pk": university_id,
     "fields": {
-      "name": "University of Stanford",
-      "img": "http://www.neucampusplanning.com/wp-content/uploads/2016/08/Stanford-Aerial.jpg",
+      "name": "University of California, Los Angeles",
+      "img": "http://worldkings.org/Userfiles/Upload/images/Ucla.jpg",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": country_id,
@@ -56,8 +53,8 @@ fixtures.append(
   }
 )
 
-# appending programs fixtures
-program_id = 37
+#appending programs fixtures
+program_id = 38
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -107,22 +104,18 @@ fixtures.append(
 )
 
 # appending courses fixtures
-course_id = 693
-course_program_id = 2424
-for i in range(len(descriptions)):
-    course_name = titles[i].strip()
+i = 0
+j = 0
+course_id = 872
+course_program_id = 2603
+while i < len(titles):
+    course_name = titles[i].split(". ")[1]
+    course_credits = attributes[j].split("Units: ")[1]
     try:
-        course_credits = int(attributes[i].split('|')[1].strip().split("Units:")[1].split("-")[1].strip())
+        course_credits = course_credits.split(" to ")[1]
     except:
-        try:
-            course_credits = int(attributes[i].split('|')[1].strip().split("Units:")[1].strip())
-        except:
-            course_credits = None
-    try:
-        course_semester = attributes[i].split('|')[0].strip().split("Terms:")[1].strip()
-    except:
-        course_semester = None
-    course_description = descriptions[i].strip()
+        pass
+    course_description = attributes[j+1]
 
     fixtures.append(
         {
@@ -141,7 +134,7 @@ for i in range(len(descriptions)):
             "model": "csyllabusapi.course",
             "pk": course_id,
             "fields": {
-                "name": course_name,
+                "name" : course_name,
                 "description": course_description,
                 "ects": course_credits,
                 "semester": None,
@@ -150,6 +143,8 @@ for i in range(len(descriptions)):
             }
         }
     )
+    i = i + 1
+    j = j + 2
     course_id = course_id + 1
 
-json.dump(fixtures,stanford_fixtures_json)
+json.dump(fixtures, ucla_fixtures_json)
