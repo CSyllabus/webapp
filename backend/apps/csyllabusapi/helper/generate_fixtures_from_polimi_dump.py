@@ -106,6 +106,7 @@ fixtures.append(
 
 #appending courses fixtures
 course_id = 605
+course_uni_id = 2336
 course_program_id = 2336
 for index, row in df.iterrows():
     print("Course " + str(index + 1) + " of " + str(len(df)))
@@ -141,6 +142,20 @@ for index, row in df.iterrows():
         }
     )
     course_program_id = course_program_id + 1
+
+    fixtures.append(
+        {
+            "model": "csyllabusapi.courseuniversity",
+            "pk": course_uni_id,
+            "fields": {
+                "course": course_id,
+                "university": university_id,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_uni_id = course_uni_id + 1
+
     fixtures.append(
         {
             "model": "csyllabusapi.course",

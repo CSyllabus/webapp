@@ -107,6 +107,7 @@ fixtures.append(
 i = 0
 j = 0
 course_id = 872
+course_uni_id = 872
 course_program_id = 2603
 while i < len(titles):
     course_name = titles[i].split(". ")[1]
@@ -129,6 +130,20 @@ while i < len(titles):
         }
     )
     course_program_id = course_program_id + 1
+
+    fixtures.append(
+        {
+            "model": "csyllabusapi.courseuniversity",
+            "pk": course_uni_id,
+            "fields": {
+                "course": course_id,
+                "university": university_id,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_uni_id = course_uni_id + 1
+
     fixtures.append(
         {
             "model": "csyllabusapi.course",

@@ -98,13 +98,14 @@ fixtures.append(
 )
 
 course_id = 1043
+course_uni_id = 1043
 course_program_id = 2774
 for i in range(len(london_courses)):
     course_name = london_courses[i]["title"].strip()
     try:
         course_description = london_courses[i]["metaData"]["c"].strip()
     except:
-        course_description = None
+        course_description = ''
 
     fixtures.append(
         {
@@ -118,6 +119,20 @@ for i in range(len(london_courses)):
         }
     )
     course_program_id = course_program_id + 1
+
+    fixtures.append(
+        {
+            "model": "csyllabusapi.courseuniversity",
+            "pk": course_uni_id,
+            "fields": {
+                "course": course_id,
+                "university": university_id,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_uni_id = course_uni_id + 1
+
     fixtures.append(
         {
             "model": "csyllabusapi.course",

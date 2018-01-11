@@ -108,6 +108,7 @@ fixtures.append(
 
 # appending courses fixtures
 course_id = 693
+course_uni_id = 2424
 course_program_id = 2424
 for i in range(len(descriptions)):
     course_name = titles[i].strip()
@@ -136,6 +137,20 @@ for i in range(len(descriptions)):
         }
     )
     course_program_id = course_program_id + 1
+
+    fixtures.append(
+        {
+            "model": "csyllabusapi.courseuniversity",
+            "pk": course_uni_id,
+            "fields": {
+                "course": course_id,
+                "university": university_id,
+                "created": "2017-10-30T15:07:40.122Z"
+            }
+        }
+    )
+    course_uni_id = course_uni_id + 1
+
     fixtures.append(
         {
             "model": "csyllabusapi.course",
