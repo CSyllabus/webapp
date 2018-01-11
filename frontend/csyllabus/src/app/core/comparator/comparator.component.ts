@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter, Inject} from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/map';
 import {startWith} from 'rxjs/operators/startWith';
@@ -241,9 +241,10 @@ export class ComparatorComponent implements OnInit {
             if (i === this.listCourses.length - 1) {
               this.comparatorResult.emit(this.multi_courses);
               this.comparatorStarted = false;
-              this.snackBar.open('Showing top results for given search, ordered by similarity rank', 'CLOSE', {
-                duration: 5000
-              });
+              this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
+                ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
+              duration: 10000
+            });
             }
           });
         }
@@ -255,9 +256,10 @@ export class ComparatorComponent implements OnInit {
             if (i === this.listCourses.length - 1) {
               this.comparatorResult.emit(this.multi_courses);
               this.comparatorStarted = false;
-              this.snackBar.open('Showing top results for given search, ordered by similarity rank', 'CLOSE', {
-                duration: 5000
-              });
+             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
+                ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
+              duration: 10000
+            });
             }
           });
         }
@@ -296,15 +298,15 @@ export class ComparatorComponent implements OnInit {
 
   filter(name: string): Course[] {
     return this.filteredHomeCourses.filter(option =>
-      option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
   displayFn(course: Course): String {
-    if(course)
-    return course.name;
+    if (course)
+      return course.name;
     else
       return "";
-}
+  }
 
 
 }
