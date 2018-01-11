@@ -7,7 +7,7 @@ from django.utils import timezone
 from ...models import Course, CourseResult
 from gensim import corpora, models, similarities
 from collections import defaultdict
-
+from nltk.corpus import stopwords
 
 class Command(BaseCommand):
     help = 'Does some magical work'
@@ -24,18 +24,19 @@ class Command(BaseCommand):
 
         # words not to take into consideration
         # parametar 1: remove keywords from decriptions
-        stoplist = set(['is', 'how', 'or', 'to', 'of', 'the',
+        stoplist = stopwords.words('english')
+        stoplist = stoplist + ['is', 'how', 'or', 'to', 'of', 'the',
                         'in', 'for', 'on', 'will', 'a', 'advanced', 'an', 'and', 'are', 'as', 'be', 'by', 'course',
                         'with', 'some', 'student', 'students', 'systems', 'system', 'basic',
-                        'this', 'knowledge', 'use', 'using', 'well'])
+                        'this', 'knowledge', 'use', 'using', 'well', 'hours;', 'four']
 
         # parametar 1: remove keywords from names
-        stoplist_names = set(['the'])
+        stoplist_names = stopwords.words('english')
 
         print "Created stop list."
 
         for course in courses:
-            documents.append(course.description)
+            documents.append(course.description + course.name)
             documents_names.append(course.name)
             document_courses.append(course)
 
@@ -57,6 +58,7 @@ class Command(BaseCommand):
                  for text in texts]
 
         dictionary = corpora.Dictionary(texts)
+        dictionary.filter_n_most_frequent(15)
         dictionary.save_as_text("dictionary.txt", sort_by_word=False)
 
         frequency_names = defaultdict(int)
@@ -75,17 +77,23 @@ class Command(BaseCommand):
         # as a sparse vector
         corpus = [dictionary.doc2bow(text) for text in texts]
 
-        print(corpus)
+        #print(corpus)
         # parametar 2: num_topics
-        lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=10)
+        lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=120)
+
+        #for i in lsi.show_topics():
+        #    print i[0], i[1]
+
         # parametar 2: num_topics
         corpus_names = [dictionary_names.doc2bow(text) for text in texts_names]
-        lsi_names = models.LsiModel(corpus_names, id2word=dictionary_names, num_topics=10)
+        lsi_names = models.LsiModel(corpus_names, id2word=dictionary_names, num_topics=125)
+
 
         j = 0
+        CourseResult.objects.all().delete()
         for course in courses:
             print "Working on course " + str(j + 1) + " of " + str(course_count)
-            doc = course.description
+            doc = course.description + course.name
             vec_bow = dictionary.doc2bow(doc.lower().split())
 
             doc_name = course.name
@@ -108,11 +116,12 @@ class Command(BaseCommand):
             j = j + 1
             i = 0
             for similarity in sims:
+                #print similarity
                 if i != 0:
                     # parametar 3: ratio descriptions vs names
                     CourseResult.objects.create(first_course_id=document_courses[sims[0][0]].id,
                                                 second_course_id=document_courses[sims[i][0]].id,
-                                                result=(0.3 * sims[i][1] + 0.7 * sims_names[i][1]))
+                                                result=(1 * sims[i][1] + 0.0 * sims_names[i][1]))
                 i = i + 1
 
                 # print sims[1:11]
