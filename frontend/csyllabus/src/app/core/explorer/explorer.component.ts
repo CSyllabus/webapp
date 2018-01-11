@@ -202,7 +202,7 @@ export class ExplorerComponent implements OnInit {
         }
       } else if (this.queryUniversity) {
         if (this.keyword.length !== 0) {
-          this.coursesService.exploreByUniversity(keywords, this.queryFaculty.id).subscribe(courses => {
+          this.coursesService.exploreByUniversity(keywords, this.queryUniversity.id).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerStarted = false;
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
