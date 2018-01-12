@@ -2,8 +2,8 @@ import {Component, OnInit, Inject} from '@angular/core';
 
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {CoursesService} from '../../../services/courses.service';
-import {Course} from '../../../classes/course';
+import {CoursesService} from '../../services/courses.service';
+import {Course} from '../../classes/course';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 

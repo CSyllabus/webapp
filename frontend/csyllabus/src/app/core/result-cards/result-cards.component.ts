@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
-import {CourseDialogComponent} from './course-dialog/course-dialog.component';
+import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 @Component({
   selector: 'app-result-cards',
   templateUrl: './result-cards.component.html',

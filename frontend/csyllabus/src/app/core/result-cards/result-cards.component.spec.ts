@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpModule } from '@angular/http';
 
 import { ResultCardsComponent } from './result-cards.component';
-import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import { CourseDialogComponent } from '../course-dialog/course-dialog.component';
 
 import { CoursesService } from '../../services/courses.service';
 

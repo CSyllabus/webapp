@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {ComparatorComponent} from '../comparator/comparator.component';
 import {Course} from '../../classes/course';
 
-import {CourseDialogComponent} from '../result-cards/course-dialog/course-dialog.component';
+import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 @Component({
   selector: 'app-result-cards-comparator',
   templateUrl: './result-cards-comparator.component.html',

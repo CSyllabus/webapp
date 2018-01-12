@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularMaterialModule} from './../angular-material/angular-material.module';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-core',
@@ -13,7 +13,7 @@ export class CoreComponent implements OnInit {
   backgroundImage: String = null;
   explorerTab: boolean;
   comparatorTab: boolean;
-  getStart:boolean = false;
+  getStart: boolean = false;
   chooserSelectedExplorer: Boolean;
   chooserSelectedComparator: Boolean;
 
@@ -91,9 +91,9 @@ export class CoreComponent implements OnInit {
   }
 
 
-  getStarted(action: string) {
+  getStarted() {
 
-    this.getStart=true;
+    this.getStart = true;
 
     setTimeout(function () {
       (<HTMLInputElement>document.getElementById('start')).scrollIntoView({
@@ -104,14 +104,9 @@ export class CoreComponent implements OnInit {
     }, 100);
 
 
-
-
-
-
   }
 
-  startString()
-  {
+  startString() {
 
     var str = "<p>We have 586 courses from 4 universities!</p>",
       i = 0,

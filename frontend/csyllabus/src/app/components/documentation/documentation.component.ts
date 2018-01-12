@@ -10,7 +10,7 @@ export class DocumentationComponent{
   constructor() { }
 
 
-  getStarted(action: string) {
+  getStarted() {
 
     setTimeout(function () {
       (<HTMLInputElement>document.getElementById('one')).scrollIntoView({

@@ -1,4 +1,4 @@
-<form (keyup.enter)="exploreCourses()" style="position: relative; overflow: auto;">
+<form (keyup.enter)="compareCourses()" style="position: relative; overflow: auto;">
   <div>
     <p class="custom-card-title">Compare courses using
       <a  href="https://en.wikipedia.org/wiki/Latent_semantic_analysis" target="_blank" style="color: white; ">latent semantic indexing</a>
@@ -32,6 +32,7 @@
                 {{ course.name }}
               </mat-option>
             </mat-autocomplete>
+
           </mat-form-field>
 
                       <mat-form-field *ngIf="listCourses.length > 0" class="input" style="width:80%">
@@ -45,7 +46,7 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-
+          <i style="color: darkgrey;" *ngIf="this.listCourses.length >= 5">Maximal number of courses reached(5), to compare other courses remove existing from list.</i>
           <mat-chip-list>
             <mat-chip *ngFor="let course of listCourses" style="height: 30px;">
               {{course.name}}

@@ -290,9 +290,8 @@ export class ComparatorComponent implements OnInit {
   }
 
   addCourseToList(course) {
-    if (course.id && (this.listCourses.indexOf(course) == -1)) {
+    if (course.id && (this.listCourses.indexOf(course) === -1) && (this.listCourses.length <= 4)) {
       this.listCourses.push(course);
-
     }
   }
 

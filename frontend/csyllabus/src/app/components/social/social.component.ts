@@ -11,10 +11,10 @@ import {SocialUser} from "angular4-social-login";
   styleUrls: ['./social.component.css']
 })
 export class SocialComponent implements OnInit {
-  private val: string;
-  private comments: any = [];
-  private user: SocialUser;
-  private loggedIn: boolean;
+  val: string;
+  comments: any = [];
+  user: SocialUser;
+  loggedIn: boolean;
   @Input() courseId: number;
 
   constructor(private authService: AuthService, private coursesService: CoursesService) {
