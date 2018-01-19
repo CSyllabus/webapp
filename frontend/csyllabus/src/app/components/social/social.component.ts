@@ -16,6 +16,11 @@ export class SocialComponent implements OnInit {
   user: SocialUser;
   loggedIn: boolean;
   @Input() courseId: number;
+  @Input() title: string;
+  @Input() university: string;
+  @Input() country: string;
+  @Input() description: string;
+  public url: string;
 
   constructor(private authService: AuthService, private coursesService: CoursesService) {
 
@@ -76,11 +81,11 @@ export class SocialComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
-    })
+    });
 
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
       this.comments = res;
-    })
+    });
 
   }
 

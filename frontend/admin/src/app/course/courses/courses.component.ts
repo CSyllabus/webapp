@@ -41,7 +41,7 @@ export class CoursesComponent implements OnInit {
   filteredCourses: Course[] = [];
   totalItems: number;
   searchString: String = "";
-  user_id:String;
+  user_id: String;
 
   constructor(http: Http, private coursesService: CoursesService, private usersService: UsersService, private router: Router) {
   }
@@ -54,18 +54,13 @@ export class CoursesComponent implements OnInit {
     });
 
 
-
     this.dataSource = new CourseDataSource(this.coursesService, this.sort, this.paginator);
   }
-
 
   deleteCourse(course) {
     if (confirm('You sure you want to delete this course?')) {
       this.dataSource.deleteCourse(course.id);
-
-      this.dataSource = new CourseDataSource(this.coursesService, this.sort, this.paginator);
     }
-
   }
 
   addCourse() {
@@ -125,13 +120,9 @@ export class CourseDataSource extends DataSource<Course> {
   deleteCourse(courseId) {
     this.coursesService.deleteCourse(courseId).subscribe(complete => {
       let offset = this._paginator.pageIndex * this._paginator.pageSize;
-
-      this.coursesService.getAllCoursesByUser(this._paginator.pageSize, offset, this._sort.active, this._sort.direction, this.filter.toLowerCase()).subscribe(courses => {
-
-        this.data.next(courses);
-      });
+      this.fetchData();
     });
-    this.fetchData();
+
   }
 
 }

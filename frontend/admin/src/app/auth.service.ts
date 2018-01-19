@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
+    let errMsg = (error.json().non_field_errors) ? error.json().non_field_errors :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
     return Observable.throw(errMsg);

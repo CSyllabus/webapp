@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
-import { UsersService } from './user/users.service';
-import { LoginComponent } from './login/login.component';
-import { User } from './user/user';
-import { environment } from '../environments/environment';
+import {Component, OnInit} from '@angular/core';
+import {UsersService} from './user/users.service';
+import {LoginComponent} from './login/login.component';
+import {User} from './user/user';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -17,45 +16,33 @@ export class AppComponent implements OnInit {
   token: string;
   isadmin: boolean;
 
-  constructor(private snackBar: MatSnackBar, private usersService: UsersService) { }
+  constructor(private usersService: UsersService) {
+  }
 
   ngOnInit() {
-    let messages = [
-      'Hello handsome.',
-      'Nice to see you again.',
-      'Is that a new haircut?'
-    ];
-
-
-    let random_message = Math.floor(messages.length * Math.random());
-
-   /* let snackBarRef = this.snackBar.open(messages[random_message], 'Close', {
-     duration: 3000
-     });
-*/
-    if (localStorage.getItem("auth_token")) {
-		  this.token = localStorage.getItem("auth_token");
+    if (localStorage.getItem('auth_token')) {
+      this.token = localStorage.getItem('auth_token');
       this.usersService.getSelf().subscribe(user => {
         this.selfUser = user;
       });
     }
   }
 
-  setToken(token: string){
-	  this.token = token;
-    localStorage.setItem("auth_token", token);
+  setToken(token: string) {
+    this.token = token;
+    localStorage.setItem('auth_token', token);
     this.usersService.getSelf().subscribe(user => {
       this.selfUser = user;
     });
 
     this.usersService.checkUser().subscribe(res => {
-       this.isadmin=res;
+      this.isadmin = res;
     });
   }
 
-  logOut(){
-    localStorage.removeItem("auth_token");
+  logOut() {
+    localStorage.removeItem('auth_token');
     this.selfUser = null;
-	  this.token = null;
+    this.token = null;
   }
 }

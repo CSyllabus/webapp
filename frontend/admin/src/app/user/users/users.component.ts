@@ -16,6 +16,8 @@ import {MatPaginator} from '@angular/material';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { Router, RouterModule } from '@angular/router';
+
 declare let window: any;
 
 @Component({
@@ -38,24 +40,31 @@ export class UsersComponent implements OnInit {
   totalItems: number;
   searchString: String = "";
 
-  constructor(http: Http, private usersService: UsersService) {
+  constructor(http: Http, private usersService: UsersService, private router: Router) {
   }
 
   ngOnInit() {
 
     this.usersService.checkUser().subscribe(res => {
-          this.isadmin=res;
+      this.isadmin = res;
+
+      if (this.isadmin) {
+        this.usersService.getUsersCount().subscribe(count => {
+          this.totalItems = count;
+        });
+
+        this.dataSource = new UserDataSource(this.usersService, this.sort, this.paginator);
+      } else {
+        this.router.navigate(['home']);
+      }
+
     });
 
-    this.usersService.getUsersCount().subscribe(count => {
-      this.totalItems = count;
-    });
 
-    this.dataSource = new UserDataSource(this.usersService, this.sort, this.paginator);
   }
 
   deleteUser(user) {
-    if (confirm('You sure you want to delete this course?')) {
+    if (confirm('Warning, this action cannot be undone!')) {
       this.dataSource.deleteUser(user.id);
     }
   }

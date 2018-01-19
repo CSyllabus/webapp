@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {UsersService} from '../users.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Course} from '../../course/course';
@@ -13,7 +13,6 @@ import {FacultiesService} from '../../services/faculties.service';
 import {Country} from '../../classes/country';
 import {University} from '../../classes/university';
 import {Faculty} from '../../classes/faculty';
-
 
 
 @Component({
@@ -34,7 +33,6 @@ export class UserComponent implements OnInit {
   universities: University[];
   faculties: Faculty[];
 
-
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('',);
   password2 = new FormControl('',);
@@ -45,7 +43,7 @@ export class UserComponent implements OnInit {
   queryHomeCountry: Country;
 
 
-  constructor(private usersService: UsersService, private facultiesService: FacultiesService, private universitiesService: UniversitiesService, private countriesService: CountriesService,  private route: ActivatedRoute, private router: Router) {
+  constructor(private usersService: UsersService, private facultiesService: FacultiesService, private universitiesService: UniversitiesService, private countriesService: CountriesService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -54,9 +52,9 @@ export class UserComponent implements OnInit {
       this.task = params['task'];
 
       this.usersService.checkUser().subscribe(res => {
-          this.isadmin=res;
+        this.isadmin = res;
 
-        });
+      });
 
       if (this.task === 'edit' && this.user_id) {
         this.usersService.getUser(this.user_id).subscribe(user => {
@@ -71,7 +69,6 @@ export class UserComponent implements OnInit {
       }
 
     });
-
 
 
     this.countriesService.getAllCountries().subscribe(countries => {
@@ -89,14 +86,14 @@ export class UserComponent implements OnInit {
                     flag = false;
                     country.faculties.push(faculty);
                   }
-                  if(faculty.id===this.user.facultyId){
-                    this.selected=faculty.name;
+                  if (faculty.id === this.user.facultyId) {
+                    this.selected = faculty.name;
                   }
                 }
                 if (flag) {
                   country.universities.push(university);
-                  if(university.id===this.user.universityId){
-                    this.selected=university.name;
+                  if (university.id === this.user.universityId) {
+                    this.selected = university.name;
                   }
                   //console.log(university);
                 }
@@ -111,45 +108,43 @@ export class UserComponent implements OnInit {
 
   saveUser() {
 
-      let err=false;
+    let err = false;
 
-      if (this.newPassword && (this.newPassword === this.newPassword2)) {
-        this.user['newPassword'] = this.newPassword;
-      }
-      else if (this.newPassword && (this.newPassword !== this.newPassword2)){
-        alert('Passwords do not match!');
-        err=true;
-      }
-      /*else if (!this.email.value){
-        alert('Please enter e-mail address');
-        err=true;
-      }*/
+    if (this.newPassword && (this.newPassword === this.newPassword2)) {
+      this.user['newPassword'] = this.newPassword;
+    } else if (this.newPassword && (this.newPassword !== this.newPassword2)) {
+      alert('Passwords do not match!');
+      err = true;
+    }
+    /*else if (!this.email.value){
+     alert('Please enter e-mail address');
+     err=true;
+     }*/
 
-      if(!err){
+    if (!err) {
 
-        if (this.task === 'edit' && this.user_id) {
-          this.usersService.putUser(this.user_id, this.user).subscribe(res => {
-            alert(res);
-            this.usersService.getUser(this.user_id).subscribe(user => {
-              this.user = user;
-            });
-          }, error => alert(error));
-        } else if (this.task === 'self') {
-          this.usersService.putSelf(this.user).subscribe(res => {
-            alert("Succesfully saved :)");
-            this.usersService.getSelf().subscribe(user => {
-              this.user = user;
-            });
-          }, error => alert(error));
-        } else if (this.task === 'add' && this.user['newPassword']) {
-          this.usersService.postUser(this.user).subscribe(res => {
-            alert("Succesfully saved add :)");
-          }, error => alert(error));
-        }
+      if (this.task === 'edit' && this.user_id) {
+        this.usersService.putUser(this.user_id, this.user).subscribe(res => {
+          //alert(res);
+          alert("Succesfully saved.");
+          this.usersService.getUser(this.user_id).subscribe(user => {
+            this.user = user;
+          });
+        }, error => alert("No succces ith saving. Try another username or email."));
+      } else if (this.task === 'self') {
+        this.usersService.putSelf(this.user).subscribe(res => {
+          alert("Succesfully saved.");
+          this.usersService.getSelf().subscribe(user => {
+            this.user = user;
+          });
+        }, error => alert(error));
+      } else if (this.task === 'add' && this.user['newPassword']) {
+        this.usersService.postUser(this.user).subscribe(res => {
+          alert("Succesfully added a new user.");
+        }, error => alert(error));
       }
     }
-
-
+  }
 
 
 }

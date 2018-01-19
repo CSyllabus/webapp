@@ -18,7 +18,6 @@ export class UsersService {
    * @returns {Observable<R>}
    */
   getAllUsers(limit, offset, orderBy, orderDirection, filter): Observable<User[]> {
-
     let headers = new Headers();
     let authToken = localStorage.getItem("auth_token");
     headers.append('Content-Type', 'application/json');
@@ -65,7 +64,7 @@ export class UsersService {
       .map(res => res.json().data.items[0] as User);
   }
 
-  checkUser():Observable<any>{
+  checkUser(): Observable<any> {
     let headers = new Headers();
     let authToken = localStorage.getItem("auth_token");
     headers.append('Content-Type', 'application/json');
@@ -73,27 +72,27 @@ export class UsersService {
     let options = new RequestOptions({headers: headers});
 
 
-    return this.http.get(this.usersUrl +'check', options)
+    return this.http.get(this.usersUrl + 'check', options)
       .map(res => res.json().data.admin as boolean);
 
   }
 
 
-  checkUserCourse(courseId):Observable<any>{
+  checkUserCourse(courseId): Observable<any> {
     let headers = new Headers();
     let authToken = localStorage.getItem("auth_token");
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `JWT ${authToken}`);
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(this.usersUrl +'check/'+courseId, options)
+    return this.http.get(this.usersUrl + 'check/' + courseId, options)
       .map(res => res.json().data.admin as boolean);
 
   }
 
   putUser(id: number, data): Observable<User> {
     let headers = new Headers();
-    let authToken = localStorage.getItem("auth_token");
+    let authToken = localStorage.getItem('auth_token');
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `JWT ${authToken}`);
     let options = new RequestOptions({headers: headers});
@@ -103,7 +102,12 @@ export class UsersService {
   }
 
   postUser(data): Observable<User> {
-    return this.http.post(this.usersUrl, data)
+    let headers = new Headers();
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(this.usersUrl, data, options)
       .map(res => res).catch(this.handleError);
   }
 
@@ -124,7 +128,12 @@ export class UsersService {
   }
 
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(this.usersUrl + id)
+    const headers = new Headers();
+    const authToken = localStorage.getItem('auth_token');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `JWT ${authToken}`);
+    const options = new RequestOptions({headers: headers});
+    return this.http.delete(this.usersUrl + id, options)
       .map(res => res);
   }
 
@@ -137,7 +146,6 @@ export class UsersService {
     return this.http.get(this.usersUrl + id + '/courses/')
       .map(res => res.json() as Course[]);
   }
-
 
 
   private handleError(error: any) {

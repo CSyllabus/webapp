@@ -34,6 +34,7 @@ export class CourseComponent implements OnInit {
   keywordInput: string = "";
   countries: Country[];
   allow_access: boolean;
+  isadmin: boolean;
   universities: University[];
   faculties: Faculty[];
   selected: string = 'Select University/Faculty';
@@ -47,7 +48,9 @@ export class CourseComponent implements OnInit {
     self = this;
     this.course = new Course();
 
-
+    this.usersService.checkUser().subscribe(res => {
+      this.isadmin = res;
+    });
 
     this.route.params.subscribe(params => {
       self.course_id = +params['id'];
@@ -75,8 +78,8 @@ export class CourseComponent implements OnInit {
                     country.faculties.push(faculty);
                   }
 
-                  if(faculty.name===this.course.faculty){
-                    this.selected=faculty.name;
+                  if (faculty.name === this.course.faculty) {
+                    this.selected = faculty.name;
                   }
 
                 }
@@ -84,8 +87,8 @@ export class CourseComponent implements OnInit {
                   country.universities.push(university);
                   console.log(university);
 
-                  if(university.name===this.course.university){
-                    this.selected=university.name;
+                  if (university.name === this.course.university) {
+                    this.selected = university.name;
                   }
                 }
               }
@@ -117,14 +120,14 @@ export class CourseComponent implements OnInit {
     if (self.task !== 'edit') self.course.id = undefined;
     if (self.course.id) {
       this.coursesService.courseExisting(self.course.id, self.course).subscribe(res => {
-        alert("Succesfully saved :)");
+        alert("Succesfully saved. Results in the comprator will be changed with a scheduled update (once a week) :)");
         self.fetchCourseData(self.course_id);
       }, error => alert(error));
 
     }
   }
 
-   addCourse() {
+  addCourse() {
     self.course.keywords = [];
 
     self.keywords.forEach(function (keyword) {
@@ -136,7 +139,7 @@ export class CourseComponent implements OnInit {
 
     this.coursesService.courseNew(self.course).subscribe(res => {
 
-      alert("Succesfully added :)");
+      alert("Succesfully added a new course. It will be added to comparator result on a next scheduled update (once a week) :)");
       this.router.navigate(['courses/']);
 
 
@@ -148,7 +151,7 @@ export class CourseComponent implements OnInit {
   fetchCourseData(course_id) {
 
     this.usersService.checkUserCourse(course_id).subscribe(res => {
-        this.allow_access=res;
+      this.allow_access = res;
 
     });
 
@@ -158,10 +161,10 @@ export class CourseComponent implements OnInit {
 
       //alert(course);
       if (course.keywords) {
-      course.keywords.forEach(function (el) {
-        let keyword = {value: el, remove: false};
-        self.keywords.push(keyword);
-      });
+        course.keywords.forEach(function (el) {
+          let keyword = {value: el, remove: false};
+          self.keywords.push(keyword);
+        });
       }
 
     });

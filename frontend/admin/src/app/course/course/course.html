@@ -2,7 +2,8 @@
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
     <a [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">Courses</a>
     <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
-    <a [routerLink]="['/course/' + course._id]" style=" display: inline-block;vertical-align: middle;"> Course {{course.id}}</a>
+    <a [routerLink]="['/course/' + course.id]" style=" display: inline-block;vertical-align: middle;"> Course
+      {{course.id}}</a>
   </div>
 </div>
 <!--<div id="search-component-spinner" *ngIf="!course.id" >
@@ -16,57 +17,47 @@
 
 
   <div>
-    <mat-form-field class="input">
-          <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
-            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+    <mat-form-field class="input" *ngIf="isadmin">
+      <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
+        <mat-optgroup *ngFor="let country of countries" [label]="country.name">
 
-              <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (click)="course.university = university.id; course.faculty = 0">
-                {{university.name}}
-              </mat-option>
-              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (click)="course.faculty = faculty.id; course.university = 0">
-                {{faculty.name}}
-              </mat-option>
-            </mat-optgroup>
-          </mat-select>
-    </mat-form-field>
-    <br>
-    <mat-form-field >
-      <input matInput placeholder="Name" [(ngModel)]="course.name">
-    </mat-form-field>
-    <mat-form-field >
-      <input matInput placeholder="Credits" [(ngModel)]="course.ects">
-    </mat-form-field>
-    <mat-form-field >
-      <input matInput placeholder="English level" [(ngModel)]="course.englishLevel">
-    </mat-form-field>
-    <mat-form-field >
-      <input matInput placeholder="Level" [(ngModel)]="course.level">
-    </mat-form-field>
-    <mat-form-field >
-      <input matInput placeholder="Semester" [(ngModel)]="course.semester">
-    </mat-form-field>
-    <mat-form-field >
-      <input matInput placeholder="URL" [(ngModel)]="course.url">
-    </mat-form-field>
-    <!--
-    <mat-form-field style="width: 100%;" *ngIf="categories">
-      <mat-select placeholder="Category" matInput [formControl]="categoryControl" placeholder="Category"
-                  [(ngModel)]="course.category_id">
-        <mat-option *ngFor="let category of categories" [value]="category._id">
-          {{category.name}}
-        </mat-option>
+          <mat-option *ngFor="let university of country.universities" [value]="university"
+                      (click)="course.university = university.id; course.faculty = 0">
+            {{university.name}}
+          </mat-option>
+          <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                      (click)="course.faculty = faculty.id; course.university = 0">
+            {{faculty.name}}
+          </mat-option>
+        </mat-optgroup>
       </mat-select>
     </mat-form-field>
--->
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="course.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Credits" [(ngModel)]="course.ects">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="English level" [(ngModel)]="course.englishLevel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Level" [(ngModel)]="course.level">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Semester" [(ngModel)]="course.semester">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="URL" [(ngModel)]="course.url">
+    </mat-form-field>
 
     <mat-form-field style="width: 100%;">
-  <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
+      <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
     </mat-form-field>
 
 
-</div>
+  </div>
   <div>
     <mat-form-field style="width: 100%;" (keyup.enter)="addKeyword()">
       <input matInput placeholder="Keyword" [(ngModel)]="keywordInput">

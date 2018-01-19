@@ -7,6 +7,7 @@ from ..models import Faculty
 from ..models import University
 from ..models import City
 from ..models import Country
+from ..models import CourseResult
 from ..models import CourseProgram
 from ..models import CourseFaculty
 from ..models import CourseUniversity
@@ -105,22 +106,15 @@ class CourseView(APIView):
 
     def post(self, request, format=json):
 
-
-
         data = {}
         result = {}
-
-        print request.data
 
         try:
             decoded_payload = utils.jwt_decode_handler(
                 request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
             user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
-
-
             allow_access=False
-
 
             faculty_id=0
             university_id=0
@@ -137,8 +131,6 @@ class CourseView(APIView):
             except:
                 pass
 
-
-
             if (faculty_id>0):
                 try:
                     adminfaculty = AdminFaculty.objects.filter(user_id=user.id)[0]
@@ -147,7 +139,6 @@ class CourseView(APIView):
                         allow_access=True
                 except:
                     pass
-
 
             if (university_id>0):
                 try:
@@ -158,8 +149,6 @@ class CourseView(APIView):
 
                 except:
                     pass
-
-            print allow_access
 
             if(user.is_admin or allow_access):
 
@@ -217,9 +206,7 @@ class CourseView(APIView):
 
 
                 courses_list = []
-
                 courses_list.append(course_data)
-
 
                 data['currentItemCount'] = len(courses_list)
                 data['items'] = courses_list
@@ -241,6 +228,8 @@ class CourseView(APIView):
 
         print course_id
         Course.objects.filter(id=course_id).delete()
+        CourseResult.objects.filter(first_course_id=course_id).delete()
+        CourseResult.objects.filter(second_course_id=course_id).delete()
         return Response()
 
     def put(selfself, request, course_id):

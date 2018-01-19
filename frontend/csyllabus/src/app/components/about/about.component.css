@@ -1246,6 +1246,13 @@ p {
     margin-bottom: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .welcome-heading {
+
+  }
+
+}
+
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .menu_area .navbar-brand {

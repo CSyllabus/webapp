@@ -37,7 +37,7 @@
         <input matInput required placeholder="Email" [(ngModel)]="user.email" type="email">
       </mat-form-field>
       <br>
-      <mat-form-field class="input">
+      <mat-form-field class="input" *ngIf="!user.is_admin && isadmin">
           <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
 

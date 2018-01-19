@@ -5,4 +5,5 @@ export class User {
   last_name: String;
   facultyId: Number;
   universityId: Number;
+  is_admin: boolean;
 }

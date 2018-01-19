@@ -98,11 +98,12 @@ export class ExplorerComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.explorerStarted = true;
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
         this.facultiesService.getAllFaculties().subscribe(faculties => {
+          this.explorerStarted = false;
           for (let country of this.countries) {
             country['universities'] = [];
             country['faculties'] = [];

@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatSnackBar} from '@angular/material';
-import {AuthService} from '../auth.service'
+import {AuthService} from '../auth.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 declare let window: any;
 
 @Component({
@@ -11,8 +13,9 @@ declare let window: any;
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  hide = true;
 
-  constructor(private snackBar: MatSnackBar, private authService: AuthService) {
+  constructor(private snackBar: MatSnackBar, private authService: AuthService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -59,13 +62,16 @@ export class LoginComponent implements OnInit {
   @Output() token = new EventEmitter<string>();
 
   submitLogIn() {
-    let data = {}
-    data['username'] = this.username;
-    data['password'] = this.password;
+    if (this.username.length > 0 && this.password.length > 0) {
+      let data = {}
+      data['username'] = this.username;
+      data['password'] = this.password;
 
-    this.authService.submitLogIn(data).subscribe(response => {
-      this.token.emit(response.token);
+      this.authService.submitLogIn(data).subscribe(response => {
+        this.token.emit(response.token);
 
-    }, error => alert('Wrong password.'));
+      }, error => alert(error));
+    }
+
   }
 }

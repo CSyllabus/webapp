@@ -10,10 +10,10 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item disabled>
+          <!--<button mat-menu-item disabled>
             <mat-icon>notifications_off</mat-icon>
             <span>Turn of notifications</span>
-          </button>
+          </button>-->
           <button mat-menu-item [routerLink]="['user/self']">
             <mat-icon>account_circle</mat-icon>
             <span> {{selfUser.username}}</span>
@@ -43,9 +43,9 @@
               <span style="position: absolute;line-height: 24px;">Users</span>
             </a>
             <div class="mdl-layout-spacer"></div>
-            <a class="sidebar-link" href="" style="position: absolute; bottom: 0;">
+            <!--<a class="sidebar-link" href="" style="position: absolute; bottom: 0;">
               <mat-icon style="margin-right: 32px">help_outline</mat-icon>
-              <span style="position: absolute;" class="visuallyhidden">Help</span></a>
+              <span style="position: absolute;" class="visuallyhidden">Help</span></a>-->
           </nav>
         </mat-sidenav>
         <div class="intrev-content">

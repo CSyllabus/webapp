@@ -68,11 +68,9 @@ export class ComparatorComponent implements OnInit {
   queryHomeProgram: Program;
   queryLevel: string;
   loadingCourses: boolean;
-  queryHomeCourse: Course;
-  listCourses: any = [];
-  listCoursesIDs: any = [0, 0, 0, 0, 0];
+  queryHomeCourse: any;
+  listCourses: Course[] = [];
   multi_courses: any = [];
-  iteration_of_course: number = 0;
 
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
@@ -82,6 +80,7 @@ export class ComparatorComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.comparatorStarted = true;
     this.filteredHomeCourses = new Array<Course>();
     this.filteredHomeCoursesAutocomplete = new Observable<Course[]>();
     this.queryHomeCourse = new Course;
@@ -89,6 +88,7 @@ export class ComparatorComponent implements OnInit {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
         this.facultiesService.getAllFaculties().subscribe(faculties => {
+          this.comparatorStarted = false;
           for (let country of this.countries) {
             country['universities'] = [];
             country['faculties'] = [];
@@ -226,13 +226,6 @@ export class ComparatorComponent implements OnInit {
       this.comparatorStarted = true;
       let coursesCounter = this.listCourses.length;
 
-      for (let i = 0; i < this.listCourses.length; i++) {
-        if (this.listCourses[i] !== undefined) {
-          this.listCoursesIDs[i] = this.listCourses[i].id;
-          coursesCounter++;
-        }
-      }
-
       if (this.queryFaculty) {
         this.multi_courses = [];
         for (let i = 0; i < this.listCourses.length; i++) {
@@ -243,8 +236,8 @@ export class ComparatorComponent implements OnInit {
               this.comparatorStarted = false;
               this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
                 ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
-              duration: 10000
-            });
+                duration: 10000
+              });
             }
           });
         }
@@ -256,10 +249,10 @@ export class ComparatorComponent implements OnInit {
             if (i === this.listCourses.length - 1) {
               this.comparatorResult.emit(this.multi_courses);
               this.comparatorStarted = false;
-             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
+              this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
                 ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
-              duration: 10000
-            });
+                duration: 10000
+              });
             }
           });
         }
@@ -271,8 +264,9 @@ export class ComparatorComponent implements OnInit {
             if (i === this.listCourses.length - 1) {
               this.comparatorResult.emit(this.multi_courses);
               this.comparatorStarted = false;
-              this.snackBar.open('Showing top results for given search, ordered by similarity rank', 'CLOSE', {
-                duration: 5000
+              this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
+                ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
+                duration: 10000
               });
             }
           });
@@ -292,8 +286,14 @@ export class ComparatorComponent implements OnInit {
   addCourseToList(course) {
     if (course.id && (this.listCourses.indexOf(course) === -1) && (this.listCourses.length <= 4)) {
       this.listCourses.push(course);
+      //this.queryHomeCourse = null;
     }
   }
+
+  removeCourseFromList(course) {
+    this.listCourses = this.listCourses.filter(item => item.id !== course.id);
+  }
+
 
   filter(name: string): Course[] {
     return this.filteredHomeCourses.filter(option =>
