@@ -41,12 +41,10 @@ pip install -r backend/requirements/devl.pip
 in file backend/settings/devl.py field  change DATABASES according to database name, username and password you wrote down in first 
 ## steps
 python manage.py migrate
-python manage.py loadtestdata users.EmailUser:100
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/epfl_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/laquila_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup_fixtures_json.json
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/london_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/polimi_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/stanford_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas_fixtures_json.json
