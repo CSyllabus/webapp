@@ -3,7 +3,7 @@
 Made by team from POLIMI(Italy) and FER(Croatia University)
 
 ## Motivation
- CSyllabus is imagined as a web platform which shouldng  ease up process of finding and comparing courses on domestic and foreign faculties.
+ CSyllabus is imagined as a web platform which should  ease up process of finding and comparing courses on domestic and foreign faculties.
  It will enable users to discover and compare courses on interactive way through web application.
  This “one click” app will save time and provide very useful information to interested parties.
 
@@ -28,7 +28,7 @@ Install PostgreSQL 9.6x (https://www.postgresql.org/download/).
 Install with pgadmin.
 Create new server hostname -> “localhost”.
 Write down password and username for root (usually username = postgres).
-After installation create a database in pgadmin to be used with the opensyllabus and write down the name used.
+After installation create a database in pgadmin to be used with the csyllabus and write down the name used.
 If you create a new username and password for the database write it down too.
 Install python 2.7 (https://www.python.org/downloads/).
 Check python version in command line with:
@@ -79,7 +79,12 @@ Serve angular app with ```ng serve```
 
 ## Coding the backend
 
-Recommended IDE is PyCharm, but if you are using other IDE make sure it is connencted to statics code analyzer which checks adherence to PEP 8 standard. (https://www.python.org/dev/peps/pep-0008/)
+Backend is made using Django REST Framework, main custom functionalities are located in /backend/csyllabusapi folder which
+represents a custom djangoo app. It contains custom models, views, managements scripts, helper scripts and database migrations and fixtures.
+Basic knowledge of Django Framework is required to make changes in the backend.
+
+
+Recommended IDE is PyCharm, but if you are using other IDE make sure it is connected to statics code analyzer which checks adherence to PEP 8 standard. (https://www.python.org/dev/peps/pep-0008/)
 
 ### In writing the API make sure to adhere to these standards:
 https://google.github.io/styleguide/jsoncstyleguide.xml
@@ -88,9 +93,13 @@ https://cloud.google.com/apis/design/
 
 ## Coding the frontend:
 
+Frontend is made using Angular4 Framework with Angular Material Components and Angular CLI, main custom functionalities are located in /frontend/csyllabus and  
+/frontend/admin folders which represent two different custom angular apps. One is for a public website and the other is for the admin website.
+It contains custom modules, custom components, templates and styles. Basic knowledge of Angular Framework is required to make changes in the frontend.
+
 To adhere to code conventiones we must code using tslint to make sure we convey to these style guidelines (https://angular.io/guide/styleguide).
 
-Conennect your IDE with tslinf file: frontend/csyllabus/tslint.json
+Connect your IDE with tslinf file: frontend/csyllabus/tslint.json
 
 Usually IDE-s do this autoamticaly but if they for some reason didn't or if you are unsure if they did:
     
@@ -104,7 +113,7 @@ Intrunctions for VisualStudio Code:
 Before pushing to your branch I recommend running ```ng lint``` and ```ng test```.
 If you coded listening to linter errors and warnings ```ng lint``` should say all is fine, if you didnt it will tell you what to correct.
 
-Running ```ng test``` will check for unit tests, now these are great and building components and services with angular cli autoamticaly creates some unit tests which give fair code coverage.
+Running ```ng test``` will check for unit tests, now these are great and building components and services with angular cli automatically creates some unit tests which give fair code coverage.
 
 ### Further on when developing:
 1. Follow [backend/README.md](backend/README.md)
