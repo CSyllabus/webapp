@@ -7,21 +7,6 @@ Made by team from POLIMI(Italy) and FER(Croatia University)
  It will enable users to discover and compare courses on interactive way through web application.
  This “one click” app will save time and provide very useful information to interested parties.
 
-## Installation
-```
-export project_name={{ project_name }}
-mkvirtualenv $project_name
-pip install django
-```
-
-
-
-## Backend run
-Position in root of the project and run
-```
-python manage.py runserver
-```
-
 ## Instalation guide for the backend:
 
 Install PostgreSQL 9.6x (https://www.postgresql.org/download/).
