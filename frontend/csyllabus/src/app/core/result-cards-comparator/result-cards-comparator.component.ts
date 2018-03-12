@@ -8,7 +8,7 @@ import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 @Component({
   selector: 'app-result-cards-comparator',
   templateUrl: './result-cards-comparator.component.html',
-  styleUrls: ['./result-cards-comparator.component.css']
+  styleUrls: ['./result-cards-comparator.component.css', './circle.css']
 })
 export class ResultCardsComparatorComponent implements OnInit {
 

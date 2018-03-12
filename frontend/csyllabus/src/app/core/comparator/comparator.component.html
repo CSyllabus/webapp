@@ -97,12 +97,12 @@
       <div style="text-align: center;">
 
         <button mat-raised-button color="primary" (click)="compareCourses()"
-                [disabled]="!((queryFaculty ||queryUniversity || queryCountry ) && listCourses.length > 0) "
+                [disabled]="!((queryFaculty || queryUniversity || queryCountry ) && listCourses.length > 0) "
         >Compare
         </button>
         <mat-icon color="primary"
                   matTooltip="To compare please select at least one course and a destination faculty, university or country"
-                  *ngIf="!((queryFaculty ||queryUniversity || queryCountry ) && listCourses.length > 0)">help
+                  *ngIf="!((queryFaculty || queryUniversity || queryCountry ) && listCourses.length > 0)">help
         </mat-icon>
       </div>
     </div>

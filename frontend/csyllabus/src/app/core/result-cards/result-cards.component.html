@@ -6,9 +6,17 @@
 
   <div *ngFor="let course of courses; let i = index" class="courseCard col-md-4" [hidden]="i >= 12*page">
     <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card">
+      <p class="go-to-compare">
+        <a href="www.google.com"><i title="Compare" class="fa fa-chevron-circle-right fa-2x"></i></a>
+      </p>
       <mat-card-header>
         <mat-card-title>
-          <p class="cours-result-card-title">{{ course.name }}</p></mat-card-title>
+
+          <p class="cours-result-card-title">{{ course.name }}</p>
+
+
+
+        </mat-card-title>
         <mat-card-subtitle>
           <!--<b *ngIf="course.rank"> Rank: {{course.rank * 100 | number : '1.2-2'}} </b> -->
           <p class="cours-result-card-subtitle">

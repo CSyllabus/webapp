@@ -63,3 +63,16 @@
 
 .example-card { transition: all .2s ease-in-out; }
 .example-card:hover { transform: scale(1.1); }
+
+.naslov-expansion {
+  text-align:center;
+  font-size:20px
+}
+
+@media only screen and (max-width: 768px) {
+  .naslov-expansion {
+    text-align:center;
+    font-size:12px
+  }
+
+}

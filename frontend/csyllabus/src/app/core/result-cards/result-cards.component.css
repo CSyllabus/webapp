@@ -69,3 +69,19 @@
 }
 
 }
+
+.go-to-compare{
+  margin-top: -100px;
+  margin-left: 90%;
+  margin-bottom:0px;
+  color: #798fdd;
+}
+
+.go-to-compare {
+  transition: all .2s ease-in-out;
+}
+
+.go-to-compare:hover {
+  transform: scale(1.3);
+  color: #394680;
+}

@@ -7,7 +7,7 @@
     <div *ngFor="let course of courses" class="col-md-12"
          style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px">
       <div class="col-md-6">
-        <div *ngFor="let coursetest of course; let first = first;" style="margin-top:10em;">
+        <div *ngFor="let coursetest of course; let first = first;" >
           <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
             <mat-card-title>
               {{coursetest.name}}
@@ -21,8 +21,8 @@
               </p>
             </mat-card-subtitle>
             <mat-card-content>
-              <p class="courseDescription">
-                {{ coursetest.short_description}}
+              <p style="text-align:justify" class="courseDescription">
+                {{ coursetest.description}}
               </p>
             </mat-card-content>
           </mat-card>
@@ -30,7 +30,52 @@
       </div>
       <div class="col-md-6">
         <div *ngFor="let coursetest of course; let first = first;" >
-          <mat-card *ngIf="!first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
+          <mat-expansion-panel *ngIf="!first" [expanded]="false">
+          <mat-expansion-panel-header style="height:100px">
+            <mat-panel-title >
+              <p class="naslov-expansion">
+
+                &nbsp;{{coursetest.name}}
+
+              </p>
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+            <div class="col-md-12" style="padding:0px">
+
+              <div class="clearfix col-md-3" style="display:inline; padding-bottom:0px;">
+
+                <div class="c100 p75 small green">
+                    <span>{{coursetest.result * 100 | number : '1.0-0'}}%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+              </div>
+              <div style="display:inline; text-align:right; padding-top:0px" class="col-md-9">
+              <p style="color:grey; margin:0px"><span *ngIf="coursetest.faculty">{{coursetest.faculty}}, </span>
+                <span *ngIf="coursetest.university && !coursetest.faculty">{{coursetest.university}}, </span>
+                <span *ngIf="coursetest.city && coursetest.faculty">{{coursetest.city}}, </span>
+                <span *ngIf="coursetest.country">{{coursetest.country}} </span></p>
+              </div>
+              <p style="text-align:justify">{{coursetest.description}}</p>
+
+              <p style="padding-right:15px; text-align:right">
+                <a mat-icon-button target="_blank" routerLink="course/{{coursetest.id}}">
+                  <b>[More]</b>
+                </a>
+              </p>
+            </div>
+          </mat-expansion-panel>
+
+
+
+
+
+
+
+          <!--<mat-card *ngIf="!first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
             <mat-card-title>
                 <span style="float:left; font-size: 20px;"><b>  {{coursetest.result * 100 | number : '1.2-2'}}/100 </b></span>
               {{coursetest.name}}
@@ -44,8 +89,9 @@
               </p>
 
             </mat-card-subtitle>
-          </mat-card>
+          </mat-card>-->
         </div>
+
       </div>
     </div>
 
