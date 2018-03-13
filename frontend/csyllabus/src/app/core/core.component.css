@@ -163,11 +163,6 @@
 
 #explorer-result-component {
   width: 100%;
-  background-image: url(../../images/a4.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 
   overflow: auto;
 }
@@ -333,6 +328,7 @@
 
 #big-green-button {
   width:500px;
+  border-radius: 0;
 }
 
 @media screen and (max-width: 720px) {
