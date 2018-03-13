@@ -28,4 +28,6 @@ export class ResultCardsComponent implements OnInit {
 
 
 
+
+
 }
