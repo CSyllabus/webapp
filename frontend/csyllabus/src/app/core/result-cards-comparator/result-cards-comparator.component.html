@@ -45,7 +45,7 @@
 
               <div class="clearfix col-md-3" style="display:inline; padding-bottom:0px;">
 
-                <div class="c100 p75 small green">
+                <div class="c100 p{{coursetest.result * 100 | number : '1.0-0'}} small" [ngClass]="{'orange':coursetest.result<=0.6, 'green':coursetest.result>0.6}">
                     <span>{{coursetest.result * 100 | number : '1.0-0'}}%</span>
                     <div class="slice">
                         <div class="bar"></div>
