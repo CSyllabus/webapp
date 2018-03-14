@@ -5,6 +5,7 @@ export class University {
   img: string;
   created: String;
   modified: String;
+  countryId: Number;
 }
 
 

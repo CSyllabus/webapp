@@ -25,7 +25,22 @@
     <mat-form-field style="width: 100%;">
       <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="university.description"></textarea>
     </mat-form-field>
-
+<br>
+    <div class="" *ngIf="task != 'copy'">
+      <label>Image: </label>
+      <button id="main_image_btn" mat-button onclick="document.getElementById('main_image').click()"
+              style="float: right;">
+        <mat-icon>photo</mat-icon>
+        SELECT A PHOTO
+      </button>
+      <div style="text-align: center; padding: 20px;" *ngIf="university">
+        <img id="main_img_img" height="150" [src]="university.img" (error)="setMainImgToDefault()">
+      </div>
+      <input class="mdl-textfield__input" type="file"
+             name="main_image" id="main_image"
+             (change)="onImageInputChange($event, true)"
+              style="display: none;">
+    </div>
   </div>
   <mat-card-actions style="text-align: center;">
     <button mat-button *ngIf="university.id" (click)="saveUniversity(true)">

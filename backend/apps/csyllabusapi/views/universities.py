@@ -88,7 +88,8 @@ class UniversitiesView(APIView):
     def put(selfself, request, university_id=-1):
         name = request.data['name']
         description = request.data['description']
-        University.objects.filter(id=university_id).update(name=name, description=description)
+        img = request.data['img']
+        University.objects.filter(id=university_id).update(name=name, description=description, img=img)
         return Response()
 
 

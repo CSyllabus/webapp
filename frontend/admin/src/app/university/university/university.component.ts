@@ -35,7 +35,8 @@ export class UniversityComponent implements OnInit {
   universities: University[];
   faculties: Faculty[];
   selected: string = 'Select University/Faculty';
-
+  private universityImg: string;
+  file: File;
 
   constructor(private facultiesService: FacultiesService, private universitiesService: UniversitiesService, private usersService: UsersService,
               private route: ActivatedRoute, private router: Router) {
@@ -54,14 +55,30 @@ export class UniversityComponent implements OnInit {
       self.task = params['task'];
       if (self.university_id) {
         self.fetchUniversityData(+params['id']);
+        self.universityImg = self.university.img;
       }
 
     });
 
 
-
   }
 
+  setMainImgToDefault() {
+    this.university.img = "http://howmadareyou.com/wp-content/themes/MAD/images/default_profile_image.png";
+  }
+
+  onImageInputChange(event: any) {
+    const files: FileList = event.target.files;
+    this.file = files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const target: any = e.target;
+      this.universityImg = target.result;
+      this.university.img = this.universityImg;
+    };
+    reader.readAsDataURL(this.file);
+  }
 
   addKeyword() {
     let keyword = {value: this.keywordInput, remove: false};
@@ -111,11 +128,11 @@ export class UniversityComponent implements OnInit {
   }
 
   fetchUniversityData(university_id) {
-/*
-    this.usersService.checkUserUniversity(university_id).subscribe(res => {
-      this.allow_access = res;
+    /*
+        this.usersService.checkUserUniversity(university_id).subscribe(res => {
+          this.allow_access = res;
 
-    });*/
+        });*/
 
     self.keywords = [];
     self.universitiesService.getUniversity(university_id).subscribe(university => {
@@ -126,5 +143,6 @@ export class UniversityComponent implements OnInit {
 
     });
   }
+
 
 }
