@@ -25,10 +25,10 @@ class Command(BaseCommand):
         # words not to take into consideration
         # parametar 1: remove keywords from decriptions
         stoplist = stopwords.words('english')
-        stoplist = stoplist + ['is', 'how', 'or', 'to', 'of', 'the',
-                        'in', 'for', 'on', 'will', 'a', 'advanced', 'an', 'and', 'are', 'as', 'be', 'by', 'course',
-                        'with', 'some', 'student', 'students', 'systems', 'system', 'basic',
-                        'this', 'knowledge', 'use', 'using', 'well', 'hours;', 'four']
+        #stoplist = stoplist + ['is', 'how', 'or', 'to', 'of', 'the',
+        #                'in', 'for', 'on', 'will', 'a', 'advanced', 'an', 'and', 'are', 'as', 'be', 'by', 'course',
+        #                'with', 'some', 'student', 'students', 'systems', 'system', 'basic',
+        #                'this', 'knowledge', 'use', 'using', 'well', 'hours;', 'four']
 
         # parametar 1: remove keywords from names
         stoplist_names = stopwords.words('english')
@@ -46,9 +46,9 @@ class Command(BaseCommand):
                  for document in documents]
 
         # to add remove list for names
-        texts_names = [[word.lower() for word in document_name.split()
-                       if word.replace(".", "").lower() not in stoplist_names]
-                       for document_name in documents_names]
+        #texts_names = [[word.lower() for word in document_name.split()
+        #               if word.replace(".", "").lower() not in stoplist_names]
+        #               for document_name in documents_names]
 
         frequency = defaultdict(int)
         for text in texts:
@@ -58,18 +58,18 @@ class Command(BaseCommand):
                  for text in texts]
 
         dictionary = corpora.Dictionary(texts)
-        dictionary.filter_n_most_frequent(15)
-        dictionary.save_as_text("dictionary.txt", sort_by_word=False)
+        #dictionary.filter_n_most_frequent(50)
+        #dictionary.save_as_text("dictionary.txt", sort_by_word=False)
 
-        frequency_names = defaultdict(int)
-        for text in texts_names:
-            for token in text:
-                frequency_names[token] += 1
-        texts_names = [[token for token in text if frequency_names[token] > 1]
-                       for text in texts_names]
+        #frequency_names = defaultdict(int)
+        #for text in texts_names:
+        #    for token in text:
+        #        frequency_names[token] += 1
+        #texts_names = [[token for token in text if frequency_names[token] > 1]
+        #               for text in texts_names]
 
         # save to fale keywords sorted by appereance
-        dictionary_names = corpora.Dictionary(texts_names)
+        #dictionary_names = corpora.Dictionary(texts_names)
 
         print "Created a dictionary of word-bag."
         # doc2bow counts the number of occurences of each distinct word,
@@ -85,8 +85,8 @@ class Command(BaseCommand):
         #    print i[0], i[1]
 
         # parametar 2: num_topics
-        corpus_names = [dictionary_names.doc2bow(text) for text in texts_names]
-        lsi_names = models.LsiModel(corpus_names, id2word=dictionary_names, num_topics=125)
+        #corpus_names = [dictionary_names.doc2bow(text) for text in texts_names]
+        #lsi_names = models.LsiModel(corpus_names, id2word=dictionary_names, num_topics=125)
 
 
         j = 0
@@ -96,22 +96,22 @@ class Command(BaseCommand):
             doc = course.description + course.name
             vec_bow = dictionary.doc2bow(doc.lower().split())
 
-            doc_name = course.name
-            vec_bow_name = dictionary_names.doc2bow(doc_name.lower().split())
+            #doc_name = course.name
+            #vec_bow_name = dictionary_names.doc2bow(doc_name.lower().split())
 
             # convert the query to LSI space
             vec_lsi = lsi[vec_bow]
             index = similarities.MatrixSimilarity(lsi[corpus])
 
-            vec_lsi_name = lsi_names[vec_bow_name]
-            index_name = similarities.MatrixSimilarity(lsi_names[corpus_names])
+            #vec_lsi_name = lsi_names[vec_bow_name]
+            #index_name = similarities.MatrixSimilarity(lsi_names[corpus_names])
 
             # perform a similarity query against the corpus
             sims = index[vec_lsi]
             sims = sorted(enumerate(sims), key=lambda item: -item[1])
 
-            sims_names = index_name[vec_lsi_name]
-            sims_names = sorted(enumerate(sims_names), key=lambda item: -item[1])
+            #sims_names = index_name[vec_lsi_name]
+            #sims_names = sorted(enumerate(sims_names), key=lambda item: -item[1])
 
             j = j + 1
             i = 0
@@ -121,7 +121,7 @@ class Command(BaseCommand):
                     # parametar 3: ratio descriptions vs names
                     CourseResult.objects.create(first_course_id=document_courses[sims[0][0]].id,
                                                 second_course_id=document_courses[sims[i][0]].id,
-                                                result=(1 * sims[i][1] + 0.0 * sims_names[i][1]))
+                                                result=(1 * sims[i][1]))
                 i = i + 1
 
                 # print sims[1:11]
