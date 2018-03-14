@@ -1,8 +1,10 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': '',
+        'USER': 'postgres',
+
+        'PASSWORD': 'filipo',
        # 'NAME': '{{ project_name }}',
-	    'NAME': 'csfer',
+	    'NAME': 'csyllabus',
     }
 }

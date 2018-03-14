@@ -36,7 +36,14 @@ Check *django* version with:
 ```  python -c "import django; print(django.get_version())"```  
 
 Position yourself in csyllabus root folder.  
-```  pip install -r backend/requirements/devl.pip```  
+```  pip install -r backend/requirements/devl.pip```
+
+Download nltk stopwords:
+
+python
+    >>> import nltk
+    >>> nltk.download('stopwords')
+
 
 In file backend/settings/devl.py field  change DATABASES data according to database name, username and password you wrote down in previous steps.  
   

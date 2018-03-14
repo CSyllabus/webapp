@@ -3,8 +3,14 @@
   float: left;
   text-align: left;
   height: 400px;
-  max-height: 400px;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.example-card {
+  padding: 2%;
+  float: left;
+  text-align: left;
+  overflow: visible;
 }
 
 @media only screen and (max-width: 768px) {
@@ -26,7 +32,6 @@
 
 .courseDescription {
   text-overflow: ellipsis;
-  max-height: 200px;
   overflow: hidden;
 }
 
@@ -59,7 +64,7 @@
 
 .naslov-expansion {
   text-align:left;
-  font-size:20px
+  font-size:16px
 }
 
 @media only screen and (max-width: 768px) {

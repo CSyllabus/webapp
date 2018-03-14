@@ -66,6 +66,8 @@ class CourseView(APIView):
             except:
                 pass
 
+
+
             course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
                            'englishLevel': course.english_level, 'semester': course.semester,
                            'keywords': course.keywords,
@@ -83,6 +85,7 @@ class CourseView(APIView):
                 university = course_university.university
                 course_data['university'] = university.name
                 course_data['country'] = university.country.name
+                course_data['universityImg'] = university.img
             except IndexError:
                 pass
 
