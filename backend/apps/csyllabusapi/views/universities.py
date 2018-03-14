@@ -20,33 +20,82 @@ except ImportError:
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 
-class UniversitiesViewAll(APIView):
-    def get(self, request):
-        universities = University.objects.all()
+class UniversitiesView(APIView):
+    def get(self, request, university_id=-1, limit=-1, offset=-1):
+        query_pairs = request.META['QUERY_STRING'].split('&')
+
+        sortby = 'name'
+        sortdirection = 'asc'
+
+        for query_pair in query_pairs:
+            query_pair_split = query_pair.split('=')
+            if query_pair_split[0] == 'limit':
+                limit = int(query_pair_split[1])
+            elif query_pair_split[0] == 'offset':
+                offset = int(query_pair_split[1])
+            elif query_pair_split[0] == 'sortby' and query_pair_split[1] != 'undefined':
+                sortby = query_pair_split[1]
+            elif query_pair_split[0] == 'sortdirection' and query_pair_split[1] != '':
+                sortdirection = query_pair_split[1]
+
+        if university_id >= 0:
+            universities = University.objects.filter(id=university_id)
+
+        else:
+            if sortdirection == 'desc':
+                universities = University.objects.all().order_by("-"+sortby)
+            else:
+                universities = University.objects.all().order_by(sortby)
+
         data = {}
         result = {}
-        universitiesList = []
+        university_list = []
         for university in universities:
-            one_university = {}
-            one_university['id'] = university.id
-            one_university['name'] = university.name
-            one_university['countryId'] = university.country_id
-            # one_university['img'] = university.img
-            one_university['modified'] = university.modified
-            one_university['created'] = university.created
-            universitiesList.append(one_university)
+            university_data = {'id': university.id, 'name': university.name, 'description': university.description,
+                               'countryId': university.country_id, 'img': university.img,
+                               'modified': university.modified, 'created': university.created}
+            university_list.append(university_data)
 
-        universitiesList.sort(key=lambda x: x['name'], reverse=False)
-        data['currentItemCount'] = universities.count()
-        data['items'] = universitiesList
+        if limit > 0 and offset >= 0:
+            data['currentItemCount'] = limit
+            data['items'] = university_list[offset:offset + limit]
+        elif limit > 0:
+            data['currentItemCount'] = limit
+            data['items'] = university_list[0:limit]
+        elif offset >= 0:
+            count = len(university_list) - offset
+            data['currentItemCount'] = count
+            data['items'] = university_list[offset:count]
+        else:
+            data['currentItemCount'] = len(university_list)
+            data['items'] = university_list
+
         result['data'] = data
         return Response(result)
+
+    def post(self, request):
+        #name = request.data['name']
+        #country = Country.objects.get(id=request.data['country_id'])
+        #city = City.objects.get(id=request.data['city_id'])
+        #University.objects.create(name=name, country=country, city=city)
+        return Response()
+
+    def delete(selfself, request):
+        id = request.data['id']
+        University.objects.filter(id=id).delete()
+        return Response()
+
+    def put(selfself, request, university_id=-1):
+        name = request.data['name']
+        description = request.data['description']
+        University.objects.filter(id=university_id).update(name=name, description=description)
+        return Response()
 
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 
-class UniversitiesView(APIView):
+class CityUniversitiesView(APIView):
     def get(self, request, city_id):
         universities = University.objects.filter(city_id=city_id)
         result = {}
@@ -80,7 +129,7 @@ class UniversitiesViewCountry(APIView):
         for university in universities:
             university_data = {'id': university.id, 'name': university.name, 'modified': university.modified,
                               'created': university.created}
-            # one_university['img'] = university.img
+            university_data['img'] = university.img
             universities_list.append(university_data)
 
             universities_list.sort(key=lambda x: x['name'], reverse=False)

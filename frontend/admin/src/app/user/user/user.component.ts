@@ -7,7 +7,7 @@ import {environment} from '../../../environments/environment';
 import {FormControl, Validators} from '@angular/forms';
 
 import {CountriesService} from '../../services/countries.service';
-import {UniversitiesService} from '../../services/universities.service';
+import {UniversitiesService} from '../../university/universities.service';
 import {FacultiesService} from '../../services/faculties.service';
 
 import {Country} from '../../classes/country';
@@ -73,7 +73,7 @@ export class UserComponent implements OnInit {
 
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
-      this.universitiesService.getAllUniversities().subscribe(universities => {
+      this.universitiesService.getAllUniversities(-1,-1,-1,-1,-1).subscribe(universities => {
         this.facultiesService.getAllFaculties().subscribe(faculties => {
           for (let country of this.countries) {
             country['universities'] = [];

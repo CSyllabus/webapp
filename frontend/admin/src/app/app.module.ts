@@ -16,12 +16,13 @@ import { CoursesService } from './course/courses.service';
 import { UsersService } from './user/users.service';
 import { UserComponent } from './user/user/user.component';
 import { UsersComponent } from './user/users/users.component';
+import { UniversityComponent } from './university/university/university.component';
+import { UniversitiesComponent } from './university/universities/universities.component';
 import { LoginComponent } from './login/login.component';
 
 import { FacultiesService } from './services/faculties.service';
-import { UniversitiesService } from './services/universities.service';
 import { CountriesService } from './services/countries.service';
-
+import { UniversitiesService } from './university/universities.service';
 
 const ROUTES = [
   {
@@ -56,7 +57,19 @@ const ROUTES = [
   {
     path: 'users',
     component: UsersComponent
-  }
+  },
+  {
+    path: 'universities',
+    component: UniversitiesComponent
+  },
+  {
+    path: 'university/:task',
+    component: UniversityComponent
+  },
+  {
+    path: 'university/:task/:id',
+    component: UniversityComponent
+  },
 ];
 
 @NgModule({
@@ -66,6 +79,8 @@ const ROUTES = [
     CourseComponent,
     UserComponent,
     UsersComponent,
+    UniversityComponent,
+    UniversitiesComponent,
     LoginComponent
   ],
   imports: [
@@ -77,7 +92,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-   providers: [AuthService, CoursesService, FacultiesService, UniversitiesService, CountriesService, UsersService, DatePipe],
+   providers: [AuthService, CoursesService, FacultiesService, CountriesService, UsersService, UniversitiesService, DatePipe],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

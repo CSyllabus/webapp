@@ -7,7 +7,8 @@ from .city import City
 
 class University(models.Model):
     name = models.CharField(max_length=255)
-    img = models.CharField(max_length=255, blank = True,null = True)
+    description = models.TextField()
+    img = models.TextField(blank=True, null=True)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
@@ -19,7 +20,6 @@ class University(models.Model):
             self.created = timezone.now()
         self.modified = timezone.now()
         return super(University, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return str(self.name)
