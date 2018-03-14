@@ -29,9 +29,4 @@ openDialog(courseId) {
 
   }
 
-
-
-
-
-
 }
