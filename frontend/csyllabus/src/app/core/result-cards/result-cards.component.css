@@ -26,15 +26,16 @@
 
 .courseDescription {
   text-overflow: ellipsis;
+  color:white;
   max-height: 200px;
   overflow: hidden;
-  padding-top:20px;
+  padding:10px 10px 10px 10px;
   text-align:justify
 }
 
 .cours-result-card-title {
   /*height: 75px;*/
-  margin-top:10px;
+  margin-top:5px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 20px;
@@ -72,7 +73,7 @@
 }
 
 .bck-color-green {
-  background-color:#36a236
+  background-color:#5ab95a
 }
 
 .bck-color-red {
@@ -88,7 +89,7 @@
 }
 
 .bck-color-purple {
-  background-color:#dc69c4
+  background-color:#d685c5
 }
 
 
@@ -102,7 +103,13 @@
 .go-to-compare{
 
   margin-left: 90%;
+
+  font-size:20px;
+
   margin-bottom:0px;
+
+  margin-top:0px;
+
   color: white;
 }
 
@@ -111,7 +118,7 @@
 }
 
 .go-to-compare:hover {
-  transform: scale(1.3);
+  transform: scale(1.5);
   color: #394680;
 }
 
@@ -121,4 +128,21 @@
   padding: 5px;
   width: calc(100% + 64px);
   margin-left: -32px;
+}
+
+
+.bck-white {
+  width: calc(100% + 50px);
+    margin-left: -25px;
+    margin-top:-25px;
+    background-color: white;
+    height: 200px;
+}
+
+.subtitle-white{
+  width: calc(100% + 64px);
+    margin-left: -32px;
+    background-color: white;
+    padding:0;
+    margin:0;
 }

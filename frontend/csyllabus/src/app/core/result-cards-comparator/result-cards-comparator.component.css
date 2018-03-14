@@ -58,7 +58,7 @@
 .example-card:hover { transform: scale(1.1); }
 
 .naslov-expansion {
-  text-align:center;
+  text-align:left;
   font-size:20px
 }
 
@@ -68,4 +68,28 @@
     font-size:12px
   }
 
+}
+
+.bck-color-blue {
+  background-color:#9999f9
+}
+
+.bck-color-green {
+  background-color:#5ab95a
+}
+
+.bck-color-red {
+  background-color:#ff7575
+}
+
+.bck-color-orange {
+  background-color:#f3b94d
+}
+
+.bck-color-grey {
+  background-color:#9e9d9d
+}
+
+.bck-color-purple {
+  background-color:#d685c5
 }

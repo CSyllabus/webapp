@@ -5,36 +5,38 @@
   </div>
 
   <div *ngFor="let course of courses; let i = index" class="courseCard col-md-4" [hidden]="i >= 12*page">
-    <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card">
+    <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card" [ngClass]="{'bck-color-blue':i%1==0, 'bck-color-red':i%2==0, 'bck-color-green':i%3==0, 'bck-color-orange':i%4==0, 'bck-color-grey':i%5==0, 'bck-color-purple':i%6==0}">
 
-      <mat-card-header>
-        <mat-card-title class="card-title-style" [ngClass]="{'bck-color-blue':i%1==0, 'bck-color-red':i%2==0, 'bck-color-green':i%3==0, 'bck-color-orange':i%4==0, 'bck-color-grey':i%5==0, 'bck-color-purple':i%6==0}">
-
-<!--style="text-align:left; background-color:#448AFF; padding: 80px 0 10px 0; width: calc(100% + 64px); margin-left: -32px;"-->
-
+      <mat-card-header >
+        <mat-card-title >
 
           <p class="go-to-compare">
-        <mat-icon>compare_arrows</mat-icon>
-      </p>
+            <mat-icon title="Add to compare list">add_circle</mat-icon>
+          </p>
 
-          <p style="" class="cours-result-card-title">{{ course.name }}</p>
+          <p class="cours-result-card-title">{{ course.name }}</p>
 
 
 
         </mat-card-title>
 
-        <mat-card-subtitle>
+        <mat-card-subtitle >
           <!--<b *ngIf="course.rank"> Rank: {{course.rank * 100 | number : '1.2-2'}} </b> -->
-          <p class="cours-result-card-subtitle" style="padding-top:20px; text-align:right">
+          <p class="cours-result-card-subtitle" style="padding-top:0px; text-align:right; color:#e8e8e8: font-weight:bold">
             <span *ngIf="course.faculty">{{course.faculty}}, </span>
             <span *ngIf="course.university">{{course.university}}, </span>
             <span *ngIf="course.city">{{course.city}}, </span>
-            <span *ngIf="course.country">{{course.country}} </span></p></mat-card-subtitle>
+            <span *ngIf="course.country">{{course.country}} </span>
+          </p>
+        </mat-card-subtitle>
       </mat-card-header>
+
       <mat-card-content>
-        <p class="courseDescription">
+        <div>
+        <p class="courseDescription" >
           {{ course.short_description}}
         </p>
+          </div>
       </mat-card-content>
       <mat-card-actions>
       </mat-card-actions>

@@ -8,12 +8,12 @@
          style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px">
       <div class="col-md-6">
         <div *ngFor="let coursetest of course; let first = first;" >
-          <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
-            <mat-card-title>
+          <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card bck-color-purple" style="cursor:pointer">
+            <mat-card-title style="font-size:20px;text-align:left;color:white">
               {{coursetest.name}}
             </mat-card-title>
-            <mat-card-subtitle>
-              <p class="cours-result-card-subtitle">
+            <mat-card-subtitle >
+              <p class="cours-result-card-subtitle" style="padding-top:15px;text-align:right">
                 <span *ngIf="coursetest.faculty">{{coursetest.faculty}}, </span>
                 <span *ngIf="coursetest.university && !coursetest.faculty">{{coursetest.university}}, </span>
                 <span *ngIf="coursetest.city && coursetest.faculty">{{coursetest.city}}, </span>
@@ -21,7 +21,7 @@
               </p>
             </mat-card-subtitle>
             <mat-card-content>
-              <p style="text-align:justify" class="courseDescription">
+              <p style="text-align:justify; color:white" class="courseDescription">
                 {{ coursetest.description}}
               </p>
             </mat-card-content>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div *ngFor="let coursetest of course; let first = first;" >
+        <div *ngFor="let coursetest of course; let first = first; let i = index" >
           <mat-expansion-panel *ngIf="!first" [expanded]="false">
           <mat-expansion-panel-header style="height:100px">
             <mat-panel-title >
