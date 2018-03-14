@@ -1,0 +1,41 @@
+<div style="height: 70px;">
+  <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
+    <a [routerLink]="['/universities']" style=" display: inline-block;vertical-align: middle;">Universities</a>
+    <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
+    <a [routerLink]="['/university/' + university.id]" style=" display: inline-block;vertical-align: middle;"> University
+      {{university.id}}</a>
+  </div>
+</div>
+<!--<div id="search-component-spinner" *ngIf="!university.id" >
+    <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
+  </div>-->
+
+<mat-card *ngIf="university">
+  <mat-card-title class="intrev-card-title">University #{{university.id}}
+    <mat-card-subtitle style="color: white; margin-bottom: 0;">Editing university resource</mat-card-subtitle>
+  </mat-card-title>
+
+
+  <div>
+
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="university.name">
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+      <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="university.description"></textarea>
+    </mat-form-field>
+
+  </div>
+  <mat-card-actions style="text-align: center;">
+    <button mat-button *ngIf="university.id" (click)="saveUniversity(true)">
+      <mat-icon>save</mat-icon>
+      SAVE
+    </button>
+    <button mat-button *ngIf="!university.id" (click)="addUniversity()">
+      <mat-icon>add</mat-icon>
+      ADD
+    </button>
+  </mat-card-actions>
+</mat-card>
+
