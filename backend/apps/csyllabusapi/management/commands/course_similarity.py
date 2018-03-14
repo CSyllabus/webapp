@@ -115,7 +115,10 @@ class Command(BaseCommand):
 
             j = j + 1
             i = 0
-            for similarity in sims:
+            for similarity, i in enumerate(sims):
+                if i >= 5:
+                    break
+
                 #print similarity
                 if i != 0:
                     # parametar 3: ratio descriptions vs names
