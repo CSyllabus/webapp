@@ -53,5 +53,9 @@ export class CourseDialogComponent implements OnInit {
     });
   }
 
+  setMainImgToDefault() {
+    this.course.universityImg = "http://howmadareyou.com/wp-content/themes/MAD/images/default_profile_image.png";
+  }
+
 }
 

@@ -446,6 +446,8 @@ class UserViewCourse(APIView):
             else:
                 courses = Course.objects.all().order_by('name')
 
+
+
                 data = {}
                 result = {}
                 courses_list = []
@@ -458,6 +460,8 @@ class UserViewCourse(APIView):
                                    }
 
                     courses_list.append(course_data)
+
+                    print course.name
 
             if sortby == 'id':
                 if sortdirection == 'asc':
