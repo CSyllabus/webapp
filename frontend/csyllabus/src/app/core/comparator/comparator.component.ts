@@ -22,6 +22,7 @@ import {University} from '../../classes/university';
 import {Faculty} from '../../classes/faculty';
 import {Program} from '../../classes/program';
 import {MatSnackBar} from '@angular/material';
+
 @Component({
   selector: 'app-comparator',
   templateUrl: './comparator.component.html',
@@ -97,7 +98,6 @@ export class ComparatorComponent implements OnInit {
     this.queryCountry = null;
 
 
-
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
@@ -127,10 +127,10 @@ export class ComparatorComponent implements OnInit {
       });
     });
 
-/*
-this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => {
-  alert(value instanceof University);
-}));*/
+    /*
+    this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => {
+      alert(value instanceof University);
+    }));*/
 
     this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
       .pipe(
@@ -209,8 +209,8 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
 
   compareCourses() {
 
-    if(this.showNormalComparator){
-      if (((this.queryFaculty || this.queryUniversity || this.queryCountry ) && this.listCourses.length > 0)) {
+    if (this.showNormalComparator) {
+      if (((this.queryFaculty || this.queryUniversity || this.queryCountry) && this.listCourses.length > 0)) {
         this.comparatorStarted = true;
         let coursesCounter = this.listCourses.length;
 
@@ -266,26 +266,36 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
     else {
       //alert(this.queryUniversity.name);
       this.multi_courses = [];
-      if (((this.queryFaculty || this.queryUniversity || this.queryCountry ) && this.externalCourseDescription)) {
+      if (((this.queryFaculty || this.queryUniversity || this.queryCountry) && this.externalCourseDescription)) {
         this.comparatorStarted = true;
 
         if (this.queryFaculty) {
-
           this.coursesService.compareExternalByFaculty(this.externalCourseDescription, this.queryFaculty.id).subscribe(courses => {
             this.multi_courses.push(courses);
-            console.log(this.multi_courses);
             this.comparatorResult.emit(this.multi_courses);
             this.comparatorStarted = false;
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000
             });
-
           });
-
         } else if (this.queryUniversity) {
-
+          this.coursesService.compareExternalByUniversity(this.externalCourseDescription, this.queryUniversity.id).subscribe(courses => {
+            this.multi_courses.push(courses);
+            this.comparatorResult.emit(this.multi_courses);
+            this.comparatorStarted = false;
+            this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
+              duration: 10000
+            });
+          });
         } else if (this.queryCountry) {
-
+          this.coursesService.compareExternalByCountry(this.externalCourseDescription, this.queryCountry.id).subscribe(courses => {
+            this.multi_courses.push(courses);
+            this.comparatorResult.emit(this.multi_courses);
+            this.comparatorStarted = false;
+            this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
+              duration: 10000
+            });
+          });
         }
       }
     }
@@ -311,7 +321,7 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
 
   filter(name: string): Course[] {
     return this.filteredHomeCourses.filter(option =>
-    option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+      option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
   displayFn(course: Course): String {
@@ -322,7 +332,7 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
   }
 
   onSwitchChange(event) {
-    this.showNormalComparator=!event.checked;
+    this.showNormalComparator = !event.checked;
 
   }
 

@@ -89,6 +89,11 @@ export class CoursesService {
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
+  compareExternalByUniversity (externalDescription, universityId): Observable<any[]> {
+    return this.http.get(this.comparatorTextUrl + '?course_description=' + externalDescription + '&university_id=' + universityId + '&/')
+      .map(res => res.json().data.items).catch(this.handleError);
+  }
+
   compareByCity(courseId, cityId): Observable<any[]> {
     return this.http.get(this.comparatorUrl + '?course=' + courseId + '&city_id=' + cityId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
@@ -99,18 +104,15 @@ export class CoursesService {
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
+  compareExternalByCountry (externalDescription, countryId): Observable<any[]> {
+    return this.http.get(this.comparatorTextUrl + '?course_description=' + externalDescription + '&country_id=' + countryId + '&/')
+      .map(res => res.json().data.items).catch(this.handleError);
+  }
+
   getAllCommentsByCourse(courseId):Observable<Comment[]>{
     return this.http.get(this.coursesUrl + courseId + '/comments/')
     .map(res => res.json().data.items as Comment[]).catch(this.handleError);
   }
-  /*insertAnewComment(courseId, newUserName, newComment) {
-    return this.http.post(this.coursesUrl + courseId + '/comments/',{
-      author: newUserName,
-      content: newComment,
-      show: 1
-    })
-  }*/
-
 
   insertAnewComment(courseId, data): Observable<any> {
 
