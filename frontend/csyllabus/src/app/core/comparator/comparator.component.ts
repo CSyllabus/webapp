@@ -265,6 +265,7 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
     }
     else {
       //alert(this.queryUniversity.name);
+      this.multi_courses = [];
       if (((this.queryFaculty || this.queryUniversity || this.queryCountry ) && this.externalCourseDescription)) {
         this.comparatorStarted = true;
 
