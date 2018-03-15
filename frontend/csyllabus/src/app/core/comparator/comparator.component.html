@@ -3,11 +3,15 @@
     <p class="custom-card-title">Compare courses using
       <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis" target="_blank" style="color: white; ">latent
         semantic indexing</a>
+
+
+        <mat-slide-toggle style="float:right" id="switch" (change)="onSwitchChange($event); ">Compare external course</mat-slide-toggle>
+
     </p>
     <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
 
-      <div class="forms-group">
-        <mat-form-field class="input">
+      <div class="forms-group" *ngIf="showNormalComparator">
+        <mat-form-field class="input" >
           <mat-select required placeholder="Select courses from" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
               <mat-option *ngFor="let university of country.universities" [value]="university"
@@ -50,6 +54,14 @@
         </div>
       </div>
 
+      <div class="forms-group" *ngIf="!showNormalComparator">
+        <mat-form-field class="input" *ngIf="!showNormalComparator">
+          <textarea required [formControl]="externalCourseDescriptionControl" matInput placeholder="Insert course description" matTextareaAutosize matAutosizeMinRows="4"
+            [(ngModel)]="externalCourseDescription"></textarea>
+        </mat-form-field>
+
+      </div>
+
       <div *ngIf="(queryHomeUniversity || queryHomeFaculty) &&  filteredHomeCourses.length == 0 && !loadingCourses">
         <p>Sorry, we currently don't have any course for this faculty in our database.</p>
       </div>
@@ -81,12 +93,12 @@
       <div style="text-align: center;">
 
         <button mat-raised-button color="primary" (click)="compareCourses()"
-                [disabled]="!((queryFaculty || queryUniversity || queryCountry ) && listCourses.length > 0) "
+                [disabled]="!(showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && listCourses.length > 0) && !(!showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && externalCourseDescription)"
         >Compare
         </button>
         <mat-icon color="primary"
                   matTooltip="To compare please select at least one course and a destination faculty, university or country"
-                  *ngIf="!((queryFaculty || queryUniversity || queryCountry ) && listCourses.length > 0)">help
+                  *ngIf="!(showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && listCourses.length > 0) && !(!showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && externalCourseDescription)">help
         </mat-icon>
       </div>
     </div>

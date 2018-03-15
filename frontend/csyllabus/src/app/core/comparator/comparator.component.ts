@@ -34,6 +34,7 @@ export class ComparatorComponent implements OnInit {
   @Output() mainCourse = new EventEmitter<any>();
 
   comparatorStarted: Boolean;
+  showNormalComparator: Boolean;
   countries: Country[];
   courses: Course[];
   cities: City[];
@@ -57,6 +58,7 @@ export class ComparatorComponent implements OnInit {
   homeProgramsControl: FormControl = new FormControl();
   homeCoursesControl: FormControl = new FormControl();
   pokemonControl: FormControl = new FormControl();
+  externalCourseDescriptionControl: FormControl = new FormControl();
 
   queryCountry: Country;
   queryCity: City;
@@ -71,6 +73,7 @@ export class ComparatorComponent implements OnInit {
   queryHomeCourse: any;
   listCourses: Course[] = [];
   multi_courses: any = [];
+  externalCourseDescription: string;
 
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
@@ -81,12 +84,19 @@ export class ComparatorComponent implements OnInit {
 
   ngOnInit() {
     this.comparatorStarted = true;
+    this.showNormalComparator = true;
     this.filteredHomeCourses = [];
     this.filteredHomeCoursesAutocomplete = new Observable<Course[]>();
     this.queryHomeCourse = new Course;
 
     this.queryHomeFaculty = null;
     this.queryHomeUniversity = null;
+
+    this.queryFaculty = null;
+    this.queryUniversity = null;
+    this.queryCountry = null;
+
+
 
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
@@ -116,6 +126,7 @@ export class ComparatorComponent implements OnInit {
         });
       });
     });
+
 /*
 this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => {
   alert(value instanceof University);
@@ -197,61 +208,86 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
   }
 
   compareCourses() {
-    if (((this.queryFaculty || this.queryUniversity || this.queryCountry ) && this.listCourses.length > 0)) {
-      this.comparatorStarted = true;
-      let coursesCounter = this.listCourses.length;
 
-      if (this.queryFaculty) {
-        this.multi_courses = [];
-        for (let i = 0; i < this.listCourses.length; i++) {
-          this.coursesService.compareByFaculty(this.listCourses[i].id, this.queryFaculty.id).subscribe(courses => {
-            this.multi_courses.push(courses);
-            if (i === this.listCourses.length - 1) {
-              this.comparatorResult.emit(this.multi_courses);
-              this.comparatorStarted = false;
-              this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
-                ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
-                duration: 10000
-              });
-            }
-          });
+    if(this.showNormalComparator){
+      if (((this.queryFaculty || this.queryUniversity || this.queryCountry ) && this.listCourses.length > 0)) {
+        this.comparatorStarted = true;
+        let coursesCounter = this.listCourses.length;
+
+        if (this.queryFaculty) {
+          this.multi_courses = [];
+          for (let i = 0; i < this.listCourses.length; i++) {
+            this.coursesService.compareByFaculty(this.listCourses[i].id, this.queryFaculty.id).subscribe(courses => {
+              this.multi_courses.push(courses);
+              if (i === this.listCourses.length - 1) {
+                this.comparatorResult.emit(this.multi_courses);
+                this.comparatorStarted = false;
+                this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
+                  duration: 10000
+                });
+              }
+            });
+          }
+        } else if (this.queryUniversity) {
+          this.multi_courses = [];
+          for (let i = 0; i < this.listCourses.length; i++) {
+            this.coursesService.compareByUniversity(this.listCourses[i].id, this.queryUniversity.id).subscribe(courses => {
+              this.multi_courses.push(courses);
+              if (i === this.listCourses.length - 1) {
+                this.comparatorResult.emit(this.multi_courses);
+                this.comparatorStarted = false;
+                this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
+                  duration: 10000
+                });
+              }
+            });
+          }
+        } else if (this.queryCountry) {
+          this.multi_courses = [];
+          for (let i = 0; i < this.listCourses.length; i++) {
+            this.coursesService.compareByCountry(this.listCourses[i].id, this.queryCountry.id).subscribe(courses => {
+              this.multi_courses.push(courses);
+              if (i === this.listCourses.length - 1) {
+                this.comparatorResult.emit(this.multi_courses);
+                this.comparatorStarted = false;
+                this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
+                  duration: 10000
+                });
+              }
+            });
+          }
         }
-      } else if (this.queryUniversity) {
-        this.multi_courses = [];
-        for (let i = 0; i < this.listCourses.length; i++) {
-          this.coursesService.compareByUniversity(this.listCourses[i].id, this.queryUniversity.id).subscribe(courses => {
+      } else {
+        this.dialog.open(SearchDialogComponent, {
+          width: '250px', data: {}
+        });
+      }
+    }
+    else {
+      //alert(this.queryUniversity.name);
+      if (((this.queryFaculty || this.queryUniversity || this.queryCountry ) && this.externalCourseDescription)) {
+        this.comparatorStarted = true;
+
+        if (this.queryFaculty) {
+
+          this.coursesService.compareExternalByFaculty(this.externalCourseDescription, this.queryFaculty.id).subscribe(courses => {
             this.multi_courses.push(courses);
-            if (i === this.listCourses.length - 1) {
-              this.comparatorResult.emit(this.multi_courses);
-              this.comparatorStarted = false;
-              this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
-                ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
-                duration: 10000
-              });
-            }
+            this.comparatorResult.emit(this.multi_courses);
+            this.comparatorStarted = false;
+            this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
+              duration: 10000
+            });
+
           });
-        }
-      } else if (this.queryCountry) {
-        this.multi_courses = [];
-        for (let i = 0; i < this.listCourses.length; i++) {
-          this.coursesService.compareByCountry(this.listCourses[i].id, this.queryCountry.id).subscribe(courses => {
-            this.multi_courses.push(courses);
-            if (i === this.listCourses.length - 1) {
-              this.comparatorResult.emit(this.multi_courses);
-              this.comparatorStarted = false;
-              this.snackBar.open('Showing top results for a given search, ordered by similarity rank.' +
-                ' These results are not perfectly accurate, yet! :)', 'CLOSE', {
-                duration: 10000
-              });
-            }
-          });
+
+        } else if (this.queryUniversity) {
+
+        } else if (this.queryCountry) {
+
         }
       }
-    } else {
-      this.dialog.open(SearchDialogComponent, {
-        width: '250px', data: {}
-      });
     }
+
   }
 
   displaySelect(element: any): string {
@@ -281,6 +317,11 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
       return course.name;
     else
       return "";
+  }
+
+  onSwitchChange(event) {
+    this.showNormalComparator=!event.checked;
+
   }
 
 

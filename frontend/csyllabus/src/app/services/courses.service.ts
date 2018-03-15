@@ -78,6 +78,11 @@ export class CoursesService {
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
+  compareExternalByFaculty (externalDescription, facultyId): Observable<any[]> {
+    return this.http.post(this.comparatorUrl, facultyId, externalDescription)
+      .map(res => res).catch(this.handleError);
+  }
+
   compareByUniversity(courseId, universityId): Observable<any[]> {
     return this.http.get(this.comparatorUrl + '?course=' + courseId + '&university_id=' + universityId + '&/')
       .map(res => res.json().data.items).catch(this.handleError);
