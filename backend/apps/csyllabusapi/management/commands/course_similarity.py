@@ -136,7 +136,7 @@ class Command(BaseCommand):
                     # print similarity
                     if i >= 5:
                         break
-                    if i != 0:
+                    if course.id != document_courses[similarity[0]].id:
                         # parametar 3: ratio descriptions vs names
                         id += 1
                         course_results.append(CourseResult(id = id,
