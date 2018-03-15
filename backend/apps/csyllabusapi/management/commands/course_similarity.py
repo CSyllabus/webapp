@@ -63,7 +63,7 @@ class Command(BaseCommand):
 
         dictionary = corpora.Dictionary(texts)
         dictionary.filter_n_most_frequent(15)
-        # dictionary.save_as_text("dictionary.txt", sort_by_word=False)
+        dictionary.save_as_text("dictionary.txt", sort_by_word=False)
 
         # frequency_names = defaultdict(int)
         # for text in texts_names:
@@ -80,10 +80,12 @@ class Command(BaseCommand):
         # converts the word to its integer word id and returns the result
         # as a sparse vector
         corpus = [dictionary.doc2bow(text) for text in texts]
+        corpora.MmCorpus.serialize('corpus.mm', corpus)
 
         # print(corpus)
         # parametar 2: num_topics
         lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=125)
+        lsi.save("lsi.model")
 
         # for i in lsi.show_topics():
         #    print i[0], i[1]

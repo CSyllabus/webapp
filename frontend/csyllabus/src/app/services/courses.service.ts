@@ -21,6 +21,7 @@ export class CoursesService {
   commentsUrl = environment.apiUrl + 'comments/';
   explorerUrl = environment.apiUrl + 'explorer';
   comparatorUrl = environment.apiUrl + 'comparator';
+  comparatorTextUrl = environment.apiUrl + 'comparator_text_input';
 
   constructor(private http: Http) {
   }
@@ -79,8 +80,8 @@ export class CoursesService {
   }
 
   compareExternalByFaculty (externalDescription, facultyId): Observable<any[]> {
-    return this.http.post(this.comparatorUrl, facultyId, externalDescription)
-      .map(res => res).catch(this.handleError);
+    return this.http.get(this.comparatorTextUrl + '?course_description=' + externalDescription + '&faculty_id=' + facultyId + '&/')
+      .map(res => res.json().data.items).catch(this.handleError);
   }
 
   compareByUniversity(courseId, universityId): Observable<any[]> {

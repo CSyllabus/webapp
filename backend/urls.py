@@ -8,14 +8,13 @@ from .views import app, index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('users.urls')),
     url(r'^app/', app, name='app'),
     url('^auth/login/$', login, name='login'),
     url(''
         '^auth/logout/$', logout_then_login, name='logout'),
     url('^$', index, name='index'),
     url(r'^csyllabusapi/', include('csyllabusapi.urls')),
-url(r'^/', include('csyllabusapi.urls')),
+    url(r'^api/', include('csyllabusapi.urls')),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
 ]

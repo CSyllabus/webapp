@@ -31,7 +31,9 @@ urlpatterns = [
 
     url(r'^faculties/(?P<faculty_id>[^/]+)/programs', views.ProgramView.as_view(), name='programs'),
     url(r'^explorer', views.explorer, name='explorer'),
+    url(r'^comparator_text_input', views.comparator_text_input, name='comparator'),
     url(r'^comparator', views.comparator, name='comparator'),
+
 
     url(r'^users/self', views.UserViewSelf.as_view(), name='user'),
     url(r'^users/courses', views.UserViewCourse.as_view(), name='user'),
@@ -40,8 +42,6 @@ urlpatterns = [
 
     url(r'^users/(?P<user_id>[^/]+)', views.UserView.as_view(), name='user'),
     url(r'^users/', views.UserView.as_view(), name='user'),
-
-
 
 ]
 

@@ -272,6 +272,7 @@ this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => 
 
           this.coursesService.compareExternalByFaculty(this.externalCourseDescription, this.queryFaculty.id).subscribe(courses => {
             this.multi_courses.push(courses);
+            console.log(this.multi_courses);
             this.comparatorResult.emit(this.multi_courses);
             this.comparatorStarted = false;
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
