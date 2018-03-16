@@ -49,9 +49,7 @@
   font-size: 22px;
   float: left;
   margin-bottom: 0;
-
   color: white;
-
   padding: 6px 30px;
   position: relative;
   text-align: left;
@@ -64,6 +62,14 @@
   border-radius: 2px;
   border: 1px rgba(0, 0, 0, 0.07) solid;
   padding: 10px;
+}
+
+.filters-containter-exp {
+  min-height: 100vh;
+  background-image: url(../../../images/explorer.jpg);
+  background-size: cover;
+  background-position: center;
+  width:100vw;
 }
 
 .mat-form-field {

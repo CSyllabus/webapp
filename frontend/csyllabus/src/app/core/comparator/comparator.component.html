@@ -1,9 +1,10 @@
-<form style="position: relative; overflow: auto;">
-  <div>
+
+<div style="position: relative" class="filters-containter-comp ">
+  <div class="bg-container custom-scrollbar" align="center">
+  <div class="container" style="padding-top:10%">
     <p class="custom-card-title">Compare courses using
       <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis" target="_blank" style="color: white; ">latent
         semantic indexing</a>
-
 
         <mat-slide-toggle style="float:right" id="switch" (change)="onSwitchChange($event); ">Compare external course</mat-slide-toggle>
 
@@ -40,7 +41,8 @@
             </mat-autocomplete>
 
           </mat-form-field>
-
+        </div>
+        <div>
           <i style="color: darkgrey;" *ngIf="this.listCourses.length >= 5">Maximal number of courses reached(5), to
             compare other courses remove existing from list.</i>
           <mat-chip-list>
@@ -70,17 +72,14 @@
           <mat-select required placeholder="Compare with courses from" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
               <mat-option [value]="country"
-                          (onSelectionChange)="queryCountry = country; queryUniversity = null; queryFaculty= null;"
                           (click)="queryCountry = country; queryUniversity = null; queryFaculty= null;"
               >-- All in {{country.name}} --
               </mat-option>
               <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (onSelectionChange)="queryUniversity = university; queryFaculty= null;"
                           (click)="queryUniversity = university; queryFaculty= null;">
                 {{university.name}}
               </mat-option>
               <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (onSelectionChange)="queryFaculty = faculty; queryUniversity = null;"
                           (click)="queryFaculty = faculty; queryUniversity = null;">
                 {{faculty.name}}
               </mat-option>
@@ -107,4 +106,10 @@
   <div id="search-component-spinner" *ngIf="comparatorStarted">
     <mat-spinner></mat-spinner>
   </div>
-</form>
+    </div>
+  </div>
+
+
+<app-result-cards-comparator *ngIf="true" [courses]="comparatorResult_cp" ></app-result-cards-comparator>
+
+

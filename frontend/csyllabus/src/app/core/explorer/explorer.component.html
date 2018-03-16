@@ -1,5 +1,6 @@
-<div style="position: relative; overflow: auto;">
-  <div>
+<div style="position: relative" class="filters-containter-exp ">
+  <div class="bg-container custom-scrollbar" align="center">
+  <div class="container" style="padding-top:10%">
     <p class="custom-card-title">Explore courses from a university</p>
     <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
       <br>
@@ -59,8 +60,14 @@
     </div>
     <div id="state" *ngIf="!queryCountry" style="padding: 50px;">
     </div>
-  </div>
+
   <div id="search-component-spinner" *ngIf="explorerStarted">
     <mat-spinner></mat-spinner>
   </div>
+  </div>
+  </div>
+</div>
 
+<div id="explorer-result-component">
+<app-result-cards *ngIf="true" [courses]="explorerResult_cp"></app-result-cards>
+</div>

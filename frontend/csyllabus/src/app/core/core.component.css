@@ -91,6 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow:hidden;
 }
 
 #chooser-explorer-card, #chooser-comparator-card, .chooser-card-text {

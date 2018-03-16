@@ -2,6 +2,14 @@
     margin: 20px;
   }
 
+.filters-containter-comp {
+  min-height: 100vh;
+  background-image: url(../../../images/comparator.jpg);
+  background-size: cover;
+  background-position: center;
+  width:100vw;
+}
+
 .check {
     margin-top:10px;
     margin-bottom: 10px;

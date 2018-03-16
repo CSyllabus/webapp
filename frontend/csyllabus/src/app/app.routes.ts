@@ -1,4 +1,6 @@
 import {CoreComponent} from './core/core.component';
+import {ExplorerComponent} from './core/explorer/explorer.component';
+import {ComparatorComponent} from './core/comparator/comparator.component';
 import {CourseComponent} from './components/course/course.component';
 import {AboutComponent} from './components/about/about.component';
 import {ContactComponent} from './components/contact/contact.component';
@@ -13,7 +15,24 @@ export const ROUTES = [
   },
   {
     path: 'core',
-    component: CoreComponent
+    component: CoreComponent,
+    children: [
+      {
+        path: 'explorer',
+        component: ExplorerComponent,
+        outlet: 'sub'
+      },
+      {
+        path: 'comparator',
+        component: ComparatorComponent,
+        outlet: 'sub'
+      },
+      {
+        path: 'comparator/:courseId',
+        component: ComparatorComponent,
+        outlet: 'sub'
+      }
+      ]
   },
   {
     path: 'course/:id',

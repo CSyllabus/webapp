@@ -6,6 +6,7 @@ import {startWith} from 'rxjs/operators/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
 import {map} from 'rxjs/operators/map';
 import {Observable} from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 
 const COMMA = 188;
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
@@ -38,10 +39,12 @@ export class ComparatorComponent implements OnInit {
   showNormalComparator: Boolean;
   countries: Country[];
   courses: Course[];
+  comparatorResult_cp: Course[];
   cities: City[];
   universities: University[];
   faculties: Faculty[];
   programs: Program[];
+  courseFromExp: Course;
 
   filteredCities: City[];
   filteredUniversities: University[];
@@ -79,11 +82,13 @@ export class ComparatorComponent implements OnInit {
 
   constructor(private coursesService: CoursesService, private countriesService: CountriesService, private citiesService: CitiesService,
               private universitiesService: UniversitiesService, private facultiesService: FacultiesService, private programsService: ProgramsService,
-              private dialog: MatDialog, public snackBar: MatSnackBar) {
+              private dialog: MatDialog, public snackBar: MatSnackBar, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+
+
     this.comparatorStarted = true;
     this.showNormalComparator = true;
     this.filteredHomeCourses = [];
@@ -138,6 +143,12 @@ export class ComparatorComponent implements OnInit {
         map(name => name ? this.filter(name.toString()) : this.filteredHomeCourses)
       );
 
+    this.route.params.subscribe(params => {
+      this.coursesService.getCourseById(params['courseId']).subscribe(course => {
+        this.listCourses.push(course);
+        });
+    });
+
 
   }
 
@@ -169,7 +180,6 @@ export class ComparatorComponent implements OnInit {
 
     this.loadingCourses = true;
     this.coursesService.getCoursesByFaculty(this.queryHomeFaculty.id, 0).subscribe(courses => {
-      this.listCourses = [];
       this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
       this.homeCoursesControl.setValue("");
@@ -182,7 +192,6 @@ export class ComparatorComponent implements OnInit {
     this.loadingCourses = true;
 
     this.coursesService.getCoursesByUniversity(this.queryHomeUniversity.id, 0).subscribe(courses => {
-      this.listCourses = [];
       this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
       this.homeCoursesControl.setValue("");
@@ -221,6 +230,7 @@ export class ComparatorComponent implements OnInit {
               this.multi_courses.push(courses);
               if (i === this.listCourses.length - 1) {
                 this.comparatorResult.emit(this.multi_courses);
+                this.comparatorResult_cp = this.multi_courses;
                 this.comparatorStarted = false;
                 this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
                   duration: 10000
@@ -235,6 +245,7 @@ export class ComparatorComponent implements OnInit {
               this.multi_courses.push(courses);
               if (i === this.listCourses.length - 1) {
                 this.comparatorResult.emit(this.multi_courses);
+                this.comparatorResult_cp = this.multi_courses;
                 this.comparatorStarted = false;
                 this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
                   duration: 10000
@@ -249,6 +260,7 @@ export class ComparatorComponent implements OnInit {
               this.multi_courses.push(courses);
               if (i === this.listCourses.length - 1) {
                 this.comparatorResult.emit(this.multi_courses);
+                this.comparatorResult_cp = this.multi_courses;
                 this.comparatorStarted = false;
                 this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
                   duration: 10000
@@ -264,7 +276,7 @@ export class ComparatorComponent implements OnInit {
       }
     }
     else {
-      //alert(this.queryUniversity.name);
+      alert(this.queryUniversity.name);
       this.multi_courses = [];
       if (((this.queryFaculty || this.queryUniversity || this.queryCountry) && this.externalCourseDescription)) {
         this.comparatorStarted = true;
@@ -273,6 +285,7 @@ export class ComparatorComponent implements OnInit {
           this.coursesService.compareExternalByFaculty(this.externalCourseDescription, this.queryFaculty.id).subscribe(courses => {
             this.multi_courses.push(courses);
             this.comparatorResult.emit(this.multi_courses);
+            this.comparatorResult_cp = this.multi_courses;
             this.comparatorStarted = false;
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000
@@ -282,6 +295,7 @@ export class ComparatorComponent implements OnInit {
           this.coursesService.compareExternalByUniversity(this.externalCourseDescription, this.queryUniversity.id).subscribe(courses => {
             this.multi_courses.push(courses);
             this.comparatorResult.emit(this.multi_courses);
+            this.comparatorResult_cp = this.multi_courses;
             this.comparatorStarted = false;
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000
@@ -291,6 +305,7 @@ export class ComparatorComponent implements OnInit {
           this.coursesService.compareExternalByCountry(this.externalCourseDescription, this.queryCountry.id).subscribe(courses => {
             this.multi_courses.push(courses);
             this.comparatorResult.emit(this.multi_courses);
+            this.comparatorResult_cp = this.multi_courses;
             this.comparatorStarted = false;
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000

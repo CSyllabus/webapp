@@ -15,6 +15,7 @@ import {UniversitiesService} from '../../services/universities.service';
 import {FacultiesService} from '../../services/faculties.service';
 import {CoursesService} from '../../services/courses.service';
 
+import {Course} from '../../classes/course';
 import {Country} from '../../classes/country';
 import {City} from '../../classes/city';
 import {University} from '../../classes/university';
@@ -22,7 +23,7 @@ import {Faculty} from '../../classes/faculty';
 import {Program} from '../../classes/program';
 
 @Component({
-  selector: 'app-explorer',
+  selector: 'explorer',
   templateUrl: './explorer.component.html',
   styleUrls: ['./explorer.component.css']
 })
@@ -31,6 +32,7 @@ export class ExplorerComponent implements OnInit {
   @Output() backgroundImage = new EventEmitter<any>();
   @Output() explorerResult = new EventEmitter<any>();
 
+  explorerResult_cp: Course[];
   explorerStarted: Boolean;
   countries: Country[];
   cities: City[];
@@ -187,7 +189,15 @@ export class ExplorerComponent implements OnInit {
         if (this.keyword.length !== 0) {
           this.coursesService.exploreByFaculty(keywords, this.queryFaculty.id).subscribe(courses => {
             this.explorerResult.emit(courses);
+            this.explorerResult_cp = courses;
             this.explorerStarted = false;
+            setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
@@ -195,7 +205,15 @@ export class ExplorerComponent implements OnInit {
         } else {
           this.coursesService.getCoursesByFaculty(this.queryFaculty.id, 0).subscribe(courses => {
             this.explorerResult.emit(courses);
+            this.explorerResult_cp = courses;
             this.explorerStarted = false;
+            setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
             this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
               duration: 5000
             });
@@ -205,7 +223,15 @@ export class ExplorerComponent implements OnInit {
         if (this.keyword.length !== 0) {
           this.coursesService.exploreByUniversity(keywords, this.queryUniversity.id).subscribe(courses => {
             this.explorerResult.emit(courses);
+            this.explorerResult_cp = courses;
             this.explorerStarted = false;
+            setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
@@ -213,7 +239,15 @@ export class ExplorerComponent implements OnInit {
         } else {
           this.coursesService.getCoursesByUniversity(this.queryUniversity.id, 0).subscribe(courses => {
             this.explorerResult.emit(courses);
+            this.explorerResult_cp = courses;
             this.explorerStarted = false;
+            setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
             this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
               duration: 5000
             });
@@ -223,7 +257,15 @@ export class ExplorerComponent implements OnInit {
         if (this.keyword.length !== 0) {
           this.coursesService.exploreByCountry(keywords, this.queryCountry.id).subscribe(courses => {
             this.explorerResult.emit(courses);
+            this.explorerResult_cp = courses;
             this.explorerStarted = false;
+            setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
@@ -231,6 +273,8 @@ export class ExplorerComponent implements OnInit {
         }
       }
     }
+
+
   }
 
   displaySelect(element: any): string {

@@ -12,6 +12,8 @@ import {CoreModule} from './core/core.module';
 import {AngularMaterialModule} from './angular-material/angular-material.module';
 import {AppComponent} from './app.component';
 import {CoreComponent} from './core/core.component';
+import {ExplorerComponent} from './core/explorer/explorer.component';
+import {ComparatorComponent} from './core/comparator/comparator.component';
 import {CourseComponent} from './components/course/course.component';
 
 import {CountriesService} from './services/countries.service';
