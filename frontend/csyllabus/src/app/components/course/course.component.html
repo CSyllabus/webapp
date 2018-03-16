@@ -1,31 +1,40 @@
+<div class="row" style="margin-top:70px; margin-left:10%; margin-right: 10%;">
+<div class="card col-lg-8">
+    <div class="card-body">
+        <h3 class="card-title">{{ course.name }}</h3>
+        <br/>
+        <p class="card-text" style="text-align: justify;"> {{ course.description }}</p>
+    </div>
+</div>
+
+<div class="card col-lg-4" id="course-details">
+    <div class="card-body" style="text-align: justify">
+
+        <p><b>Faculty:</b> {{ course.faculty }}</p>
+       <p><b>Semesters:</b> {{ course.semester }} </p>
+<p><b>Credits: </b>{{ course.ects }}</p>
+    </div>
+</div>
+</div>
+
+<div class="row" style=" margin-left:10%; margin-right: 10%;">
+
+<div class="card col-lg-4">
+    <div class="card-body">
+        <h3 class="card-title">{{ course.faculty }}</h3>
+        <br/>
+        <p class="card-text" style="text-align: justify;"> great faculty</p>
+    </div>
+</div>
 
 
+<div class="card col-lg-8">
+    <div class="card-body">
 
-
-    <section class="page-section clearfix">
-      <div class="container">
-        <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="../../../images/fer.jpg" alt="">
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Course information</span>
-              <span class="section-heading-lower">{{ course.name }}</span>
-            </h2>
-
-{{ course.faculty }}
-Semesters: {{ course.semester }}
-Credits: {{ course.ects }}
-            <p class="mb-3">{{ course.description }}
-            </p>
-            <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="#">Visit Us Today!</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<div class="col-lg-5">
     <app-social [courseId]=course.id [title]=course.name [university]=course.university
                 [description]=course.description></app-social>
+    </div>
+</div>
+</div>
+
 
