@@ -276,7 +276,7 @@ export class ComparatorComponent implements OnInit {
       }
     }
     else {
-      alert(this.queryUniversity.name);
+      //alert(this.queryUniversity.name);
       this.multi_courses = [];
       if (((this.queryFaculty || this.queryUniversity || this.queryCountry) && this.externalCourseDescription)) {
         this.comparatorStarted = true;
