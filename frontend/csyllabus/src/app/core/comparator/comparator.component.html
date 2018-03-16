@@ -11,12 +11,10 @@
           <mat-select required placeholder="Select courses from" [formControl]="pokemonControl">
             <mat-optgroup *ngFor="let country of countries" [label]="country.name">
               <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (onSelectionChange)="queryHomeCountry=country; queryHomeUniversity = university; filterCoursesByHomeUniversity()"
                           (click)="queryHomeCountry=country; queryHomeUniversity = university; filterCoursesByHomeUniversity()">
                 {{university.name}}
               </mat-option>
               <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (onSelectionChange)="queryHomeCountry = country;queryHomeFaculty = faculty; filterCoursesByHomeFaculty()"
                           (click)="queryHomeCountry = country;queryHomeFaculty = faculty; filterCoursesByHomeFaculty()">
                 {{faculty.name}}
               </mat-option>
@@ -25,15 +23,13 @@
         </mat-form-field>
         <mat-spinner style="margin:auto;" *ngIf="loadingCourses"></mat-spinner>
         <div *ngIf="(queryHomeUniversity || queryHomeFaculty) && filteredHomeCourses.length > 0 ">
-          <mat-form-field *ngIf="listCourses.length == 0" class="input" style="width:80%">
+          <mat-form-field class="input" style="width:80%">
             <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
                    [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
-                   required>
+                   (ngModelChange)="addCourseToList(queryHomeCourse)">
 
             <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displayFn">
               <mat-option
-                (onSelectionChange)="addCourseToList(course)"
-                (click)="addCourseToList(course)"
                 *ngFor="let course of filteredHomeCoursesAutocomplete | async" [value]="course">
                 {{ course.name }}
               </mat-option>
@@ -41,18 +37,6 @@
 
           </mat-form-field>
 
-          <mat-form-field *ngIf="listCourses.length > 0" class="input" style="width:80%">
-            <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
-                   [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
-                   (ngModelChange)="addCourseToList(queryHomeCourse)"
-            >
-
-            <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option *ngFor="let course of filteredHomeCoursesAutocomplete | async" [value]="course">
-                {{ course.name }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
           <i style="color: darkgrey;" *ngIf="this.listCourses.length >= 5">Maximal number of courses reached(5), to
             compare other courses remove existing from list.</i>
           <mat-chip-list>

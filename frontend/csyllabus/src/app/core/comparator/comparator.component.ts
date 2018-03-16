@@ -81,17 +81,23 @@ export class ComparatorComponent implements OnInit {
 
   ngOnInit() {
     this.comparatorStarted = true;
-    this.filteredHomeCourses = new Array<Course>();
+    this.filteredHomeCourses = [];
     this.filteredHomeCoursesAutocomplete = new Observable<Course[]>();
     this.queryHomeCourse = new Course;
+
+    this.queryHomeFaculty = null;
+    this.queryHomeUniversity = null;
+
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
         this.facultiesService.getAllFaculties().subscribe(faculties => {
           this.comparatorStarted = false;
+
           for (let country of this.countries) {
             country['universities'] = [];
             country['faculties'] = [];
+
             for (let university of universities) {
               if (university.countryId === country.id) {
                 let flag = true;
@@ -110,13 +116,18 @@ export class ComparatorComponent implements OnInit {
         });
       });
     });
-
+/*
+this.filteredHomeCourses = this.pokemonControl.valueChanges.subscribe((value => {
+  alert(value instanceof University);
+}));*/
 
     this.filteredHomeCoursesAutocomplete = this.homeCoursesControl.valueChanges
       .pipe(
         startWith(''),
-        map(name => name ? this.filter(name.toString()) : this.filteredHomeCourses.slice())
+        map(name => name ? this.filter(name.toString()) : this.filteredHomeCourses)
       );
+
+
   }
 
   filterCitiesByCountry() {
@@ -142,40 +153,6 @@ export class ComparatorComponent implements OnInit {
     });
   }
 
-  filterFacultiesByHomeUniversity() {
-    this.queryHomeFaculty = this.queryHomeProgram = this.queryHomeCourse = undefined;
-    this.filteredHomeFaculties = [];
-    this.facultiesService.getFacultiesByUniversity(this.queryHomeUniversity.id).subscribe(faculties => {
-      this.filteredHomeFaculties = faculties;
-      console.log(this.queryHomeUniversity);
-      if (this.queryHomeUniversity.img) {
-        this.backgroundImage.emit(this.queryHomeUniversity.img);
-      }
-    });
-
-    this.programsService.getProgramsByUniversity(this.queryHomeUniversity.id).subscribe(programs => {
-      this.filteredHomePrograms = programs;
-      console.log(programs);
-
-    });
-  }
-
-  filterProgramsByHomeFaculty() {
-    this.queryHomeProgram = this.queryHomeCourse = undefined;
-    this.programsService.getProgramsByFaculty(this.queryHomeFaculty.id).subscribe(programs => {
-      this.filteredHomePrograms = programs;
-      console.log(programs);
-
-    });
-  }
-
-  filterCoursesByHomeProgram() {
-    this.loadingCourses = true;
-    this.coursesService.getCoursesByProgram(1).subscribe(courses => {
-      this.filteredHomeCourses = courses;
-      this.loadingCourses = false;
-    });
-  }
 
   filterCoursesByHomeFaculty() {
 
@@ -184,14 +161,12 @@ export class ComparatorComponent implements OnInit {
       this.listCourses = [];
       this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+      this.homeCoursesControl.setValue("");
       this.loadingCourses = false;
-
     });
   }
 
   filterCoursesByHomeUniversity() {
-
-
     console.log(this.listCourses);
     this.loadingCourses = true;
 
@@ -199,8 +174,8 @@ export class ComparatorComponent implements OnInit {
       this.listCourses = [];
       this.filteredHomeCourses = [];
       this.filteredHomeCourses = courses;
+      this.homeCoursesControl.setValue("");
       this.loadingCourses = false;
-
     });
   }
 
@@ -286,7 +261,8 @@ export class ComparatorComponent implements OnInit {
   addCourseToList(course) {
     if (course.id && (this.listCourses.indexOf(course) === -1) && (this.listCourses.length <= 4)) {
       this.listCourses.push(course);
-      //this.queryHomeCourse = null;
+      //this.homeCoursesControl.setValue('');
+      //this.queryHomeCourse = undefined;
     }
   }
 
