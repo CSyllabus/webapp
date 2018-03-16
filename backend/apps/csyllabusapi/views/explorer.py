@@ -57,7 +57,7 @@ def explorer(request):
             course_ids.append(course_university.course.id)
 
     courses = Course.objects.filter(id__in=course_ids).annotate(rank=SearchRank(vector, queries)).filter(
-        rank__gte=0.04).order_by('-rank')
+        rank__gte=0.04).order_by('name')
 
     data = {}
     result = {}
