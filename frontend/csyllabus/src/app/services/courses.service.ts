@@ -80,7 +80,7 @@ export class CoursesService {
   }
 
   compareExternalByFaculty (externalDescription, facultyId): Observable<any[]> {
-    return this.http.get(this.comparatorTextUrl + '?course_description=' + externalDescription + '&faculty_id=' + facultyId + '&/')
+    return this.http.post(this.comparatorTextUrl + '?faculty_id=' + facultyId + '&/', {'course_description': externalDescription})
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
@@ -90,7 +90,7 @@ export class CoursesService {
   }
 
   compareExternalByUniversity (externalDescription, universityId): Observable<any[]> {
-    return this.http.get(this.comparatorTextUrl + '?course_description=' + externalDescription + '&university_id=' + universityId + '&/')
+    return this.http.post(this.comparatorTextUrl + '?university_id=' + universityId + '&/', {'course_description': externalDescription})
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
@@ -105,7 +105,7 @@ export class CoursesService {
   }
 
   compareExternalByCountry (externalDescription, countryId): Observable<any[]> {
-    return this.http.get(this.comparatorTextUrl + '?course_description=' + externalDescription + '&country_id=' + countryId + '&/')
+    return this.http.post(this.comparatorTextUrl + '?country_id=' + countryId + '&/', {'course_description': externalDescription})
       .map(res => res.json().data.items).catch(this.handleError);
   }
 

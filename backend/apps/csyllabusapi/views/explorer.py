@@ -1,16 +1,7 @@
 from rest_framework.parsers import JSONParser
 from ..models import Course
-from ..models import ProgramFaculty
-from ..models import Faculty
-from ..models import University
-from ..models import City
-from ..models import Country
-from ..models import CourseProgram
 from ..models import CourseFaculty
 from ..models import CourseUniversity
-from ..models import ProgramCity
-from ..models import ProgramCountry
-from ..models import ProgramUniversity
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -84,31 +75,22 @@ def explorer(request):
         except:
             course_data['english_level'] = 1
 
-        course_program = CourseProgram.objects.filter(course_id=course.id)[0]
+        try:
+            course_faculty = CourseFaculty.objects.filter(course_id=course.id).select_related('faculty')[0]
+            course_data['faculty'] = course_faculty.faculty.name
+        except IndexError:
+            pass
 
-        if course_program is not None:
-
-            try:
-                program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
-            except:
-                program_faculty = None
-            # program_faculty = ProgramFaculty.objects.filter(program_id=course_program.program_id)[0]
-            program_university = ProgramUniversity.objects.filter(program_id=course_program.program_id)[0]
-            program_city = ProgramCity.objects.filter(program_id=course_program.program_id)[0]
-            program_country = ProgramCountry.objects.filter(program_id=course_program.program_id)[0]
-
-            if program_faculty is not None:
-                faculty = Faculty.objects.filter(id=program_faculty.faculty.id)[0]
-                course_data['faculty'] = faculty.name
-            if program_university is not None:
-                university = University.objects.filter(id=program_university.university.id)[0]
-                course_data['university'] = university.name
-            if program_city is not None:
-                city = City.objects.filter(id=program_city.city.id)[0]
-                course_data['city'] = city.name
-            if program_country is not None:
-                country = Country.objects.filter(id=program_country.country.id)[0]
-                course_data['country'] = country.name
+        try:
+            course_university = \
+                CourseUniversity.objects.filter(course_id=course.id).select_related('university__country')[0]
+            university = course_university.university
+            course_data['university'] = university.name
+            course_data['country'] = university.country.name
+            course_data['city'] = university.city.name
+            course_data['universityImg'] = university.img
+        except IndexError:
+            pass
 
         courses_list.append(course_data)
 
