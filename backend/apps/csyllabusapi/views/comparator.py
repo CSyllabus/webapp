@@ -1,3 +1,4 @@
+from django.utils.datastructures import MultiValueDictKeyError
 from rest_framework.parsers import JSONParser
 from ..models import Course
 from ..models import CourseResult
@@ -10,18 +11,23 @@ from ..models import CourseProgram
 from ..models import ProgramCity
 from ..models import ProgramCountry
 from ..models import ProgramUniversity
+from ..models import CourseUniversity
+from ..models import CourseFaculty
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import parser_classes
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 try:
     from django.utils import simplejson as json
 except ImportError:
     import json
 
+from gensim import corpora, models, similarities
+dictionary = corpora.Dictionary.load_from_text("dictionary.txt")
+lsi = models.LsiModel.load("lsi.model")
+corpus = corpora.MmCorpus('corpus.mm')
 
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
@@ -47,7 +53,7 @@ def comparator(request):
 
     program_ids = []
     courses_obj = []
-    courses_ids = []
+    course_ids = []
 
     if (faculty_id is not None):
         program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
@@ -60,12 +66,14 @@ def comparator(request):
 
     courses_obj = CourseProgram.objects.filter(program_id__in=program_ids)
     for i in courses_obj:
-        courses_ids.append(i.course_id)
-    courses_to_compare_with = Course.objects.filter(id__in=courses_ids)
+        course_ids.append(i.course_id)
+
+
+    courses_to_compare_with = Course.objects.filter(id__in=course_ids)
 
     data = {}
     result = {}
-    courseList = []
+    courses_list = []
 
     courses_to_return = [];
 
@@ -178,87 +186,77 @@ def comparator(request):
                 if program_country is not None:
                     country = Country.objects.filter(id=program_country.country.id)[0]
                     course_data['country'] = country.name
-            courseList.append(course_data)
+            courses_list.append(course_data)
 
-    courseList.insert(0, main_course)
+    courses_list.insert(0, main_course)
     # print (main_course)
-    # print courseList
-    result['items'] = courseList
-    result['currentItemCount'] = len(courseList)
+    # print courses_list
+    result['items'] = courses_list
+    result['currentItemCount'] = len(courses_list)
     data['data'] = result
 
-    # print (len(courseList))
+    # print (len(courses_list))
 
     # print (data);
 
     return Response(data)
 
+
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 def comparator_text_input(request):
-
     try:
         country_id = request.query_params['country_id']
-    except:
+    except MultiValueDictKeyError:
         country_id = None
     try:
         faculty_id = request.query_params['faculty_id']
-    except:
+    except MultiValueDictKeyError:
         faculty_id = None
     try:
         university_id = request.query_params['university_id']
-    except:
+    except MultiValueDictKeyError:
         university_id = None
 
-    program_ids = []
-    courses_ids = []
+    course_ids = []
 
-    if (faculty_id is not None):
-        program_ids = ProgramFaculty.objects.filter(faculty_id=faculty_id).values_list('program_id', flat=True)
-    elif (university_id is not None):
-        program_ids = ProgramUniversity.objects.filter(university_id=university_id).values_list('program_id', flat=True)
-    elif (country_id is not None):
-        program_ids = ProgramCountry.objects.filter(country_id=country_id).values_list('program_id', flat=True)
-
-    courses_obj = CourseProgram.objects.filter(program_id__in=program_ids)
-    for i in courses_obj:
-        courses_ids.append(i.course_id)
-    courses_to_compare_with = Course.objects.filter(id__in=courses_ids)
+    if faculty_id is not None:
+        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id)
+        for course_faculty in course_faculties:
+            course_ids.append(course_faculty.course.id)
+    elif university_id is not None:
+        course_universities = CourseUniversity.objects.filter(university_id=university_id)
+        for course_university in course_universities:
+            course_ids.append(course_university.course.id)
+    elif country_id is not None:
+        course_universities = CourseUniversity.objects.filter(university__country_id=country_id)
+        for course_university in course_universities:
+            course_ids.append(course_university.course.id)
 
     data = {}
     result = {}
-    courseList = []
+    courses_list = []
 
-    courses_to_return = []
-
-    from gensim import corpora, models, similarities
-
-    dictionary = corpora.Dictionary.load_from_text("dictionary.txt")
     doc = request.query_params['course_description']
     vec_bow = dictionary.doc2bow(doc.lower().split())
-
-    lsi = models.LsiModel.load("lsi.model")
     vec_lsi = lsi[vec_bow]
-
-    corpus = corpora.MmCorpus('corpus.mm')
-
     index = similarities.MatrixSimilarity(lsi[corpus])
+
     sims = index[vec_lsi]
     sims = sorted(enumerate(sims), key=lambda item: -item[1])
-    sims_filtered = [similarity for similarity in sims if ((similarity[0]+1) in courses_ids)]
-
+    sims_filtered = [similarity for similarity in sims if ((similarity[0] + 1) in course_ids)]
 
     if len(sims_filtered) < 4:
         ret_len = len(sims_filtered)
     else:
         ret_len = 4
 
-
     for i in xrange(ret_len):
         course_id = sims_filtered[i][0] + 1
         course = Course.objects.filter(id=course_id)[0]
-        course_data = {'result': sims_filtered[i][1], 'id': course.id, 'name': course.name, 'description': course.description,
+        course_data = {'result': sims_filtered[i][1], 'id': course.id, 'name': course.name,
+                       'description': course.description,
                        'semester': course.semester, 'ects': course.ects}
         if len(course.description) <= 203:
             course_data['short_description'] = course.description
@@ -270,20 +268,20 @@ def comparator_text_input(request):
         except:
             course_data['english_level'] = 1
 
-        courseList.append(course_data)
+        courses_list.append(course_data)
 
     course_text_dummy = {'result': 1, 'id': -1, 'name': '',
-                   'description': request.query_params['course_description'],
-                   'semester': -1, 'ects': -1, 'english_level': -1}
+                         'description': request.query_params['course_description'],
+                         'semester': -1, 'ects': -1, 'english_level': -1}
     if len(request.query_params['course_description']) <= 203:
         course_text_dummy['short_description'] = request.query_params['course_description']
     else:
         course_text_dummy['short_description'] = request.query_params['course_description'][0:200] + '...'
 
-    courseList.insert(0, course_text_dummy)
+    courses_list.insert(0, course_text_dummy)
 
-    result['items'] = courseList
-    result['currentItemCount'] = len(courseList)
+    result['items'] = courses_list
+    result['currentItemCount'] = len(courses_list)
     data['data'] = result
 
     return Response(data)
