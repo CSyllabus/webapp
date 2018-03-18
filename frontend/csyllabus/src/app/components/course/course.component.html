@@ -1,79 +1,40 @@
-<div *ngIf="course"
-     style="text-align:left; background:linear-gradient(to right, rgb(116,153,227), rgb(47, 75, 131)); padding: 25px 0 10px 0; "
->
-
-  <div class="container" style=" padding-top:10px;padding-left:50px; vertical-align:top">
-    <p style="display:inline; font-size:25px; font-weight:bold; color: white;">{{course.name}}</p>
-  </div>
-
-</div>
-<div class="container">
-  <div class="col-md-12">
-
-    <p *ngIf="!course" style="text-align:center;"></p>
-
-    <div id="search-component-spinner" *ngIf="false">
-      <mat-spinner style="margin-left: auto;
-margin-right: auto; "></mat-spinner>
+<div class="row" style="margin-top:70px; margin-left:10%; margin-right: 10%;">
+<div class="card col-lg-8">
+    <div class="card-body">
+        <h3 class="card-title">{{ course.name }}</h3>
+        <br/>
+        <p class="card-text" style="text-align: justify;"> {{ course.description }}</p>
     </div>
-    <div *ngIf="course">
-      <div>
-
-        <!--
-                <img class="logoU" src="http://www.clker.com/cliparts/7/4/b/6/13373556381963102819fer.logo_.png" height="80">-->
-        <div class="col-md-12">
-
-          <div style="vertical-align:top; text-align:left; line-height: 1.5;" class="col-md-8">
-            {{course.description}}
-            <br><br>
-
-          </div>
-
-          <div style="text-align:right; font-size:16px; padding-top:40px; padding-left:40px" class="col-md-4">
-
-            <table style="border:0px" align=center>
-              <tr>
-                <td>{{course.university}}</td>
-              </tr>
-              <tr>
-                <td style="height:10px"></td>
-              </tr>
-              <tr>
-                <td>{{course.faculty}}</td>
-              </tr>
-              <tr>
-                <td style="height:10px"></td>
-              </tr>
-              <tr>
-                <td style="height:10px"></td>
-              </tr>
-              <tr>
-                <td>Semesters: {{course.semester}}</td>
-              </tr>
-              <tr>
-                <td style="height:10px"></td>
-              </tr>
-              <tr>
-                <td>Credits: {{course.ects}}</td>
-              </tr>
-              <tr>
-                <td style="height:10px"></td>
-              </tr>
-
-            </table>
-
-          </div>
-
-        </div>
-        <div class="col-md-12">
-          <app-social [courseId]=course.id [title]=course.name [university]=course.university [description]=course.description> </app-social>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
 </div>
 
+<div class="card col-lg-4" id="course-details">
+    <div class="card-body" style="text-align: justify">
+
+        <p><b>Faculty:</b> {{ course.faculty }}</p>
+       <p><b>Semesters:</b> {{ course.semester }} </p>
+<p><b>Credits: </b>{{ course.ects }}</p>
+    </div>
+</div>
+</div>
+
+<div class="row" style=" margin-left:10%; margin-right: 10%;">
+
+<div class="card col-lg-4">
+    <div class="card-body">
+        <h3 class="card-title">{{ course.faculty }}</h3>
+        <br/>
+        <p class="card-text" style="text-align: justify;"> great faculty</p>
+    </div>
+</div>
+
+
+<div class="card col-lg-8">
+    <div class="card-body">
+
+    <app-social [courseId]=course.id [title]=course.name [university]=course.university
+                [description]=course.description></app-social>
+    </div>
+</div>
+</div>
 
 
