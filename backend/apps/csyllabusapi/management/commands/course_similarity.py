@@ -109,7 +109,7 @@ class Command(BaseCommand):
             startTime = datetime.now(tz=timezone.utc)
             j += 1
             print "Working on course " + str(j) + " of " + str(course_count)
-            doc = course.description + course.name
+            doc = course.description + " " + course.name
             vec_bow = dictionary.doc2bow(doc.lower().split())
 
             # doc_name = course.name

@@ -456,7 +456,6 @@ class UserViewCourse(APIView):
                                    'ects': course.ects, 'englishLevel': course.english_level,
                                    'semester': course.semester,
                                    'modified': course.modified, 'created': course.created
-
                                    }
 
                     courses_list.append(course_data)

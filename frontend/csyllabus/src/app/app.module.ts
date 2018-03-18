@@ -22,6 +22,8 @@ import {CoursesService} from './services/courses.service';
 import {FacultiesService} from './services/faculties.service';
 import {ProgramsService} from './services//programs.service';
 import {UniversitiesService} from './services/universities.service';
+import {GoogleAnalyticsEventsService} from "./services/google-analytics-events.service";
+
 import {ROUTES} from './app.routes';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AboutComponent} from './components/about/about.component';
@@ -32,6 +34,7 @@ import {SocialLoginModule, AuthServiceConfig} from "angular4-social-login";
 import {GoogleLoginProvider, FacebookLoginProvider} from "angular4-social-login";
 import {SocialComponent} from './components/social/social.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
+import {EventsService} from "./services/events.service";
 let config = new AuthServiceConfig([
 
   {
@@ -68,6 +71,8 @@ export function provideConfig() {
     FacultiesService,
     ProgramsService,
     UniversitiesService,
+    GoogleAnalyticsEventsService,
+    EventsService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
