@@ -144,13 +144,17 @@ export class CoursesService {
       .map(res => res.json().data.items).catch(this.handleError);
   }
 
+  getSimilarToCourse(courseId): Observable<Course[]> {
+    return this.http.get(this.comparatorUrl + '?course=' + courseId)
+      .map(res => res.json().data.items).catch(this.handleError);
+  }
+
   getAllCommentsByCourse(courseId): Observable<Comment[]> {
     return this.http.get(this.coursesUrl + courseId + '/comments/')
       .map(res => res.json().data.items as Comment[]).catch(this.handleError);
   }
 
   insertAnewComment(courseId, data): Observable<any> {
-
     return this.http.post(this.coursesUrl + courseId + '/comments/', data)
       .map(res => res.json()).catch(this.handleError);
 

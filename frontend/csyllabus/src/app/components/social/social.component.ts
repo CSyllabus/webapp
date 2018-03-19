@@ -33,6 +33,7 @@ export class SocialComponent implements OnInit {
   }
 
   signInWithFB(): void {
+
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
@@ -78,6 +79,7 @@ export class SocialComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);

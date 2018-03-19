@@ -21,6 +21,7 @@ export class CourseComponent implements OnInit {
    * The {@link Course} instance representing the course displayed
    */
   course: Course;
+  similarCourses: Course[];
   /**
    * @constructor create CourseComponent object.
    * @param route The {@link ActivatedRoute} instance representing route.
@@ -40,6 +41,13 @@ export class CourseComponent implements OnInit {
         this.course = course;
         if (course === undefined) {
           this.router.navigate(['not-found']);
+        } else {
+
+          this.coursesService.getSimilarToCourse(this.course.id).subscribe(courses => {
+
+            this.similarCourses = courses;
+
+          });
         }
       });
     });

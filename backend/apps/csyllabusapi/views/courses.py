@@ -547,6 +547,7 @@ class CommentsByCourseView(APIView):
 
         author = request.data['author']
         content = request.data['content']
+
         course = Course.objects.filter(id=course_id)[0]
         try:
             show = request.data['show']
