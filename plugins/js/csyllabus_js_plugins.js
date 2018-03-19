@@ -32,7 +32,7 @@ function showComparatorResultsByUniversityId(universityId) {
 
 function showExplorerResultsByUniversityId(universityId, keywords) {
     var keyword = document.getElementById('keyword-input').value;
-    if (keywords !== '') {
+    if (keyword.length > 0) {
        document.getElementById('keyword-input').value = "";
     var i = keywords.push(keyword);
     document.getElementById('keywords').innerHTML += '<div class="chip" id="chip-' + i +
