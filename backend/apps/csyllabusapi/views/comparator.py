@@ -45,16 +45,19 @@ def comparator(request):
         course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id)
         for course_faculty in course_faculties:
             course_ids.append(course_faculty.course.id)
+        courses_to_compare_with = Course.objects.filter(id__in=course_ids)
     elif university_id is not None:
         course_universities = CourseUniversity.objects.filter(university_id=university_id)
         for course_university in course_universities:
             course_ids.append(course_university.course.id)
+        courses_to_compare_with = Course.objects.filter(id__in=course_ids)
     elif country_id is not None:
         course_universities = CourseUniversity.objects.filter(university__country_id=country_id)
         for course_university in course_universities:
             course_ids.append(course_university.course.id)
-
-    courses_to_compare_with = Course.objects.filter(id__in=course_ids)
+        courses_to_compare_with = Course.objects.filter(id__in=course_ids)
+    else:
+        courses_to_compare_with = Course.objects.all()
 
     data = {}
     result = {}
@@ -63,7 +66,6 @@ def comparator(request):
     courses_to_return = []
 
     for course in courses_to_compare_with:
-
         course_to_compare = CourseResult.objects.filter(first_course_id=request.query_params['course'],
                                                         second_course_id=course.id)
         if len(course_to_compare) > 0:
