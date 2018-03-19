@@ -26,6 +26,7 @@
 
 .courseDescription {
   text-overflow: ellipsis;
+  margin-top:0px;
   color:white;
   max-height: 200px;
   overflow: hidden;
@@ -95,10 +96,11 @@
 
 @media only screen and (min-width: 768px) {
   .example-card {
-  height: 350px;
-}
+    height: 400px;
+  }
 
 }
+
 
 .go-to-compare{
 
@@ -145,4 +147,23 @@
     background-color: white;
     padding:0;
     margin:0;
+}
+
+.orderingExplorerResults{
+  float:right;
+  margin-top:-80px;
+}
+
+@media only screen and (max-width: 768px) {
+  .orderingExplorerResults{
+    margin-top:0px;
+    float:none;
+
+  }
+
+}
+
+.mat-card-header-text {
+
+  width: 100% !important;
 }

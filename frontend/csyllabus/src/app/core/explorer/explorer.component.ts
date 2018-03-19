@@ -34,6 +34,7 @@ export class ExplorerComponent implements OnInit {
 
   explorerResult_cp: Course[];
   explorerStarted: Boolean;
+  numberOfResults : Number;
   countries: Country[];
   cities: City[];
   universities: University[];
@@ -63,6 +64,7 @@ export class ExplorerComponent implements OnInit {
   separatorKeysCodes = [ENTER, COMMA];
   keyword = [];
   showKeywords = false;
+
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -101,6 +103,7 @@ export class ExplorerComponent implements OnInit {
 
   ngOnInit() {
     this.explorerStarted = true;
+    this.numberOfResults = 0;
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
       this.universitiesService.getAllUniversities().subscribe(universities => {
@@ -191,13 +194,7 @@ export class ExplorerComponent implements OnInit {
             this.explorerResult.emit(courses);
             this.explorerResult_cp = courses;
             this.explorerStarted = false;
-            setTimeout(function () {
-      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }, 100);
+            this.timeout();
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
@@ -206,17 +203,10 @@ export class ExplorerComponent implements OnInit {
           this.coursesService.getCoursesByFaculty(this.queryFaculty.id, 0).subscribe(courses => {
             this.explorerResult.emit(courses);
             this.explorerResult_cp = courses;
+
             this.explorerStarted = false;
-            setTimeout(function () {
-      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }, 100);
-            this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
-              duration: 5000
-            });
+            this.timeout();
+
           });
         }
       } else if (this.queryUniversity) {
@@ -225,13 +215,7 @@ export class ExplorerComponent implements OnInit {
             this.explorerResult.emit(courses);
             this.explorerResult_cp = courses;
             this.explorerStarted = false;
-            setTimeout(function () {
-      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }, 100);
+            this.timeout();
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
@@ -241,13 +225,7 @@ export class ExplorerComponent implements OnInit {
             this.explorerResult.emit(courses);
             this.explorerResult_cp = courses;
             this.explorerStarted = false;
-            setTimeout(function () {
-      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }, 100);
+            this.timeout();
             this.snackBar.open('Showing top results for given search, ordered alphabetically', 'CLOSE', {
               duration: 5000
             });
@@ -259,13 +237,7 @@ export class ExplorerComponent implements OnInit {
             this.explorerResult.emit(courses);
             this.explorerResult_cp = courses;
             this.explorerStarted = false;
-            setTimeout(function () {
-      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
-      });
-    }, 100);
+            this.timeout();
             this.snackBar.open('Showing top results for given search, ordered by keyword search', 'CLOSE', {
               duration: 5000
             });
@@ -275,6 +247,16 @@ export class ExplorerComponent implements OnInit {
     }
 
 
+  }
+
+  timeout(){
+    setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('explorer-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
   }
 
   displaySelect(element: any): string {

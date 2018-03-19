@@ -49,8 +49,8 @@ export class ResultCardsComponent implements OnInit {
     });
    } else if (this.orderBy === 'rankAsc') {
     this.courses = this.courses.sort(function(obj1,obj2){
-      let name1 = obj1.rank;
-      let name2 = obj2.rank;
+      let name1 = (obj1.rank*100);
+      let name2 = (obj2.rank*100);
 
       let comparison = 0;
 
@@ -61,8 +61,8 @@ export class ResultCardsComponent implements OnInit {
     });
    } else if (this.orderBy === 'rankDesc') {
     this.courses = this.courses.sort(function(obj1,obj2){
-      let name1 = obj2.rank;
-      let name2 = obj1.rank;
+      let name1 = (obj2.rank*100);
+      let name2 = (obj1.rank*100);
 
       let comparison = 0;
 
@@ -79,10 +79,5 @@ export class ResultCardsComponent implements OnInit {
     this.orderBy='nameAsc';
 
   }
-
-
-
-
-
 
 }

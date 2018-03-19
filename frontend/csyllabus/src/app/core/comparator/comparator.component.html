@@ -2,14 +2,23 @@
 <div style="position: relative" class="filters-containter-comp ">
   <div class="bg-container custom-scrollbar" align="center">
   <div class="container" style="padding-top:10%">
-    <p class="custom-card-title">Compare courses using
-      <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis" target="_blank" style="color: white; ">latent
+    <p class="custom-card-title">
+
+      <span>Compare courses using
+        <a href="https://drive.google.com/file/d/1SVJkZqI_EQhsc1gNBkrYucElnf75i35b/view?usp=sharing" target="_blank" style="color: white; ">latent
         semantic indexing</a>
 
-        <mat-slide-toggle style="float:right" id="switch" (change)="onSwitchChange($event); ">Compare external course</mat-slide-toggle>
+      </span>
+
+            <mat-slide-toggle class="toggleComparator" id="switch" (change)="onSwitchChange($event); ">Compare external course</mat-slide-toggle>
+
+<span class="triangle"></span>
 
     </p>
+
+
     <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
+
 
       <div class="forms-group" *ngIf="showNormalComparator">
         <mat-form-field class="input" >
@@ -109,7 +118,7 @@
     </div>
   </div>
 
-
+<div id="comparator-result-component">
 <app-result-cards-comparator *ngIf="true" [courses]="comparatorResult_cp" ></app-result-cards-comparator>
-
+</div>
 

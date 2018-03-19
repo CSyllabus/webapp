@@ -232,12 +232,15 @@ export class ComparatorComponent implements OnInit {
                 this.comparatorResult.emit(this.multi_courses);
                 this.comparatorResult_cp = this.multi_courses;
                 this.comparatorStarted = false;
+                this.timeout();
                 this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
                   duration: 10000
                 });
+
               }
             });
           }
+
         } else if (this.queryUniversity) {
           this.multi_courses = [];
           for (let i = 0; i < this.listCourses.length; i++) {
@@ -247,6 +250,7 @@ export class ComparatorComponent implements OnInit {
                 this.comparatorResult.emit(this.multi_courses);
                 this.comparatorResult_cp = this.multi_courses;
                 this.comparatorStarted = false;
+                this.timeout();
                 this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
                   duration: 10000
                 });
@@ -262,6 +266,7 @@ export class ComparatorComponent implements OnInit {
                 this.comparatorResult.emit(this.multi_courses);
                 this.comparatorResult_cp = this.multi_courses;
                 this.comparatorStarted = false;
+                this.timeout();
                 this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
                   duration: 10000
                 });
@@ -287,6 +292,7 @@ export class ComparatorComponent implements OnInit {
             this.comparatorResult.emit(this.multi_courses);
             this.comparatorResult_cp = this.multi_courses;
             this.comparatorStarted = false;
+            this.timeout();
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000
             });
@@ -297,6 +303,7 @@ export class ComparatorComponent implements OnInit {
             this.comparatorResult.emit(this.multi_courses);
             this.comparatorResult_cp = this.multi_courses;
             this.comparatorStarted = false;
+            this.timeout();
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000
             });
@@ -307,6 +314,7 @@ export class ComparatorComponent implements OnInit {
             this.comparatorResult.emit(this.multi_courses);
             this.comparatorResult_cp = this.multi_courses;
             this.comparatorStarted = false;
+            this.timeout();
             this.snackBar.open('Showing top results for a given search, ordered by similarity rank.', 'CLOSE', {
               duration: 10000
             });
@@ -349,6 +357,16 @@ export class ComparatorComponent implements OnInit {
   onSwitchChange(event) {
     this.showNormalComparator = !event.checked;
 
+  }
+
+  timeout(){
+    setTimeout(function () {
+      (<HTMLInputElement>document.getElementById('comparator-result-component')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    }, 100);
   }
 
 
