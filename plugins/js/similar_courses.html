@@ -1,25 +1,10 @@
 <link rel="stylesheet" type="text/css" href="csyllabus_js_plugins.css">
-<div class="csyllabus-similar-courses-plugin">
-    <div id="txtHint">Loading similar courses...</div>
-    <table id="result-table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>University</th>
-            <th>Similarity result</th>
-        </tr>
-        </thead>
-        <tbody id="similarCourses">
-        <tr>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<div class="csyllabus-similar-courses-plugin"> <div id="txtHint">Loading similar courses...</div><table id="result-table"> <thead> <tr> <th>Name</th> <th>University</th> <th>Similarity result</th> </tr></thead> <tbody id="similarCourses"> <tr> </tr></tbody> </table></div>
 <script src="csyllabus_js_plugins.js"></script>
 <script>
     var courseId = 1; // PUT YOUR COURSE ID HERE
 
     document.onreadystatechange = function () {
-        "interactive" === document.readyState && showSimilarCourses(courseId)
+        "interactive" === document.readyState && ssc(courseId)
     };
 </script>
