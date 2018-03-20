@@ -6,7 +6,7 @@ import {startWith} from 'rxjs/operators/startWith';
 import {ENTER} from '@angular/cdk/keycodes';
 import {map} from 'rxjs/operators/map';
 import {Observable} from 'rxjs/Observable';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 const COMMA = 188;
 import {SearchDialogComponent} from './search-dialog/search-dialog.component';
@@ -144,9 +144,13 @@ export class ComparatorComponent implements OnInit {
       );
 
     this.route.params.subscribe(params => {
-      this.coursesService.getCourseById(params['courseId']).subscribe(course => {
-        this.listCourses.push(course);
+      let course_id = +params['courseId'];
+      if (course_id) {
+        this.coursesService.getCourseById(params['courseId']).subscribe(course => {
+          this.listCourses.push(course);
         });
+      }
+
     });
 
 
@@ -359,7 +363,7 @@ export class ComparatorComponent implements OnInit {
 
   }
 
-  timeout(){
+  timeout() {
     setTimeout(function () {
       (<HTMLInputElement>document.getElementById('comparator-result-component')).scrollIntoView({
         behavior: 'smooth',
