@@ -36,7 +36,7 @@ Full code example:
 
 End result:
 
-[![Sample image of public frontend](similar_courses.jpg)](../similar_courses.html "Similar courses plugin")
+[![Sample image of public frontend](similar_courses.jpg){:width="200px"}](../similar_courses.html "Similar courses plugin")
 
 ### 2. Embedded explorer functionality for a single university
 
