@@ -213,8 +213,9 @@ def comparator_text_input(request):
     else:
         ret_len = 4
 
+    courses = Course.objects.all().order_by('id')
     for i in xrange(ret_len):
-        course_id = sims_filtered[i][0] + 1
+        course_id = courses[sims_filtered[i][0]].id
         course = Course.objects.filter(id=course_id)[0]
         course_data = {'result': sims_filtered[i][1], 'id': course.id, 'name': course.name,
                        'description': course.description,
