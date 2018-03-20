@@ -13,7 +13,7 @@ export class DocumentationComponent{
   getStarted() {
 
     setTimeout(function () {
-      (<HTMLInputElement>document.getElementById('one')).scrollIntoView({
+      (<HTMLInputElement>document.getElementById('three')).scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'start'
