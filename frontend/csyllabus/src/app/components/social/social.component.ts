@@ -28,12 +28,10 @@ export class SocialComponent implements OnInit {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(this.user);
-    console.log(this.loggedIn);
+
   }
 
   signInWithFB(): void {
-
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
@@ -42,8 +40,6 @@ export class SocialComponent implements OnInit {
     this.authService.signOut();
     this.user = null;
     this.loggedIn = null;
-    console.log(this.user);
-    console.log(this.loggedIn);
   }
 
   newComment(user) {
@@ -51,11 +47,14 @@ export class SocialComponent implements OnInit {
     this.coursesService.insertAnewComment(this.courseId, {author: user, content: this.val}).subscribe(
       res => {
         this.refreshComments();
+        this.val="";
       },
       err => {
         this.refreshComments();
       }
     );
+
+    this.val="";
 
   }
 
@@ -72,6 +71,7 @@ export class SocialComponent implements OnInit {
 
   refreshComments() {
     this.comments = [];
+    this.comments = [];
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
       this.comments = res;
     });
@@ -79,11 +79,13 @@ export class SocialComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
+      console.log(this.user);
     });
+
+    this.comments = [];
 
     this.coursesService.getAllCommentsByCourse(this.courseId).subscribe(res => {
       this.comments = res;

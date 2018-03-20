@@ -8,34 +8,37 @@
     </div>
     <div style="display: inline-block;">
       <div class="card-block">
-        <p class="card-title">{{ user.name }}</p>
-        <p class="card-text">{{ user.email }}</p>
+        <p class="card-title" style="margin:2px"><b>{{ user.name }}</b></p>
+
+        <button  (click)="signOut()">Log out</button>
       </div>
-        <button  (click)="signOut()">Sign out</button>
+
     </div>
   </div>
   <!-- The following is shown if the user is not logged ing -->
   <div *ngIf="!user">
-      <mat-icon title="Log in">user</mat-icon>
-      <button title="Log in" class="Googlebutton" (click)="signInWithGoogle()"></button>
-      <button title="Log in" class="Facebookbutton" (click)="signInWithFB()"></button>
+
+    <p style="margin-bottom:5px; font-weight:bold">Log in</p>
+
+
+      <button  title="Log in" class="Googlebutton" (click)="signInWithGoogle()"></button>
+      <button  title="Log in" class="Facebookbutton" (click)="signInWithFB()"></button>
 
   </div>
 
-  <div style="padding-top:100px">
+  <div  style="padding-top:60px">
 
   <mat-form-field class="example-full-width">
-      <input matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
+      <input (keyup.enter)="newComment(user.name);" matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-    </mat-form-field>
-    <button mat-icon-button (click)="newComment(user.name)">
+  </mat-form-field>
+    <button [disabled]="!user" title="Log in to comment" mat-icon-button (click)="newComment(user.name);">
       <mat-icon>send</mat-icon>
     </button>
 
     </div>
 
 </div>
-
 
 <div class="sharepart col-md-2" title="Share" style="padding:0; width:10%">
   <share-buttons [defaultStyle]
@@ -61,12 +64,28 @@
   </div>-->
 
   <div class="commentscontainer col-md-12" *ngIf="comments" style="text-align: left;">
-      <mat-card *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page" style="border: 1px solid #a4a4a4; padding: 10px;
+      <mat-card *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page" style="margin-bottom:10px; border: 1px solid #a4a4a4; padding: 10px;
   ">
+
+        <mat-card-title>
         <button mat-icon-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
-      <mat-icon>delete</mat-icon></button>
-        <p>{{comment.author}}: {{ comment.content }}</p>
-          <i>{{comment.modified | date}}</i>
+      <mat-icon title="Delete" style="font-size:18px">delete</mat-icon></button>
+
+          <div style="background-color:#d6d6f5;width: calc(100% + 20px);
+    margin-left: -10px;
+    height: 30px;
+    margin-top: -10px;">
+
+        <p style="margin-top: 0;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    font-size: 14px;
+    padding-left: 10px;">{{comment.author}} &nbsp; &nbsp; <i style="font-size:12px;color:grey">{{comment.modified | date}}</i></p>
+        </div>
+          </mat-card-title>
+        <mat-card-content>
+          <p style="margin:0; font-size:16px; padding-left:20px">{{ comment.content }}</p>
+          </mat-card-content>
       </mat-card>
   </div>
 </div>

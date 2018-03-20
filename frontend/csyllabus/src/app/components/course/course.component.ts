@@ -22,6 +22,7 @@ export class CourseComponent implements OnInit {
    */
   course: Course;
   similarCourses: Course[];
+  courseswfirst : Course;
   /**
    * @constructor create CourseComponent object.
    * @param route The {@link ActivatedRoute} instance representing route.
@@ -44,7 +45,7 @@ export class CourseComponent implements OnInit {
         } else {
 
           this.coursesService.getSimilarToCourse(this.course.id).subscribe(courses => {
-
+            this.courseswfirst = courses.shift();
             this.similarCourses = courses;
 
           });
