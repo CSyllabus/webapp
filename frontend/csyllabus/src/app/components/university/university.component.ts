@@ -49,6 +49,8 @@ export class UniversityComponent implements OnInit {
    */
   ngOnInit() {
 
+
+
     this.route.params.subscribe(params => {
 
       this.universitiesService.getUniversityById(+params['id']).subscribe(university => {
@@ -59,14 +61,50 @@ export class UniversityComponent implements OnInit {
         } else {
 
           if(university.id==1){
+            this.universitiesService.getExploreFaculty(university.id).subscribe(result => {
+              this.explore = result;
+
+              this.universitiesService.getPageHitFaculty(university.id).subscribe(result => {
+                this.pageHit = result;
+
+
+                this.universitiesService.getCompareNormalFaculty(university.id).subscribe(result => {
+                  this.compareNormal = result;
+
+
+
+                  this.universitiesService.getCompareCrazyFaculty(university.id).subscribe(result => {
+                    this.compareCrazy = result;
+
+                    this.compare=this.compareNormal+this.compareCrazy;
+
+                    this.maxno=Math.max(this.explore, this.pageHit, this.compare);
+
+                    if(this.maxno>0){
+                      this.explore2 = this.explore*100/this.maxno;
+                      this.pageHit2 = this.pageHit*100/this.maxno;
+                      this.compare2 = this.compare*100/this.maxno;
+                    }
+
+                    });
+                });
+              });
+            });
+
+          }
+
+          else {
             this.universitiesService.getExplore(university.id).subscribe(result => {
               this.explore = result;
 
               this.universitiesService.getPageHit(university.id).subscribe(result => {
                 this.pageHit = result;
 
+
                 this.universitiesService.getCompareNormal(university.id).subscribe(result => {
                   this.compareNormal = result;
+
+
 
                   this.universitiesService.getCompareCrazy(university.id).subscribe(result => {
                     this.compareCrazy = result;
@@ -75,20 +113,16 @@ export class UniversityComponent implements OnInit {
 
                     this.maxno=Math.max(this.explore, this.pageHit, this.compare);
 
-                    this.explore2 = this.explore*100/this.maxno;
-                    this.pageHit2 = this.pageHit*100/this.maxno;
-                    this.compare2 = this.compare*100/this.maxno;
-
-
-
+                    if(this.maxno>0){
+                      this.explore2 = this.explore*100/this.maxno;
+                      this.pageHit2 = this.pageHit*100/this.maxno;
+                      this.compare2 = this.compare*100/this.maxno;
+                    }
 
                     });
                 });
               });
             });
-
-
-
 
           }
 

@@ -57,9 +57,22 @@ class UniversitiesView(APIView):
         result = {}
         university_list = []
         for university in universities:
+            country = Country.objects.filter(id=university.country_id)[0]
+            city = City.objects.filter(id=university.city_id)[0]
+
+
+
             university_data = {'id': university.id, 'name': university.name, 'description': university.description,
                                'countryId': university.country_id, 'img': university.img,
+                               'countryName': country.name, 'cityName':city.name,
                                'modified': university.modified, 'created': university.created}
+
+            try:
+                faculty=Faculty.objects.filter(university_id=university.id)[0]
+                university_data['facultyName']=faculty.name
+            except:
+                pass
+
             university_list.append(university_data)
 
         if limit > 0 and offset >= 0:

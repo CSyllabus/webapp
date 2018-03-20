@@ -49,9 +49,10 @@ export class CoursesService {
 
   getCoursesByUniversity(universityId, offset): Observable<Course[]> {
 
+
     this.googleAnalyticsEventsService.emitEvent("explorer", "explore_by_university: " + universityId, '', 1);
 
-    let data = {'event_type': 'explore_by_faculty', 'event_data': {'university_id': universityId}};
+    let data = {'event_type': 'explore_by_university', 'event_data': {'university_id': universityId}};
     this.eventsService.emitEvent(data).subscribe(()=>{});
 
     return this.http

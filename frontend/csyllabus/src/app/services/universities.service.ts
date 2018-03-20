@@ -36,8 +36,28 @@ export class UniversitiesService {
       .map(res => res.json().data.items as University[]).catch(this.handleError);
   }
 
-  getExplore(universityId): Observable<number> {
+  getExploreFaculty(universityId): Observable<number> {
     return this.http.get(this.eventLogUrl + '?filter=faculty&event_type=explore_by_faculty')
+      .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
+  }
+
+  getPageHitFaculty(universityId): Observable<number> {
+    return this.http.get(this.eventLogUrl + '?event_type=page_hit&filter=university/'+universityId)
+      .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
+  }
+
+  getCompareNormalFaculty(universityId): Observable<number> {
+    return this.http.get(this.eventLogUrl + '?filter=faculty&event_type=compare_by_faculty')
+      .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
+  }
+
+  getCompareCrazyFaculty(universityId): Observable<number> {
+    return this.http.get(this.eventLogUrl + '?filter=faculty&event_type=compare_external_by_faculty')
+      .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
+  }
+
+  getExplore(universityId): Observable<number> {
+    return this.http.get(this.eventLogUrl + "?event_type=explore_by_university&filter="+universityId)
       .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
   }
 
@@ -47,12 +67,12 @@ export class UniversitiesService {
   }
 
   getCompareNormal(universityId): Observable<number> {
-    return this.http.get(this.eventLogUrl + '?filter=faculty&event_type=compare_by_faculty')
+    return this.http.get(this.eventLogUrl + '?event_type=compare_by_university&filter='+universityId)
       .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
   }
 
   getCompareCrazy(universityId): Observable<number> {
-    return this.http.get(this.eventLogUrl + '?filter=faculty&event_type=compare_external_by_faculty')
+    return this.http.get(this.eventLogUrl + '?event_type=compare_external_by_university&filter='+universityId)
       .map(res => res.json().data.currentItemCount as number).catch(this.handleError);
   }
 

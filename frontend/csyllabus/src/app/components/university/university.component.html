@@ -41,9 +41,9 @@
     <div>
 
     <mat-list role="list" style="padding-left:20px">
-  <mat-list-item style="text-align:left"  role="listitem">Country: Croatia</mat-list-item>
-  <mat-list-item  role="listitem">City: Zagreb</mat-list-item>
-  <mat-list-item  role="listitem">Faculty of E and E</mat-list-item>
+  <mat-list-item style="text-align:left" *ngIf="university && university.countryName" role="listitem">Country: {{university.countryName}}</mat-list-item>
+  <mat-list-item *ngIf="university && university.cityName" role="listitem">City: {{university.cityName}}</mat-list-item>
+  <mat-list-item *ngIf="university && university.facultyName" style="text-align:left" role="listitem">{{university.facultyName}}</mat-list-item>
   <!--*ngIf="university && university.faculty"-->
 </mat-list>
 
