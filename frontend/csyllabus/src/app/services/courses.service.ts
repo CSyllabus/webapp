@@ -38,18 +38,29 @@ export class CoursesService {
   }
 
   getCoursesByFaculty(facultyId, offset): Observable<Course[]> {
+    this.googleAnalyticsEventsService.emitEvent("explorer", "explore_by_faculty: " + facultyId, '', 1);
+
+    let data = {'event_type': 'explore_by_faculty', 'event_data': {'faculty_id': facultyId}};
+    this.eventsService.emitEvent(data).subscribe(()=>{});
     return this.http
       .get(this.coursesByFacultiesUrl + facultyId + '/courses/' + '?limit=-1&offset=' + offset)
       .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
   getCoursesByUniversity(universityId, offset): Observable<Course[]> {
+
+    this.googleAnalyticsEventsService.emitEvent("explorer", "explore_by_university: " + universityId, '', 1);
+
+    let data = {'event_type': 'explore_by_faculty', 'event_data': {'university_id': universityId}};
+    this.eventsService.emitEvent(data).subscribe(()=>{});
+
     return this.http
       .get(this.coursesByUniversitiesUrl + universityId + '/courses/' + '?limit=-1&offset=' + offset)
       .map(res => res.json().data.items as Course[]).catch(this.handleError);
   }
 
   exploreByFaculty(keywords, facultyId): Observable<any[]> {
+
     this.googleAnalyticsEventsService.emitEvent("explorer", "explore_by_faculty: " + facultyId, keywords, 1);
 
     let data = {'event_type': 'explore_by_faculty', 'event_data': {'faculty_id': facultyId, "keywords": keywords}};

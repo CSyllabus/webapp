@@ -1,6 +1,7 @@
 <div class="col-md-12">
 
-<div class="commentspart col-md-8" style="width:90%">
+  <div class="col-md-11">
+<div class="commentspart " >
   <!-- The following is shown if the user is logged ing -->
   <div *ngIf="user">
     <div style="display: inline-block;">
@@ -26,21 +27,27 @@
 
   </div>
 
-  <div  style="padding-top:60px">
+  <div  style="padding-top:60px;display:block">
+
 
   <mat-form-field class="example-full-width">
       <input (keyup.enter)="newComment(user.name);" matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
   </mat-form-field>
-    <button [disabled]="!user" title="Log in to comment" mat-icon-button (click)="newComment(user.name);">
+    <button [disabled]="!user" title="Comment" mat-icon-button (click)="newComment(user.name);">
       <mat-icon>send</mat-icon>
     </button>
+    <mat-icon style="color:#3c5a96" matTooltip="Log in to comment"
+                  *ngIf="!user">help
+    </mat-icon>
 
     </div>
 
 </div>
+</div>
 
-<div class="sharepart col-md-2" title="Share" style="padding:0; width:10%">
+  <div class="col-md-1">
+<div class="sharepart " title="Share" style="padding:0; ">
   <share-buttons [defaultStyle]
                  [pinterest]="false"
                  [stumbleUpOn]="false"
@@ -49,6 +56,7 @@
                  [url]=url [title]=title [description]=description
   >
   </share-buttons>
+</div>
 </div>
 <!--*ngIf="user"
  <div class="col-md-8" style="text-align: left; width:90%">
@@ -69,18 +77,18 @@
 
         <mat-card-title>
         <button mat-icon-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
-      <mat-icon title="Delete" style="font-size:18px">delete</mat-icon></button>
+      <mat-icon title="Delete" style="font-size:18px; color:white; margin-bottom:5px">delete</mat-icon></button>
 
-          <div style="background-color:#d6d6f5;width: calc(100% + 20px);
+          <div style="background-color:#3c5a96;width: calc(100% + 20px);
     margin-left: -10px;
     height: 30px;
     margin-top: -10px;">
 
-        <p style="margin-top: 0;
+        <p style="margin-top: 0; color:white;
     margin-bottom: 0px;
     padding-top: 10px;
     font-size: 14px;
-    padding-left: 10px;">{{comment.author}} &nbsp; &nbsp; <i style="font-size:12px;color:grey">{{comment.modified | date}}</i></p>
+    padding-left: 10px;">{{comment.author}} &nbsp; &nbsp; <i style="font-size:12px;color:#d4d4d4">{{comment.modified | date}}</i></p>
         </div>
           </mat-card-title>
         <mat-card-content>

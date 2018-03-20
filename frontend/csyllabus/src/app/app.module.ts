@@ -15,6 +15,7 @@ import {CoreComponent} from './core/core.component';
 import {ExplorerComponent} from './core/explorer/explorer.component';
 import {ComparatorComponent} from './core/comparator/comparator.component';
 import {CourseComponent} from './components/course/course.component';
+import {UniversityComponent} from './components/university/university.component';
 
 import {CountriesService} from './services/countries.service';
 import {CitiesService} from './services/cities.service';
@@ -35,6 +36,11 @@ import {GoogleLoginProvider, FacebookLoginProvider} from "angular4-social-login"
 import {SocialComponent} from './components/social/social.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 import {EventsService} from "./services/events.service";
+
+
+
+
+
 let config = new AuthServiceConfig([
 
   {
@@ -63,6 +69,7 @@ export function provideConfig() {
     ReactiveFormsModule,
     SocialLoginModule,
     ShareButtonsModule.forRoot(),
+
   ],
   providers: [
     CountriesService,
@@ -81,6 +88,7 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     CourseComponent,
+    UniversityComponent,
     NotFoundComponent,
     AboutComponent,
     ContactComponent,
