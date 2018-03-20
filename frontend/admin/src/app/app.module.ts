@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 
@@ -23,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { FacultiesService } from './services/faculties.service';
 import { CountriesService } from './services/countries.service';
 import { UniversitiesService } from './university/universities.service';
+import {ErrorService} from "./services/error.service";
 
 const ROUTES = [
   {
@@ -90,9 +92,10 @@ const ROUTES = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-   providers: [AuthService, CoursesService, FacultiesService, CountriesService, UsersService, UniversitiesService, DatePipe],
+   providers: [AuthService, CoursesService, FacultiesService, CountriesService, UsersService, UniversitiesService, DatePipe, ErrorService],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

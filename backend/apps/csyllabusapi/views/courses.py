@@ -41,7 +41,6 @@ except ImportError:
 @parser_classes((JSONParser,))
 class CourseView(APIView):
     def get(self, request, course_id=-1, limit=-1, offset=-1):
-
         query_pairs = request.META['QUERY_STRING'].split('&')
 
         for query_pair in query_pairs:
@@ -52,7 +51,12 @@ class CourseView(APIView):
                 offset = int(query_pair_split[1])
 
         if course_id >= 0:
-            courses = Course.objects.filter(id=course_id)
+            try:
+                course_id = int(course_id)
+                courses = Course.objects.filter(id=course_id)
+            except:
+                courses = []
+
         else:
             courses = Course.objects.all().order_by('name')
 
@@ -66,11 +70,9 @@ class CourseView(APIView):
             except:
                 pass
 
-
-
             course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
                            'englishLevel': course.english_level, 'semester': course.semester,
-                           'keywords': course.keywords,
+                           'keywords': course.keywords, 'level': course.english_level, 'url': course.url,
                            'modified': course.modified, 'created': course.created}
 
             try:
@@ -123,8 +125,6 @@ class CourseView(APIView):
             faculty_id = 0
             university_id = 0
 
-            print user
-
             try:
                 faculty_id = request.data['faculty']
             except:
@@ -158,8 +158,6 @@ class CourseView(APIView):
 
                 course = Course.objects.create()
 
-                print course.id
-
                 try:
                     course.name = request.data['name']
                 except:
@@ -181,11 +179,14 @@ class CourseView(APIView):
                 except:
                     pass
                 try:
+                    course.url = request.data['url']
+                except:
+                    pass
+                try:
                     course.ects = request.data['ects']
                 except:
                     pass
                 try:
-                    print request.data['keywords']
                     course.keywords = request.data['keywords']
                 except:
                     pass
@@ -227,24 +228,12 @@ class CourseView(APIView):
             return Response(result)
 
     def delete(selfself, request, course_id):
-
-        print course_id
         Course.objects.filter(id=course_id).delete()
         CourseResult.objects.filter(first_course_id=course_id).delete()
         CourseResult.objects.filter(second_course_id=course_id).delete()
         return Response()
 
     def put(selfself, request, course_id):
-
-        # try:
-        #   decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
-        #   university = UserUniversity.objects.filter(user.id = decoded_payload['user_id'])[0].university
-        #   course = CourseUniversity.objects.filter(university.id = university.id)[0].course
-        #   if (course.id == course_id) :
-
-        # except:
-        #    pass
-
         try:
             course = Course.objects.filter(id=course_id)[0]
             try:
@@ -260,6 +249,10 @@ class CourseView(APIView):
             except:
                 pass
             try:
+                course.url = request.data['url']
+            except:
+                pass
+            try:
                 course.english_level = request.data['englishLevel']
             except:
                 pass
@@ -272,7 +265,6 @@ class CourseView(APIView):
             except:
                 pass
             try:
-                print request.data['keywords']
                 course.keywords = request.data['keywords']
             except:
                 pass
@@ -513,7 +505,12 @@ class CoursesAllSimpleView(APIView):
 @parser_classes((JSONParser,))
 class CommentsByCourseView(APIView):
     def get(self, request, course_id):
-        usercoursepost = UserCoursePost.objects.filter(course_id=course_id)
+        try:
+            course_id = int(course_id)
+            user_course_posts = UserCoursePost.objects.filter(course_id=course_id)
+        except:
+            user_course_posts = []
+
         data = {}
         result = {}
 
@@ -521,7 +518,7 @@ class CommentsByCourseView(APIView):
 
             comments_list = []
 
-            for comment in usercoursepost:
+            for comment in user_course_posts:
                 try:
 
                     comment_data = {'id': comment.id, 'author': comment.author, 'content': comment.content,
@@ -554,7 +551,7 @@ class CommentsByCourseView(APIView):
         except:
             show = 1
 
-        usercoursepost = UserCoursePost.objects.create(course=course, author=author, content=content, show=show)
+        user_course_posts = UserCoursePost.objects.create(course=course, author=author, content=content, show=show)
         # course = Course.objects.create(name=name)
         # print course_id, author, content
 

@@ -1,22 +1,19 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
-import {EventEmitter} from '@angular/core';
 import {UsersService} from '../users.service';
 import {User} from '../user';
-import {environment} from '../../../environments/environment';
-import {CdkTable, DataSource} from '@angular/cdk/table'
-import {CdkTableModule} from '@angular/cdk/table';
-import {Http, Response} from '@angular/http';
+import {DataSource} from '@angular/cdk/table'
+import {Http} from '@angular/http';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
-import {MatSort, MatSortModule} from '@angular/material';
+import {MatSort} from '@angular/material';
 import {MatPaginator} from '@angular/material';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { Router, RouterModule } from '@angular/router';
+import {Router} from '@angular/router';
 
 declare let window: any;
 
@@ -36,9 +33,7 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  filteredUsers: User[] = [];
   totalItems: number;
-  searchString: String = "";
 
   constructor(http: Http, private usersService: UsersService, private router: Router) {
   }

@@ -1,6 +1,8 @@
 <div style="height: 70px;">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <a [routerLink]="['/universities']" style=" display: inline-block;vertical-align: middle;">Universities</a>
+    <button mat-button [routerLink]="['/universities']" style=" display: inline-block;vertical-align: middle;">
+      Universities
+    </button>
   </div>
 </div>
 <div id="search-component-spinner" *ngIf="!(totalItems > 0)" >
@@ -20,7 +22,7 @@
   <mat-table #table [dataSource]="dataSource" matSort  style="margin-top: 50px;">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell (click)="alert('aaa');" *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+      <mat-header-cell  *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
       <mat-cell *matCellDef="let row" > {{row.id}}</mat-cell>
     </ng-container>
 
@@ -44,9 +46,10 @@
         <a mat-icon-button [routerLink]="['/university/edit/' + row.id]">
           <mat-icon>edit</mat-icon>
         </a>
+        <!--
         <button mat-icon-button (click)="deleteUniversity(row)" style="color: red;">
           <mat-icon>clear</mat-icon>
-        </button>
+        </button>-->
       </mat-cell>
     </ng-container>
 
@@ -62,9 +65,10 @@
   </mat-paginator>
 
   <mat-card-actions style="text-align: center;">
-    <button (click)="addUniversity()" mat-button>
+    <!--<button (click)="addUniversity()" mat-button>
       <mat-icon>add</mat-icon>
       NEW COURSE
-    </button>
+    </button>-->
+
   </mat-card-actions>
 </mat-card>

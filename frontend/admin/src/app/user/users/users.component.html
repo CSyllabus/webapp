@@ -1,6 +1,8 @@
 <div style="height: 70px;">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <a [routerLink]="['/users']" style=" display: inline-block;vertical-align: middle;">Users</a>
+    <button mat-button [routerLink]="['/users']" style=" display: inline-block;vertical-align: middle;">
+      Users
+    </button>
   </div>
 </div>
 <div id="search-component-spinner" *ngIf="!(totalItems > 0)" >

@@ -7,13 +7,13 @@ import {User} from '../../user/user';
 import {environment} from '../../../environments/environment';
 import {FormControl} from '@angular/forms';
 
-import {CountriesService} from '../../services/countries.service';
-import {UniversitiesService} from '../../services/universities.service';
-import {FacultiesService} from '../../services/faculties.service';
-
 import {Country} from '../../classes/country';
 import {University} from '../../classes/university';
 import {Faculty} from '../../classes/faculty';
+import {UniversitiesService} from "../../university/universities.service";
+import {FacultiesService} from "../../services/faculties.service";
+import {CountriesService} from "../../services/countries.service";
+import {AuthService} from "../../auth.service";
 
 declare let window: any;
 let self: any;
@@ -34,7 +34,7 @@ export class CourseComponent implements OnInit {
   keywordInput: string = "";
   countries: Country[];
   allow_access: boolean;
-  isadmin: boolean;
+  isSuperuser: boolean;
   universities: University[];
   faculties: Faculty[];
   selected: string = 'Select University/Faculty';
@@ -47,10 +47,7 @@ export class CourseComponent implements OnInit {
   ngOnInit() {
     self = this;
     this.course = new Course();
-
-    this.usersService.checkUser().subscribe(res => {
-      this.isadmin = res;
-    });
+    this.isSuperuser = AuthService.isSuperuser;
 
     this.route.params.subscribe(params => {
       self.course_id = +params['id'];
@@ -64,7 +61,7 @@ export class CourseComponent implements OnInit {
 
     this.countriesService.getAllCountries().subscribe(countries => {
       this.countries = countries;
-      this.universitiesService.getAllUniversities().subscribe(universities => {
+      this.universitiesService.getAllUniversities(0, 0, 'name', 'asc', '').subscribe(universities => {
         this.facultiesService.getAllFaculties().subscribe(faculties => {
           for (let country of this.countries) {
             country['universities'] = [];
@@ -85,7 +82,6 @@ export class CourseComponent implements OnInit {
                 }
                 if (flag) {
                   country.universities.push(university);
-                  console.log(university);
 
                   if (university.name === this.course.university) {
                     this.selected = university.name;
@@ -149,22 +145,22 @@ export class CourseComponent implements OnInit {
   }
 
   fetchCourseData(course_id) {
-
     this.usersService.checkUserCourse(course_id).subscribe(res => {
       this.allow_access = res;
-
     });
 
     self.keywords = [];
     self.coursesService.getCourse(course_id).subscribe(course => {
-      self.course = course;
-
-      //alert(course);
-      if (course.keywords) {
-        course.keywords.forEach(function (el) {
-          let keyword = {value: el, remove: false};
-          self.keywords.push(keyword);
-        });
+      if (course === undefined) {
+        this.router.navigate(['courses']);
+      } else {
+        self.course = course;
+        if (course.keywords) {
+          course.keywords.forEach(function (el) {
+            let keyword = {value: el, remove: false};
+            self.keywords.push(keyword);
+          });
+        }
       }
 
     });

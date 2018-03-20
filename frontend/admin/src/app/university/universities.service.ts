@@ -7,6 +7,7 @@ import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/observable/throw';
 import {environment} from '../../environments/environment';
 import {University} from './university';
+import {ErrorService} from "../services/error.service";
 
 @Injectable()
 export class UniversitiesService {
@@ -14,7 +15,7 @@ export class UniversitiesService {
   usersUrl = environment.apiUrl + "users/";
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private errorService: ErrorService) {
   }
 
 
@@ -26,8 +27,8 @@ export class UniversitiesService {
     headers.append('Authorization', `JWT ${authToken}`);
     const options = new RequestOptions({headers: headers});
 
-    return this.http.get(this.universitiesUrl + '?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection, options)
-      .map(res => res.json().data.items as University[]);
+    return this.http.get(this.universitiesUrl + '?limit=' + limit + '&offset=' + offset + '&sortBy=' + orderBy + '&sortDirection=' + orderDirection, options)
+      .map(res => res.json().data.items as University[]).catch(this.errorService.handleError);
   }
 
   getUniversitiesCount(): Observable<number> {
@@ -38,29 +39,29 @@ export class UniversitiesService {
     const options = new RequestOptions({headers: headers});
 
     return this.http.get(this.universitiesUrl, options)
-      .map(res => res.json().data.currentItemCount as number);
+      .map(res => res.json().data.currentItemCount as number).catch(this.errorService.handleError);
   }
 
   getUniversity(id): Observable<University> {
     return this.http.get(this.universitiesUrl +"/"+ id)
-      .map(res => res.json().data.items[0] as University);
+      .map(res => res.json().data.items[0] as University).catch(this.errorService.handleError);
   }
 
   deleteUniversity(id: number): Observable<any> {
     return this.http.delete(this.universitiesUrl + id)
-      .map(res => res);
+      .map(res => res).catch(this.errorService.handleError);
 
   }
 
 
   deleteUniversityImage(id: number, img: string): Observable<any> {
     return this.http.delete(this.universitiesUrl + id + '/images/' + img)
-      .map(res => res.json());
+      .map(res => res.json()).catch(this.errorService.handleError);
   }
 
   universityExisting(id: number, data): Observable<any> {
     return this.http.put(this.universitiesUrl +"/"+ id, data)
-      .map(res => res).catch(this.handleError);
+      .map(res => res).catch(this.errorService.handleError);
   }
 
   universityNew(data): Observable<any> {
@@ -72,14 +73,9 @@ export class UniversitiesService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.post(this.universitiesUrl, data, options)
-      .map(res => res).catch(this.handleError);
+      .map(res => res).catch(this.errorService.handleError);
   }
 
 
-  private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+
 }

@@ -1,3 +1,4 @@
+from django.core.exceptions import FieldDoesNotExist
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 
@@ -17,35 +18,40 @@ try:
 except ImportError:
     import json
 
+
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-
 class UniversitiesView(APIView):
-    def get(self, request, university_id=-1, limit=-1, offset=-1):
+    def get(self, request, university_id=-1, limit=-1, offset=-1, sort_by='name', sort_direction='asc'):
         query_pairs = request.META['QUERY_STRING'].split('&')
 
-        sortby = 'name'
-        sortdirection = 'asc'
+        universities = []
 
         for query_pair in query_pairs:
             query_pair_split = query_pair.split('=')
-            if query_pair_split[0] == 'limit':
+            if query_pair_split[0].lower() == 'limit':
                 limit = int(query_pair_split[1])
-            elif query_pair_split[0] == 'offset':
+            elif query_pair_split[0].lower() == 'offset':
                 offset = int(query_pair_split[1])
-            elif query_pair_split[0] == 'sortby' and query_pair_split[1] != 'undefined':
-                sortby = query_pair_split[1]
-            elif query_pair_split[0] == 'sortdirection' and query_pair_split[1] != '':
-                sortdirection = query_pair_split[1]
+            elif query_pair_split[0].lower() == 'sortby' and query_pair_split[1] != 'undefined':
+                sort_by = query_pair_split[1]
+            elif query_pair_split[0].lower() == 'sortdirection' and query_pair_split[1] != '':
+                print query_pair_split[1]
+                sort_direction = query_pair_split[1]
 
         if university_id >= 0:
             universities = University.objects.filter(id=university_id)
 
         else:
-            if sortdirection == 'desc':
-                universities = University.objects.all().order_by("-"+sortby)
-            else:
-                universities = University.objects.all().order_by(sortby)
+            if sort_by not in ['id', 'created', 'modified']:
+                sort_by = 'name'
+
+            print sort_direction
+
+            if sort_direction == 'desc':
+                sort_by = "-" + sort_by
+
+            universities = University.objects.all().order_by(sort_by)
 
         data = {}
         result = {}
@@ -74,10 +80,10 @@ class UniversitiesView(APIView):
         return Response(result)
 
     def post(self, request):
-        #name = request.data['name']
-        #country = Country.objects.get(id=request.data['country_id'])
-        #city = City.objects.get(id=request.data['city_id'])
-        #University.objects.create(name=name, country=country, city=city)
+        # name = request.data['name']
+        # country = Country.objects.get(id=request.data['country_id'])
+        # city = City.objects.get(id=request.data['city_id'])
+        # University.objects.create(name=name, country=country, city=city)
         return Response()
 
     def delete(selfself, request):
@@ -95,7 +101,6 @@ class UniversitiesView(APIView):
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-
 class CityUniversitiesView(APIView):
     def get(self, request, city_id):
         universities = University.objects.filter(city_id=city_id)
@@ -119,6 +124,7 @@ class CityUniversitiesView(APIView):
         result['data'] = data
         return Response(result)
 
+
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class UniversitiesViewCountry(APIView):
@@ -129,8 +135,7 @@ class UniversitiesViewCountry(APIView):
         universities_list = []
         for university in universities:
             university_data = {'id': university.id, 'name': university.name, 'modified': university.modified,
-                              'created': university.created}
-            university_data['img'] = university.img
+                               'created': university.created, 'img': university.img}
             universities_list.append(university_data)
 
             universities_list.sort(key=lambda x: x['name'], reverse=False)
@@ -139,29 +144,23 @@ class UniversitiesViewCountry(APIView):
         result['data'] = data
         return Response(result)
 
+    # def post(self, request):
+    #   name = request.data['name']
+    #  country = Country.objects.get(id=request.data['country_id'])
+    # city = City.objects.get(id=request.data['city_id'])
+    # University.objects.create(name=name, country=country, city=city)
+    # return Response()
 
-
-
-
-
-    #def post(self, request):
-     #   name = request.data['name']
-      #  country = Country.objects.get(id=request.data['country_id'])
-       # city = City.objects.get(id=request.data['city_id'])
-        #University.objects.create(name=name, country=country, city=city)
-        #return Response()
-
-
-  #  def delete(selfself, request):
- #       id = request.data['id']
-   #     University.objects.filter(id=id).delete()
+#  def delete(selfself, request):
+#       id = request.data['id']
+#     University.objects.filter(id=id).delete()
 #        return Response()
 
 
-    #def put(selfself, request):
-    #    id = request.data['id']
-    #    name = request.data['name']
-    #    country = Country.objects.get(id=request.data['country_id'])
-    #    city = City.objects.get(id=request.data['city_id'])
-    #    University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
-    #    return Response()
+# def put(selfself, request):
+#    id = request.data['id']
+#    name = request.data['name']
+#    country = Country.objects.get(id=request.data['country_id'])
+#    city = City.objects.get(id=request.data['city_id'])
+#    University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
+#    return Response()

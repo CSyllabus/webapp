@@ -140,6 +140,17 @@ class UserViewSelf(APIView):
 @parser_classes((JSONParser,))
 class UserView(APIView):
     def get(self, request, user_id=-1, limit=-1, offset=-1):
+        #user_isadmin = False
+        #try:
+        #    decoded_payload = utils.jwt_decode_handler(
+        #        request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
+        #    user_isadmin = User.objects.filter(id=decoded_payload['user_id'])[0].is_admin
+
+        #except:
+        #    pass
+        #if not user_isadmin:
+        #   return Response()
+
         query_pairs = request.META['QUERY_STRING'].split('&')
 
         sortby = 'username'
@@ -257,13 +268,11 @@ class UserView(APIView):
                 except:
                     pass
 
-
                 user.save()
                 user_data = {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name,
                              'username': user.username, 'email': user.email}
                 users_list.append(user_data)
                 data['currentItemCount'] = 1
-
 
                 try:
                     faculty_id = request.data['faculty']
@@ -324,8 +333,6 @@ class UserView(APIView):
                     except:
                         pass
 
-
-
                     user.save()
 
                     try:
@@ -352,7 +359,8 @@ class UserView(APIView):
                     users_list.append(user_data)
                     data['currentItemCount'] = 1
                 except:
-                    data['error'] = {"code": "409", "message": "The resource that a client tried to create already exists.",
+                    data['error'] = {"code": "409",
+                                     "message": "The resource that a client tried to create already exists.",
                                      "status": "ALREADY_EXISTS"}
                     data['currentItemCount'] = 0
 
@@ -394,6 +402,10 @@ class UserViewCourse(APIView):
         result = {}
         sortby = 'name'
         sortdirection = 'asc'
+
+        data['currentItemCount'] = 0
+        data['items'] = []
+
 
         try:
             decoded_payload = utils.jwt_decode_handler(
@@ -446,8 +458,6 @@ class UserViewCourse(APIView):
             else:
                 courses = Course.objects.all().order_by('name')
 
-
-
                 data = {}
                 result = {}
                 courses_list = []
@@ -475,9 +485,9 @@ class UserViewCourse(APIView):
 
             else:
                 if sortdirection == 'asc':
-                    courses_list.sort(key=lambda x: x['name'], reverse=False)
+                    courses_list.sort(key=lambda x: x['name'].lower(), reverse=False)
                 else:
-                    courses_list.sort(key=lambda x: x['name'], reverse=True)
+                    courses_list.sort(key=lambda x: x['name'].lower(), reverse=True)
 
             if limit > 0 and offset >= 0:
                 data['currentItemCount'] = limit
@@ -497,9 +507,10 @@ class UserViewCourse(APIView):
             return Response(result)
 
         except:
-            result = {}
-            result['data'] = []
-            return Response(result)
+            pass
+        result['data'] = data
+        return Response(result)
+
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
@@ -577,3 +588,33 @@ class UserCheckCourseView(APIView):
         except:
             result['data'] = []
             return Response(result)
+
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+def check_username(request):
+    username = request.query_params['username']
+    users = User.objects.filter(username=username).count()
+
+    response = {'value': 0, 'message': 'Username is not free.'}
+    if users == 0:
+        response = {'value': 1, 'message': 'Username is free.'}
+    return Response(response)
+
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
+@parser_classes((JSONParser,))
+def check_email(request):
+    email = request.query_params['email']
+    username = request.query_params['username']
+
+    users_count = User.objects.filter(email=email).count()
+    users = User.objects.filter(email=email)
+    response = {'value': 0, 'message': 'Email is user.'}
+
+    if users_count == 0 or users[0].username == username:
+        response = {'value': 1, 'message': 'Email is used.'}
+
+    return Response(response)

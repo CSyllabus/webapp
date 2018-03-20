@@ -38,11 +38,11 @@
               <mat-icon style="margin-right: 32px">book</mat-icon>
               <span style="position: absolute;line-height: 24px;">Courses</span>
             </a>
-            <a *ngIf="isadmin" class="sidebar-link" [routerLink]="['users']" [routerLinkActive]="['active']">
+            <a *ngIf="isSuperuser" class="sidebar-link" [routerLink]="['users']" [routerLinkActive]="['active']">
               <mat-icon style="margin-right: 32px">supervisor_account</mat-icon>
               <span style="position: absolute;line-height: 24px;">Users</span>
             </a>
-            <a *ngIf="isadmin" class="sidebar-link" [routerLink]="['universities']" [routerLinkActive]="['active']">
+            <a *ngIf="isSuperuser" class="sidebar-link" [routerLink]="['universities']" [routerLinkActive]="['active']">
               <mat-icon style="margin-right: 32px">account_balance</mat-icon>
               <span style="position: absolute;line-height: 24px;">Universities</span>
             </a>
@@ -59,4 +59,4 @@
     </header>
   </div>
 </div>
-<app-login *ngIf="!selfUser" (token)="setToken($event)"></app-login>
+<app-login *ngIf="!selfUser" (token)="setUser()"></app-login>
