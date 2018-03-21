@@ -1,5 +1,5 @@
 FROM python:2.7
-MAINTAINER Filipe Garcia <filipe.garcia@seedstarslabs.com>
+MAINTAINER CSYLLABUS
 
 ENV PYTHONUNBUFFERED 1
 
@@ -11,9 +11,6 @@ WORKDIR /django
 RUN pip install pip==9.0.1
 RUN pip install -r py-requirements/devl.pip
 
-#RUN python
-#RUN import nltk
-#RUN nltk.download('stopwords')
-#RUN exit()
+CMD [ "python", "import nltk", "nltk.download('stopwords')", "exit()" ]
 
 
