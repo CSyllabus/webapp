@@ -1,82 +1,80 @@
 <div class="container" *ngIf="courses">
-    <div *ngIf="courses && courses.length > 0"
-         class="puls-rings-outer">
-      <div class="puls-rings"></div>
-    </div>
+  <div *ngIf="courses && courses.length > 0"
+       class="puls-rings-outer">
+    <div class="puls-rings"></div>
+  </div>
 
-    <div *ngFor="let course of courses; let i = index;" class="col-md-12"
-         style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px">
-      <div class="col-md-6">
-        <div *ngFor="let coursetest of course; let first = first;" >
-          <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card" [ngClass]="{'bck-color-blue':i%1==0, 'bck-color-red':i%2==0, 'bck-color-green':i%3==0, 'bck-color-orange':i%4==0, 'bck-color-grey':i%5==0, 'bck-color-purple':i%6==0}" style="cursor:pointer">
-            <mat-card-title style="font-size:20px;text-align:left;color:white">
-              {{coursetest.name}}
-            </mat-card-title>
-            <mat-card-subtitle >
-              <p class="cours-result-card-subtitle" style="padding-top:15px;text-align:right">
-                <span *ngIf="coursetest.faculty">{{coursetest.faculty}}, </span>
-                <span *ngIf="coursetest.university && !coursetest.faculty">{{coursetest.university}}, </span>
-                <span *ngIf="coursetest.city && coursetest.faculty">{{coursetest.city}}, </span>
-                <span *ngIf="coursetest.country">{{coursetest.country}} </span>
-              </p>
-            </mat-card-subtitle>
-            <mat-card-content>
-              <p style="text-align:justify; color:white" class="courseDescription">
-                {{ coursetest.description}}
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
+  <div *ngFor="let course of courses; let i = index;" class="col-md-12"
+       style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px; padding: 0;">
+    <div class="col-md-6">
+      <div *ngFor="let coursetest of course; let first = first;">
+        <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card"
+                  [ngClass]="{'bck-color-blue':i%1==0, 'bck-color-red':i%2==0, 'bck-color-green':i%3==0, 'bck-color-orange':i%4==0, 'bck-color-grey':i%5==0, 'bck-color-purple':i%6==0}"
+                  style="cursor:pointer">
+          <mat-card-title style="font-size:20px;text-align:left;color:white">
+            {{ coursetest.name }}
+          </mat-card-title>
+          <mat-card-subtitle>
+            <p class="cours-result-card-subtitle" style="padding-top:15px;text-align:right">
+              <span *ngIf="coursetest.faculty">{{ coursetest.faculty }}, </span>
+              <span *ngIf="coursetest.university && !coursetest.faculty">{{ coursetest.university }}, </span>
+              <span *ngIf="coursetest.city && coursetest.faculty">{{ coursetest.city }}, </span>
+              <span *ngIf="coursetest.country">{{ coursetest.country }} </span>
+            </p>
+          </mat-card-subtitle>
+          <mat-card-content>
+            <p style="text-align:justify; color:white" class="courseDescription">
+              {{ coursetest.description }}
+            </p>
+          </mat-card-content>
+        </mat-card>
       </div>
-      <div class="col-md-6">
-        <div *ngFor="let coursetest of course; let first = first; let i = index" >
-          <mat-expansion-panel *ngIf="!first" [expanded]="false">
+    </div>
+    <div class="col-md-6">
+      <div *ngFor="let coursetest of course; let first = first; let i = index">
+        <mat-expansion-panel *ngIf="!first" [expanded]="false">
           <mat-expansion-panel-header style="height:100px">
-            <mat-panel-title >
+            <mat-panel-title>
               <p class="naslov-expansion">
 
-                &nbsp;{{coursetest.name}}
+                &nbsp;{{ coursetest.name }}
 
               </p>
             </mat-panel-title>
 
           </mat-expansion-panel-header>
-            <div class="col-md-12" style="padding:0px">
+          <div class="col-md-12" style="padding:0px">
 
-              <div class="clearfix col-md-3" style="display:inline; padding-bottom:0px;">
+            <div class="clearfix col-md-3" style="display:inline; padding-bottom:0px;">
 
-                <div class="c100 p{{coursetest.result * 100 | number : '1.0-0'}} small" [ngClass]="{'orange':coursetest.result<=0.6, 'green':coursetest.result>0.6}">
-                    <span>{{coursetest.result * 100 | number : '1.0-0'}}%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div>
+              <div class="c100 p{{ coursetest.result * 100 | number : '1.0-0'}} small"
+                   [ngClass]="{'orange':coursetest.result<=0.6, 'green':coursetest.result>0.6}">
+                <span>{{ coursetest.result * 100 | number : '1.0-0'}}%</span>
+                <div class="slice">
+                  <div class="bar"></div>
+                  <div class="fill"></div>
                 </div>
               </div>
-              <div style="display:inline; text-align:right; padding-top:0px" class="col-md-9">
-              <p style="color:grey; margin:0px"><span *ngIf="coursetest.faculty">{{coursetest.faculty}}, </span>
-                <span *ngIf="coursetest.university && !coursetest.faculty">{{coursetest.university}}, </span>
-                <span *ngIf="coursetest.city && coursetest.faculty">{{coursetest.city}}, </span>
-                <span *ngIf="coursetest.country">{{coursetest.country}} </span></p>
-              </div>
-              <p style="text-align:justify">{{coursetest.description}}</p>
-
-              <p style="padding-right:15px; text-align:right">
-                <a mat-icon-button target="_blank" routerLink="/course/{{coursetest.id}}">
-                  <b>[More]</b>
-                </a>
-
-              </p>
             </div>
-          </mat-expansion-panel>
+            <div style="display:inline; text-align:right; padding-top:0px" class="col-md-9">
+              <p style="color:grey; margin:0px"><span *ngIf="coursetest.faculty">{{ coursetest.faculty }}, </span>
+                <span *ngIf="coursetest.university && !coursetest.faculty">{{ coursetest.university }}, </span>
+                <span *ngIf="coursetest.city && coursetest.faculty">{{ coursetest.city }}, </span>
+                <span *ngIf="coursetest.country">{{ coursetest.country }} </span></p>
+            </div>
+            <p style="text-align:justify">{{ coursetest.description }}</p>
+
+            <p style="padding-right:15px; text-align:right">
+              <a mat-icon-button target="_blank" routerLink="/course/{{ coursetest.id }}">
+                <b>[More]</b>
+              </a>
+
+            </p>
+          </div>
+        </mat-expansion-panel>
 
 
-
-
-
-
-
-          <!--<mat-card *ngIf="!first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
+        <!--<mat-card *ngIf="!first" (click)="openDialog(coursetest.id)" class="example-card" style="cursor:pointer">
             <mat-card-title>
                 <span style="float:left; font-size: 20px;"><b>  {{coursetest.result * 100 | number : '1.2-2'}}/100 </b></span>
               {{coursetest.name}}
@@ -91,16 +89,16 @@
 
             </mat-card-subtitle>
           </mat-card>-->
-        </div>
-
       </div>
+
     </div>
+  </div>
 
 
-    <div *ngIf="!courses || courses.length === 0" style="padding: 50px; ">
-      <div class="puls-rings-outer">
-        <div class="puls-rings"></div>
-      </div>
-      <div>No courses for given search!</div>
+  <div *ngIf="!courses || courses.length === 0" style="padding: 50px; ">
+    <div class="puls-rings-outer">
+      <div class="puls-rings"></div>
     </div>
+    <div>No courses for given search!</div>
+  </div>
 </div>

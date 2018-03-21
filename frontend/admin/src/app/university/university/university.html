@@ -1,6 +1,6 @@
 <div style="height: 70px;">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <button mat-button [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">
+    <button mat-button [routerLink]="['/universities']" style=" display: inline-block;vertical-align: middle;">
       Universities
     </button>
     <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
@@ -40,7 +40,7 @@
       <div style="text-align: center; padding: 20px;" *ngIf="university">
         <img id="main_img_img" height="150" [src]="university.img" (error)="setMainImgToDefault()">
       </div>
-      <input class="mdl-textfield__input" type="file"
+      <input *ngIf="university" class="mdl-textfield__input" type="file"
              name="main_image" id="main_image"
              (change)="onImageInputChange($event, true)"
               style="display: none;">

@@ -16,10 +16,14 @@ except ImportError:
     import json
 
 from gensim import corpora, models, similarities
+from collections import defaultdict
+from nltk.corpus import stopwords
 
-dictionary = corpora.Dictionary.load_from_text("dictionary.txt")
-lsi = models.LsiModel.load("lsi.model")
-corpus = corpora.MmCorpus('corpus.mm')
+#from gensim import corpora, models, similarities
+#dictionary = corpora.Dictionary.load_from_text("dictionary.txt")
+#lsi = models.LsiModel.load("lsi.model")
+#corpus = corpora.MmCorpus('corpus.mm')
+
 
 
 @api_view(['GET'])
@@ -199,10 +203,47 @@ def comparator_text_input(request):
     result = {}
     courses_list = []
 
+    #doc = request.data['course_description']
+    #vec_bow = dictionary.doc2bow(doc.lower().split())
+    #vec_lsi = lsi[vec_bow]
+    #index = similarities.MatrixSimilarity(lsi[corpus])
+
+    ##########################3
+
+    courses = Course.objects.all().order_by('id')
+    documents = []
+    stoplist = stopwords.words('english')
+    stoplist = stoplist + ['is', 'how', 'or', 'to', 'of', 'the',
+                           'in', 'for', 'on', 'will', 'a', 'advanced', 'an', 'and', 'are', 'as', 'be', 'by',
+                           'course',
+                           'with', 'some', 'student', 'students', 'systems', 'system', 'basic',
+                           'this', 'knowledge', 'use', 'using', 'well', 'hours;', 'four']
+    for course in courses:
+        documents.append(course.description + course.name)
+
+    texts = [[word.replace(".", "").lower() for word in document.split()
+              if word.replace(".", "").lower() not in stoplist]
+             for document in documents]
+
+    frequency = defaultdict(int)
+
+    for text in texts:
+        for token in text:
+            frequency[token] += 1
+    texts = [[token for token in text if frequency[token] > 1]
+             for text in texts]
+
+    dictionary = corpora.Dictionary(texts)
+    dictionary.filter_n_most_frequent(15)
+    corpus = [dictionary.doc2bow(text) for text in texts]
+    lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=125)
+
     doc = request.data['course_description']
     vec_bow = dictionary.doc2bow(doc.lower().split())
     vec_lsi = lsi[vec_bow]
     index = similarities.MatrixSimilarity(lsi[corpus])
+
+    ############33
 
     sims = index[vec_lsi]
     sims = sorted(enumerate(sims), key=lambda item: -item[1])

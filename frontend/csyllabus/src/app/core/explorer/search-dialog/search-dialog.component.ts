@@ -19,9 +19,9 @@ export class SearchDialogComponent {
    * @param dialogRef The {@link MatDialogRef<SearchDialogComponent>} instance representing SearchDialogComponent.
    * @param data The {@link MAT_DIALOG_DATA} instance representing MAT_DIALOG_DATA.
    */
-  constructor(
-    public dialogRef: MatDialogRef<SearchDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<SearchDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
   /**
    * onNoClick close dialog

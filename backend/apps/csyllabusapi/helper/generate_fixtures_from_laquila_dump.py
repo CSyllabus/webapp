@@ -38,6 +38,7 @@ fixtures.append(
     "pk": university_id,
     "fields": {
       "name": "University of L'Aquila",
+      "description": "Established in 1952 and located in L'Aquila, administrative centre of the Abruzzo Region, our University is a public teaching and research institution offering a full range of academic programmes including biotechnologies, sciences, economics, engineering, education, humanities, medicine, psychology, and sport sciences. With 7 departments, the University of L'Aquila offers its over 18,000 enrolled students 64 degree courses (divided between first and second level degrees), 8 research doctorate programmes, specialisation schools, specializing-master courses and vocational courses. Many members of its distinguished faculty of about 600 professors and researchers have received international recognition and are considered leaders in their fields of research.",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": country_id,

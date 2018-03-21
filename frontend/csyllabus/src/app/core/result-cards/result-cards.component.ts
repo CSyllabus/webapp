@@ -1,83 +1,62 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import {Component, OnInit, OnChanges, SimpleChanges, SimpleChange, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {CoursesService} from '../../services/courses.service';
 
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
+
 @Component({
   selector: 'app-result-cards',
   templateUrl: './result-cards.component.html',
   styleUrls: ['./result-cards.component.css']
 })
-export class ResultCardsComponent implements OnInit {
+export class ResultCardsComponent implements OnInit, OnChanges {
 
- @Input() courses: any = [];
-  orderBy:String;
- page = 1;
-  constructor(private dialog: MatDialog) { }
+  @Input() courses: any = [];
+  orderBy: String;
+  page = 1;
 
-  openDialog(course_id){
-     this.dialog.open(CourseDialogComponent, {
-        width: '', data: {'course_id': course_id}
-      });
+  constructor(private dialog: MatDialog) {
   }
 
-  orderResults(){
-   if (this.orderBy === 'nameAsc') {
-    this.courses = this.courses.sort(function(obj1,obj2){
-      let name1 = obj1.name.toUpperCase();
-      let name2 = obj2.name.toUpperCase();
+  ngOnChanges(changes: SimpleChanges) {
+    this.orderResults();
+  }
 
-      let comparison = 0;
-
-      if (name1 > name2) comparison = 1;
-      else if (name1 < name2) comparison = -1;
-
-      return comparison;
+  openDialog(course_id) {
+    this.dialog.open(CourseDialogComponent, {
+      width: '', data: {'course_id': course_id}
     });
-   } else if (this.orderBy === 'nameDesc') {
-    this.courses = this.courses.sort(function(obj1,obj2){
-      let name1 = obj2.name.toUpperCase();
-      let name2 = obj1.name.toUpperCase();
+  }
 
-      let comparison = 0;
+  orderResults() {
+    if (this.courses) {
+      this.courses = this.courses.sort((obj1, obj2) => {
+        let name1, name2;
+        if (this.orderBy === 'nameAsc') {
+          name1 = obj1.name.toUpperCase();
+          name2 = obj2.name.toUpperCase();
+        } else if (this.orderBy === 'nameDesc') {
+          name1 = obj2.name.toUpperCase();
+          name2 = obj1.name.toUpperCase();
+        } else if (this.orderBy === 'rankAsc') {
+          name1 = (obj1.rank * 100);
+          name2 = (obj2.rank * 100);
+        } else if (this.orderBy === 'rankDesc') {
+          name1 = (obj2.rank * 100);
+          name2 = (obj1.rank * 100);
+        }
 
-      if (name1 > name2) comparison = 1;
-      else if (name1 < name2) comparison = -1;
+        let comparison = 0;
 
-      return comparison;
-    });
-   } else if (this.orderBy === 'rankAsc') {
-    this.courses = this.courses.sort(function(obj1,obj2){
-      let name1 = (obj1.rank*100);
-      let name2 = (obj2.rank*100);
+        if (name1 > name2) comparison = 1;
+        else if (name1 < name2) comparison = -1;
 
-      let comparison = 0;
-
-      if (name1 > name2) comparison = 1;
-      else if (name1 < name2) comparison = -1;
-
-      return comparison;
-    });
-   } else if (this.orderBy === 'rankDesc') {
-    this.courses = this.courses.sort(function(obj1,obj2){
-      let name1 = (obj2.rank*100);
-      let name2 = (obj1.rank*100);
-
-      let comparison = 0;
-
-      if (name1 > name2) comparison = 1;
-      else if (name1 < name2) comparison = -1;
-
-      return comparison;
-    });
-   }
-
+        return comparison;
+      });
+    }
   }
 
   ngOnInit() {
-    this.orderBy='nameAsc';
-
+    this.orderBy = 'nameAsc';
   }
 
 }

@@ -4,7 +4,7 @@
       Courses
     </button>
     <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
-    <button mat-button [routerLink]="['/course/' + course.id]" style=" display: inline-block;vertical-align: middle;">
+    <button mat-button [routerLink]="['/course/edit/' + course.id]" style=" display: inline-block;vertical-align: middle;">
       {{ course.id }}
     </button>
   </div>
@@ -21,7 +21,7 @@
 
   <div>
     <mat-form-field class="input" *ngIf="isSuperuser">
-      <mat-select placeholder="{{ selected }}" [formControl]="pokemonControl">
+      <mat-select [disabled]="course.id" placeholder="{{ selected }}" [formControl]="pokemonControl">
         <mat-optgroup *ngFor="let country of countries" [label]="country.name">
 
           <mat-option *ngFor="let university of country.universities" [value]="university"
@@ -37,7 +37,10 @@
     </mat-form-field>
     <br>
     <mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="course.name">
+      <input matInput [formControl]="nameFormControl" required placeholder="Name" [(ngModel)]="course.name">
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+          Name is required!
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Credits" [(ngModel)]="course.ects">
@@ -56,7 +59,10 @@
     </mat-form-field>
 
     <mat-form-field style="width: 100%;">
-      <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
+      <textarea required style="height:100px"[formControl]="descriptionFormControl" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+          Description is required!
+        </mat-error>
     </mat-form-field>
 
 
@@ -78,11 +84,11 @@
 
   </div>
   <mat-card-actions style="text-align: center;">
-    <button [disabled]="!allow_access" mat-button *ngIf="course.id" (click)="saveCourse(true)">
+    <button [disabled]="!allow_access || !this.course.name || !this.course.description" mat-button *ngIf="course.id" (click)="saveCourse(true)">
       <mat-icon>save</mat-icon>
       SAVE
     </button>
-    <button mat-button *ngIf="!course.id" (click)="addCourse()">
+    <button mat-button *ngIf="!course.id" [disabled]="!this.course.name || !this.course.description" (click)="addCourse()">
       <mat-icon>add</mat-icon>
       ADD
     </button>

@@ -12,6 +12,7 @@ fixtures.append({
     "pk": country_id,
     "fields": {
       "name": "United Kingdom",
+        "description": "We are one of the largest, most diverse universities in the UK with over 120,000 students in London, and a further 50,000 studying across 180 countries for a University of London degree. The courses you study and all the materials provided are created and assessed by the University of London's member institutions, which have international reputations for their teaching and research. When you study with us, you will join over 52,000 students in every corner of the globe studying more than 100 different courses. When you graduate, your prestigious University of London award will be valued globally and help you to pursue sought-after careers.",
       "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"

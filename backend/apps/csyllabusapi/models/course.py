@@ -18,6 +18,7 @@ class Course(models.Model):
     url = models.CharField(max_length=255, blank=True, null=True)
     sync_id = models.CharField(max_length=255, blank=True, null=True)
     keywords = models.TextField()
+    erased = models.BooleanField(default=False)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()
 
