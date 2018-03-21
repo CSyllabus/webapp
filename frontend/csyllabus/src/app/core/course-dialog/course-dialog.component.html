@@ -40,7 +40,7 @@
         <div style="text-align:right; font-size:16px; padding-top:40px; padding-left:40px" class="col-md-4">
 
           <table style="border:0px" align=center>
-            <tr>
+            <tr *ngIf="course.university">
               <td>{{course.university}}</td>
             </tr>
             <tr>

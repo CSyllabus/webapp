@@ -28,7 +28,7 @@
           </div>
           <div>
             <mat-list role="list" style="padding-left:20px">
-              <mat-list-item style="text-align:left; cursor:pointer" (mouseover)="hover=true" (mouseleave)="hover=false" *ngIf="course && course.university" [routerLink]="['/university/' + course.universityId]" role="listitem"><p style="padding-top:10px; padding-bottom:10px" [ngStyle]="{backgroundColor: hover==true  ? 'lightgrey' : 'white' }">{{course.university}}</p></mat-list-item>
+              <mat-list-item style="text-align:left; cursor:pointer" (mouseover)="hover=true" (mouseleave)="hover=false" *ngIf="course && course.university" [routerLink]="['/university/' + course.universityId]" role="listitem"><p style="padding-top:5px; padding-bottom:5px" [ngStyle]="{backgroundColor: hover==true  ? 'lightgrey' : 'white' }">{{course.university}}</p></mat-list-item>
 
               <mat-list-item style="text-align:left" *ngIf="course && course.faculty"
                              role="listitem">{{ course.faculty }}</mat-list-item>
