@@ -235,11 +235,8 @@ def comparator_text_input(request):
 
     dictionary = corpora.Dictionary(texts)
     dictionary.filter_n_most_frequent(15)
-    dictionary.save_as_text("dictionary.txt", sort_by_word=False)
     corpus = [dictionary.doc2bow(text) for text in texts]
-    corpora.MmCorpus.serialize('corpus.mm', corpus)
     lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=125)
-    lsi.save("lsi.model")
 
     doc = request.data['course_description']
     vec_bow = dictionary.doc2bow(doc.lower().split())
