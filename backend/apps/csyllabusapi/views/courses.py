@@ -36,6 +36,10 @@ try:
 except ImportError:
     import json
 
+from gensim import corpora, models, similarities
+from collections import defaultdict
+from nltk.corpus import stopwords
+
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
@@ -86,7 +90,7 @@ class CourseView(APIView):
                     CourseUniversity.objects.filter(course_id=course.id).select_related('university__country')[0]
                 university = course_university.university
                 course_data['university'] = university.name
-                course_data['universityId']=university.id
+                course_data['universityId'] = university.id
                 course_data['country'] = university.country.name
                 course_data['universityImg'] = university.img
             except IndexError:
@@ -272,21 +276,17 @@ class CourseView(APIView):
             except:
                 pass
 
-
-
             try:
                 course.keywords = request.data['keywords']
             except:
                 pass
 
-            #print faculty_id
-            #print university_id
+            # print faculty_id
+            # print university_id
 
             course.save()
         except IndexError:
             pass
-
-
 
         return Response()
 
