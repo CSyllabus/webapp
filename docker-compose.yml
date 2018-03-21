@@ -1,0 +1,47 @@
+version: '2'
+
+volumes:
+  esdata1:
+    driver: local
+networks: {stack: {}}
+
+services:
+    postgres:
+        networks: ['stack']
+        extends:
+            file: docker-common.yml
+            service: postgres
+        ports:
+            - 5433:5432
+        volumes:
+            - ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+    backend:
+        extends:
+            file: docker-common.yml
+            service: django
+        entrypoint:
+            - /django-entrypoint.sh
+        expose:
+            - 9000
+        ports:
+            - 9000:9000
+            - 3500:3500
+        depends_on: ['postgres']
+        networks: ['stack']
+        stdin_open: true
+    frontend:
+        ports: ['127.0.0.1:9001:9001']
+        networks: ['stack']
+        extends:
+            file: docker-common.yml
+            service: web
+        links:
+            - backend
+        entrypoint:
+            - /web-entrypoint.sh
+        expose:
+            - 9001
+        ports:
+            - 9001:9001
+
+  
