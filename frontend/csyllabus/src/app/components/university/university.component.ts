@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { UniversitiesService } from '../../services/universities.service';
-import { University } from '../../classes/university';
+import {UniversitiesService} from '../../services/universities.service';
+import {University} from '../../classes/university';
 
 @Component({
   selector: 'app-university',
@@ -25,8 +25,8 @@ export class UniversityComponent implements OnInit {
   pageHit: number;
   compareNormal: number;
   compareCrazy: number;
-  compare : number;
-  maxno : number;
+  compare: number;
+  maxno: number;
 
   explore2: number;
   pageHit2: number;
@@ -50,7 +50,6 @@ export class UniversityComponent implements OnInit {
   ngOnInit() {
 
 
-
     this.route.params.subscribe(params => {
 
       this.universitiesService.getUniversityById(+params['id']).subscribe(university => {
@@ -60,7 +59,7 @@ export class UniversityComponent implements OnInit {
           this.router.navigate(['not-found']);
         } else {
 
-          if(university.id==1){
+          if (university.id == 1) {
             this.universitiesService.getExploreFaculty(university.id).subscribe(result => {
               this.explore = result;
 
@@ -72,21 +71,20 @@ export class UniversityComponent implements OnInit {
                   this.compareNormal = result;
 
 
-
                   this.universitiesService.getCompareCrazyFaculty(university.id).subscribe(result => {
                     this.compareCrazy = result;
 
-                    this.compare=this.compareNormal+this.compareCrazy;
+                    this.compare = this.compareNormal + this.compareCrazy;
 
-                    this.maxno=Math.max(this.explore, this.pageHit, this.compare);
+                    this.maxno = Math.max(this.explore, this.pageHit, this.compare);
 
-                    if(this.maxno>0){
-                      this.explore2 = this.explore*100/this.maxno;
-                      this.pageHit2 = this.pageHit*100/this.maxno;
-                      this.compare2 = this.compare*100/this.maxno;
+                    if (this.maxno > 0) {
+                      this.explore2 = this.explore * 100 / this.maxno;
+                      this.pageHit2 = this.pageHit * 100 / this.maxno;
+                      this.compare2 = this.compare * 100 / this.maxno;
                     }
 
-                    });
+                  });
                 });
               });
             });
@@ -105,21 +103,20 @@ export class UniversityComponent implements OnInit {
                   this.compareNormal = result;
 
 
-
                   this.universitiesService.getCompareCrazy(university.id).subscribe(result => {
                     this.compareCrazy = result;
 
-                    this.compare=this.compareNormal+this.compareCrazy;
+                    this.compare = this.compareNormal + this.compareCrazy;
 
-                    this.maxno=Math.max(this.explore, this.pageHit, this.compare);
+                    this.maxno = Math.max(this.explore, this.pageHit, this.compare);
 
-                    if(this.maxno>0){
-                      this.explore2 = this.explore*100/this.maxno;
-                      this.pageHit2 = this.pageHit*100/this.maxno;
-                      this.compare2 = this.compare*100/this.maxno;
+                    if (this.maxno > 0) {
+                      this.explore2 = this.explore * 100 / this.maxno;
+                      this.pageHit2 = this.pageHit * 100 / this.maxno;
+                      this.compare2 = this.compare * 100 / this.maxno;
                     }
 
-                    });
+                  });
                 });
               });
             });
@@ -128,9 +125,9 @@ export class UniversityComponent implements OnInit {
 
 
         }
-        });
       });
-    };
-  }
+    });
+  };
+}
 
 

@@ -142,6 +142,10 @@
     font-size: 35px;
     line-height: 35px;
   }
+
+  #chooser-explorer-card:hover, #chooser-comparator-card:hover, .chooser-card-active {
+  transform: scale(1.1);
+}
 }
 
 

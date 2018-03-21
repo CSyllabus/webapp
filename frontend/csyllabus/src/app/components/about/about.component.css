@@ -386,7 +386,6 @@ p {
 -------------------------- */
 
 .wellcome_area {
-    background-image: url(../../../images/fer.jpg);
     height: 900px;
     position: relative;
     z-index: 1;

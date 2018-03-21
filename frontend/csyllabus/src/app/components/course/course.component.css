@@ -1,42 +1,41 @@
 .container {
-    margin-top: 5%;
-    align-self: center;
-    background: white;
-    max-width: 80%;
-    margin-bottom: 100px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-    background-color: rgba(255, 255, 255, 0.85);
-    position: relative;
-  }
+  margin-top: 5%;
+  align-self: center;
+  background: white;
+  max-width: 80%;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  background-color: rgba(255, 255, 255, 0.85);
+  position: relative;
+}
 
-
-.title{
-    font-family: 'Roboto', sans-serif;
-    font-size: 80px;
-    border-radius: 5px;
-    color: white;
-    background-color: rgba(56, 65, 143, 0.85);
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(56, 65, 143, 0.85);
 }
 
 .container-90p {
-  width:90%;
+  width: 90%;
   margin-right: auto;
   margin-left: auto;
   display: block;
 }
 
- @media all and (max-width: 900px) {
+@media all and (max-width: 900px) {
 
   .container-90p {
-    width:100%;
+    width: 100%;
 
   }
 
- }
+}
 
-.top_gradient{
+.top_gradient {
   border-top: 3px solid transparent;
   -moz-border-image: -moz-linear-gradient(right, #b0b0b0, white);
   -webkit-border-image: -webkit-linear-gradient(right, #b0b0b0, white);
@@ -45,48 +44,59 @@
 }
 
 table, th, td {
-    border-collapse: collapse;
-    vertical-align: center;
+  border-collapse: collapse;
+  vertical-align: center;
 }
-td{
-    text-align: left;
-    padding-right: 10px;
-    padding-left: 10px;
+
+td {
+  text-align: left;
+  padding-right: 10px;
+  padding-left: 10px;
 }
+
 table {
-    border-spacing: 5px;
-    background-color:rgba(255, 255, 255, 0.768);
-    position: relative;
-    align-self: center;
+  border-spacing: 5px;
+  background-color: rgba(255, 255, 255, 0.768);
+  position: relative;
+  align-self: center;
 }
-.description{
-    text-align : justify;
+
+.description {
+  text-align: justify;
 }
-.details{
-    width: 49%;
-    float: left;
-    margin-right: 1%;
+
+.details {
+  width: 49%;
+  float: left;
+  margin-right: 1%;
 
 }
-.social{
-    width: 49%;
-    float: left;
-    margin-left: 1%;
+
+.social {
+  width: 49%;
+  float: left;
+  margin-left: 1%;
 }
-.columns{
-    background-color:rgba(232, 228, 228, 0.809);
+
+.columns {
+  background-color: rgba(232, 228, 228, 0.809);
 }
-.columns:after{
-    content: "";
-    display: table;
-    clear: both;
+
+.columns:after {
+  content: "";
+  display: table;
+  clear: both;
 }
+
 .logoU {
 
-  float:left;
-  height:60px;
-    background-color: white;
+  float: left;
+  height: 60px;
+  background-color: white;
 
 }
 
 
+[class*="col-"] {
+    padding: 5px;
+}

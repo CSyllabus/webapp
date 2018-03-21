@@ -5,7 +5,7 @@
   </div>
 
   <div *ngFor="let course of courses; let i = index;" class="col-md-12"
-       style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px">
+       style="background-color:rgba(255, 255, 255, 0.5); margin-bottom:50px; padding: 0;">
     <div class="col-md-6">
       <div *ngFor="let coursetest of course; let first = first;">
         <mat-card *ngIf="first" (click)="openDialog(coursetest.id)" class="example-card"
