@@ -66,6 +66,7 @@ export class UserComponent implements OnInit {
       } else if (this.task === 'self') {
         this.usersService.getSelf().subscribe(user => {
           this.user = user;
+          this.username = user.username;
         });
       } else if (this.task === 'add') {
         this.user = new User();
