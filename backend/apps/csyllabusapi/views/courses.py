@@ -29,6 +29,11 @@ from rest_framework.decorators import parser_classes
 from datetime import datetime
 from jwt_auth import utils
 from jwt_auth.compat import json, User, smart_text
+
+from gensim import corpora, models, similarities
+from collections import defaultdict
+from nltk.corpus import stopwords
+
 import ast
 
 try:
@@ -232,6 +237,45 @@ class CourseView(APIView):
         Course.objects.filter(id=course_id).delete()
         CourseResult.objects.filter(first_course_id=course_id).delete()
         CourseResult.objects.filter(second_course_id=course_id).delete()
+
+        courses = Course.objects.all().order_by('id')
+        documents = []
+        documents_names = []
+        document_courses = []
+        stoplist = stopwords.words('english')
+        stoplist = stoplist + ['is', 'how', 'or', 'to', 'of', 'the',
+                               'in', 'for', 'on', 'will', 'a', 'advanced', 'an', 'and', 'are', 'as', 'be', 'by',
+                               'course',
+                               'with', 'some', 'student', 'students', 'systems', 'system', 'basic',
+                               'this', 'knowledge', 'use', 'using', 'well', 'hours;', 'four']
+
+        # parametar 1: remove keywords from names
+        stoplist_names = stopwords.words('english')
+
+        for course in courses:
+            documents.append(course.description + course.name)
+            documents_names.append(course.name)
+            document_courses.append(course)
+
+        texts = [[word.replace(".", "").lower() for word in document.split()
+                  if word.replace(".", "").lower() not in stoplist]
+                 for document in documents]
+
+        frequency = defaultdict(int)
+        for text in texts:
+            for token in text:
+                frequency[token] += 1
+        texts = [[token for token in text if frequency[token] > 1]
+                 for text in texts]
+
+        dictionary = corpora.Dictionary(texts)
+        dictionary.filter_n_most_frequent(15)
+        dictionary.save_as_text("dictionary.txt", sort_by_word=False)
+        corpus = [dictionary.doc2bow(text) for text in texts]
+        corpora.MmCorpus.serialize('corpus.mm', corpus)
+        lsi = models.LsiModel(corpus, id2word=dictionary, num_topics=125)
+        lsi.save("lsi.model")
+
         return Response()
 
     def put(selfself, request, course_id):
