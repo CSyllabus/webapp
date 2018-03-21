@@ -501,5 +501,6 @@
 }
 
 .item img {
-  height: 100px;
+  max-height: 100px;
+  max-width:120px;
 }
