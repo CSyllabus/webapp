@@ -29,7 +29,7 @@ export class ResultCardsComponent implements OnInit, OnChanges {
 
   orderResults() {
     if (this.courses) {
-      this.courses = this.courses.sort((obj1, obj2)  => {
+      this.courses = this.courses.sort((obj1, obj2) => {
         let name1, name2;
         if (this.orderBy === 'nameAsc') {
           name1 = obj1.name.toUpperCase();

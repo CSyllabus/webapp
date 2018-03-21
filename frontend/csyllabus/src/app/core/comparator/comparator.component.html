@@ -4,7 +4,7 @@
       <p class="custom-card-title">
 
       <span>Compare courses using
-        <a href="https://drive.google.com/file/d/1SVJkZqI_EQhsc1gNBkrYucElnf75i35b/view?usp=sharing" target="_blank"
+        <a routerLink="/about" target="_blank"
            style="color: white; ">latent
         semantic indexing</a>
 
@@ -20,11 +20,11 @@
             <mat-select required placeholder="Select courses from" [formControl]="pokemonControl">
               <mat-optgroup *ngFor="let country of countries" [label]="country.name">
                 <mat-option *ngFor="let university of country.universities" [value]="university"
-                            (click)="queryHomeCountry=country; queryHomeUniversity = university; filterCoursesByHomeUniversity()">
+                            (click)="queryHomeUniversity = university; filterCoursesByHomeUniversity()">
                   {{ university.name }}
                 </mat-option>
                 <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                            (click)="queryHomeCountry = country;queryHomeFaculty = faculty; filterCoursesByHomeFaculty()">
+                            (click)="queryHomeFaculty = faculty; filterCoursesByHomeFaculty()">
                   {{ faculty.name }}
                 </mat-option>
               </mat-optgroup>
@@ -116,6 +116,6 @@
 </div>
 
 <div id="comparator-result-component">
-  <app-result-cards-comparator *ngIf="true" [courses]="comparatorResult_cp"></app-result-cards-comparator>
+  <app-result-cards-comparator *ngIf="true" [courses]="comparatorResult"></app-result-cards-comparator>
 </div>
 
