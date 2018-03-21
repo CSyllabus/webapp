@@ -37,14 +37,14 @@ class Command(BaseCommand):
         # parametar 1: remove keywords from names
         stoplist_names = stopwords.words('english')
 
-        print "Created stop list."
+        print ("Created stop list.")
 
         for course in courses:
             documents.append(course.description + course.name)
             documents_names.append(course.name)
             document_courses.append(course)
 
-        print "Fetched course descriptions."
+        print ("Fetched course descriptions.")
         texts = [[word.replace(".", "").lower() for word in document.split()
                   if word.replace(".", "").lower() not in stoplist]
                  for document in documents]
@@ -75,7 +75,7 @@ class Command(BaseCommand):
         # save to fale keywords sorted by appereance
         # dictionary_names = corpora.Dictionary(texts_names)
 
-        print "Created a dictionary of word-bag."
+        print ("Created a dictionary of word-bag.")
         # doc2bow counts the number of occurences of each distinct word,
         # converts the word to its integer word id and returns the result
         # as a sparse vector
@@ -108,7 +108,7 @@ class Command(BaseCommand):
         for course in courses:
             startTime = datetime.now(tz=timezone.utc)
             j += 1
-            print "Working on course " + str(j) + " of " + str(course_count)
+            print ("Working on course " + str(j) + " of " + str(course_count))
             doc = course.description + " " + course.name
             vec_bow = dictionary.doc2bow(doc.lower().split())
 
@@ -164,7 +164,7 @@ class Command(BaseCommand):
             CourseResult.objects.bulk_create(course_results)
             #print course_results, "\r\n"
             course_results = []
-            print "elapsed: ", str(datetime.now(tz=timezone.utc) - startTime), "\r\n"
+            print ("elapsed: ", str(datetime.now(tz=timezone.utc) - startTime), "\r\n")
 
 
 def getCoursesInUniversity(university_id):

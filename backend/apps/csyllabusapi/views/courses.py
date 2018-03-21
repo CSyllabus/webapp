@@ -362,7 +362,7 @@ class CourseByFacultyView(APIView):
 
                     courses_list.append(course_data)
                 except IndexError:
-                    print "Course found in course_faculty " + course_faculties.id + " missing from database."
+                    print ("Course found in course_faculty " + course_faculties.id + " missing from database.")
 
             courses_list.sort(key=lambda x: x['name'], reverse=False)
 
@@ -429,7 +429,8 @@ class CourseByUniversityView(APIView):
 
                     courses_list.append(course_data)
                 except IndexError:
-                    print "Course found in course_university " + course_university.id + " missing from database."
+                    print ("Course found in course_university " + course_university.id + " missing from database.")
+
 
             courses_list.sort(key=lambda x: x['name'], reverse=False)
 

@@ -15,3 +15,5 @@ python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas\_fixtures\_js
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/ucla\_fixtures\_json.json
 
 python manage.py runserver 0.0.0.0:9000 --settings=backend.settings.devl
+
+

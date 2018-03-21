@@ -11,5 +11,9 @@ WORKDIR /django
 RUN pip install pip==9.0.1
 RUN pip install -r py-requirements/devl.pip
 
+#RUN python
+#RUN import nltk
+#RUN nltk.download('stopwords')
+#RUN exit()
 
-#WORKDIR /django
+
