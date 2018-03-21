@@ -40,7 +40,7 @@
       <div style="text-align: center; padding: 20px;" *ngIf="university">
         <img id="main_img_img" height="150" [src]="university.img" (error)="setMainImgToDefault()">
       </div>
-      <input class="mdl-textfield__input" type="file"
+      <input *ngIf="university" class="mdl-textfield__input" type="file"
              name="main_image" id="main_image"
              (change)="onImageInputChange($event, true)"
               style="display: none;">
