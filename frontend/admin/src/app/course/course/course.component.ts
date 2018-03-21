@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Course} from '../course';
 import {User} from '../../user/user';
 import {environment} from '../../../environments/environment';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 
 import {Country} from '../../classes/country';
 import {University} from '../../classes/university';
@@ -26,6 +26,10 @@ let self: any;
 export class CourseComponent implements OnInit {
   categoryControl: FormControl = new FormControl();
   pokemonControl: FormControl = new FormControl();
+
+
+  nameFormControl = new FormControl('', [Validators.required]);
+  descriptionFormControl = new FormControl('', [Validators.required]);
 
   course: Course;
   course_id: Number;
@@ -104,6 +108,11 @@ export class CourseComponent implements OnInit {
   }
 
   saveCourse(showSameCourse) {
+  if (!this.course.name || !this.course.description) {
+    this.nameFormControl.setErrors({'required': true});
+    this.descriptionFormControl.setErrors({'required': true});
+    return;
+  }
     self.course.keywords = [];
 
     self.keywords.forEach(function (keyword) {
@@ -124,6 +133,13 @@ export class CourseComponent implements OnInit {
   }
 
   addCourse() {
+
+  if (!this.course.name || !this.course.description) {
+    this.nameFormControl.setErrors({'required': true});
+    this.descriptionFormControl.setErrors({'required': true});
+    return;
+  }
+
     self.course.keywords = [];
 
     self.keywords.forEach(function (keyword) {

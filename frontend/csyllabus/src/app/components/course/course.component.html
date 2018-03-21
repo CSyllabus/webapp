@@ -28,8 +28,8 @@
           </div>
           <div>
             <mat-list role="list" style="padding-left:20px">
-              <mat-list-item style="text-align:left" *ngIf="course && course.university"
-                             role="listitem">{{ course.university }}</mat-list-item>
+              <mat-list-item style="text-align:left; cursor:pointer" (mouseover)="hover=true" (mouseleave)="hover=false" *ngIf="course && course.university" [routerLink]="['/university/' + course.universityId]" role="listitem"><p style="padding-top:10px; padding-bottom:10px" [ngStyle]="{backgroundColor: hover==true  ? 'lightgrey' : 'white' }">{{course.university}}</p></mat-list-item>
+
               <mat-list-item style="text-align:left" *ngIf="course && course.faculty"
                              role="listitem">{{ course.faculty }}</mat-list-item>
               <mat-list-item *ngIf="course && course.study_lvl" role="listitem">Study
@@ -55,9 +55,9 @@
           </div>
           <div>
             <mat-list *ngIf="similarCourses!=undefined" role="list">
-              <mat-list-item style="margin-top:15px; margin-bottom:10px" *ngFor="let similar of similarCourses">
+              <mat-list-item style="margin-top:15px; margin-bottom:10px" [routerLink]="['/course/' + similar.id]" *ngFor="let similar of similarCourses">
 
-                <p style="text-align:left">{{ similar.name }}
+                <p style="text-align:left; cursor:pointer" >{{ similar.name }}
                   <span style="color:grey;"> {{ similar.university }}</span></p>
               </mat-list-item>
             </mat-list>
