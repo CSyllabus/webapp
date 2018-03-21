@@ -1,129 +1,134 @@
 
 <div class="col-md-12" style="background-color:#eaeaea; padding:0; height:100%">
   <div class="col-md-12" style="height:300px; background-size:cover; background-image:url(images/886.jpg)"></div>
-<div class="container-90p">
-<div class="col-md-12" style="padding-bottom:0px; margin-top:-86px;">
+    <div class="container-90p">
+      <div class="col-md-12" style="padding-bottom:0px; margin-top:-86px;">
 
-  <div class="col-md-8" style="padding-right:0px">
-<div  style="webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
-    box-shadow: 0 2px 11px rgba(0,0,0,0.2);padding:0; margin-right:10px; background-color:white">
+        <div class="col-md-8" style="padding-right:0px">
 
-    <div style="text-align:left; background-color:#98231a;min-height:56px;line-height:50px">
+          <div  style="webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+          box-shadow: 0 2px 11px rgba(0,0,0,0.2);padding:0; margin-right:10px; background-color:white; overflow:hidden">
 
-      <div style="display:inline-block; padding-left:20px; width:100%">
-        <p *ngIf="university" style="display:inline; font-size:20px; color: white;">{{university.name}}</p>
-      </div>
+            <div style="text-align:left; background-color:#98231a;min-height:56px;line-height:50px">
 
-    </div>
+              <div style="display:inline-block; padding-left:20px; width:100%">
+                <p *ngIf="university" style="display:inline; font-size:20px; color: white;">{{university.name}}</p>
+              </div>
 
-        <div *ngIf="university && university.description" style="vertical-align:top; text-align:justify; line-height: 1.5; padding:30px;">
-          {{university.description}}
+            </div>
+            <div *ngIf="university && university.description" style="vertical-align:top; text-align:justify; line-height: 1.5; padding:30px;">
+
+              <img *ngIf="university.img" [src]="university.img" style="margin:15px;float:left; max-height:100px; max-width:100px" (error)="setMainImgToDefault()">
+              {{university.description}}
+
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-4" style="padding-left:0px">
+          <div  style="padding:0px;webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 11px rgba(0,0,0,0.2);background-color:white; ">
+
+            <div class="col-md-12" style="padding:0px;text-align:left; background-color:#98231a; height:56px; line-height:56px">
+
+              <div style="display:inline-block; padding-left:20px; vertical-align:top">
+                <p *ngIf="university" style="display:inline; font-size:20px;color: white;">Details</p>
+              </div>
+
+            </div>
+
+            <div>
+
+              <mat-list role="list" style="padding-left:20px">
+                <mat-list-item style="text-align:left" *ngIf="university && university.countryName" role="listitem">Country: {{university.countryName}}</mat-list-item>
+                <mat-list-item *ngIf="university && university.cityName" role="listitem">City: {{university.cityName}}</mat-list-item>
+                <mat-list-item *ngIf="university && university.facultyName" style="text-align:left" role="listitem">{{university.facultyName}}</mat-list-item>
+                <!--*ngIf="university && university.faculty"-->
+              </mat-list>
+
+            </div>
+
+          </div>
+
+
+
+          <div style="padding:0px;webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 11px rgba(0,0,0,0.2); margin-top:10px; background-color:white">
+
+            <div class="col-md-12" style="padding:0px;text-align:left; background-color:#98231a;">
+
+
+              <div style="display:inline-block; padding-left:20px; vertical-align:top;height:56px; line-height:56px">
+                <p style="display:inline; font-size:20px; color: white;">Statistics</p>
+              </div>
+            </div>
+
+            <div>
+
+              <mat-list role="list" style="padding-left:5px">
+                <mat-list-item title="{{pageHit}} page hits" style="text-align:left"  role="listitem">
+                  <div class="col-md-4">
+                  <p style="text-align:left">
+                  Page hits</p>
+                  </div>
+                  <div class="col-md-7">
+                  <div  style="background-color:#5ab95a; height:20px; max-width:200px" [style.width.%]="pageHit2"></div>
+                    </div>
+                  <div class="col-md-1" style="padding-left:0px">
+                    {{pageHit}}
+                  </div>
+                </mat-list-item>
+                <mat-list-item title="{{explore}} times explored" role="listitem">
+                  <div class="col-md-4">
+                  <p style="text-align:left">Explored</p>
+                  </div>
+                  <div class="col-md-7">
+                  <div  style="background-color:#ff7575; height:20px" [style.width.%]="explore2"></div>
+                  </div>
+                  <div class="col-md-1" style="padding-left:0px">
+                    {{explore}}
+                  </div>
+                </mat-list-item>
+                <mat-list-item title="{{compare}} times compared by"  role="listitem">
+                  <div class="col-md-4">
+                  <p style="text-align:left">Compared</p>
+                  </div>
+                  <div class="col-md-7">
+                  <div style="background-color:#f3b94d; height:20px" [style.width.%]="compare2"></div>
+                  </div>
+                  <div class="col-md-1" style="padding-left:0px">
+                    {{compare}}
+                  </div>
+                </mat-list-item>
+
+          <!--*ngIf="university && university.faculty"-->
+              </mat-list>
+
+            </div>
+          </div>
 
         </div>
 
 
-
-    </div>
-    </div>
-
-<div class="col-md-4" style="padding-left:0px">
-  <div  style="padding:0px;webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
-    box-shadow: 0 2px 11px rgba(0,0,0,0.2);background-color:white; ">
-
-    <div class="col-md-12" style="padding:0px;text-align:left; background-color:#98231a; height:56px; line-height:56px">
-
-      <div style="display:inline-block; padding-left:20px; vertical-align:top">
-        <p *ngIf="university" style="display:inline; font-size:20px;color: white;">Details</p>
       </div>
 
-    </div>
-
-    <div>
-
-    <mat-list role="list" style="padding-left:20px">
-  <mat-list-item style="text-align:left" *ngIf="university && university.countryName" role="listitem">Country: {{university.countryName}}</mat-list-item>
-  <mat-list-item *ngIf="university && university.cityName" role="listitem">City: {{university.cityName}}</mat-list-item>
-  <mat-list-item *ngIf="university && university.facultyName" style="text-align:left" role="listitem">{{university.facultyName}}</mat-list-item>
-  <!--*ngIf="university && university.faculty"-->
-</mat-list>
-
-
-    </div>
-
-  </div>
+      <div class="col-md-12">
 
 
 
-    <div style="padding:0px;webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
-      box-shadow: 0 2px 11px rgba(0,0,0,0.2); margin-top:10px; background-color:white">
-
-      <div class="col-md-12" style="padding:0px;text-align:left; background-color:#98231a;">
+      <div class="col-md-8" style="display:none;padding-right:0px; webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 11px rgba(0,0,0,0.2); background-color:white">
 
 
-        <div style="display:inline-block; padding-left:20px; vertical-align:top;height:56px; line-height:56px">
-          <p style="display:inline; font-size:20px; color: white;">Statistics</p>
-        </div>
-      </div>
-
-      <div>
-
-        <mat-list role="list" style="padding-left:5px">
-  <mat-list-item title="{{pageHit}} page hits" style="text-align:left"  role="listitem">
-    <div class="col-md-4">
-    <p style="text-align:left">
-    Page hits</p>
-    </div>
-    <div class="col-md-8">
-    <div  style="background-color:#5ab95a; height:20px; max-width:200px" [style.width.%]="pageHit2"></div>
-      </div>
-  </mat-list-item>
-  <mat-list-item title="{{explore}} times explored" role="listitem">
-    <div class="col-md-4">
-    <p style="text-align:left">Explored</p>
-    </div>
-    <div class="col-md-8">
-    <div  style="background-color:#ff7575; height:20px" [style.width.%]="explore2"></div>
-    </div>
-  </mat-list-item>
-  <mat-list-item title="{{compare}} times compared by"  role="listitem">
-    <div class="col-md-4">
-    <p style="text-align:left">Compared</p>
-    </div>
-    <div class="col-md-8">
-    <div style="background-color:#f3b94d; height:20px" [style.width.%]="compare2"></div>
-    </div>
-  </mat-list-item>
-
-  <!--*ngIf="university && university.faculty"-->
-</mat-list>
-
-
+          <!--<app-social *ngIf="university" [universityId]=university.id></app-social>-->
 
 
       </div>
 
     </div>
-
   </div>
-
-
-</div>
-
-  <div class="col-md-12">
-
-
-
-  <div class="col-md-8" style="display:none;padding-right:0px; webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
-    box-shadow: 0 2px 11px rgba(0,0,0,0.2); background-color:white">
-
-
-      <!--<app-social *ngIf="university" [universityId]=university.id></app-social>-->
-
-
-  </div>
-
-  </div>
-</div>
 
 
 </div>

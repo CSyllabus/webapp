@@ -37,6 +37,7 @@ fixtures.append(
     "pk": 1,
     "fields": {
       "name": "University of Zagreb",
+      "description": "The mission of the University is based on scientific and artistic research and aims at sustainable development, artistic creativity and professional work as well as organization and performance of university studies and, exceptionally, occupational studies. As a central and leading institution, the University gives special regard to carrying out the programmes of strategic interest for the Republic of Croatia and for the development of regional and local communities. All university activities enhance the development of personality and promote human rights and fundamental freedoms. The University of Zagreb is the oldest Croatian university and also the oldest university in South East Europe. The university was officially founded 23 September 1669 by Emperor and King Leopold I Habsburg who issued a decree granting the status and privileges of a university to the Jesuit Academy of the Royal Free City of Zagreb. According to that document the study of philosophy in Zagreb acquired a formal and legal status as Neoacademia Zagrabiensis and officially became a public institution of higher education." ,
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
       "country": 1,
