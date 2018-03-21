@@ -15,7 +15,7 @@ export class EventsService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({headers: headers});
-    console.log(data);
+
     return this.http.post(this.eventsUrl, data, options)
       .map(res => res).catch(this.handleError);
   }

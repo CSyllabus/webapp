@@ -4,29 +4,29 @@
     <div class="puls-rings"></div>
   </div>
   <mat-form-field class="orderingExplorerResults">
-  <mat-select placeholder="Order by" [(ngModel)]="orderBy" (ngModelChange)="orderResults()">
-    <mat-option selected="true" value="nameAsc">
-      Name - Ascending
-    </mat-option>
-    <mat-option value="nameDesc">
-      Name - Descending
-    </mat-option>
-    <mat-option value="rankAsc">
-      Rank - Ascending
-    </mat-option>
-    <mat-option value="rankDesc">
-      Rank - Descending
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
+    <mat-select placeholder="Order by" [(ngModel)]="orderBy" (ngModelChange)="orderResults()">
+      <mat-option selected="true" value="nameAsc">
+        Name - Ascending
+      </mat-option>
+      <mat-option value="nameDesc">
+        Name - Descending
+      </mat-option>
+      <mat-option value="rankAsc">
+        Rank - Ascending
+      </mat-option>
+      <mat-option value="rankDesc">
+        Rank - Descending
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <div *ngFor="let course of courses; let i = index" class="courseCard col-md-4" [hidden]="i >= 12*page">
 
-    <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card" [ngClass]="{'bck-color-blue':i%1==0, 'bck-color-red':i%2==0, 'bck-color-green':i%3==0, 'bck-color-orange':i%4==0, 'bck-color-grey':i%5==0, 'bck-color-purple':i%6==0}">
+    <mat-card style="cursor: pointer;" (click)="openDialog(course.id)" class="example-card"
+              [ngClass]="{'bck-color-blue':i%1==0, 'bck-color-red':i%2==0, 'bck-color-green':i%3==0, 'bck-color-orange':i%4==0, 'bck-color-grey':i%5==0, 'bck-color-purple':i%6==0}">
 
-      <mat-card-header >
-        <mat-card-title >
+      <mat-card-header>
+        <mat-card-title>
 
           <p class="go-to-compare" [routerLink]="['../comparator/'+ course.id]">
             <mat-icon title="Compare">swap_vertical_circle</mat-icon>
@@ -35,26 +35,26 @@
           <p class="cours-result-card-title">{{ course.name }}</p>
 
 
-
         </mat-card-title>
 
-        <mat-card-subtitle >
+        <mat-card-subtitle>
           <!--<b *ngIf="course.rank"> Rank: {{course.rank * 100 | number : '1.2-2'}} </b> -->
-          <p class="cours-result-card-subtitle" style="padding-top:0px; text-align:right; color:#e8e8e8: font-weight:bold">
-            <span *ngIf="course.faculty">{{course.faculty}}, </span>
-            <span *ngIf="course.university">{{course.university}}, </span>
-            <span *ngIf="course.city">{{course.city}}, </span>
-            <span *ngIf="course.country">{{course.country}} </span>
+          <p class="cours-result-card-subtitle"
+             style="padding-top:0px; text-align:right; color:#e8e8e8: font-weight:bold">
+            <span *ngIf="course.faculty">{{ course.faculty }}, </span>
+            <span *ngIf="course.university">{{ course.university }}, </span>
+            <span *ngIf="course.city">{{ course.city }}, </span>
+            <span *ngIf="course.country">{{ course.country }} </span>
           </p>
         </mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
         <div>
-        <p class="courseDescription" >
-          {{ course.short_description}}
-        </p>
-          </div>
+          <p class="courseDescription">
+            {{ course.short_description }}
+          </p>
+        </div>
       </mat-card-content>
       <mat-card-actions>
       </mat-card-actions>
