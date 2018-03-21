@@ -243,14 +243,11 @@ class CourseView(APIView):
         documents_names = []
         document_courses = []
         stoplist = stopwords.words('english')
-        stoplist = stoplist + ['is', 'how', 'or', 'to', 'of', 'the',
+        stoplist += ['is', 'how', 'or', 'to', 'of', 'the',
                                'in', 'for', 'on', 'will', 'a', 'advanced', 'an', 'and', 'are', 'as', 'be', 'by',
                                'course',
                                'with', 'some', 'student', 'students', 'systems', 'system', 'basic',
                                'this', 'knowledge', 'use', 'using', 'well', 'hours;', 'four']
-
-        # parametar 1: remove keywords from names
-        stoplist_names = stopwords.words('english')
 
         for course in courses:
             documents.append(course.description + course.name)
