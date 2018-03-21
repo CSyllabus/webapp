@@ -1,7 +1,7 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'smithx_dev',
+        'NAME': 'csyllabus_dev',
         'USER': 'csyllabus',
         'PASSWORD': 'csyllabus',
         'HOST': 'postgres',

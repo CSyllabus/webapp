@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-until python manage.py migrate --settings=backend.settings.devl
+until python manage.py migrate csyllabusapi
 do
     echo "Waiting for postgres ready..."
     sleep 2
