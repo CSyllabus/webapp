@@ -13,7 +13,7 @@ function ssc() {
                 document.getElementById("similarCourses").innerHTML += "<tr><td>" + e.name + "</td><td>" + e.university + "</td><td>" + Math.round(100 * e.result) + "</td></tr>"
             })
         }
-    }, t.open("GET", "http://localhost:8000/api/comparator?course=" + e, !0), t.setRequestHeader("Accept", "application/json"), t.send()
+    }, t.open("GET", "https://api.csyllabus.com/api/comparator?course=" + e, !0), t.setRequestHeader("Accept", "application/json"), t.send()
 }
 
 function scr() {
@@ -29,7 +29,7 @@ function scr() {
                 document.getElementById("similarCourses").innerHTML += "<tr><td>" + e.name + "</td><td>" + e.university + "</td><td>" + Math.round(100 * e.result) + "</td></tr>"
             })
         }
-    }, n.open("POST", "http://localhost:8000/api/comparator_text_input?university_id=" + e, !0), n.setRequestHeader("Accept", "application/json"), n.setRequestHeader("Content-Type", "application/json"), n.send(JSON.stringify(t))
+    }, n.open("POST", "https://api.csyllabus.com/api/comparator_text_input?university_id=" + e, !0), n.setRequestHeader("Accept", "application/json"), n.setRequestHeader("Content-Type", "application/json"), n.send(JSON.stringify(t))
 }
 
 function scrp() {
@@ -61,7 +61,7 @@ function ser() {
                 document.getElementById("similarCourses").innerHTML += "<tr><td>" + e.name + "</td><td>" + e.university + "</td><td>" + Math.round(100 * e.rank) + "</td></tr>"
             })
         }
-    }, i.open("GET", "http://localhost:8000/api/explorer?university_id=" + e + "&keywords=" + keywords.join("-"), !0), i.setRequestHeader("Accept", "application/json"), i.send()
+    }, i.open("GET", "https://api.csyllabus.com/api/explorer?university_id=" + e + "&keywords=" + keywords.join("-"), !0), i.setRequestHeader("Accept", "application/json"), i.send()
 }
 
 function addKeyword(e) {
