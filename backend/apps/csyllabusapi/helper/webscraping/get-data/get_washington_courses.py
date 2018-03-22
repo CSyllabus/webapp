@@ -1,15 +1,17 @@
+import requests
 from lxml import html
 import json
 
-# read file MDH_courses.txt
-f = open("U:\\CSyllabus\\FromWeb\\Washington.txt", "r")
-princeton = f.read()
+url = "https://www.washington.edu/students/crscat/cse.html"
+r = requests.get(url)
 
-tree = html.fromstring(princeton)
-course_id = tree.xpath('//p//b/text()')
-course_desc = tree.xpath('//p/text()')
+tree = html.fromstring(r.content)
+course_id = tree.xpath('//a//p//b/text()')
+course_desc = tree.xpath('//a//p/text()')
 del course_desc[:1]
-print(course_desc)
+
+print(len(course_id))
+print(len(course_desc))
 
 courseList = []
 for i in range(0, len(course_id)):
@@ -25,7 +27,8 @@ for i in range(0, len(course_id)):
     else:
         courseList.append(json.dumps(course))
 
-output = open("U:\\CSyllabus\\WebScraping\\JsonResult\\washington_courses.json", "w")
+output = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/helper/webscraping"
+              "/jsonresult/washington_courses.json", "w")
 output.write("[")
 for course in courseList:
     output.write(course)

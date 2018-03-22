@@ -1,11 +1,11 @@
+import requests
 from lxml import html
 import json
 
-# read file MDH_courses.txt
-f = open("U:\\CSyllabus\\FromWeb\\UBC.txt", "r")
-ubc = f.read()
+url = "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=1&dept=CPSC"
+r = requests.get(url)
 
-tree = html.fromstring(ubc)
+tree = html.fromstring(r.content)
 course_id = tree.xpath('//table[@class="sortable table table-striped"][@id="mainTable"]//tbody//tr//td//a/text()')
 course_name = tree.xpath('//table[@class="sortable table table-striped"][@id="mainTable"]//tbody//tr//td/text()')
 course_url = tree.xpath('//table[@class="sortable table table-striped"][@id="mainTable"]//tbody//tr//td//a/@href')
@@ -25,7 +25,8 @@ for i in range(0, len(course_id)):
     else:
         courseList.append(json.dumps(course))
 
-output = open("U:\\CSyllabus\\WebScraping\\JsonResult\\ubc_courses.json", "w")
+output = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/helper/webscraping"
+              "/jsonresult/ubc_courses.json", "w")
 output.write("[")
 for course in courseList:
     output.write(course)
