@@ -30,4 +30,8 @@ export class Course {
   modified: String;
 
   universityImg: String;
+
+  study_lvl: String;
+
+  english_level: String;
 }
