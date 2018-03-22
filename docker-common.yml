@@ -21,3 +21,4 @@ services:
             dockerfile: ./docker/web/Dockerfile
         volumes:
             - .:/django
+            - ./docker/django/similarity.py:/docker/django/similarity.py

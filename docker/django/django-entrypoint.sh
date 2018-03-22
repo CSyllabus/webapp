@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-until python manage.py migrate csyllabusapi
+until python manage.py migrate
 do
     echo "Waiting for postgres ready..."
     sleep 2
@@ -13,6 +13,11 @@ python manage.py loaddata backend/apps/csyllabusapi/fixtures/polimi\_fixtures\_j
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/stanford\_fixtures\_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas\_fixtures\_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/ucla\_fixtures\_json.json
+
+
+python ./docker/django/similarity.py
+
+python manage.py course_similarity
 
 python manage.py runserver 0.0.0.0:9000 --settings=backend.settings.devl
 
