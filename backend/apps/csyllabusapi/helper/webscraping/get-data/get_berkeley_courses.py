@@ -16,7 +16,7 @@ course_descriptions = tree.xpath('//p[@class="courseblockdesc"]//span[@class="de
 
 for i in range(0, len(course_codes)):
     course = {
-        'id': course_codes[i].replace('&#160;', ' '),
+        'id': course_codes[i].replace("&#160;", " ").replace("\u00a0", " "),
         'name': course_titles[i].split(' (Self-Paced)')[0],
         'ects': course_hours[i].split(' Units')[0], # .split(' - ')[1]
         'semester': None,
@@ -28,7 +28,8 @@ for i in range(0, len(course_codes)):
         courseList.append(json.dumps(course))
 
 # write courseList into json file for later upload into DB
-file = open("berkeley_courses.json", "w")
+file = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/helper/webscraping"
+            "/jsonresult/berkeley_courses.json", "w")
 file.write("[")
 for course in courseList:
     file.write(course)

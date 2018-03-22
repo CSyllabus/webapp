@@ -34,11 +34,12 @@ for p in soup.find_all('p'):
         }
         # check if courseDescription is set
         if course_desc:
-            course['description'] = course_desc[0].strip()
+            course['description'] = course_desc[0].strip().replace("\u2019", "'")
         courseList.append(json.dumps(course) + ",")
 
 # write courseList into json file for later upload into DB
-file = open("caltech_courses.json", "w")
+file = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/helper/webscraping"
+              "/jsonresult/caltech_courses.json", "w")
 file.write("[")
 for course in courseList:
     file.write(course)

@@ -12,13 +12,16 @@ course_url = tree.xpath('//table[@class="sortable table table-striped"][@id="mai
 
 courseList = []
 for i in range(0, len(course_id)):
+    url_course = "https://courses.students.ubc.ca" + course_url[i]
+    r_desc = requests.get(url_course)
+    tree = html.fromstring(r_desc.content)
+    course_desc = tree.xpath('//div[@class="content expand"][@role="main"]//p/text()')
     course = {
-        'id' : course_id[i],
-        'name': course_name[i],
-        'ects': None,
+        'id' : course_id[i].strip(),
+        'name': course_name[i].strip(),
+        'ects': course_desc[1].strip().split("Credits: ")[1],
         'semester': None,
-        # TODO get description using course_url for each course
-        'description': None
+        'description': course_desc[0].strip()
     }
     if i < len(course_id)-1:
         courseList.append(json.dumps(course) + ",")

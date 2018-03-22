@@ -17,8 +17,8 @@ courseList = []
 for i in range(0, len(course_id)):
     course = {
         'id' : i,
-        'name': course_id[i],
-        'ects': None,
+        'name': course_id[i].split('(')[0],
+        'ects': course_id[i].split('(')[1].split(')')[0],
         'semester': None,
         'description': course_desc[i]
     }
