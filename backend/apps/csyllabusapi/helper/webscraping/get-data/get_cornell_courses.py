@@ -10,6 +10,10 @@ course_id_name = tree.xpath('//li[@class="acalog-course"]//span//a/text()')
 
 courseList = []
 for i in range(0, len(course_id_name)):
+    url_course = "https://courses.cornell.edu"
+    r_desc = requests.get(url_course)
+    tree = html.fromstring(r_desc.content)
+    course_desc = tree.xpath('//div[@class="content expand"][@role="main"]//p/text()')
     course = {
         'id' : course_id_name[i].split(" - ")[0],
         'name': course_id_name[i].split(" - ")[1],

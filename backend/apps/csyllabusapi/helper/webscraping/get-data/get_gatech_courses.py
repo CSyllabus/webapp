@@ -14,7 +14,7 @@ for i in range(0, len(course_id)):
     course = {
         'id' : course_id[i].split('. ')[0].replace("\u00a0", " ").strip(),
         'name': course_id[i].split('. ')[1].strip(),
-        'ects': None,
+        'ects': course_id[i].split('. ')[2].split(" Credit Hour")[0].strip(),
         'semester': None,
         'description': course_desc[i].strip()
     }

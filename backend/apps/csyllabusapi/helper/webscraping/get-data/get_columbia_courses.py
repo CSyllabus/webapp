@@ -3,7 +3,7 @@ from lxml import html
 import json
 
 # request url content
-url = "http://www.columbia.edu/cu/bulletin/uwb/"
+url = "http://www.columbia.edu/cu/bulletin/uwb/sel/COMS_Spring2018.html"
 r = requests.get(url)
 
 tree = html.fromstring(r.content)
