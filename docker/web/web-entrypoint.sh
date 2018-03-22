@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 cd frontend/csyllabus
-yarn
-npm run start
-
+npm install
+npm install -g @angular/cli
+ng serve --host 0.0.0.0

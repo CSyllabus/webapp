@@ -13,4 +13,5 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sou
 
 RUN apt-get update && apt-get install -y nodejs yarn
 
-EXPOSE 4200
+EXPOSE 9002
+

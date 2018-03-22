@@ -6,6 +6,7 @@
   "apps": [
     {
       "root": "src",
+
       "outDir": "../../backend/static",
       "assets": [
         "assets",
@@ -55,6 +56,9 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {},
+    "serve": {
+          "port": 9002
+    }
   }
 }

@@ -16,6 +16,7 @@ services:
         volumes:
             - ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
     backend:
+
         extends:
             file: docker-common.yml
             service: django
@@ -34,13 +35,12 @@ services:
         extends:
             file: docker-common.yml
             service: web
-        links:
-            - backend
         entrypoint:
             - /web-entrypoint.sh
-        expose:
-            - 4200
+        environment:
+           NODE_ENV: local-django
         ports:
-            - 4200:4200
+            - '9002:9002'
+
 
   
