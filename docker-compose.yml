@@ -30,7 +30,6 @@ services:
         networks: ['stack']
         stdin_open: true
     frontend:
-        ports: ['127.0.0.1:9001:9001']
         networks: ['stack']
         extends:
             file: docker-common.yml
@@ -40,8 +39,8 @@ services:
         entrypoint:
             - /web-entrypoint.sh
         expose:
-            - 9001
+            - 4200
         ports:
-            - 9001:9001
+            - 4200:4200
 
   
