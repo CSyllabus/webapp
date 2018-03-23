@@ -50,17 +50,18 @@ In file backend/settings/devl.py field  change DATABASES data according to datab
 Load the migrations and fixtures into the database:  
 ```  
 python manage.py migrate csyllabusapi
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/epfl\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/laquila\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/polimi\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/stanford\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/ucla\_fixtures\_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/epfl_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/laquila_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/polimi_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/stanford_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas_fixtures_json.json  
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/ucla_fixtures_json.json  
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/catech_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/gatech_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/hkust_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/mdh_fixtures_json.json
 ```  
   Create a superuser for django application:
 ``` python manage.py createsuperuser  ``` 
