@@ -40,6 +40,14 @@ export class University {
    * The {@link Array<Object>} instance representing programs.
    */
   programs: Array<Object>;
+
+  description: String;
+
+  countryName: String;
+
+  cityName: String;
+
+  facultyName: String;
 }
 
 
