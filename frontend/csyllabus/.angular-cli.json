@@ -6,7 +6,8 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+
+      "outDir": "../../backend/static",
       "assets": [
         "assets",
         "favicon.ico",
@@ -55,6 +56,9 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {},
+    "serve": {
+          "port": 9002
+    }
   }
 }

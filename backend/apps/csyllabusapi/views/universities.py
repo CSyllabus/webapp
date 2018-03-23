@@ -36,7 +36,7 @@ class UniversitiesView(APIView):
             elif query_pair_split[0].lower() == 'sortby' and query_pair_split[1] != 'undefined':
                 sort_by = query_pair_split[1]
             elif query_pair_split[0].lower() == 'sortdirection' and query_pair_split[1] != '':
-                print query_pair_split[1]
+                print (query_pair_split[1])
                 sort_direction = query_pair_split[1]
 
         if university_id >= 0:
@@ -46,7 +46,7 @@ class UniversitiesView(APIView):
             if sort_by not in ['id', 'created', 'modified']:
                 sort_by = 'name'
 
-            print sort_direction
+            print (sort_direction)
 
             if sort_direction == 'desc':
                 sort_by = "-" + sort_by
