@@ -62,6 +62,7 @@ python manage.py loaddata backend/apps/csyllabusapi/fixtures/catech_fixtures_jso
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/gatech_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/hkust_fixtures_json.json
 python manage.py loaddata backend/apps/csyllabusapi/fixtures/mdh_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/illinois_fixtures_json.json
 ```  
   Create a superuser for django application:
 ``` python manage.py createsuperuser  ``` 
