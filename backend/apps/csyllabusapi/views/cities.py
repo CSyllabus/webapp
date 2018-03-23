@@ -18,23 +18,17 @@ except ImportError:
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CitiesView(APIView):
-# /country/:id/cities
-# gets list of cities for certain country
     def get(self, request, country_id):
         cities = City.objects.filter(country_id=country_id)
         result = {}
-        cityList = []
+        city_list = []
         data = {}
         for city in cities:
-            single_city = {}
-            single_city['name'] = city.name
-            single_city['img'] = city.img
-            single_city['id'] = city.id
-            single_city['created'] = city.created
-            single_city['modified'] = city.modified
-            single_city['country_id'] = city.country_id
-            cityList.append(single_city)
-            data['items'] = cityList
+            city_data = {'name': city.name, 'img': city.img, 'id': city.id, 'created': city.created,
+                         'modified': city.modified, 'country_id': city.country_id}
+            city_list.append(city_data)
+
+            data['items'] = city_list
             data['currentItemCount'] = cities.count()
             result['data'] = data
 

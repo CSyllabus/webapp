@@ -14,3 +14,4 @@ from .program import ProgramCity
 from .program import ProgramCountry
 from .university import University
 from .course_result import CourseResult
+from .event_log import EventLog

@@ -1,19 +1,16 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
-import {EventEmitter} from '@angular/core';
 import {CoursesService} from '../courses.service';
 import {UsersService} from '../../user/users.service';
 import {Course} from '../course';
-import {environment} from '../../../environments/environment';
-import {CdkTable, DataSource} from '@angular/cdk/table'
-import {ActivatedRoute, Router} from '@angular/router';
-import {CdkTableModule} from '@angular/cdk/table';
-import {Http, Response} from '@angular/http';
+import {DataSource} from '@angular/cdk/table'
+import {Router} from '@angular/router';
+import {Http} from '@angular/http';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
-import {MatSort, MatSortModule} from '@angular/material';
+import {MatSort} from '@angular/material';
 import {MatPaginator} from '@angular/material';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';

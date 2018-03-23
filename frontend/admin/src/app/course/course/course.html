@@ -1,9 +1,12 @@
 <div style="height: 70px;">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <a [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">Courses</a>
+    <button mat-button [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">
+      Courses
+    </button>
     <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
-    <a [routerLink]="['/course/' + course.id]" style=" display: inline-block;vertical-align: middle;"> Course
-      {{course.id}}</a>
+    <button mat-button [routerLink]="['/course/edit/' + course.id]" style=" display: inline-block;vertical-align: middle;">
+      {{ course.id }}
+    </button>
   </div>
 </div>
 <!--<div id="search-component-spinner" *ngIf="!course.id" >
@@ -11,30 +14,33 @@
   </div>-->
 
 <mat-card *ngIf="course">
-  <mat-card-title class="intrev-card-title">Course #{{course.id}}
+  <mat-card-title class="intrev-card-title">Course #{{ course.id }}
     <mat-card-subtitle style="color: white; margin-bottom: 0;">Editing course resource</mat-card-subtitle>
   </mat-card-title>
 
 
   <div>
-    <mat-form-field class="input" *ngIf="isadmin">
-      <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
+    <mat-form-field class="input" *ngIf="isSuperuser">
+      <mat-select [disabled]="course.id" placeholder="{{ selected }}" [formControl]="pokemonControl">
         <mat-optgroup *ngFor="let country of countries" [label]="country.name">
 
           <mat-option *ngFor="let university of country.universities" [value]="university"
                       (click)="course.university = university.id; course.faculty = 0">
-            {{university.name}}
+            {{ university.name }}
           </mat-option>
           <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
                       (click)="course.faculty = faculty.id; course.university = 0">
-            {{faculty.name}}
+            {{ faculty.name }}
           </mat-option>
         </mat-optgroup>
       </mat-select>
     </mat-form-field>
     <br>
     <mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="course.name">
+      <input matInput [formControl]="nameFormControl" required placeholder="Name" [(ngModel)]="course.name">
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+          Name is required!
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Credits" [(ngModel)]="course.ects">
@@ -53,7 +59,10 @@
     </mat-form-field>
 
     <mat-form-field style="width: 100%;">
-      <textarea style="height:100px" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
+      <textarea required style="height:100px"[formControl]="descriptionFormControl" matInput placeholder="Description" [(ngModel)]="course.description"></textarea>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+          Description is required!
+        </mat-error>
     </mat-form-field>
 
 
@@ -66,7 +75,7 @@
       </button>
       <mat-chip-list>
         <mat-chip *ngFor="let keyword of keywords" [ngClass]="{'todelete': keyword.remove}">
-          {{keyword.value}}
+          {{ keyword.value }}
           <mat-icon (click)="keyword.remove = !keyword.remove;">cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
@@ -75,11 +84,11 @@
 
   </div>
   <mat-card-actions style="text-align: center;">
-    <button [disabled]="!allow_access" mat-button *ngIf="course.id" (click)="saveCourse(true)">
+    <button [disabled]="!allow_access || !this.course.name || !this.course.description" mat-button *ngIf="course.id" (click)="saveCourse(true)">
       <mat-icon>save</mat-icon>
       SAVE
     </button>
-    <button mat-button *ngIf="!course.id" (click)="addCourse()">
+    <button mat-button *ngIf="!course.id" [disabled]="!this.course.name || !this.course.description" (click)="addCourse()">
       <mat-icon>add</mat-icon>
       ADD
     </button>

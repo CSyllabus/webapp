@@ -1,62 +1,79 @@
 .bg-transparent {
-    background-color: transparent;
-  }
-.commentspart{
+  background-color: transparent;
+}
+
+.commentspart {
   width: 100%;
 }
-.newcomment{
+
+.newcomment {
   width: 100%;
   margin: 30px;
 }
-.newcommentform{
+
+.newcommentform {
   width: 100%;
 }
-.comment{
+
+.comment {
   width: 80%;
   float: left;
-  padding:30px;
+  padding: 30px;
 }
-.submit{
+
+.submit {
   float: left;
-  margin-top:40px;
+  margin-top: 40px;
 }
-  :host {
-    height: 100%;
-  }
 
-  .photo {
-    object-fit: contain;
-  }
+:host {
+  height: 100%;
+}
 
-  .card {
-    width: 20rem;
-    margin: 0 auto;
-  }
-  .Facebookbutton{
-    height: 40px;
-    width: 40px;
-    background-image: url('Facebookicon.svg.png');
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;
-  }
-  button:hover{
-    background-color: rgba(0, 0, 255, 0.241);
-  }
-  .Googlebutton{
-    height: 40px;
-    width: 40px;
-    background-image: url('Google-plus-icon.png');
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;
-  }
+.photo {
+  object-fit: contain;
+}
 
-  .sharepart, .commentspart {
-    text-align: left;
-  }
+.card {
+  width: 20rem;
+  margin: 0 auto;
+}
 
-  .example-full-width{
-    width: 500px;
-    max-width: 100%;
-  }
+.Facebookbutton {
+  height: 40px;
+  width: 40px;
+  background-image: url('Facebookicon.svg.png');
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 255, 0.241);
+}
+
+.Googlebutton {
+  height: 40px;
+  width: 40px;
+  background-image: url('Google-plus-icon.png');
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.sharepart, .commentspart {
+  text-align: left;
+}
+
+.example-full-width {
+  width: 500px;
+  max-width: 100%;
+}
+
+.outer-container {
+
+  webkit-box-shadow: 0 2px 11px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 11px rgba(0, 0, 0, 0.2);
+  background-color: white
+
+}

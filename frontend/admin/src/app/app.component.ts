@@ -3,6 +3,7 @@ import {UsersService} from './user/users.service';
 import {LoginComponent} from './login/login.component';
 import {User} from './user/user';
 import {environment} from '../environments/environment';
+import {AuthService} from "./auth.service";
 
 @Component({
   selector: 'app-root',
@@ -13,36 +14,29 @@ export class AppComponent implements OnInit {
   dataUrl = environment.dataUrl;
   title = 'app';
   selfUser: User;
-  token: string;
-  isadmin: boolean;
+  isSuperuser: boolean;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService, private authService:AuthService) {
   }
 
   ngOnInit() {
     if (localStorage.getItem('auth_token')) {
-      this.token = localStorage.getItem('auth_token');
+      AuthService.token = localStorage.getItem('auth_token');
       this.usersService.getSelf().subscribe(user => {
-        this.selfUser = user;
+        this.authService.setUser(user);
+        this.setUser();
       });
     }
   }
 
-  setToken(token: string) {
-    this.token = token;
-    localStorage.setItem('auth_token', token);
-    this.usersService.getSelf().subscribe(user => {
-      this.selfUser = user;
-    });
-
-    this.usersService.checkUser().subscribe(res => {
-      this.isadmin = res;
-    });
+  setUser() {
+    this.selfUser = AuthService.selfUser;
+    this.isSuperuser = AuthService.isSuperuser;
   }
 
   logOut() {
-    localStorage.removeItem('auth_token');
+    this.authService.logOut();
     this.selfUser = null;
-    this.token = null;
+    this.isSuperuser = null;
   }
 }

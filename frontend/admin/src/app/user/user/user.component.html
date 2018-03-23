@@ -1,8 +1,12 @@
 <div style="height: 70px;" *ngIf="user">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <a [routerLink]="['/users']" style=" display: inline-block;vertical-align: middle;">Users</a>
+    <button mat-button [routerLink]="['/users']" style=" display: inline-block;vertical-align: middle;">
+      Users
+    </button>
     <mat-icon style=" display: inline-block;vertical-align: middle;">chevron_right</mat-icon>
-    <a [routerLink]="['/user/' + user.id]" style=" display: inline-block;vertical-align: middle;"> User {{user.id}}</a>
+    <button mat-button [routerLink]="['/user/' + user.id]" style=" display: inline-block;vertical-align: middle;">
+      User {{ user.id }}
+    </button>
   </div>
 </div>
 <div id="search-component-spinner" *ngIf="!user ">
@@ -10,7 +14,7 @@
 </div>
 
 <mat-card *ngIf="user">
-  <mat-card-title class="intrev-card-title">User #{{user.id}}
+  <mat-card-title class="intrev-card-title">User #{{ user.id }}
     <mat-card-subtitle style="color: white; margin-bottom: 0;">Editing user resource</mat-card-subtitle>
   </mat-card-title>
 
@@ -34,66 +38,78 @@
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput required placeholder="Email" [(ngModel)]="user.email" type="email">
+        <input matInput placeholder="Email" [(ngModel)]="user.email" type="email" [formControl]="emailFormControl">
+        <mat-error *ngIf="emailFormControl.hasError('unavailable')">
+          Email is unavailable.
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field class="input" *ngIf="!user.is_admin && isadmin">
-          <mat-select placeholder="{{selected}}" [formControl]="pokemonControl">
-            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+        <mat-select placeholder="{{ selected }}" [formControl]="pokemonControl">
+          <mat-optgroup *ngFor="let country of countries" [label]="country.name">
 
-              <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (click)="user.university = university.id;">
-                {{university.name}}
-              </mat-option>
-              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (click)="user.faculty = faculty.id;">
-                {{faculty.name}}
-              </mat-option>
-            </mat-optgroup>
-          </mat-select>
-        </mat-form-field>
-    </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Username
-        </mat-panel-title>
-        <mat-panel-description>
-          Change the username used to login
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-form-field>
-        <input matInput placeholder="Username" [(ngModel)]="user.username">
+            <mat-option *ngFor="let university of country.universities" [value]="university"
+                        (click)="user.university = university.id;">
+              {{ university.name }}
+            </mat-option>
+            <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                        (click)="user.faculty = faculty.id;">
+              {{ faculty.name }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
       </mat-form-field>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Password
-        </mat-panel-title>
-        <mat-panel-description>
-          Change your password used to login
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div>
-        <p><label>Changing password</label></p>
-        <mat-form-field>
-          <input matInput placeholder="New password" [(ngModel)]="newPassword" type="password" [formControl]="password">
-          <mat-error *ngIf="newPassword2 && (newPassword != newPassword2)">Passwords don't match</mat-error>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput placeholder="Retype new password" [(ngModel)]="newPassword2" type="password" [formControl]="password2">
-          <mat-error *ngIf="newPassword != newPassword2">Passwords don't match</mat-error>
-        </mat-form-field>
-      </div>
-    </mat-expansion-panel>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Username
+      </mat-panel-title>
+      <mat-panel-description>
+        Change the username used to login
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <input matInput placeholder="Username" [(ngModel)]="user.username" [formControl]="usernameFormControl">
+      <mat-error *ngIf="usernameFormControl.hasError('unavailable')">
+        Username is unavailable.
+      </mat-error>
+    </mat-form-field>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Password
+      </mat-panel-title>
+      <mat-panel-description>
+        Change your password used to login
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <p><label>Changing password</label></p>
+      <mat-form-field>
+        <input matInput placeholder="New password" [(ngModel)]="newPassword" type="password"
+               [formControl]="passwordFormControl">
+        <mat-error *ngIf="usernameFormControl.hasError('not_matching')">
+          Passwords don't match
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Retype new password" [(ngModel)]="newPassword2" type="password"
+               [formControl]="passwordFormControl2">
+        <mat-error *ngIf="usernameFormControl.hasError('not_matching')">
+          Passwords don't match
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
 
 
-    <mat-card-actions style="text-align: center;">
-      <button [disabled]="!isadmin" mat-button (click)="saveUser()">
-        <mat-icon>save</mat-icon>
-        SAVE
-      </button>
-    </mat-card-actions>
+  <mat-card-actions style="text-align: center;">
+    <button [disabled]="!isadmin" mat-button (click)="saveUserWithChecks()">
+      <mat-icon>save</mat-icon>
+      SAVE
+    </button>
+  </mat-card-actions>

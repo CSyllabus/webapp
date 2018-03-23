@@ -1,66 +1,70 @@
-<div style="position: relative; overflow: auto;">
-  <div>
-    <p class="custom-card-title">Explore courses from a university</p>
-    <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
-      <br>
-      <div class="forms-group">
-        <form>
-          <mat-form-field class="input">
-            <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
-              <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-                <mat-option [value]="country"
-                            (onSelectionChange)="queryCountry = country; filterCitiesByCountry()"
-                            (click)="queryCountry = country; filterCitiesByCountry()">-- All in {{country.name}} --
-                </mat-option>
-                <mat-option *ngFor="let university of country.universities" [value]="university"
-                            (onSelectionChange)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()"
-                            (click)="queryCountry = country;queryUniversity = university; filterFacultiesByUniversity()">
-                  {{university.name}}
-                </mat-option>
-                <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                            (onSelectionChange)="queryCountry = country;queryFaculty = faculty;"
-                            (click)="queryCountry = country;queryFaculty = faculty;">
-                  {{faculty.name}}
-                </mat-option>
-              </mat-optgroup>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="input">
-            <input matInput placeholder="Filter search with keywords"
-                   [matChipInputFor]="chipList"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                   [matChipInputAddOnBlur]="true"
-                   (matChipInputTokenEnd)="add($event)"
-                   (keyup.enter)="$event.stopPropagation()"
-                   [required]="!queryUniversity && !queryFaculty"/>
-            <mat-chip-list #chipList>
-              <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
-                        [removable]="true" (remove)="remove(keyword)">
-                {{keyword.name}}
-                <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
-              </mat-chip>
-            </mat-chip-list>
-          </mat-form-field>
-        </form>
-      </div>
-      <br>
-      <div style="text-align: center;">
+<div style="position: relative" class="filters-containter-exp ">
+  <div class="bg-container custom-scrollbar" align="center">
+    <div class="container" style="padding-top:10%">
+      <p class="custom-card-title">Explore courses from a university</p>
+      <div class="col-md-12" style="background-color: white;text-align: left; position: relative; padding: 20px;">
+        <br>
+        <div class="forms-group">
+          <form>
+            <mat-form-field class="input">
+              <mat-select required placeholder="Select your destination" [formControl]="pokemonControl">
+                <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+                  <mat-option [value]="country"
+                              (click)="queryCountry = country; filterCitiesByCountry()">-- All in {{ country.name }} --
+                  </mat-option>
+                  <mat-option *ngFor="let university of country.universities" [value]="university"
+                              (click)="queryCountry = country;queryUniversity = university; queryFaculty = undefined;">
+                    {{ university.name }}
+                  </mat-option>
+                  <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                              (click)="queryCountry = country;queryFaculty = faculty;">
+                    {{ faculty.name }}
+                  </mat-option>
+                </mat-optgroup>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="input">
+              <input matInput placeholder="Filter search with keywords"
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="true"
+                     (matChipInputTokenEnd)="add($event)"
+                     (keyup.enter)="$event.stopPropagation()"
+                     [required]="!queryUniversity && !queryFaculty"/>
+              <mat-chip-list #chipList>
+                <mat-chip *ngFor="let keyword of keyword" [selectable]="true"
+                          [removable]="true" (remove)="remove(keyword)">
+                  {{ keyword.name }}
+                  <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+            </mat-form-field>
+          </form>
+        </div>
+        <br>
+        <div style="text-align: center;">
 
-        <button mat-raised-button color="primary" (click)="exploreCourses()"
-                [disabled]="!(queryFaculty ||queryUniversity || (queryCountry && keyword.length > 0)) "
-        >Explore
-        </button>
-        <mat-icon color="primary"
-                  matTooltip="To explore please select a university, or a country and at least one keyword"
-                  *ngIf="!(queryFaculty ||queryUniversity || (queryCountry && keyword.length > 0))">help
-        </mat-icon>
+          <button mat-raised-button color="primary" (click)="exploreCourses()"
+                  [disabled]="!(queryFaculty ||queryUniversity || (queryCountry && keyword.length > 0)) "
+          >Explore
+          </button>
+          <mat-icon color="primary"
+                    matTooltip="To explore please select a university, or a country and at least one keyword"
+                    *ngIf="!(queryFaculty ||queryUniversity || (queryCountry && keyword.length > 0))">help
+          </mat-icon>
+        </div>
+      </div>
+      <div id="state" *ngIf="!queryCountry" style="padding: 50px;">
+      </div>
+
+      <div id="search-component-spinner" *ngIf="explorerStarted">
+        <mat-spinner></mat-spinner>
       </div>
     </div>
-    <div id="state" *ngIf="!queryCountry" style="padding: 50px;">
-    </div>
   </div>
-  <div id="search-component-spinner" *ngIf="explorerStarted">
-    <mat-spinner></mat-spinner>
-  </div>
+</div>
 
+<div id="explorer-result-component">
+  <app-result-cards [courses]="explorerResult"></app-result-cards>
+</div>

@@ -1,12 +1,14 @@
 <div style="height: 70px;">
   <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
-    <a [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">Courses</a>
+    <button mat-button [routerLink]="['/courses']" style=" display: inline-block;vertical-align: middle;">
+      Courses
+    </button>
   </div>
 </div>
-<div id="search-component-spinner" *ngIf="!(totalItems > 0)" >
-    <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
-  </div>
-<mat-card >
+<div id="search-component-spinner" *ngIf="!(totalItems > 0)">
+  <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
+</div>
+<mat-card>
   <mat-card-title class="intrev-card-title">Courses in the database
     <mat-card-subtitle style="color: white; margin-bottom: 0;">Courses resource</mat-card-subtitle>
   </mat-card-title>
@@ -17,24 +19,24 @@
       <input matInput #filter placeholder="Filter resources">
     </mat-form-field>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort  style="margin-top: 50px;">
+  <mat-table #table [dataSource]="dataSource" matSort style="margin-top: 50px;">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell (click)="alert('aaa');" *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
-      <mat-cell *matCellDef="let row" > {{row.id}}</mat-cell>
+      <mat-header-cell  *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.id }}</mat-cell>
     </ng-container>
 
     &lt;!&ndash; Created &ndash;&gt;
     <ng-container matColumnDef="modified">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Modified</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.modified | date}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.modified | date }}</mat-cell>
     </ng-container>
 
 
     &lt;!&ndash; Title &ndash;&gt;
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.name }}</mat-cell>
     </ng-container>
 
     &lt;!&ndash; Actions &ndash;&gt;

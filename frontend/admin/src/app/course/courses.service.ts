@@ -7,6 +7,7 @@ import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/observable/throw';
 import {environment} from '../../environments/environment';
 import {Course} from './course';
+import {ErrorService} from "../services/error.service";
 
 @Injectable()
 export class CoursesService {
@@ -15,7 +16,7 @@ export class CoursesService {
   usersUrl = environment.apiUrl + "users/";
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private errorService: ErrorService) {
   }
 
   /*getAllCourses(limit, offset, orderBy, orderDirection, filter): Observable<Course[]> {
@@ -34,7 +35,7 @@ export class CoursesService {
     const options = new RequestOptions({headers: headers});
 
     return this.http.get(this.usersUrl + 'courses?limit=' + limit + '&offset=' + offset + '&sortby=' + orderBy + '&sortdirection=' + orderDirection, options)
-      .map(res => res.json().data.items as Course[]);
+      .map(res => res.json().data.items as Course[]).catch(this.errorService.handleError);
   }
 
   getCoursesCount(): Observable<number> {
@@ -45,17 +46,17 @@ export class CoursesService {
     const options = new RequestOptions({headers: headers});
 
     return this.http.get(this.usersUrl + 'courses', options)
-      .map(res => res.json().data.currentItemCount as number);
+      .map(res => res.json().data.currentItemCount as number).catch(this.errorService.handleError);
   }
 
   getCourse(id): Observable<Course> {
     return this.http.get(this.coursesUrl + id)
-      .map(res => res.json().data.items[0] as Course);
+      .map(res => res.json().data.items[0] as Course).catch(this.errorService.handleError);
   }
 
   deleteCourse(id: number): Observable<any> {
     return this.http.delete(this.coursesUrl + id)
-      .map(res => res);
+      .map(res => res).catch(this.errorService.handleError);
 
   }
 
@@ -67,7 +68,7 @@ export class CoursesService {
 
   courseExisting(id: number, data): Observable<any> {
     return this.http.put(this.coursesUrl + id, data)
-      .map(res => res).catch(this.handleError);
+      .map(res => res).catch(this.errorService.handleError);
   }
 
   courseNew(data): Observable<any> {
@@ -79,14 +80,6 @@ export class CoursesService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.post(this.coursesUrl, data, options)
-      .map(res => res).catch(this.handleError);
-  }
-
-
-  private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg);
-    return Observable.throw(errMsg);
+      .map(res => res).catch(this.errorService.handleError);
   }
 }

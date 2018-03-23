@@ -3,8 +3,14 @@
   float: left;
   text-align: left;
   height: 400px;
-  max-height: 400px;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.example-card {
+  padding: 2%;
+  float: left;
+  text-align: left;
+  overflow: visible;
 }
 
 @media only screen and (max-width: 768px) {
@@ -26,7 +32,6 @@
 
 .courseDescription {
   text-overflow: ellipsis;
-  max-height: 200px;
   overflow: hidden;
 }
 
@@ -53,20 +58,13 @@
   }
 }
 
-.container{
-    background-image:url(../../../images/a4.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
 .example-card { transition: all .2s ease-in-out; }
 .example-card:hover { transform: scale(1.1); }
 
 .naslov-expansion {
-  text-align:center;
-  font-size:20px
+  text-align:left;
+  font-size:16px
 }
 
 @media only screen and (max-width: 768px) {
@@ -75,4 +73,28 @@
     font-size:12px
   }
 
+}
+
+.bck-color-blue {
+  background-color:#9999f9
+}
+
+.bck-color-green {
+  background-color:#5ab95a
+}
+
+.bck-color-red {
+  background-color:#ff7575
+}
+
+.bck-color-orange {
+  background-color:#f3b94d
+}
+
+.bck-color-grey {
+  background-color:#9e9d9d
+}
+
+.bck-color-purple {
+  background-color:#d685c5
 }

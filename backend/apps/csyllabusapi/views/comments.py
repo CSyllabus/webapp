@@ -1,27 +1,10 @@
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
-from ..models import Course
-from ..models import Program
-from ..models import ProgramFaculty
-from ..models import Faculty
-from ..models import University
-from ..models import City
-from ..models import Country
-from ..models import CourseProgram
-from ..models import CourseFaculty
-from ..models import CourseUniversity
-from ..models import ProgramCity
-from ..models import ProgramCountry
-from ..models import ProgramUniversity
 from ..models import UserCoursePost
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import parser_classes
-from datetime import datetime
-from jwt_auth import utils
-from jwt_auth.compat import json, User, smart_text
-import ast
 try:
     from django.utils import simplejson as json
 except ImportError:

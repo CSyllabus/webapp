@@ -1,98 +1,121 @@
-<form style="position: relative; overflow: auto;">
-  <div>
-    <p class="custom-card-title">Compare courses using
-      <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis" target="_blank" style="color: white; ">latent
+<div style="position: relative" class="filters-containter-comp ">
+  <div class="bg-container custom-scrollbar" align="center">
+    <div class="container" style="padding-top:10%">
+      <p class="custom-card-title">
+
+      <span>Compare courses using
+        <a routerLink="/about" target="_blank"
+           style="color: white; ">latent
         semantic indexing</a>
-    </p>
-    <div class="col-md-12" style="background-color: #fffffffa;text-align: left; position: relative; padding: 20px;">
 
-      <div class="forms-group">
-        <mat-form-field class="input">
-          <mat-select required placeholder="Select courses from" [formControl]="pokemonControl">
-            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-              <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (click)="queryHomeCountry=country; queryHomeUniversity = university; filterCoursesByHomeUniversity()">
-                {{university.name}}
-              </mat-option>
-              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (click)="queryHomeCountry = country;queryHomeFaculty = faculty; filterCoursesByHomeFaculty()">
-                {{faculty.name}}
-              </mat-option>
-            </mat-optgroup>
-          </mat-select>
-        </mat-form-field>
-        <mat-spinner style="margin:auto;" *ngIf="loadingCourses"></mat-spinner>
-        <div *ngIf="(queryHomeUniversity || queryHomeFaculty) && filteredHomeCourses.length > 0 ">
-          <mat-form-field class="input" style="width:80%">
-            <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
-                   [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
-                   (ngModelChange)="addCourseToList(queryHomeCourse)">
+      </span>
+        <mat-slide-toggle class="toggleComparator" id="switch" (change)="onSwitchChange($event); ">Compare external
+          course
+        </mat-slide-toggle>
+        <span class="triangle"></span>
+      </p>
+      <div class="col-md-12" style="background-color: white;text-align: left; position: relative; padding: 20px;">
+        <div class="forms-group" *ngIf="showNormalComparator">
+          <mat-form-field class="input">
+            <mat-select required placeholder="Select courses from" [formControl]="pokemonControl">
+              <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+                <mat-option *ngFor="let university of country.universities" [value]="university"
+                            (click)="queryHomeUniversity = university; filterCoursesByHomeUniversity()">
+                  {{ university.name }}
+                </mat-option>
+                <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                            (click)="queryHomeFaculty = faculty; filterCoursesByHomeFaculty()">
+                  {{ faculty.name }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+          <mat-spinner style="margin:auto;" *ngIf="loadingCourses"></mat-spinner>
+          <div *ngIf="(queryHomeUniversity || queryHomeFaculty) && filteredHomeCourses.length > 0 ">
+            <mat-form-field class="input" style="width:80%">
+              <input placeholder="Add course to compare list" matInput [formControl]="homeCoursesControl"
+                     [matAutocomplete]="home_courses_auto" [(ngModel)]="queryHomeCourse"
+                     (ngModelChange)="addCourseToList(queryHomeCourse)">
 
-            <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option
-                *ngFor="let course of filteredHomeCoursesAutocomplete | async" [value]="course">
+              <mat-autocomplete #home_courses_auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option
+                  *ngFor="let course of filteredHomeCoursesAutocomplete | async" [value]="course">
+                  {{ course.name }}
+                </mat-option>
+              </mat-autocomplete>
+
+            </mat-form-field>
+          </div>
+          <div>
+            <i style="color: darkgrey;" *ngIf="this.listCourses.length >= 5">Maximal number of courses reached(5), to
+              compare other courses remove existing from list.</i>
+            <mat-chip-list>
+              <mat-chip *ngFor="let course of listCourses" style="height: 30px;">
                 {{ course.name }}
-              </mat-option>
-            </mat-autocomplete>
+                <button mat-icon-button (click)="removeCourseFromList(course)">
+                  <mat-icon matTooltip="Remove from comparison list">clear</mat-icon>
+                </button>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
 
+        <div class="forms-group" *ngIf="!showNormalComparator">
+          <mat-form-field class="input" *ngIf="!showNormalComparator">
+          <textarea required [formControl]="externalCourseDescriptionControl" matInput
+                    placeholder="Insert course description" matTextareaAutosize matAutosizeMinRows="4"
+                    [(ngModel)]="externalCourseDescription"></textarea>
           </mat-form-field>
 
-          <i style="color: darkgrey;" *ngIf="this.listCourses.length >= 5">Maximal number of courses reached(5), to
-            compare other courses remove existing from list.</i>
-          <mat-chip-list>
-            <mat-chip *ngFor="let course of listCourses" style="height: 30px;">
-              {{course.name}}
-              <button mat-icon-button (click)="removeCourseFromList(course)">
-                <mat-icon matTooltip="Remove from comparison list">clear</mat-icon>
-              </button>
-            </mat-chip>
-          </mat-chip-list>
+        </div>
+
+        <div *ngIf="(queryHomeUniversity || queryHomeFaculty) &&  filteredHomeCourses.length == 0 && !loadingCourses">
+          <p>Sorry, we currently don't have any course for this faculty in our database.</p>
+        </div>
+        <div class="forms-group" style="margin-top: 10px;">
+          <mat-form-field class="input">
+            <mat-select required placeholder="Compare with courses from" [formControl]="pokemonControl">
+              <mat-optgroup *ngFor="let country of countries" [label]="country.name">
+                <mat-option [value]="country"
+                            (click)="queryCountry = country; queryUniversity = null; queryFaculty= null;"
+                >-- All in {{ country.name }} --
+                </mat-option>
+                <mat-option *ngFor="let university of country.universities" [value]="university"
+                            (click)="queryUniversity = university; queryFaculty= null;">
+                  {{ university.name }}
+                </mat-option>
+                <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
+                            (click)="queryFaculty = faculty; queryUniversity = null;">
+                  {{ faculty.name }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <br>
+        <div style="text-align: center;">
+
+          <button mat-raised-button color="primary" (click)="compareCourses()"
+                  [disabled]="!(showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && listCourses.length > 0) && !(!showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && externalCourseDescription)"
+          >Compare
+          </button>
+          <mat-icon color="primary"
+                    matTooltip="To compare please select at least one course and a destination faculty, university or country"
+                    *ngIf="!(showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && listCourses.length > 0) && !(!showNormalComparator && (queryFaculty || queryUniversity || queryCountry) && externalCourseDescription)">
+            help
+          </mat-icon>
         </div>
       </div>
+    </div>
 
-      <div *ngIf="(queryHomeUniversity || queryHomeFaculty) &&  filteredHomeCourses.length == 0 && !loadingCourses">
-        <p>Sorry, we currently don't have any course for this faculty in our database.</p>
-      </div>
-      <div class="forms-group" style="margin-top: 10px;">
-        <mat-form-field class="input">
-          <mat-select required placeholder="Compare with courses from" [formControl]="pokemonControl">
-            <mat-optgroup *ngFor="let country of countries" [label]="country.name">
-              <mat-option [value]="country"
-                          (onSelectionChange)="queryCountry = country; queryUniversity = null; queryFaculty= null;"
-                          (click)="queryCountry = country; queryUniversity = null; queryFaculty= null;"
-              >-- All in {{country.name}} --
-              </mat-option>
-              <mat-option *ngFor="let university of country.universities" [value]="university"
-                          (onSelectionChange)="queryUniversity = university; queryFaculty= null;"
-                          (click)="queryUniversity = university; queryFaculty= null;">
-                {{university.name}}
-              </mat-option>
-              <mat-option *ngFor="let faculty of country.faculties" [value]="faculty"
-                          (onSelectionChange)="queryFaculty = faculty; queryUniversity = null;"
-                          (click)="queryFaculty = faculty; queryUniversity = null;">
-                {{faculty.name}}
-              </mat-option>
-            </mat-optgroup>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <br>
-      <div style="text-align: center;">
-
-        <button mat-raised-button color="primary" (click)="compareCourses()"
-                [disabled]="!((queryFaculty || queryUniversity || queryCountry ) && listCourses.length > 0) "
-        >Compare
-        </button>
-        <mat-icon color="primary"
-                  matTooltip="To compare please select at least one course and a destination faculty, university or country"
-                  *ngIf="!((queryFaculty || queryUniversity || queryCountry ) && listCourses.length > 0)">help
-        </mat-icon>
-      </div>
+    <div id="search-component-spinner" *ngIf="comparatorStarted">
+      <mat-spinner></mat-spinner>
     </div>
   </div>
+</div>
 
-  <div id="search-component-spinner" *ngIf="comparatorStarted">
-    <mat-spinner></mat-spinner>
-  </div>
-</form>
+<div id="comparator-result-component">
+  <app-result-cards-comparator *ngIf="true" [courses]="comparatorResult"></app-result-cards-comparator>
+</div>
+

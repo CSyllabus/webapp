@@ -1,19 +1,7 @@
-<div class="sharepart col-md-6">
-  <h3>Share this Syllabus with your friends:</h3>
-  <share-buttons [defaultStyle]
-                 [pinterest]="false"
-                 [stumbleUpOn]="false"
-                 [reddit]="false"
-                 [tumblr]="false"
-                 [url]=url [title]=title [description]=description
-  >
+<div class="col-md-12 outer-container">
 
-  </share-buttons>
-</div>
-<div class="col-md-6">
-
-</div>
-<div class="commentspart ">
+  <div class="col-md-11">
+<div class="commentspart " >
   <!-- The following is shown if the user is logged ing -->
   <div *ngIf="user">
     <div style="display: inline-block;">
@@ -21,33 +9,58 @@
     </div>
     <div style="display: inline-block;">
       <div class="card-block">
-        <h4 class="card-title">{{ user.name }}</h4>
-        <p class="card-text">{{ user.email }}</p>
-      </div>
-        <button  (click)="signOut()">Sign out</button>
-    </div>
+        <p class="card-title" style="margin:2px"><b>{{ user.name }}</b></p>
 
+        <button  (click)="signOut()">Log out</button>
+      </div>
+
+    </div>
   </div>
   <!-- The following is shown if the user is not logged ing -->
-
   <div *ngIf="!user">
-    <div class="card-block">
-      <h4 class="card-title">To comment please sign in</h4>
-      <p class="card-text">Sign in with</p>
-    </div>
-    <div class="card-block">
-      <button class="Googlebutton" (click)="signInWithGoogle()"></button>
-      <button class="Facebookbutton" (click)="signInWithFB()"></button>
-    </div>
+
+    <p style="margin-bottom:5px; font-weight:bold">Log in</p>
+
+
+      <button  title="Log in" class="Googlebutton" (click)="signInWithGoogle()"></button>
+      <button  title="Log in" class="Facebookbutton" (click)="signInWithFB()"></button>
+
   </div>
 
+  <div  style="padding-top:60px;display:block">
 
 
+  <mat-form-field class="example-full-width">
+      <input (keyup.enter)="newComment(user.name);" matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+  </mat-form-field>
+    <button [disabled]="!user" title="Comment" mat-icon-button (click)="newComment(user.name);">
+      <mat-icon>send</mat-icon>
+    </button>
+    <mat-icon style="color:#3c5a96" matTooltip="Log in to comment"
+                  *ngIf="!user">help
+    </mat-icon>
 
+    </div>
 
 </div>
- <div *ngIf="user" class="col-md-12" style="text-align: left;">
-      <h3>Comment this Syllabus:</h3>
+</div>
+
+  <div class="col-md-1">
+<div class="sharepart " title="Share" style="padding:0; ">
+  <share-buttons [defaultStyle]
+                 [pinterest]="false"
+                 [stumbleUpOn]="false"
+                 [reddit]="false"
+                 [tumblr]="false"
+                 [url]=url [title]=title [description]=description
+  >
+  </share-buttons>
+</div>
+</div>
+<!--*ngIf="user"
+ <div class="col-md-8" style="text-align: left; width:90%">
+
     <mat-form-field class="example-full-width">
       <input matInput #message maxlength="256" placeholder="Message" [(ngModel)]="val">
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
@@ -56,13 +69,31 @@
       <mat-icon>send</mat-icon>
     </button>
 
+  </div>-->
+
+  <div class="commentscontainer col-md-12" *ngIf="comments" style="text-align: left;">
+      <mat-card *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page" style="margin-bottom:10px; border: 1px solid #a4a4a4; padding: 10px;
+  ">
+
+        <mat-card-title>
+        <button mat-icon-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
+      <mat-icon title="Delete" style="font-size:18px; color:white; margin-bottom:5px">delete</mat-icon></button>
+
+          <div style="background-color:#3c5a96;width: calc(100% + 20px);
+    margin-left: -10px;
+    height: 30px;
+    margin-top: -10px;">
+
+        <p style="margin-top: 0; color:white;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    font-size: 14px;
+    padding-left: 10px;">{{comment.author}} &nbsp; &nbsp; <i style="font-size:12px;color:#d4d4d4">{{comment.modified | date}}</i></p>
+        </div>
+          </mat-card-title>
+        <mat-card-content>
+          <p style="margin:0; font-size:16px; padding-left:20px">{{ comment.content }}</p>
+          </mat-card-content>
+      </mat-card>
   </div>
-<div class="commentscontainer col-md-12" *ngIf="comments" style="text-align: left;">
-    <mat-card *ngFor="let comment of comments; let i = index " [hidden]="i >= 12*page" style="border: 1px solid #a4a4a4; padding: 10px;
-">
-      <button mat-icon-button (click)="deleteComment(comment.id)" *ngIf="user && comment.author == user.name" style="float: right;">
-    <mat-icon>delete</mat-icon></button>
-      <p>{{comment.author}}: {{ comment.content }}</p>
-        <i>{{comment.modified | date}}</i>
-    </mat-card>
-  </div>
+</div>

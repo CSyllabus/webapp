@@ -2,6 +2,7 @@ import os
 from sys import path
 from os.path import join
 
+import datetime
 from django.core.urlresolvers import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -114,6 +115,7 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = reverse_lazy("app")
 LOGIN_URL = reverse_lazy("login")
 
+
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.BrowsableAPIRenderer",
@@ -136,6 +138,12 @@ REST_FRAMEWORK = {
         "rest_framework.filters.SearchFilter",
         "rest_framework.filters.DjangoFilterBackend",
     ),
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=30),
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=30),
 }
 
 #AUTH_USER_MODEL = 'users.EmailUser'

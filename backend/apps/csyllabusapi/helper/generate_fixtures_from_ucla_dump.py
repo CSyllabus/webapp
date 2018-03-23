@@ -44,6 +44,7 @@ fixtures.append(
     "pk": university_id,
     "fields": {
       "name": "University of California, Los Angeles",
+      "description": "We doubt the critics, reject the status quo and see opportunity in dissatisfaction. Our campus, faculty and students are driven by optimism. It is not naive; it is essential. And it has fueled every accomplishment, allowing us to redefine what's possible, time after time. This can-do perspective has brought us 13 Nobel Prizes, 12 MacArthur Fellows, more NCAA titles than any university and more Olympic medals than most nations. Our faculty and alumni helped create the Internet and pioneered reverse osmosis. And more than 140 companies have been created based on technology developed at UCLA. Among UCLA's students, faculty and alumni are some of the most recognized and decorated individuals in just about every field and arena. UCLA is the alma mater of winners of Oscars, Emmys, Tonys and Golden Globes like Francis Ford Coppola, Alexander Payne, John Williams, Tim Robbins and more than 20 others.",
       "img": "http://worldkings.org/Userfiles/Upload/images/Ucla.jpg",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",

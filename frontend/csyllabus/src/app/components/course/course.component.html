@@ -1,40 +1,73 @@
-<div class="row" style="margin-top:70px; margin-left:10%; margin-right: 10%;">
-<div class="card col-lg-8">
-    <div class="card-body">
-        <h3 class="card-title">{{ course.name }}</h3>
-        <br/>
-        <p class="card-text" style="text-align: justify;"> {{ course.description }}</p>
+<div class="col-md-12" style="background-color:#eaeaea; padding:0; height:100%">
+  <div class="col-md-12" style="height:300px; background-size:cover; background-image:url(images/books.jpg)"></div>
+  <div class="container-90p">
+    <div class="col-md-12" style="padding: 0; margin-top:-61px;">
+
+      <div class="col-md-8">
+        <div style="webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 11px rgba(0,0,0,0.2);padding:0;  background-color:white">
+          <div style="text-align:left; background-color:#3c5a96;min-height:56px;line-height:50px">
+            <div style="display:inline-block; padding-left:20px; width:100%">
+              <p *ngIf="course" style="display:inline; font-size:20px; color: white;">{{ course.name }}</p>
+            </div>
+          </div>
+          <div *ngIf="course && course.description"
+               style="vertical-align:top; text-align:justify; line-height: 1.5; padding:30px;">
+            {{ course.description }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div style="padding:0px;webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 11px rgba(0,0,0,0.2);background-color:white; ">
+          <div class="col-md-12"
+               style="padding:0px;text-align:left; background-color:#3c5a96; height:56px; line-height:56px">
+            <div style="display:inline-block; padding-left:20px; vertical-align:top">
+              <p style="display:inline; font-size:20px;color: white;">Details</p>
+            </div>
+          </div>
+          <div>
+            <mat-list role="list" style="padding-left:20px">
+              <mat-list-item style="text-align:left; cursor:pointer" (mouseover)="hover=true" (mouseleave)="hover=false" *ngIf="course && course.university" [routerLink]="['/university/' + course.universityId]" role="listitem"><p style="padding-top:5px; padding-bottom:5px" [ngStyle]="{backgroundColor: hover==true  ? 'lightgrey' : 'white' }">{{course.university}}</p></mat-list-item>
+
+              <mat-list-item style="text-align:left" *ngIf="course && course.faculty"
+                             role="listitem">{{ course.faculty }}</mat-list-item>
+              <mat-list-item *ngIf="course && course.study_lvl" role="listitem">Study
+                level: {{ course.study_lvl }}</mat-list-item>
+              <mat-list-item *ngIf="course && course.semester" role="listitem">
+                Semester: {{ course.semester }}</mat-list-item>
+              <mat-list-item *ngIf="course && course.ects" role="listitem">Credits: {{ course.ects }}</mat-list-item>
+              <mat-list-item *ngIf="course && course.english_level" role="listitem"> English
+                level: {{ course.english_level }}</mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+    <div class="col-md-12" style="padding: 0;">
+      <div class="col-md-4">
+        <div style="padding:0px;webkit-box-shadow: 0 2px 11px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 11px rgba(0,0,0,0.2); background-color:white">
+          <div class="col-md-12" style="padding:0px;text-align:left; background-color:#3c5a96;">
+            <div style="display:inline-block; padding-left:20px; vertical-align:top;height:56px; line-height:56px">
+              <p style="display:inline; font-size:20px; color: white;">Similar courses</p>
+            </div>
+          </div>
+          <div>
+            <mat-list *ngIf="similarCourses!=undefined" role="list">
+              <mat-list-item style="margin-top:15px; margin-bottom:10px" [routerLink]="['/course/' + similar.id]" *ngFor="let similar of similarCourses">
 
-<div class="card col-lg-4" id="course-details">
-    <div class="card-body" style="text-align: justify">
+                <p style="text-align:left; cursor:pointer" >{{ similar.name }}
+                  <span style="color:grey;"> {{ similar.university }}</span></p>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" >
+        <app-social *ngIf="course" [courseId]=course.id style=""></app-social>
 
-        <p><b>Faculty:</b> {{ course.faculty }}</p>
-       <p><b>Semesters:</b> {{ course.semester }} </p>
-<p><b>Credits: </b>{{ course.ects }}</p>
+      </div>
     </div>
+  </div>
 </div>
-</div>
-
-<div class="row" style=" margin-left:10%; margin-right: 10%;">
-
-<div class="card col-lg-4">
-    <div class="card-body">
-        <h3 class="card-title">{{ course.faculty }}</h3>
-        <br/>
-        <p class="card-text" style="text-align: justify;"> great faculty</p>
-    </div>
-</div>
-
-
-<div class="card col-lg-8">
-    <div class="card-body">
-
-    <app-social [courseId]=course.id [title]=course.name [university]=course.university
-                [description]=course.description></app-social>
-    </div>
-</div>
-</div>
-
-

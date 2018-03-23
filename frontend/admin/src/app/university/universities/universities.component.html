@@ -1,0 +1,74 @@
+<div style="height: 70px;">
+  <div style="max-width: 1000px; margin-left: auto; margin-right: auto; vertical-align: middle;">
+    <button mat-button [routerLink]="['/universities']" style=" display: inline-block;vertical-align: middle;">
+      Universities
+    </button>
+  </div>
+</div>
+<div id="search-component-spinner" *ngIf="!(totalItems > 0)" >
+    <mat-spinner style="margin-left: auto; margin-right: auto;"></mat-spinner>
+  </div>
+<mat-card >
+  <mat-card-title class="intrev-card-title">Universities in the database
+    <mat-card-subtitle style="color: white; margin-bottom: 0;">Universities resource</mat-card-subtitle>
+  </mat-card-title>
+  <div class="example-header" style="display:none">
+    <mat-form-field floatPlaceholder="never" style="    position: absolute;
+    top: 50px;
+    right: 20px;">
+      <input matInput #filter placeholder="Filter resources">
+    </mat-form-field>
+  </div>
+  <mat-table #table [dataSource]="dataSource" matSort  style="margin-top: 50px;">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell  *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.id}}</mat-cell>
+    </ng-container>
+
+    &lt;!&ndash; Created &ndash;&gt;
+    <ng-container matColumnDef="modified">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Modified</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.modified | date}}</mat-cell>
+    </ng-container>
+
+
+    &lt;!&ndash; Title &ndash;&gt;
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+    </ng-container>
+
+    &lt;!&ndash; Actions &ndash;&gt;
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <a mat-icon-button [routerLink]="['/university/edit/' + row.id]">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <!--
+        <button mat-icon-button (click)="deleteUniversity(row)" style="color: red;">
+          <mat-icon>clear</mat-icon>
+        </button>-->
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [length]="totalItems"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+  <mat-card-actions style="text-align: center;">
+    <!--<button (click)="addUniversity()" mat-button>
+      <mat-icon>add</mat-icon>
+      NEW COURSE
+    </button>-->
+
+  </mat-card-actions>
+</mat-card>

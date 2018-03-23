@@ -6,4 +6,5 @@ export class User {
   facultyId: Number;
   universityId: Number;
   is_admin: boolean;
+  email: string;
 }

@@ -279,3 +279,6 @@ mat-form-field {
     max-width: 95% !important;
   }
 }
+body{
+  background-color: #f3f3f3;
+}

@@ -47,6 +47,7 @@ fixtures.append(
     "pk": university_id,
     "fields": {
       "name": "University of Stanford",
+      "description": "Stanford University is one of the world's leading research universities. It is known for its entrepreneurial character, drawn from the legacy of its founders, Jane and Leland Stanford, and its relationship to Silicon Valley. Areas of excellence range from the humanities to social sciences to engineering and the sciences. Stanford is located in California's Bay Area, one of the most intellectually dynamic and culturally diverse areas of the nation. Stanford University is accredited by the Accrediting Commission for Senior Colleges and Universities of the Western Association of Schools and Colleges (WASC).",
       "img": "http://www.neucampusplanning.com/wp-content/uploads/2016/08/Stanford-Aerial.jpg",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",

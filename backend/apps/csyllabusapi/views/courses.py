@@ -30,18 +30,21 @@ from datetime import datetime
 from jwt_auth import utils
 from jwt_auth.compat import json, User, smart_text
 import ast
+
 try:
     from django.utils import simplejson as json
 except ImportError:
     import json
+
+from gensim import corpora, models, similarities
+from collections import defaultdict
+from nltk.corpus import stopwords
 
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CourseView(APIView):
     def get(self, request, course_id=-1, limit=-1, offset=-1):
-
-
         query_pairs = request.META['QUERY_STRING'].split('&')
 
         for query_pair in query_pairs:
@@ -52,7 +55,12 @@ class CourseView(APIView):
                 offset = int(query_pair_split[1])
 
         if course_id >= 0:
-            courses = Course.objects.filter(id=course_id)
+            try:
+                course_id = int(course_id)
+                courses = Course.objects.filter(id=course_id)
+            except:
+                courses = []
+
         else:
             courses = Course.objects.all().order_by('name')
 
@@ -67,8 +75,9 @@ class CourseView(APIView):
                 pass
 
             course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                          'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
-                          'modified': course.modified, 'created': course.created}
+                           'englishLevel': course.english_level, 'semester': course.semester,
+                           'keywords': course.keywords, 'level': course.english_level, 'url': course.url,
+                           'modified': course.modified, 'created': course.created}
 
             try:
                 course_faculty = CourseFaculty.objects.filter(course_id=course.id).select_related('faculty')[0]
@@ -77,10 +86,13 @@ class CourseView(APIView):
                 pass
 
             try:
-                course_university = CourseUniversity.objects.filter(course_id=course.id).select_related('university__country')[0]
+                course_university = \
+                    CourseUniversity.objects.filter(course_id=course.id).select_related('university__country')[0]
                 university = course_university.university
                 course_data['university'] = university.name
+                course_data['universityId'] = university.id
                 course_data['country'] = university.country.name
+                course_data['universityImg'] = university.img
             except IndexError:
                 pass
 
@@ -100,7 +112,6 @@ class CourseView(APIView):
             data['currentItemCount'] = len(courses_list)
             data['items'] = courses_list
 
-
         result['data'] = data
         return Response(result)
 
@@ -114,12 +125,10 @@ class CourseView(APIView):
                 request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
             user = User.objects.filter(id=decoded_payload['user_id'])[0]
 
-            allow_access=False
+            allow_access = False
 
-            faculty_id=0
-            university_id=0
-
-            print user
+            faculty_id = 0
+            university_id = 0
 
             try:
                 faculty_id = request.data['faculty']
@@ -131,30 +140,28 @@ class CourseView(APIView):
             except:
                 pass
 
-            if (faculty_id>0):
+            if (faculty_id > 0):
                 try:
                     adminfaculty = AdminFaculty.objects.filter(user_id=user.id)[0]
 
-                    if(adminfaculty.faculty_id==faculty_id):
-                        allow_access=True
+                    if (adminfaculty.faculty_id == faculty_id):
+                        allow_access = True
                 except:
                     pass
 
-            if (university_id>0):
+            if (university_id > 0):
                 try:
                     adminuniversity = AdminUniversity.objects.filter(user_id=user.id)[0]
 
-                    if(adminuniversity.university_id==university_id):
-                        allow_access=True
+                    if (adminuniversity.university_id == university_id):
+                        allow_access = True
 
                 except:
                     pass
 
-            if(user.is_admin or allow_access):
+            if (user.is_admin or allow_access):
 
                 course = Course.objects.create()
-
-                print course.id
 
                 try:
                     course.name = request.data['name']
@@ -177,22 +184,27 @@ class CourseView(APIView):
                 except:
                     pass
                 try:
+                    course.url = request.data['url']
+                except:
+                    pass
+                try:
                     course.ects = request.data['ects']
                 except:
                     pass
                 try:
-                    print request.data['keywords']
                     course.keywords = request.data['keywords']
                 except:
                     pass
 
                 course.save()
 
-                course_data = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                               'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
+                course_data = {'id': course.id, 'name': course.name, 'description': course.description,
+                               'ects': course.ects,
+                               'englishLevel': course.english_level, 'semester': course.semester,
+                               'keywords': course.keywords,
                                'modified': course.modified, 'created': course.created}
 
-                if( faculty_id>0):
+                if (faculty_id > 0):
                     faculty = Faculty.objects.filter(id=faculty_id)
                     CourseFaculty.objects.create(faculty=faculty[0], course=course)
                     course_data['faculty'] = faculty[0].name
@@ -200,10 +212,7 @@ class CourseView(APIView):
                 elif (university_id > 0):
                     university = University.objects.filter(id=university_id)
                     CourseUniversity.objects.create(university=university[0], course=course)
-                    course_data['university']=university[0].name
-
-
-
+                    course_data['university'] = university[0].name
 
                 courses_list = []
                 courses_list.append(course_data)
@@ -223,79 +232,61 @@ class CourseView(APIView):
             result['data'] = []
             return Response(result)
 
-
     def delete(selfself, request, course_id):
-
-        print course_id
         Course.objects.filter(id=course_id).delete()
         CourseResult.objects.filter(first_course_id=course_id).delete()
         CourseResult.objects.filter(second_course_id=course_id).delete()
         return Response()
 
     def put(selfself, request, course_id):
-
-        #try:
-         #   decoded_payload = utils.jwt_decode_handler(request.META.get('HTTP_AUTHORIZATION').strip().split("JWT ")[1])
-         #   university = UserUniversity.objects.filter(user.id = decoded_payload['user_id'])[0].university
-         #   course = CourseUniversity.objects.filter(university.id = university.id)[0].course
-         #   if (course.id == course_id) :
-
-        #except:
-        #    pass
-
-
         try:
             course = Course.objects.filter(id=course_id)[0]
             try:
                 course.name = request.data['name']
             except:
                 pass
+
             try:
                 course.description = request.data['description']
             except:
                 pass
+
             try:
                 course.level = request.data['level']
             except:
                 pass
+
+            try:
+                course.url = request.data['url']
+            except:
+                pass
+
             try:
                 course.english_level = request.data['englishLevel']
             except:
                 pass
+
             try:
                 course.semester = request.data['semester']
             except:
                 pass
+
             try:
                 course.ects = request.data['ects']
             except:
                 pass
+
             try:
-                print request.data['keywords']
                 course.keywords = request.data['keywords']
             except:
                 pass
+
+            # print faculty_id
+            # print university_id
+
             course.save()
         except IndexError:
             pass
-
-        try:
-            faculty_id = request.data['faculty']
-            faculty = Faculty.objects.filter(id=faculty_id)
-
-            CourseFaculty.objects.create(faculty=faculty[0], course=course)
-        except:
-            pass
-
-        try:
-            university_id = request.data['university']
-            university = University.objects.filter(id=university_id)
-
-            CourseUniversity.objects.create(university=university[0], course=course)
-        except:
-            pass
-
-
 
         return Response()
 
@@ -307,8 +298,6 @@ class CourseByProgramView(APIView):
 
         course_programs = CourseProgram.objects.filter(program_id=program_id)
 
-
-
         course_ids = []
         for i in course_programs:
             course_ids.append(i.course_id)
@@ -319,7 +308,8 @@ class CourseByProgramView(APIView):
         for course_id in course_ids:
             course = Course.objects.filter(id=course_id)[0]
             one_course = {'id': course.id, 'name': course.name, 'description': course.description, 'ects': course.ects,
-                          'englishLevel': course.english_level, 'semester': course.semester, 'keywords': course.keywords,
+                          'englishLevel': course.english_level, 'semester': course.semester,
+                          'keywords': course.keywords,
                           'modified': course.modified, 'created': course.created}
             courses_list.append(one_course)
 
@@ -343,7 +333,8 @@ class CourseByFacultyView(APIView):
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
 
-        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id).select_related('course').prefetch_related('faculty__university__country')
+        course_faculties = CourseFaculty.objects.filter(faculty_id=faculty_id).select_related(
+            'course').prefetch_related('faculty__university__country')
         data = {}
         result = {}
 
@@ -396,6 +387,7 @@ class CourseByFacultyView(APIView):
         result['data'] = data
         return Response(result)
 
+
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class CourseByUniversityView(APIView):
@@ -409,7 +401,8 @@ class CourseByUniversityView(APIView):
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
 
-        course_universities = CourseUniversity.objects.filter(university_id=university_id).select_related('course').prefetch_related('university__country')
+        course_universities = CourseUniversity.objects.filter(university_id=university_id).select_related(
+            'course').prefetch_related('university__country')
         data = {}
         result = {}
 
@@ -476,14 +469,12 @@ class CoursesAllSimpleView(APIView):
             elif query_pair_split[0] == 'offset':
                 offset = int(query_pair_split[1])
 
-
         courses = Course.objects.all().order_by('name')
 
         data = {}
         result = {}
-        courses_list=[]
+        courses_list = []
         for course in courses:
-
             course_data = {'id': course.id, 'name': course.name, 'description': course.description,
                            'ects': course.ects, 'englishLevel': course.english_level,
                            'semester': course.semester,
@@ -494,7 +485,6 @@ class CoursesAllSimpleView(APIView):
             courses_list.append(course_data)
 
         courses_list.sort(key=lambda x: x['name'], reverse=False)
-
 
         if limit > 0 and offset >= 0:
             data['currentItemCount'] = limit
@@ -515,7 +505,12 @@ class CoursesAllSimpleView(APIView):
 @parser_classes((JSONParser,))
 class CommentsByCourseView(APIView):
     def get(self, request, course_id):
-        usercoursepost = UserCoursePost.objects.filter(course_id=course_id)
+        try:
+            course_id = int(course_id)
+            user_course_posts = UserCoursePost.objects.filter(course_id=course_id)
+        except:
+            user_course_posts = []
+
         data = {}
         result = {}
 
@@ -523,11 +518,11 @@ class CommentsByCourseView(APIView):
 
             comments_list = []
 
-            for comment in usercoursepost:
+            for comment in user_course_posts:
                 try:
 
-                    comment_data = {'id': comment.id, 'author':comment.author, 'content': comment.content, 'show': comment.show, 'modified': comment.modified}
-
+                    comment_data = {'id': comment.id, 'author': comment.author, 'content': comment.content,
+                                    'show': comment.show, 'modified': comment.modified}
 
                     comments_list.append(comment_data)
 
@@ -549,15 +544,15 @@ class CommentsByCourseView(APIView):
 
         author = request.data['author']
         content = request.data['content']
-        course = Course.objects.filter(id = course_id)[0]
+
+        course = Course.objects.filter(id=course_id)[0]
         try:
             show = request.data['show']
         except:
             show = 1
 
-        usercoursepost = UserCoursePost.objects.create(course=course, author = author, content = content, show=show)
-        #course = Course.objects.create(name=name)
-        #print course_id, author, content
+        user_course_posts = UserCoursePost.objects.create(course=course, author=author, content=content, show=show)
+        # course = Course.objects.create(name=name)
+        # print course_id, author, content
 
         return Response()
-

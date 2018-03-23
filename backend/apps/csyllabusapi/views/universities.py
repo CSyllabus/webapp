@@ -1,3 +1,4 @@
+from django.core.exceptions import FieldDoesNotExist
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.views import APIView
 
@@ -17,36 +18,103 @@ try:
 except ImportError:
     import json
 
+
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
+class UniversitiesView(APIView):
+    def get(self, request, university_id=-1, limit=-1, offset=-1, sort_by='name', sort_direction='asc'):
+        query_pairs = request.META['QUERY_STRING'].split('&')
 
-class UniversitiesViewAll(APIView):
-    def get(self, request):
-        universities = University.objects.all()
+        universities = []
+
+        for query_pair in query_pairs:
+            query_pair_split = query_pair.split('=')
+            if query_pair_split[0].lower() == 'limit':
+                limit = int(query_pair_split[1])
+            elif query_pair_split[0].lower() == 'offset':
+                offset = int(query_pair_split[1])
+            elif query_pair_split[0].lower() == 'sortby' and query_pair_split[1] != 'undefined':
+                sort_by = query_pair_split[1]
+            elif query_pair_split[0].lower() == 'sortdirection' and query_pair_split[1] != '':
+                print query_pair_split[1]
+                sort_direction = query_pair_split[1]
+
+        if university_id >= 0:
+            universities = University.objects.filter(id=university_id)
+
+        else:
+            if sort_by not in ['id', 'created', 'modified']:
+                sort_by = 'name'
+
+            print sort_direction
+
+            if sort_direction == 'desc':
+                sort_by = "-" + sort_by
+
+            universities = University.objects.all().order_by(sort_by)
+
         data = {}
         result = {}
-        universitiesList = []
+        university_list = []
         for university in universities:
-            one_university = {}
-            one_university['id'] = university.id
-            one_university['name'] = university.name
-            one_university['countryId'] = university.country_id
-            # one_university['img'] = university.img
-            one_university['modified'] = university.modified
-            one_university['created'] = university.created
-            universitiesList.append(one_university)
+            country = Country.objects.filter(id=university.country_id)[0]
+            city = City.objects.filter(id=university.city_id)[0]
 
-        universitiesList.sort(key=lambda x: x['name'], reverse=False)
-        data['currentItemCount'] = universities.count()
-        data['items'] = universitiesList
+
+
+            university_data = {'id': university.id, 'name': university.name, 'description': university.description,
+                               'countryId': university.country_id, 'img': university.img,
+                               'countryName': country.name, 'cityName':city.name,
+                               'modified': university.modified, 'created': university.created}
+
+            try:
+                faculty=Faculty.objects.filter(university_id=university.id)[0]
+                university_data['facultyName']=faculty.name
+            except:
+                pass
+
+            university_list.append(university_data)
+
+        if limit > 0 and offset >= 0:
+            data['currentItemCount'] = limit
+            data['items'] = university_list[offset:offset + limit]
+        elif limit > 0:
+            data['currentItemCount'] = limit
+            data['items'] = university_list[0:limit]
+        elif offset >= 0:
+            count = len(university_list) - offset
+            data['currentItemCount'] = count
+            data['items'] = university_list[offset:count]
+        else:
+            data['currentItemCount'] = len(university_list)
+            data['items'] = university_list
+
         result['data'] = data
         return Response(result)
 
+    def post(self, request):
+        # name = request.data['name']
+        # country = Country.objects.get(id=request.data['country_id'])
+        # city = City.objects.get(id=request.data['city_id'])
+        # University.objects.create(name=name, country=country, city=city)
+        return Response()
+
+    def delete(selfself, request):
+        id = request.data['id']
+        University.objects.filter(id=id).delete()
+        return Response()
+
+    def put(selfself, request, university_id=-1):
+        name = request.data['name']
+        description = request.data['description']
+        img = request.data['img']
+        University.objects.filter(id=university_id).update(name=name, description=description, img=img)
+        return Response()
+
 
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
-
-class UniversitiesView(APIView):
+class CityUniversitiesView(APIView):
     def get(self, request, city_id):
         universities = University.objects.filter(city_id=city_id)
         result = {}
@@ -69,6 +137,7 @@ class UniversitiesView(APIView):
         result['data'] = data
         return Response(result)
 
+
 @permission_classes((permissions.AllowAny,))
 @parser_classes((JSONParser,))
 class UniversitiesViewCountry(APIView):
@@ -79,8 +148,7 @@ class UniversitiesViewCountry(APIView):
         universities_list = []
         for university in universities:
             university_data = {'id': university.id, 'name': university.name, 'modified': university.modified,
-                              'created': university.created}
-            # one_university['img'] = university.img
+                               'created': university.created, 'img': university.img}
             universities_list.append(university_data)
 
             universities_list.sort(key=lambda x: x['name'], reverse=False)
@@ -89,29 +157,23 @@ class UniversitiesViewCountry(APIView):
         result['data'] = data
         return Response(result)
 
+    # def post(self, request):
+    #   name = request.data['name']
+    #  country = Country.objects.get(id=request.data['country_id'])
+    # city = City.objects.get(id=request.data['city_id'])
+    # University.objects.create(name=name, country=country, city=city)
+    # return Response()
 
-
-
-
-
-    #def post(self, request):
-     #   name = request.data['name']
-      #  country = Country.objects.get(id=request.data['country_id'])
-       # city = City.objects.get(id=request.data['city_id'])
-        #University.objects.create(name=name, country=country, city=city)
-        #return Response()
-
-
-  #  def delete(selfself, request):
- #       id = request.data['id']
-   #     University.objects.filter(id=id).delete()
+#  def delete(selfself, request):
+#       id = request.data['id']
+#     University.objects.filter(id=id).delete()
 #        return Response()
 
 
-    #def put(selfself, request):
-    #    id = request.data['id']
-    #    name = request.data['name']
-    #    country = Country.objects.get(id=request.data['country_id'])
-    #    city = City.objects.get(id=request.data['city_id'])
-    #    University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
-    #    return Response()
+# def put(selfself, request):
+#    id = request.data['id']
+#    name = request.data['name']
+#    country = Country.objects.get(id=request.data['country_id'])
+#    city = City.objects.get(id=request.data['city_id'])
+#    University.objects.filter(id=id).update(name=name, country=country, city=city, modified=datetime.utcnow())
+#    return Response()

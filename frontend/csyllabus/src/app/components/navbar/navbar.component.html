@@ -1,26 +1,24 @@
-
 <mat-toolbar class="topnav" id="myTopnav">
-        <img routerLink="core" class="logo" src="https://preview.ibb.co/cLsuiR/logotopbar.png">
-
-    <div id="navigation">
+  <a routerLink="/"><img class="logo" src="https://preview.ibb.co/cLsuiR/logotopbar.png"></a>
+  <div id="navigation">
     <a routerLink="connect">CONNECT</a>
     <a routerLink="about">ABOUT</a>
     <a routerLink="core">EXPLORE & COMPARE</a>
-        </div>
-    <button  class="icon"  mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
+  </div>
+  <button class="icon" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" id="mobile-menu">
+    <button mat-menu-item routerLink="core">
+      <span>Explore&compare</span>
     </button>
-    <mat-menu #menu="matMenu" id="mobile-menu" >
-        <button mat-menu-item routerLink="core">
-            <span>Explore&compare</span>
-        </button>
-        <button mat-menu-item routerLink="about">
-            <span>About</span>
-        </button>
-        <button mat-menu-item routerLink="connect">
-            <span>Connect</span>
-        </button>
-    </mat-menu>
+    <button mat-menu-item routerLink="about">
+      <span>About</span>
+    </button>
+    <button mat-menu-item routerLink="connect">
+      <span>Connect</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 
 

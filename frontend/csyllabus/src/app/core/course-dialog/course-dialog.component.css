@@ -10,6 +10,12 @@
     background-color: rgba(255, 255, 255, 0.85);
     position: relative;
   }
+ @media all and (max-width: 1000px) {
+
+  .logoU {
+    display:none
+  }
+ }
 .title{
     font-family: 'Roboto', sans-serif;
     font-size: 80px;
@@ -71,6 +77,4 @@ table {
     border: 1px solid lightgrey;
 }
 
-.mat-dialog-container {
-  padding: 0 !important;
-}
+

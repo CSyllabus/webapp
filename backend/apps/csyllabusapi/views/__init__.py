@@ -11,3 +11,4 @@ from .programs import *
 from .comparator import *
 from .users import *
 from .comments import *
+from .event_log import *
