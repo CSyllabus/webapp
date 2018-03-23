@@ -29,7 +29,6 @@ for i in range(1, len(courses)):
         r_desc = session.get(course_url)
         tree = html.fromstring(r_desc.content)
         course_description = tree.xpath('//div[@class="lead"]//p/text()')
-        print(len(course_description))
         course = {
             'id': i,
             'name': course_name,
