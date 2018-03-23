@@ -124,11 +124,11 @@ for p in soup.find_all('p'):
     # check if courseIdName and courseCredits are set
     if course_id_name and course_credits:
         course_name = course_id_name[0].split('.')[1],
-        course_ects = str(course_credits[0].split(' unit')[0]),
+        course_ects = course_credits[0].split(' unit')[0],
         course_description = None
         # check if courseDescription is set
         if course_desc:
-            course_description = str(course_desc[0].strip().replace("\u2019", "'"))
+            course_description = course_desc[0].strip().replace("\u2019", "'")
             fixtures.append(
                 {
                     "model": "csyllabusapi.courseprogram",

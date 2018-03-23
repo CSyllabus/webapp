@@ -7,7 +7,7 @@ hkust_fixtures_json = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webap
 
 fixtures = []
 
-country_id = 6
+country_id = 7
 fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
@@ -19,7 +19,7 @@ fixtures.append({
     }
   }
 )
-city_id = 10
+city_id = 14
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
@@ -32,7 +32,7 @@ fixtures.append({
     }
   }
 )
-university_id = 7
+university_id = 10
 fixtures.append(
   {
     "model": "csyllabusapi.university",
@@ -48,8 +48,8 @@ fixtures.append(
   }
 )
 
-#appending programs fixtures
-program_id = 37
+# appending programs fixtures
+program_id = 41
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -99,9 +99,9 @@ fixtures.append(
 )
 
 #appending courses fixtures
-course_id = 693
-course_uni_id = 2620
-course_program_id = 2424
+course_id = 1416
+course_uni_id = 2639
+course_program_id = 3147
 # requesting data
 url = "http://prog-crs.ust.hk/ugcourse/2017-18/COMP"
 r = requests.get(url)

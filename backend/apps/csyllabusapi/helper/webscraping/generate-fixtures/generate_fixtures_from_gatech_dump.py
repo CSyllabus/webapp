@@ -20,7 +20,7 @@ fixtures.append({
     }
   }
 )
-city_id = 10
+city_id = 13
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
@@ -33,7 +33,7 @@ fixtures.append({
     }
   }
 )
-university_id = 7
+university_id = 9
 fixtures.append(
   {
     "model": "csyllabusapi.university",
@@ -50,7 +50,7 @@ fixtures.append(
 )
 
 #appending programs fixtures
-program_id = 37
+program_id = 40
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -99,10 +99,10 @@ fixtures.append(
     }
 )
 
-#appending courses fixtures
-course_id = 693
-course_uni_id = 2266
-course_program_id = 2424
+# appending courses fixtures
+course_id = 1116
+course_uni_id = 2339
+course_program_id = 2847
 # request to get courses
 url = "http://www.catalog.gatech.edu/coursesaz/cs/"
 r = requests.get(url)

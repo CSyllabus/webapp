@@ -7,7 +7,7 @@ ubc_fixtures_json = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/
 
 fixtures = []
 
-country_id = 6
+country_id = 8
 fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
@@ -19,7 +19,7 @@ fixtures.append({
     }
   }
 )
-city_id = 10
+city_id = 15
 fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
@@ -32,7 +32,7 @@ fixtures.append({
     }
   }
 )
-university_id = 7
+university_id = 11
 fixtures.append(
   {
     "model": "csyllabusapi.university",
@@ -49,7 +49,7 @@ fixtures.append(
 )
 
 # appending programs fixtures
-program_id = 37
+program_id = 42
 fixtures.append(
     {
         "model": "csyllabusapi.program",
@@ -99,9 +99,9 @@ fixtures.append(
 )
 
 # appending courses fixtures
-course_id = 693
-course_uni_id = 2620
-course_program_id = 2424
+course_id = 1487
+course_uni_id = 2710
+course_program_id = 3218
 # requesting data
 url = "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=1&dept=CPSC"
 r = requests.get(url)
