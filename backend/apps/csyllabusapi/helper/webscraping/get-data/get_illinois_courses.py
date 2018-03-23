@@ -21,9 +21,10 @@ for i in range(0, len(course_id)):
     url_course = "https://courses.illinois.edu" + course_url[i]
     r_desc = requests.get(url_course)
     tree = html.fromstring(r_desc.content)
-    course_desc = tree.xpath('//div[@id="app-course-info"][@class="row"][@app-label="course information"]//div[@class="col-sm-12]')
+    course_desc = tree.xpath('//div[@id="app-course-info"][@class="row"][@app-label="course information"]'
+                             '//div[@class="col-sm-12]')
     course = {
-        'id' : course_id[i].strip(),
+        'id': course_id[i].strip(),
         'name': course_name[i].strip(),
         'ects': None,
         'semester': None,
