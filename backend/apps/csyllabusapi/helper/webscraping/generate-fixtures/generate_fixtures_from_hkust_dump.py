@@ -98,7 +98,7 @@ fixtures.append(
     }
 )
 
-#appending courses fixtures
+# appending courses fixtures
 course_id = 1416
 course_uni_id = 2639
 course_program_id = 3147
@@ -117,47 +117,47 @@ for i in range(0, len(course_idtree)):
     course_name = course_title[i].strip(),
     course_ects = course_credits[i].split(" Credit(s)")[0].strip(),
     course_description = course_desc[i].strip()
-    # TODO delete duplicate course names
-    fixtures.append(
-        {
-            "model": "csyllabusapi.courseprogram",
-            "pk": course_program_id,
-            "fields": {
-                "course": course_id,
-                "program": program_id,
-                "created": "2017-10-30T15:07:40.122Z"
+    if course_description:
+        fixtures.append(
+            {
+                "model": "csyllabusapi.courseprogram",
+                "pk": course_program_id,
+                "fields": {
+                    "course": course_id,
+                    "program": program_id,
+                    "created": "2017-10-30T15:07:40.122Z"
+                }
             }
-        }
-    )
-    course_program_id = course_program_id + 1
+        )
+        course_program_id = course_program_id + 1
 
-    fixtures.append(
-        {
-            "model": "csyllabusapi.courseuniversity",
-            "pk": course_uni_id,
-            "fields": {
-                "course": course_id,
-                "university": university_id,
-                "created": "2017-10-30T15:07:40.122Z"
+        fixtures.append(
+            {
+                "model": "csyllabusapi.courseuniversity",
+                "pk": course_uni_id,
+                "fields": {
+                    "course": course_id,
+                    "university": university_id,
+                    "created": "2017-10-30T15:07:40.122Z"
+                }
             }
-        }
-    )
-    course_uni_id = course_uni_id + 1
+        )
+        course_uni_id = course_uni_id + 1
 
-    fixtures.append(
-        {
-            "model": "csyllabusapi.course",
-            "pk": course_id,
-            "fields": {
-                "name": course_name[0],
-                "description": course_description,
-                "ects": course_ects[0],
-                "semester": None,
-                "created": "2017-10-30T15:07:40.122Z",
-                "modified": "2017-10-30T15:07:41.673Z"
+        fixtures.append(
+            {
+                "model": "csyllabusapi.course",
+                "pk": course_id,
+                "fields": {
+                    "name": course_name[0],
+                    "description": course_description,
+                    "ects": course_ects[0],
+                    "semester": None,
+                    "created": "2017-10-30T15:07:40.122Z",
+                    "modified": "2017-10-30T15:07:41.673Z"
+                }
             }
-        }
-    )
-    course_id = course_id + 1
+        )
+        course_id = course_id + 1
 
-json.dump(fixtures,hkust_fixtures_json)
+json.dump(fixtures, hkust_fixtures_json)

@@ -1,4 +1,6 @@
 import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 from lxml import html
 import json
 
@@ -19,14 +21,23 @@ for i in range(1, len(courses)):
         course_name = courses[i].split("\",")[0].split("\"")[1].split("</a")[0].split(">")[1].strip()
         course_ects = courses[i].split("\",")[1].split("\"")[1].strip()
         course_term = courses[i].split("\",")[4].split("\"")[1].strip()
-        # TODO get course description by retrieving it from course_url link
+        session = requests.Session()
+        retry = Retry(connect=3, backoff_factor=0.5)
+        adapter = HTTPAdapter(max_retries=retry)
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+        r_desc = session.get(course_url)
+        tree = html.fromstring(r_desc.content)
+        course_description = tree.xpath('//div[@class="lead"]//p/text()')
         course = {
-        'id' : i,
-        'name': course_name,
-        'ects': course_ects,
-        'semester': course_term,
-        'description': None
+            'id': i,
+            'name': course_name,
+            'ects': course_ects,
+            'semester': course_term,
+            'description': None
         }
+        if course_description:
+            course['description'] = course_description[0].replace("\u00a0", " ")
         if i < len(courses)-1:
             courseList.append(json.dumps(course) + ",")
         else:
