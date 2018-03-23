@@ -2,8 +2,8 @@ import requests
 from lxml import html
 import json
 
-hkust_fixtures_json = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/fixtures"
-                           "/hkust_fixtures_json.json", "w")
+ubc_fixtures_json = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/fixtures"
+                         "/ubc_fixtures_json.json", "w")
 
 fixtures = []
 
@@ -12,7 +12,7 @@ fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
     "fields": {
-      "name": "China",
+      "name": "Canada",
       "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
@@ -24,7 +24,7 @@ fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
     "fields": {
-      "name": "Hong Kong",
+      "name": "Vancouver",
       "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
@@ -38,7 +38,7 @@ fixtures.append(
     "model": "csyllabusapi.university",
     "pk": university_id,
     "fields": {
-      "name": "Hong Kong University of Science and Technology",
+      "name": "University of British Columbia",
       "img": "",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
@@ -48,7 +48,7 @@ fixtures.append(
   }
 )
 
-#appending programs fixtures
+# appending programs fixtures
 program_id = 37
 fixtures.append(
     {
@@ -98,26 +98,31 @@ fixtures.append(
     }
 )
 
-#appending courses fixtures
+# appending courses fixtures
 course_id = 693
 course_uni_id = 2620
 course_program_id = 2424
 # requesting data
-url = "http://prog-crs.ust.hk/ugcourse/2017-18/COMP"
+url = "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=1&dept=CPSC"
 r = requests.get(url)
-
 tree = html.fromstring(r.content)
-course_idtree = tree.xpath('//div[@class="crse-code"]/text()')
-course_title = tree.xpath('//div[@class="crse-title"]/text()')
-course_credits = tree.xpath('//div[@class="crse-unit"]/text()')
-course_desc = tree.xpath('//div[@class="data-row data-row-long"]//div[@class="data"]/text()')
+course_idtree = tree.xpath('//table[@class="sortable table table-striped"][@id="mainTable"]//tbody//tr//td//a/text()')
+course_nametree = tree.xpath('//table[@class="sortable table table-striped"][@id="mainTable"]//tbody//tr//td/text()')
+course_url = tree.xpath('//table[@class="sortable table table-striped"][@id="mainTable"]//tbody//tr//td//a/@href')
 
-hkust_courses = []
+ubc_courses = []
 for i in range(0, len(course_idtree)):
-    course_name = course_title[i].strip(),
-    course_ects = course_credits[i].split(" Credit(s)")[0].strip(),
-    course_description = course_desc[i].strip()
-    # TODO delete duplicate course names
+    # getting course description using individual url for each course
+    url_course = "https://courses.students.ubc.ca" + course_url[i]
+    print(url_course)
+    r_desc = requests.get(url_course)
+    tree = html.fromstring(r_desc.content)
+    course_desc = tree.xpath('//div[@class="content expand"][@role="main"]//p/text()')
+
+    course_name = course_nametree[i].strip(),
+    course_ects = course_desc[1].strip().split("Credits: ")[1],
+    course_description = course_desc[0].strip()
+
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -160,4 +165,4 @@ for i in range(0, len(course_idtree)):
     )
     course_id = course_id + 1
 
-json.dump(fixtures,hkust_fixtures_json)
+json.dump(fixtures, ubc_fixtures_json)

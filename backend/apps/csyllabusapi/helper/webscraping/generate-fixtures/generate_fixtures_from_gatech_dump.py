@@ -2,8 +2,9 @@ import requests
 from lxml import html
 import json
 
-hkust_fixtures_json = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/fixtures"
-                           "/hkust_fixtures_json.json", "w")
+gatech_fixtures_json = open("/Volumes/SSD-Thomas/Documents/GitHub/csyllabus/webapp/backend/apps/csyllabusapi/fixtures"
+                             "/gatech_fixtures_json.json", "w")
+gatech_courses = []
 
 fixtures = []
 
@@ -12,7 +13,7 @@ fixtures.append({
     "model": "csyllabusapi.country",
     "pk": country_id,
     "fields": {
-      "name": "China",
+      "name": "United States of America",
       "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z"
@@ -24,7 +25,7 @@ fixtures.append({
     "model": "csyllabusapi.city",
     "pk": city_id,
     "fields": {
-      "name": "Hong Kong",
+      "name": "Atlanta",
       "img": "",
       "created": "2017-10-30T15:20:51.049Z",
       "modified": "2017-10-30T15:20:52.235Z",
@@ -38,7 +39,7 @@ fixtures.append(
     "model": "csyllabusapi.university",
     "pk": university_id,
     "fields": {
-      "name": "Hong Kong University of Science and Technology",
+      "name": "Georgia Institute of Technology",
       "img": "",
       "created": "2017-10-30T15:05:19.541Z",
       "modified": "2017-10-30T15:05:20.945Z",
@@ -100,24 +101,20 @@ fixtures.append(
 
 #appending courses fixtures
 course_id = 693
-course_uni_id = 2620
+course_uni_id = 2266
 course_program_id = 2424
-# requesting data
-url = "http://prog-crs.ust.hk/ugcourse/2017-18/COMP"
+# request to get courses
+url = "http://www.catalog.gatech.edu/coursesaz/cs/"
 r = requests.get(url)
 
 tree = html.fromstring(r.content)
-course_idtree = tree.xpath('//div[@class="crse-code"]/text()')
-course_title = tree.xpath('//div[@class="crse-title"]/text()')
-course_credits = tree.xpath('//div[@class="crse-unit"]/text()')
-course_desc = tree.xpath('//div[@class="data-row data-row-long"]//div[@class="data"]/text()')
+course_idtree = tree.xpath('//div[@class="courseblock"]//p[@class="courseblocktitle"]//strong/text()')
+course_desctree = tree.xpath('//div[@class="courseblock"]//p[@class="courseblockdesc"]/text()')
 
-hkust_courses = []
 for i in range(0, len(course_idtree)):
-    course_name = course_title[i].strip(),
-    course_ects = course_credits[i].split(" Credit(s)")[0].strip(),
-    course_description = course_desc[i].strip()
-    # TODO delete duplicate course names
+    course_name = course_idtree[i].split('. ')[1].strip(),
+    course_ects = course_idtree[i].split('. ')[2].split(" Credit Hour")[0].strip(),
+    course_description = course_desctree[i].strip()
     fixtures.append(
         {
             "model": "csyllabusapi.courseprogram",
@@ -160,4 +157,4 @@ for i in range(0, len(course_idtree)):
     )
     course_id = course_id + 1
 
-json.dump(fixtures,hkust_fixtures_json)
+json.dump(fixtures,gatech_fixtures_json)
