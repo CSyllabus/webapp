@@ -8,68 +8,55 @@ Made by team from POLIMI(Italy) and FER(Croatia University)
  This “one click” app will save time and provide very useful information to interested parties.
 
 ## Instalation guide for the backend:
-  
-Install *PostgreSQL 9.6x* (https://www.postgresql.org/download/) with *pgadmin*.  
-  
-Create new server with hostname *localhost*. Make sure to write down password and username assigned to newly created user (default username is usually *postgres*).  
-  
-After installation create a database in *pgadmin* that will be used for the csyllabus application and make sure to **write down the name you assigned**.  
-If you create a new username and password for the database write it down too. You will use this information later.  
-  
-  
-Install *python 2.7* (https://www.python.org/downloads/).  
-Check python version in command line with:  
-  
-```  python -V ```  
-  
-Install *pip for python 2.7* (it allready comes shipped with *python 2.7.9+*) .  
-Check *pip* version with   
-  
-```  pip -V```  
-  
-  
-Install *django* with   
-  
-```  pip install django```   
 
-Check *django* version with:
-```  python -c "import django; print(django.get_version())"```  
+Install PostgreSQL 9.6x (https://www.postgresql.org/download/).
+Install with pgadmin.
+Create new server hostname -> “localhost”.
+Write down password and username for root (usually username = postgres).
+After installation create a database in pgadmin to be used with the csyllabus and write down the name used.
+If you create a new username and password for the database write it down too.
+Install python 2.7 (https://www.python.org/downloads/).
+Check python version in command line with:
 
-Position yourself in csyllabus root folder.  
-```  pip install -r backend/requirements/devl.pip```
+```python -V```
 
-Download nltk stopwords:
+Install pip for python 2.7 (it allready comes shipped with python 2.7.9+) .
+Check pip version with 
 
-python
-    >>> import nltk
-    >>> nltk.download('stopwords')
+```pip -V```
 
 
-In file backend/settings/devl.py field  change DATABASES data according to database name, username and password you wrote down in previous steps.  
-  
-Load the migrations and fixtures into the database:  
-```  
-python manage.py migrate csyllabusapi
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/epfl\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/laquila\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/polimi\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/stanford\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas\_fixtures\_json.json  
-python manage.py loaddata backend/apps/csyllabusapi/fixtures/ucla\_fixtures\_json.json  
-```  
-  Create a superuser for django application:
-``` python manage.py createsuperuser  ``` 
+Install django with 
 
-And finlly run django server:  
-```  
-python manage.py runserver  
-```  
-To run course similarity algorithm (notice this can take some time) run it with:  
-  ```  
-python manage.py course_similarity  
-```  
+```pip install django```
+Check django version with 'python -c "import django; print(django.get_version())"'.
+Position yourself in csyllabus root folder.
+```pip install -r backend/requirements/devl.pip```
+In file backend/settings/devl.py field  change DATABASES according to database name, username and password you wrote down in first.
+
+To finish load the migrations and fixtures into the database:
+```
+python manage.py migrate
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/epfl_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/fer_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/laquila_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/mockup_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/polimi_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/stanford_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/texas_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/ucla_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/catech_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/gatech_fixtures_json.json
+python manage.py loaddata backend/apps/csyllabusapi/fixtures/hkust_fixtures_json.json
+python manage.py createsuperuser
+```
+
+And run django server:
+```
+python manage.py runserver
+```
+
+
 ## Instalation guide for the frontend:
 
 Install nodeJS (https://nodejs.org/en/download/).
