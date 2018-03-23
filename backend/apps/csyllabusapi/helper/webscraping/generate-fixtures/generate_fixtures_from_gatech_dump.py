@@ -109,7 +109,7 @@ r = requests.get(url)
 
 tree = html.fromstring(r.content)
 course_idtree = tree.xpath('//div[@class="courseblock"]//p[@class="courseblocktitle"]//strong/text()')
-course_desctree = tree.xpath('//div[@class="courseblock"]//p[@class="courseblockdesc"]/text()')
+course_desctree = tree.xpath('//p[@class="courseblockdesc"]/text()')
 
 for i in range(0, len(course_idtree)):
     course_name = course_idtree[i].split('. ')[1].strip(),
