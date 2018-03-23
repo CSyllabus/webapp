@@ -162,10 +162,10 @@ for i in range(1, len(courses)):
                     "model": "csyllabusapi.course",
                     "pk": course_id,
                     "fields": {
-                        "name": course_name[0],
+                        "name": course_name,
                         "description": course_description[0].strip(),
-                        "ects": course_ects[0],
-                        "semester": None,
+                        "ects": course_ects,
+                        "semester": course_term,
                         "created": "2017-10-30T15:07:40.122Z",
                         "modified": "2017-10-30T15:07:41.673Z"
                     }
